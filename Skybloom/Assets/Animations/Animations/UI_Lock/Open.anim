@@ -22,34 +22,34 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 316256662, guid: 98fb350243ba511459f8015faddffc44, type: 3}
-    - time: 0.06666667
+    - time: 0.05
       value: {fileID: -1981333785, guid: 98fb350243ba511459f8015faddffc44, type: 3}
-    - time: 0.13333334
+    - time: 0.1
       value: {fileID: 999412319, guid: 98fb350243ba511459f8015faddffc44, type: 3}
-    - time: 0.2
+    - time: 0.15
       value: {fileID: -90919656, guid: 98fb350243ba511459f8015faddffc44, type: 3}
-    - time: 0.26666668
+    - time: 0.2
       value: {fileID: 19471866, guid: 98fb350243ba511459f8015faddffc44, type: 3}
-    - time: 0.33333334
+    - time: 0.25
       value: {fileID: -1075851360, guid: 98fb350243ba511459f8015faddffc44, type: 3}
-    - time: 0.4
+    - time: 0.3
       value: {fileID: -1777475860, guid: 98fb350243ba511459f8015faddffc44, type: 3}
-    - time: 0.46666667
+    - time: 0.35
       value: {fileID: 620446236, guid: 98fb350243ba511459f8015faddffc44, type: 3}
-    - time: 0.53333336
+    - time: 0.4
       value: {fileID: 986063220, guid: 98fb350243ba511459f8015faddffc44, type: 3}
-    - time: 0.6
+    - time: 0.45
       value: {fileID: 796265327, guid: 98fb350243ba511459f8015faddffc44, type: 3}
-    - time: 0.6666667
+    - time: 0.5
       value: {fileID: 1207988782, guid: 98fb350243ba511459f8015faddffc44, type: 3}
-    - time: 0.73333335
+    - time: 0.55
       value: {fileID: 1298695127, guid: 98fb350243ba511459f8015faddffc44, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
     flags: 2
-  m_SampleRate: 15
+  m_SampleRate: 20
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -83,7 +83,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.8
+    m_StopTime: 0.6
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -103,7 +103,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.73333335
+  - time: 0.55
     functionName: DeactivateLock
     data: 
     objectReferenceParameter: {fileID: 0}
