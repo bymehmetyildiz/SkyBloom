@@ -1,0 +1,3 @@
+Attack concept: when ducking, press the attack button to stab enemies.
+
+Jab start/Jab:		20FPS

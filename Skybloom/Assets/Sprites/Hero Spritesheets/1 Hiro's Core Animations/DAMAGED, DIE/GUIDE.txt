@@ -1,0 +1,10 @@
+Hiro's death is a long-winded play on the classic LOZ spin+faint death animation where Hiro does a bit of a fake-out 
+before finally toppling over. You could probably manage to skip a stage or two if you don't want it to be so long.
+
+For the full death animation; hold the "initial death-stun" frame for a good moment after you hit 0HP (you could slowly fade 
+everything except the hero in the game-scene to black at this stage!). After that, play "death spin", then "death feint", 
+then hold the "defy" frame for several moments, then play "fall-back" and finally hold the "he's finally dead" frame for a while.
+
+
+All death animations:		20FPS
+Damaged animation:		14FPS

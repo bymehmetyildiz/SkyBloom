@@ -1,0 +1,12 @@
+Attack concept: summon a rainstorm of magic swords to devastate all on-screen enemies (long cool-down?).
+
+Play "1 sword rain overlay FX" over the player at the same time as the "cast prep" animation from the 
+magic cast/buff folder (the long version). Start raining down the "raindrop" images from the top of the scree,
+then after a moment spawn the 'rain-landing tiles' on all available tiles (they should all fit into 64x64 spaces).
+Hold the rain-landing animations on their last frame for a while. Apply damage to enemies at the same time that the
+rain-landing tile animations start.
+
+
+
+Sword rain prep overlay:		25FPS
+Rain landing tiles:			20FPS

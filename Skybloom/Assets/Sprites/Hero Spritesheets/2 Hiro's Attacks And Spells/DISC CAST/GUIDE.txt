@@ -1,0 +1,5 @@
+Attack concept: sling a projectile attack to help give you some range. Possibly on a cool-down or resource meter?
+
+Prep:			33FPS
+Cast:			33FPS
+Disc projectile:	20FPS

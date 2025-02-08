@@ -1,0 +1,4 @@
+These files are contained here AND in the folders for their associated animation.
+
+
+All dust animations:		20FPS

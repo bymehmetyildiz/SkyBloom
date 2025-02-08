@@ -1,0 +1,11 @@
+Attack concept: Become invulnerable for a moment and start spinning wildly; dealing rapid damage to everything near you (cool-down
+Attack). Maybe you can move slowly while spinning?
+
+Instead of overlays; the Player sprites are included in with the FX for these animations. 
+Play "twister spin loop" on loop for as long as you desire the attack to last.
+
+
+
+Twister prep:			33FPS
+Twister spin loop:		25FPS
+End:				33FPS

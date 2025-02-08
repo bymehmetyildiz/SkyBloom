@@ -1,0 +1,3 @@
+Attack concept: Tap the attack button successively to perform a 4 hit combo.
+
+ALL COMBO/COMBO FX ANIMATIONS:		20FPS

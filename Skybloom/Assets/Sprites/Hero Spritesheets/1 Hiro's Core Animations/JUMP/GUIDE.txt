@@ -1,0 +1,8 @@
+Play 'Jump-start' for starting the jump, then 'jump-ascending-loop' plays for as long as you are moving up. 
+Then play 'fall-start' on descent, then loop 'falling' until you hit the ground (and play 'land' on landing of-coarse).
+You'll want to transition straight into fall-start then falling if you walk off a ledge without jumping. Also; the landing animation
+should probably have priority over the walking animation (I made the feet slide a bit so that it doesn't look too odd if you are 
+moving forward during land)
+
+
+All animations:		20FPS

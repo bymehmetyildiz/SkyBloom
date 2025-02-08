@@ -1,0 +1,4 @@
+Attack concept: A special attack (possibly on a long cool-down?). Become invulnerable for a moment and dash forward quickly, 
+dealing high damage to passerby enemies.
+
+Dash Attack:		25FPS

@@ -1,0 +1,8 @@
+These should be mostly self-explanatory.
+For the turn animation: all you have to do is play it at the same time that you flip the game-object 
+(the animation starts in a reversed position to make up for the jarring shift). It should look fine if you
+follow the "SUGGESTED GAME-OBJECT CENTER" guidelines. (I would not recommend playing turn in the air)
+
+
+All Animations except turn:		20FPS
+Turn:					25FPS

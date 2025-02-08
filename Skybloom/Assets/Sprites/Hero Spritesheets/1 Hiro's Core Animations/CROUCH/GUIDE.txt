@@ -1,0 +1,7 @@
+Concept: hold down when on the ground to crouch? Attacking in this state could lead to either the
+'CROUCHED JAB' attack or maybe the 'EARTH SLAM' attack?
+
+
+Crouch Start:		33FPS
+Crouched idle:		16FPS
+Crouch Stop:		33FPS

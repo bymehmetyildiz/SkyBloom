@@ -1,0 +1,5 @@
+Block concept: hold the block button down to become invulnerable. Maybe it could be on a resource meter or multi-stock cool-down and 
+it costs a chunk of said resource only when attacks are successfully blocked?
+
+
+ALL BLOCK ANIMATIONS:		20FPS

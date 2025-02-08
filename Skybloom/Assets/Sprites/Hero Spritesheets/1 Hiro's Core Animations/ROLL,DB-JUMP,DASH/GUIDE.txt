@@ -1,0 +1,5 @@
+As the name implies; "DOUBLE-JUMP-OR-ROLL" was made to work as either a roll OR a double-jump.
+The dash-ending might feel too slow in gameplay depending on your games dash physics, so speed up its FPS as desired.
+
+
+All animations:			20FPS

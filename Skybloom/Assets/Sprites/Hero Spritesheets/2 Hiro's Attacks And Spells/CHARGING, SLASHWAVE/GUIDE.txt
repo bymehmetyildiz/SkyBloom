@@ -1,0 +1,8 @@
+Attack concept: Hold down attack key to charge up a projectile then release to cast projectile.
+(Megaman-X esc...the longer you charge the stonger the projectile is).
+Play the "charging up overlay" on-top of the player whenever charging.
+
+
+Charge overlay:		50FPS
+Cast:			20FPS
+Projectile:		33FPS

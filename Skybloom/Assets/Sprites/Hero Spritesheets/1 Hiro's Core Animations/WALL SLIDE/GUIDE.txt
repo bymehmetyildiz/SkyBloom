@@ -1,0 +1,6 @@
+Basic wall-sliding...(reference megaman-X)
+The game-object should flip direction at the moment you jump off walls (not while sliding). The wall jump-off animations should
+replace the first two standard jump animations (play "jump start">"jump ascending">"fall start">"falling").
+
+
+All wall-slide animations:		20FPS

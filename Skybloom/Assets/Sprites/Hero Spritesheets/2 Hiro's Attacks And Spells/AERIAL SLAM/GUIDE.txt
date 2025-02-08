@@ -1,0 +1,8 @@
+Attack concept: Press down+attack in the air to slam down to the ground. Damages passerby enemies and maybe
+drags them down with you.
+
+
+Prep:		25FPS
+Swing start:	 25FPS
+Falling loop:	20FPS
+Land:		20FPS

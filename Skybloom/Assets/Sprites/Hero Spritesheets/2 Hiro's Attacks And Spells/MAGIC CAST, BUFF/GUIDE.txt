@@ -1,0 +1,9 @@
+This is a multi-purpose spell animation. Use it for casting buffs, etc. (Its intended to be used when
+casting "sword rain"). The animation was a little long so I decided to make a shorter version just
+in-case the long one felt a bit too clunky during gameplay.
+Play the cast prep first, then loop the casting animation several times (depending on preference), then the end animation.
+
+
+Cast prep:		25FPS
+Cast loop:		20FPS
+End:			20FPS

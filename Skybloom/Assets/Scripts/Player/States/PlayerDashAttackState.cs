@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerDashAttackState : PlayerState
+{
+    public PlayerDashAttackState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
+    {
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        player.SetVelocity(0, rb.velocity.y);
+    }
+
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+
+        player.SetVelocity(player.dashSpeed * player.facingDir, 0);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (!player.IsGroundDetected() && player.IsWallDetected() && player.IsLedgeDetected())
+            stateMachine.ChangeState(player.wallSlideState);
+
+        if(triggerCalled)
+            stateMachine.ChangeState(player.idleState);
+
+    }
+}

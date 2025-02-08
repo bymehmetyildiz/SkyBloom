@@ -1,0 +1,6 @@
+Skill conept: Summon (passively or use the buff/spell animations?) multiple orbs that circle around the player and deal damage to enemies 
+that make contact with them. Once they've made contact with enemies X number of times; they could explode. Maybe they could even explode
+instantly if they make contact with an enemy projectile (to protect you)?
+
+Orb appear:		20FPS
+Orb explode:		25FPS

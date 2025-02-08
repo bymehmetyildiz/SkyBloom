@@ -1,0 +1,5 @@
+Attack concept: press up+attack to perform a rising uppercut that deals damage to passerby enemies
+(maybe drags them up with you?). Quickly combo into aerial slam?
+
+
+All:			33FPS

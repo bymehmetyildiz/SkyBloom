@@ -1,0 +1,6 @@
+Attack concept: Perform a jump-slam to send many shockwave tiles ac-crossed the ground. Could damage enemies,
+stun them or Maybe even knock them towards you (for follow-up attacks)? Could be a special attack OR maybe just
+your standard down attack (when used on the ground instead of the air).
+
+
+All:		20FPS

@@ -1,0 +1,6 @@
+Attack concept: A fast and powerful finisher attack (on a short-ish cool-down or multi-stock cool-down??) that quickly strikes enemies
+8 times. There is a version with a Kanji symbol (meaning 'courage') and a version without the symbol (in case it isn't to your tastes).
+
+
+
+All sprites played at:		33FPS

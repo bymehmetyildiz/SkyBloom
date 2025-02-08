@@ -1,0 +1,6 @@
+
+Ladder start:			20FPS
+Ladder climbing:		  25FPS
+Ladder idle:			20FPS
+Ladder slide-down start:	20FPS
+Ladder slide-down:		20FPS
