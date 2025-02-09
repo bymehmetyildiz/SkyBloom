@@ -65,7 +65,7 @@ public class AnimationTrigger : MonoBehaviour
     public void AerialSlam()
     {
         aerialSlamAnimator.SetBool("Slam", true);
-        player.AerialSlamHit();
+        player.skillManager.aerialSlamSkill.AerialSlamHit();
 
     }
     public void AerialSlamEnd() => aerialSlamAnimator.SetBool("Slam", false);

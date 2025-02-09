@@ -14,7 +14,8 @@ public class SkillManager : MonoBehaviour
     public EarthSlamSkill earthSlamSkill { get; private set;}
     public FlurrySlashSkill flurrySlashSkill { get; private set;}
     public TwisterSkill twisterSkill { get; private set;}
-    public RainSwordSkill rainSwordSkill { get; private set;}
+    public SwordRainSkill swordRainSkill { get; private set;}
+    public AerialSlamSkill aerialSlamSkill { get; private set;}
     
 
     private void Awake()
@@ -35,6 +36,7 @@ public class SkillManager : MonoBehaviour
         earthSlamSkill = GetComponent<EarthSlamSkill>();
         flurrySlashSkill = GetComponent<FlurrySlashSkill>();
         twisterSkill = GetComponent<TwisterSkill>();
-        rainSwordSkill = GetComponent<RainSwordSkill>();
+        swordRainSkill = GetComponent<SwordRainSkill>();
+        aerialSlamSkill = GetComponent <AerialSlamSkill>();
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwordRainSkill : Skill
 {
@@ -22,20 +23,35 @@ public class SwordRainSkill : Skill
     public int defaultStuck;
     private int amountOfStucks;
 
+    
 
     protected override void Start()
     {
+        base.Start();
+
         amountOfSwords = defaultSword;
         amountOfStucks = defaultStuck;
+    
     }
 
+    public override bool CanUseSkill()
+    {
+        return base.CanUseSkill();
+        
+    }
 
     protected override void Update()
     {
-        rainTimer -= Time.deltaTime;
-        SwordRain();
+        base.Update();
 
+        rainTimer -= Time.deltaTime;
+
+        if (IsSkillUnlocked())
+            SwordRain();
+
+    
     }
+
 
     private void SwordRain()
     {
@@ -82,6 +98,10 @@ public class SwordRainSkill : Skill
 
     public void SpawnHitEffect(Vector2 hitPoint) => Instantiate(hitEffect, hitPoint, Quaternion.identity);
 
+    public override bool IsSkillUnlocked()
+    {
+        return base.IsSkillUnlocked();
+    }
 }
 
 

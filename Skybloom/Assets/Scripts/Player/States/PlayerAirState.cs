@@ -32,7 +32,7 @@ public class PlayerAirState : PlayerState
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && player.skillManager.aerialSlamSkill.CanUseSkill() && player.skillManager.aerialSlamSkill.IsSkillUnlocked())
             stateMachine.ChangeState(player.aerialSlamAirState);
 
         if (player.IsWallDetected() && player.IsLedgeDetected())        

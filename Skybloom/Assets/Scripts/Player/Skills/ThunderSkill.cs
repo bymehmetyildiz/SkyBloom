@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThunderSkill : Skill
 {
+    [Header("Thunder Skill Variables")]
     public GameObject blackHolePrefab;
     public GameObject spawnedBlackHole;
     public bool canGrow;
@@ -13,21 +15,11 @@ public class ThunderSkill : Skill
     public float castDelayTime;
     public float speed;
     public float offset;
-   
-
-    public override bool CanUseSkill()
-    {
-        return base.CanUseSkill();
-    }
-
-    public override void UseSkill()
-    {
-        base.UseSkill();
-    }
 
     protected override void Start()
     {
         base.Start();
+
     }
 
     protected override void Update()
@@ -50,11 +42,15 @@ public class ThunderSkill : Skill
             return false;
 
         return true;
-
-       
     }
 
+    public override bool CanUseSkill()
+    {
+        return base.CanUseSkill();
+    }
 
-
-
+    public override bool IsSkillUnlocked()
+    {
+        return base.IsSkillUnlocked();
+    }
 }

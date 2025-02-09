@@ -8,4 +8,9 @@ public class TwisterSkill : Skill
     {
         return base.CanUseSkill();
     }
+
+    public override bool IsSkillUnlocked()
+    {
+        return base.IsSkillUnlocked();
+    }
 }

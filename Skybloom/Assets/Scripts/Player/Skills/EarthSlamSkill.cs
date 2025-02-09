@@ -28,6 +28,9 @@ public class EarthSlamSkill : Skill
 
     public void CreateExplosion()
     {
+        if (!IsSkillUnlocked())
+            return;
+
         GameObject explosion = Instantiate(explosionTransformPrefab, player.transform.position + Vector3.right * player.facingDir, Quaternion.identity);
         EarthSlamExplosion earthSlamExplosion = explosion.GetComponent<EarthSlamExplosion>();
         earthSlamExplosion.SetupEarthSlam(groundCheckDistance, whatIsGround, cooldown, speed,explosionPrefab, expTimer);
@@ -36,6 +39,8 @@ public class EarthSlamSkill : Skill
             StartCoroutine(earthSlamExplosion.CrateExplosion());
     }
 
-
-
+    public override bool IsSkillUnlocked()
+    {
+        return base.IsSkillUnlocked();
+    }
 }

@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public enum SwordType
 {
+    None,
     Regular,
     Bounce,
     Pierce,
@@ -12,24 +13,36 @@ public enum SwordType
 
 public class SwordSkill : Skill
 {
-    public SwordType swordType = SwordType.Regular;
+    public SwordType swordType = SwordType.None;   
+    private int typeCounter;
+    private int unlockedTypes;
+
 
     [Header("Bounce Info")]
+    [SerializeField] private UI_SkillTreeSlot bounceSkillButton;
+    public bool isBounceUnlocked;
     [SerializeField] private int bounceAmount;
     [SerializeField] private float bounceGravity;
 
     [Header("Pierce Info")]
+    [SerializeField] private UI_SkillTreeSlot pierceSkillButton;
+    public bool isPierceUnlocked;
     [SerializeField] private int pierceAmount;
     [SerializeField] private float pierceGravity;
 
     [Header("Regular Info")]
+    [SerializeField] private UI_SkillTreeSlot regularSkillButton;
+    public bool isRegularUnlocked;
     [SerializeField] private GameObject swordPrefab;
     [SerializeField] private Vector2 launchForce;
     [SerializeField] private float swordGravity;
+    [SerializeField] private float regularGravity;
     [SerializeField] private float freezeDur;
     [SerializeField] private float returnSpeed;
 
     [Header("Spin Info")]
+    [SerializeField] private UI_SkillTreeSlot spinSkillButton;
+    public bool isSpinUnlocked;
     [SerializeField] private float maxTravelDistance;
     [SerializeField] private float spinDuration;
     [SerializeField] private float spinGravity;
@@ -48,6 +61,14 @@ public class SwordSkill : Skill
         base.Start();
         GenerateDots();
         SetupGravity();
+
+        UI_Controller.instance.SwitchIcon(typeCounter);
+
+        regularSkillButton.GetComponentInChildren<Button>().onClick.AddListener(CheckRegular);
+        pierceSkillButton.GetComponentInChildren<Button>().onClick.AddListener(CheckPierce);
+        spinSkillButton.GetComponentInChildren<Button>().onClick.AddListener(CheckSpin);
+        bounceSkillButton.GetComponentInChildren<Button>().onClick.AddListener(CheckBounce);
+
     }
 
     private void SetupGravity()
@@ -58,6 +79,8 @@ public class SwordSkill : Skill
             swordGravity = pierceGravity;
         else if(swordType == SwordType.Spin)
             swordGravity = spinGravity;
+        else if(swordType== SwordType.Regular)
+            swordGravity = regularGravity;
     }
 
     protected override void Update()
@@ -65,10 +88,22 @@ public class SwordSkill : Skill
         base.Update();
 
         if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            if (swordType == SwordType.None)
+                return;
             finalDir = new Vector2(AimDirection().normalized.x * launchForce.x, AimDirection().normalized.y * launchForce.y);
+        }
+
+
+        if (Input.mouseScrollDelta.y > 0.2f || Input.mouseScrollDelta.y < -0.2f)
+            SwitchSword();
+
 
         if (Input.GetKey(KeyCode.Mouse1))
         {
+            if (swordType == SwordType.None)
+                return;
+
             for (int i = 0; i < dots.Length; i++)
             {
                 dots[i].transform.position = DotsPosition(i * spaceBetweenDots);
@@ -133,6 +168,84 @@ public class SwordSkill : Skill
 
         return position;
     }
+
+    //Check Unlockes
+    public void CheckRegular()
+    {
+        if (regularSkillButton.unlocked)
+        {
+            isRegularUnlocked = true;
+
+            if (unlockedTypes < 1)
+                unlockedTypes++;
+
+            SwitchSword();
+            UI_Controller.instance.SwitchIcon(typeCounter);
+        }
+    }
+
+    public void CheckPierce()
+    {
+        if (pierceSkillButton.unlocked)
+        {
+            isPierceUnlocked = true;
+
+            if (unlockedTypes < 2)
+                unlockedTypes++;
+
+           
+        }
+    }
+
+    public void CheckSpin()
+    {
+        if (spinSkillButton.unlocked)
+        {
+            isSpinUnlocked = true;
+
+            if (unlockedTypes < 3)
+                unlockedTypes++;
+
+           
+        }
+    }
+
+    public void CheckBounce()
+    {
+        if (bounceSkillButton.unlocked)
+        {
+            isBounceUnlocked = true;
+
+            if (unlockedTypes < 4)
+                unlockedTypes++;
+
+        }
+    }
+
+    private void SwitchSword()
+    {
+        typeCounter++;
+
+        if (typeCounter > unlockedTypes && unlockedTypes > 0)
+            typeCounter = 1;
+        else if(typeCounter > unlockedTypes && unlockedTypes <= 0)
+            typeCounter = 0;
+
+        if (typeCounter == 1)
+            swordType = SwordType.Regular;
+        else if (typeCounter == 2)
+            swordType = SwordType.Pierce;
+        else if (typeCounter == 3)
+            swordType = SwordType.Spin;
+        else if (typeCounter == 4)
+            swordType = SwordType.Bounce;
+        else if (typeCounter < 1 || typeCounter > unlockedTypes)
+            swordType = SwordType.None;
+
+        SetupGravity();
+        UI_Controller.instance.SwitchIcon(typeCounter);
+    }
+
 
    
 }

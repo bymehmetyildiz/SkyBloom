@@ -39,12 +39,13 @@ public class Player : Entity
     [Header("DashInfo")]
     public float dashSpeed;
     public float dashDuration;
+    private float cooldownTimer; 
+    [SerializeField] private float cooldown;
     public float dashDirection { get; private set; }
     private float defaultDashSpeed;
 
-    [Header("Aerial Slam")]
-    [SerializeField] private GameObject aerialSlamHit;
-    [SerializeField] private Transform hitPosition;
+
+    
 
 
     //Move States
@@ -134,6 +135,7 @@ public class Player : Entity
     protected override void Update()
     {
         base.Update();
+        cooldownTimer -= Time.deltaTime;
         stateMachine.currentState.Update();
         CheckDashInput();
 
@@ -162,21 +164,9 @@ public class Player : Entity
         if (IsWallDetected())
             return;
 
-        if (Input.GetKey(KeyCode.LeftShift))           
+        if (!Input.GetKey(KeyCode.LeftShift))
         {
-            if (Input.GetKeyDown(KeyCode.C) && SkillManager.instance.dashSkill.CanUseSkill())
-            {
-                dashDirection = Input.GetAxisRaw("Horizontal");
-
-                if (dashDirection == 0)
-                    dashDirection = facingDir;
-
-                stateMachine.ChangeState(dashAttackState);
-            }
-        }
-        else if (!Input.GetKey(KeyCode.LeftShift))
-        {
-            if (Input.GetKeyDown(KeyCode.C) && SkillManager.instance.dashSkill.CanUseSkill())
+            if (Input.GetKeyDown(KeyCode.C) && CanUseSkill())
             {
                 dashDirection = Input.GetAxisRaw("Horizontal");
 
@@ -187,8 +177,30 @@ public class Player : Entity
             }
         }
 
-        
+        //if (skillManager.dashSkill.dashPierceUnlock == false)
+        //    return;
 
+        else if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (Input.GetKeyDown(KeyCode.C) && SkillManager.instance.dashSkill.CanUseSkill() && skillManager.dashSkill.IsSkillUnlocked())
+            {
+                dashDirection = Input.GetAxisRaw("Horizontal");
+
+                if (dashDirection == 0)
+                    dashDirection = facingDir;
+
+                stateMachine.ChangeState(dashAttackState);
+            }
+        }
+    }
+    private bool CanUseSkill()
+    {
+        if (cooldownTimer < 0)
+        {
+            cooldownTimer = cooldown;
+            return true;
+        }
+        return false;
     }
 
     //Sword Throw
@@ -275,12 +287,7 @@ public class Player : Entity
         entityStats.DoDamage(enemy, direction);    
     }
 
-    //Aerial Slam Hit
-    public void AerialSlamHit()
-    {
-        GameObject aerialSlam = Instantiate(aerialSlamHit, hitPosition.position, Quaternion.identity);
-        aerialSlam.transform.localScale = Vector3.one * 2;
-    }
+   
 
 
    

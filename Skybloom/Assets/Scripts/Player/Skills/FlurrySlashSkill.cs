@@ -8,4 +8,9 @@ public class FlurrySlashSkill : Skill
     {
         return base.CanUseSkill();
     }
+
+    public override bool IsSkillUnlocked()
+    {
+        return base.IsSkillUnlocked();
+    }
 }

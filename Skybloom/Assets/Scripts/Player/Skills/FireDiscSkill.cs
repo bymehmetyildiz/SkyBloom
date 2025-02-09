@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireDiscSkill : Skill
 {
+    [Header("Skill Variables")]
     [SerializeField] private GameObject fireDisc;
     [SerializeField] private GameObject hitEffect;
     private int direction;
@@ -11,8 +12,19 @@ public class FireDiscSkill : Skill
     [SerializeField] private float xOffset;
     [SerializeField] private float yOffset;
 
+    public override bool CanUseSkill()
+    {
+        return base.CanUseSkill();
+    }
+
+    public override bool IsSkillUnlocked()
+    {
+        return base.IsSkillUnlocked();
+    }
+
     public override void UseSkill()
     {
+        if(IsSkillUnlocked())
         StartCoroutine(UseFireDiscSkill());
        
     }

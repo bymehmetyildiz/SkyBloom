@@ -27,7 +27,7 @@ public class PlayerGroundedState : PlayerState
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword() && !Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword() && !Input.GetKey(KeyCode.LeftShift) && player.skillManager.swordSkill.swordType != SwordType.None)
             stateMachine.ChangeState(player.aimSwordState);
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -42,22 +42,25 @@ public class PlayerGroundedState : PlayerState
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected())
             stateMachine.ChangeState(player.jumpState);
 
-        if (Input.GetKeyDown(KeyCode.F) && player.skillManager.rainSwordSkill.CanUseSkill())
+        if (Input.GetKeyDown(KeyCode.F) && player.skillManager.swordRainSkill.CanUseSkill() && player.skillManager.swordRainSkill.IsSkillUnlocked())
             stateMachine.ChangeState(player.rainCastState);
 
-        if (Input.GetKeyDown(KeyCode.E) && !player.skillManager.thunderSkill.IsBlackHoleSpawned() && player.skillManager.thunderSkill.CanUseSkill())
-            stateMachine.ChangeState(player.thunderCastState);
+        if (Input.GetKeyDown(KeyCode.E) && 
+            !player.skillManager.thunderSkill.IsBlackHoleSpawned() && 
+            player.skillManager.thunderSkill.CanUseSkill() && 
+            player.skillManager.thunderSkill.IsSkillUnlocked())
+                stateMachine.ChangeState(player.thunderCastState);
 
-        if (Input.GetKeyDown(KeyCode.R) && SkillManager.instance.fireDiscSkill.CanUseSkill())
+        if (Input.GetKeyDown(KeyCode.R) && player.skillManager.fireDiscSkill.CanUseSkill() && player.skillManager.fireDiscSkill.IsSkillUnlocked())
             stateMachine.ChangeState(player.discCastState);
 
-        if (Input.GetKeyDown(KeyCode.Mouse2) && player.skillManager.twisterSkill.CanUseSkill())
+        if (Input.GetKeyDown(KeyCode.Mouse2) && player.skillManager.twisterSkill.CanUseSkill() && player.skillManager.twisterSkill.IsSkillUnlocked())
             stateMachine.ChangeState(player.twisterState);
 
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Mouse0) && player.skillManager.flurrySlashSkill.CanUseSkill())
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Mouse0) && player.skillManager.flurrySlashSkill.CanUseSkill() && player.skillManager.flurrySlashSkill.IsSkillUnlocked())
             stateMachine.ChangeState(player.flurrySlashState);
 
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Mouse1) && player.skillManager.earthSlamSkill.CanUseSkill())
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Mouse1) && player.skillManager.earthSlamSkill.CanUseSkill() && player.skillManager.earthSlamSkill.IsSkillUnlocked())
             stateMachine.ChangeState(player.earthSlamState);
 
     }
