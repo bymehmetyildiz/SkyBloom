@@ -11,8 +11,7 @@ public class Skill : MonoBehaviour
 
     protected Player player;
 
-    [Header("Unlock")]
-    
+    [Header("Unlock")]    
     [SerializeField] private UI_SkillTreeSlot skillButton;
 
     protected virtual void Start()
@@ -48,8 +47,7 @@ public class Skill : MonoBehaviour
 
     public virtual void UseSkill()
     {
-        // Use Skill
-        Debug.Log("Skill Used");
+      // Use Skill
     }
 
   
