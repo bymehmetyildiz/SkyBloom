@@ -70,8 +70,8 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
             }
         }
 
+        unlocked = true;        
         skillLock.UnlockSkill();
-        unlocked = true;
         
     }
 

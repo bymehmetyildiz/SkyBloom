@@ -166,7 +166,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &4865987115633213607
 CircleCollider2D:
@@ -217,5 +217,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   returnRotSpeed: 5
-  returnSpeed: 12
   bounceSpeed: 10

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum SwordType
@@ -16,6 +17,7 @@ public class SwordSkill : Skill
     public SwordType swordType = SwordType.None;   
     private int typeCounter;
     private int unlockedTypes;
+    private UI_InGame inGameUI;
 
 
     [Header("Bounce Info")]
@@ -59,15 +61,16 @@ public class SwordSkill : Skill
     protected override void Start()
     {
         base.Start();
+        inGameUI = FindObjectOfType<UI_InGame>();
         GenerateDots();
         SetupGravity();
 
-        UI_Controller.instance.SwitchIcon(typeCounter);
+        inGameUI.SwitchSwordIcon(typeCounter);
 
-        regularSkillButton.GetComponentInChildren<Button>().onClick.AddListener(CheckRegular);
-        pierceSkillButton.GetComponentInChildren<Button>().onClick.AddListener(CheckPierce);
-        spinSkillButton.GetComponentInChildren<Button>().onClick.AddListener(CheckSpin);
-        bounceSkillButton.GetComponentInChildren<Button>().onClick.AddListener(CheckBounce);
+        regularSkillButton.GetComponentInChildren<Button>().onClick.AddListener(() => CheckRegular());
+        pierceSkillButton.GetComponentInChildren<Button>().onClick.AddListener(() => CheckPierce());
+        spinSkillButton.GetComponentInChildren<Button>().onClick.AddListener(() => CheckSpin());
+        bounceSkillButton.GetComponentInChildren<Button>().onClick.AddListener(() => CheckBounce());
 
     }
 
@@ -173,14 +176,14 @@ public class SwordSkill : Skill
     public void CheckRegular()
     {
         if (regularSkillButton.unlocked)
-        {
+        {            
             isRegularUnlocked = true;
 
             if (unlockedTypes < 1)
                 unlockedTypes++;
 
+            inGameUI.SwitchSwordIcon(typeCounter);
             SwitchSword();
-            UI_Controller.instance.SwitchIcon(typeCounter);
         }
     }
 
@@ -243,7 +246,7 @@ public class SwordSkill : Skill
             swordType = SwordType.None;
 
         SetupGravity();
-        UI_Controller.instance.SwitchIcon(typeCounter);
+        inGameUI.SwitchSwordIcon(typeCounter);
     }
 
 
