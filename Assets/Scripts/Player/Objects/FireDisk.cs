@@ -8,6 +8,7 @@ public class FireDisc: MonoBehaviour
     private int speed;
     private Rigidbody2D rb;
     private GameObject hitEffect;
+    Player player;
 
     void Start()
     {
@@ -15,11 +16,12 @@ public class FireDisc: MonoBehaviour
         Destroy(gameObject, 2.0f);
     }
 
-    public void Setup(int _direction, int _speed, GameObject _hitEffect)
+    public void Setup(int _direction, int _speed, GameObject _hitEffect, Player _player)
     {
         direction = _direction;
         speed = _speed;
         hitEffect = _hitEffect;
+        player = _player;
     }
 
     
@@ -37,7 +39,8 @@ public class FireDisc: MonoBehaviour
         {
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
 
-            enemy.gameObject.GetComponent<EnemyStats>().DoMagicalDamage(enemy, direction);
+            player.stats.DoMagicalDamage(enemy);
+
         }
         var collisionPoint = collision.ClosestPoint(transform.position);
         Instantiate(hitEffect, collisionPoint, Quaternion.identity);

@@ -22,7 +22,9 @@ public class PlayerDeadState : PlayerState
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-        player.SetZeroVelocity();
+
+        if(player.IsGroundDetected())
+            player.SetZeroVelocity();
     }
 
     public override void Update()

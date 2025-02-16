@@ -6,6 +6,7 @@ public class BanditMoveState : BanditGroundedState
 {
     public BanditMoveState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Bandit _bandit) : base(_baseEnemy, _stateMachine, _animBoolName, _bandit)
     {
+
     }
 
     public override void Enter()

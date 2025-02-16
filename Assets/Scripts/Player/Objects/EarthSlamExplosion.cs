@@ -80,14 +80,7 @@ public class EarthSlamExplosion : MonoBehaviour
 
                 EnemyStats enemy = collision.GetComponent<EnemyStats>();
 
-                int direction = 0;
-
-                if (transform.position.x >= enemy.transform.position.x)
-                    direction = -1;
-                if (transform.position.x < enemy.transform.position.x)
-                    direction = 1;
-
-                PlayerManager.instance.player.entityStats.DoDamage(enemy, direction);
+                PlayerManager.instance.player.entityStats.DoDamage(enemy);
         }
         
            

@@ -147,7 +147,7 @@ public class SwordSkillController : MonoBehaviour
                     foreach (var hit in colliders)
                     {
                         if (hit.GetComponent<Enemy>() != null)
-                            player.stats.DoDamage(hit.GetComponent<EnemyStats>(), player.facingDir);
+                            player.stats.DoDamage(hit.GetComponent<EnemyStats>());
                     }
                 }
             }
@@ -171,7 +171,7 @@ public class SwordSkillController : MonoBehaviour
 
             if (Vector2.Distance(transform.position, enemies[targetIndex].position) < 0.1f)
             {
-                player.stats.DoDamage(enemies[targetIndex].GetComponent<EnemyStats>(), player.facingDir);
+                player.stats.DoDamage(enemies[targetIndex].GetComponent<EnemyStats>());
 
                 targetIndex++;
                 amountOfBounce--;
@@ -214,7 +214,7 @@ public class SwordSkillController : MonoBehaviour
 
     private void SwordSkillDamage(Enemy _enemy)
     {
-        player.stats.DoDamage(_enemy.GetComponent<EnemyStats>(), player.facingDir);
+        player.stats.DoDamage(_enemy.GetComponent<EnemyStats>());
         _enemy.StartCoroutine(_enemy.FreezeTimeFor(freezeDur));
 
         ItemData_Equipment equipedAmulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);

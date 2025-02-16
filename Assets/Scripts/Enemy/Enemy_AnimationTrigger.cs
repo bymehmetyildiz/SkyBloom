@@ -20,7 +20,7 @@ public class Enemy_AnimationTrigger : MonoBehaviour
             if (colliders[i].GetComponent<Player>() != null)
             {
                 PlayerStats playerStats = colliders[i].GetComponent<PlayerStats>();
-                enemy.entityStats.DoDamage(playerStats, enemy.facingDir);
+                enemy.entityStats.DoDamage(playerStats);
             }
 
         }

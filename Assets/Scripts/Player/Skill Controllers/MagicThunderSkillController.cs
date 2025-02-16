@@ -14,7 +14,7 @@ public class MagicThunderSkillController : MonoBehaviour
         {
             EnemyStats enemyTarget = collision.GetComponent<EnemyStats>();
 
-            playerStats.DoMagicalDamage(enemyTarget, 0);
+            playerStats.DoMagicalDamage(enemyTarget);
         }
     }
 

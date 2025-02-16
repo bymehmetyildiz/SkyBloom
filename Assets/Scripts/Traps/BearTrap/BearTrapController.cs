@@ -28,14 +28,7 @@ public class BearTrapController : MonoBehaviour
                     //colliders[i].GetComponent<Enemy>().Damage(player.facingDir);
                     PlayerStats player = colliders[i].GetComponent<PlayerStats>();
 
-                    int direction = 0;
-
-                    if (player.transform.position.x > transform.position.x)
-                        direction = 1;
-                    else if (player.transform.position.x < transform.position.x)
-                        direction = -1;
-
-                    player.TakeDamage(damage, direction);
+                    player.TakeDamage(damage);
 
                 }
             }

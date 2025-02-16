@@ -143,20 +143,20 @@ public class Enemy : Entity
     }
 
     // Violent Knockback
-    protected override IEnumerator KnockBack(int _direction)
+    protected override IEnumerator KnockBack()
     {
         if (PlayerManager.instance.player.stateMachine.currentState == PlayerManager.instance.player.twisterState ||
             PlayerManager.instance.player.stateMachine.currentState == PlayerManager.instance.player.aerialSlamState)
             StartCoroutine(ViolentKnockBack());
         
 
-        return base.KnockBack(_direction);
+        return base.KnockBack();
     }
     
     public IEnumerator ViolentKnockBack()
     {
-        knockBackDir = new Vector2(10, 10);
+        knockBackPower = new Vector2(10, 10);
         yield return new WaitForSeconds(0.1f);
-        knockBackDir = defaultKnockBack;
+        knockBackPower = defaultKnockBack;
     }
 }

@@ -277,18 +277,14 @@ public class Player : Entity
     {
         EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
 
-        int direction = 0;
-
-        if (transform.position.x >= enemy.transform.position.x)
-            direction = -1;
-        if (transform.position.x < enemy.transform.position.x)
-            direction = 1;           
+            
         
-        entityStats.DoDamage(enemy, direction);    
+        entityStats.DoDamage(enemy);    
     }
 
-   
-
-
-   
+    //Knockback
+    protected override void SetupZeroKnockback()
+    {
+        //knockBackPower = Vector2.zero;
+    }
 }

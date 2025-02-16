@@ -28,7 +28,7 @@ public class UI_InGame : MonoBehaviour
     
     void Update()
     {
-       currencyText.text = PlayerManager.instance.GetCurrency().ToString();
+       currencyText.text = PlayerManager.instance.GetCurrency().ToString("#,#");
     }
 
     private void UpdateHealth()

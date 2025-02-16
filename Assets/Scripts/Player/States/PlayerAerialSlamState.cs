@@ -12,11 +12,14 @@ public class PlayerAerialSlamState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.fx.ScreenShake();
+
     }
 
     public override void Exit()
     {
         base.Exit();
+        
     }
 
     public override void FixedUpdate()

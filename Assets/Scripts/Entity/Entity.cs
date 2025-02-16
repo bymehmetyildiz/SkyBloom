@@ -25,7 +25,8 @@ public class Entity : MonoBehaviour
     protected bool facingRight = true;
 
     [Header("Knockback Info")]
-    public Vector2 knockBackDir;
+    public Vector2 knockBackPower;
+    public int knockBackDir;
     protected Vector2 defaultKnockBack;
     [SerializeField] protected float knockBackDur;
     protected bool isKnocked;
@@ -44,7 +45,7 @@ public class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         fx = GetComponent<EntityFX>();
         entityStats = GetComponent<EntityStats>();
-        defaultKnockBack = knockBackDir;
+        defaultKnockBack = knockBackPower;
     }
 
 
@@ -83,21 +84,40 @@ public class Entity : MonoBehaviour
     }
 
     //Damage Check
-    public void DamageEffect(int _direction)
+    public void DamageEffect()
     {
         StartCoroutine(fx.FlashFX()); 
 
-        StartCoroutine(KnockBack(_direction));
+        StartCoroutine(KnockBack());
         
     }
 
-    protected virtual IEnumerator KnockBack(int _direction)
+
+    // Knockback
+    public virtual void SetupKnockBackDir(Transform _damageDireciton)
     {
-        isKnocked = true;  
-        rb.velocity = new Vector2(knockBackDir.x * _direction, knockBackDir.y);
-        yield return new WaitForSeconds(knockBackDur);
-        isKnocked = false;        
+        if (_damageDireciton.position.x > transform.position.x)
+            knockBackDir = -1;
+        else if(_damageDireciton.position.x < transform.position.x)
+            knockBackDir = 1;
     }
+
+    protected virtual IEnumerator KnockBack()
+    {
+        isKnocked = true;
+        rb.velocity = new Vector2(knockBackPower.x * knockBackDir, knockBackPower.y);
+        yield return new WaitForSeconds(knockBackDur);
+        isKnocked = false;
+        SetupZeroKnockback();
+    }
+
+    public void SetupKnockbackPower(Vector2 _knockbackPower) => knockBackPower = _knockbackPower;
+
+    protected virtual void SetupZeroKnockback()
+    {
+
+    }
+
 
     // Velocity Check
     public void SetVelocity(float _xVelocity, float _yvelocity)

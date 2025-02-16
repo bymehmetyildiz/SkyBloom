@@ -12,10 +12,15 @@ public class PlayerStats : EntityStats
         player = GetComponent<Player>();
     }
 
-    public override void TakeDamage(int _damage, int _damageDirection)
+    public override void TakeDamage(int _damage)
     {
-        base.TakeDamage(_damage, _damageDirection);
-        player.DamageEffect(_damageDirection);
+        base.TakeDamage(_damage);
+
+        if (_damage > GetMaxHealth() * 0.3f)
+            player.SetupKnockbackPower(new Vector2(7, 10));
+
+        player.DamageEffect();
+
     }
 
     protected override void Dead()
@@ -24,5 +29,11 @@ public class PlayerStats : EntityStats
         player.Dead();
 
         GetComponent<PlayerItemDrop>()?.GenerateDrop();
+    }
+
+    protected override void DecreaseHealth(int _damage)
+    {
+        base.DecreaseHealth(_damage);
+        
     }
 }

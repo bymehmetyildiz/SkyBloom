@@ -43,6 +43,7 @@ public class PlayerBlockState : PlayerState
                 {
                     stateTimer = 10;
                     player.anim.SetBool("Parry", true);
+                    player.fx.ScreenShake();
                 }
 
             }

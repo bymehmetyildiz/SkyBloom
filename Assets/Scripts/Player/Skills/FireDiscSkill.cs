@@ -36,7 +36,7 @@ public class FireDiscSkill : Skill
         GameObject newFireDisc = Instantiate(fireDisc, new Vector2((player.transform.position.x + xOffset * player.facingDir), 
             (player.transform.position.y + yOffset)), Quaternion.identity);
         FireDisc _fireDisc = newFireDisc.GetComponent<FireDisc>();
-        _fireDisc.Setup(direction, speed, hitEffect);
+        _fireDisc.Setup(direction, speed, hitEffect, player);
     }
 
 }

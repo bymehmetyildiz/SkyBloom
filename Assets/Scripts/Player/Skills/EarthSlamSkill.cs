@@ -31,6 +31,7 @@ public class EarthSlamSkill : Skill
         if (!IsSkillUnlocked())
             return;
 
+        player.fx.ScreenShake();
         GameObject explosion = Instantiate(explosionTransformPrefab, player.transform.position + Vector3.right * player.facingDir, Quaternion.identity);
         EarthSlamExplosion earthSlamExplosion = explosion.GetComponent<EarthSlamExplosion>();
         earthSlamExplosion.SetupEarthSlam(groundCheckDistance, whatIsGround, cooldown, speed,explosionPrefab, expTimer);

@@ -37,10 +37,5 @@ public class BanditAttackState : EnemyState
             if (Vector2.Distance(player.transform.position, bandit.transform.position) > bandit.attackDistance)
                 stateMachine.ChangeState(bandit.battleState);
         }
-
-
-
-
-
     }
 }

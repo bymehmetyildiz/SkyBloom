@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements.Experimental;
+using Cinemachine;
 
 public class EntityFX : MonoBehaviour
 {
     private SpriteRenderer sr;
+    private Player player;
 
     [Header("Flash Info")]
     [SerializeField] private Material hitMat;
@@ -17,11 +19,29 @@ public class EntityFX : MonoBehaviour
     [SerializeField] private Color[] freezeColor;
     [SerializeField] private Color[] shockColor;
 
+    [Header("Hit Effect")]
+    [SerializeField] private GameObject hitFX;
+
+    [Header("Screen Shake")]
+    private CinemachineImpulseSource screenShake;
+    [SerializeField] private float shakeMultiplier;
+    [SerializeField] private Vector3 shakePower;
+
     private void Start()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
+        player = PlayerManager.instance.player;
+        screenShake = GetComponent<CinemachineImpulseSource>();
         originalMat = sr.material;
     }
+
+    //ScreenShake
+    public void ScreenShake()
+    {
+        screenShake.m_DefaultVelocity = new Vector3(shakePower.x * player.facingDir, shakePower.y) * shakeMultiplier;
+        screenShake.GenerateImpulse();
+    }
+
 
     //Damage Flash
     public IEnumerator FlashFX()
@@ -109,5 +129,16 @@ public class EntityFX : MonoBehaviour
                 sr.color = shockColor[1];
         }
     }
+
+    //Hit Effect
+    public void CreateHitFX(Transform _target)
+    {
+        GameObject newHitFX = Instantiate(hitFX, _target.position, Quaternion.identity);
+        newHitFX.transform.localScale = new Vector3(newHitFX.transform.localScale.x * _target.GetComponent<Entity>().knockBackDir, newHitFX.transform.localScale.y);
+        
+
+        Destroy(newHitFX, 0.5f);
+    }
+
 
 }

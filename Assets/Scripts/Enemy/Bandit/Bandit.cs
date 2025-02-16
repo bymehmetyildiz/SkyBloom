@@ -46,7 +46,6 @@ public class Bandit : Enemy
             return true;
         }
         return false;
-
     }
 
     public override void Dead()

@@ -55,15 +55,15 @@ public class EnemyStats : EntityStats
     }
 
 
-    public override void DoDamage(EntityStats _entityStats, int _damageDireciton)
+    public override void DoDamage(EntityStats _entityStats)
     {
-        base.DoDamage(_entityStats, _damageDireciton);
+        base.DoDamage(_entityStats);
     }
 
-    public override void TakeDamage(int _damage, int _damageDireciton)
+    public override void TakeDamage(int _damage)
     {
-        base.TakeDamage(_damage, _damageDireciton);
-        enemy.DamageEffect(_damageDireciton);
+        base.TakeDamage(_damage);
+        enemy.DamageEffect();
     }
 
     protected override void Dead()
@@ -72,5 +72,7 @@ public class EnemyStats : EntityStats
         enemy.Dead();
 
         dropSystem.GenerateDrop();
+
+        Destroy(gameObject, 2.0f);
     }
 }

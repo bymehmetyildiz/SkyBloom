@@ -44,6 +44,7 @@ public class EntityStats : MonoBehaviour
     public bool isDead { get; private set; }
 
     public System.Action onHealthChanged;
+    public bool isInvincible;
 
     protected virtual void Start()
     {
@@ -88,10 +89,12 @@ public class EntityStats : MonoBehaviour
     }
 
     // Do Damage
-    public virtual void DoDamage(EntityStats _entityStats, int _damageDireciton)
+    public virtual void DoDamage(EntityStats _entityStats)
     {
         if (CanAvoidAttack(_entityStats))
             return;
+
+        _entityStats.GetComponent<Entity>().SetupKnockBackDir(transform);
 
         int totalDamage = damage.GetValue();        
 
@@ -100,14 +103,18 @@ public class EntityStats : MonoBehaviour
             totalDamage = CriticalDamage(totalDamage);
         }
 
+        fx.CreateHitFX(_entityStats.transform);
 
         totalDamage = CheckTargetArmor(_entityStats, totalDamage);
-        _entityStats.TakeDamage(totalDamage, _damageDireciton);        
+        _entityStats.TakeDamage(totalDamage);        
+        _entityStats.TakeDamage(totalDamage);        
     }
 
     // Do Magic Damage
-    public virtual void DoMagicalDamage(EntityStats _entityStats, int _damageDirection)
+    public virtual void DoMagicalDamage(EntityStats _entityStats)
     {
+        _entityStats.GetComponent<Entity>().SetupKnockBackDir(transform);
+
         int _fireDamage = fireDamage.GetValue();
         int _iceDamage = iceDamage.GetValue();
         int _shockDamage = shockDamage.GetValue();
@@ -115,7 +122,7 @@ public class EntityStats : MonoBehaviour
         int totalMagicDamage = _fireDamage + _iceDamage + _shockDamage + intelligence.GetValue();
 
         totalMagicDamage = CheckMagicResistance(_entityStats, totalMagicDamage);
-        _entityStats.TakeDamage(totalMagicDamage, _damageDirection);
+        _entityStats.TakeDamage(totalMagicDamage);
 
         if (Mathf.Max(_fireDamage, _iceDamage, _shockDamage) <= 0)
             return;
@@ -197,8 +204,12 @@ public class EntityStats : MonoBehaviour
 
     public virtual void IgnitionDamage(int _damage) => ignitionDamage = _damage;
 
-    public virtual void TakeDamage(int _damage, int _damageDireciton)
+    // Take Damage
+    public virtual void TakeDamage(int _damage)
     {
+        if (isInvincible)
+            return;
+
         DecreaseHealth(_damage);
 
         if (currentHealth <= 0 && !isDead)
@@ -230,10 +241,20 @@ public class EntityStats : MonoBehaviour
 
     // TODO Mana Bar ************************************************************
 
+    // Die
     protected virtual void Dead()
     {
         isDead = true;
     }
+
+    public void KillEntity()
+    {
+        if(!isDead)
+            Dead();
+    }
+        
+    //Invincible
+    public void Invincible(bool _isInvincible) => isInvincible = _isInvincible;
 
     // Check Evasion
     private bool CanAvoidAttack(EntityStats _entityStats)

@@ -15,6 +15,9 @@ public class BanditBattleState : EnemyState
     {
         base.Enter();
         player = PlayerManager.instance.player.transform;
+
+        if (player.GetComponent<PlayerStats>().isDead)
+            stateMachine.ChangeState(bandit.moveState);
     }
 
     public override void Exit()

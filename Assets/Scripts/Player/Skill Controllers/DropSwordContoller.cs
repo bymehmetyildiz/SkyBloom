@@ -50,7 +50,7 @@ public class DropSwordContoller : MonoBehaviour
     {
         if (collision.GetComponent<Enemy>() != null)
         {
-            player.stats.DoDamage(collision.GetComponent<EnemyStats>(), 0);
+            player.stats.DoDamage(collision.GetComponent<EnemyStats>());
             Destroy(gameObject);
         }
     }

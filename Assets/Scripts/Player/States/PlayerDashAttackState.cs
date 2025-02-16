@@ -11,12 +11,16 @@ public class PlayerDashAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        player.stats.Invincible(true);
     }
 
     public override void Exit()
     {
         base.Exit();
         player.SetVelocity(0, rb.velocity.y);
+
+        player.stats.Invincible(false);
     }
 
     public override void FixedUpdate()

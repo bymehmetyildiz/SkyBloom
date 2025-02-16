@@ -34,6 +34,22 @@ AnimationClip:
       value: {fileID: 2140189679, guid: 6d6e32cb76a7d6d419ee774675bf9af4, type: 3}
     - time: 0.4
       value: {fileID: 527618203, guid: 6d6e32cb76a7d6d419ee774675bf9af4, type: 3}
+    - time: 0.46666667
+      value: {fileID: 1030146765, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - time: 0.53333336
+      value: {fileID: -752041289, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - time: 0.6
+      value: {fileID: -273819024, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - time: 0.6666667
+      value: {fileID: 1158264058, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - time: 0.73333335
+      value: {fileID: 1030146765, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - time: 0.8
+      value: {fileID: -752041289, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - time: 0.8666667
+      value: {fileID: -273819024, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - time: 0.93333334
+      value: {fileID: 1158264058, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -63,12 +79,20 @@ AnimationClip:
     - {fileID: -2125138427, guid: 6d6e32cb76a7d6d419ee774675bf9af4, type: 3}
     - {fileID: 2140189679, guid: 6d6e32cb76a7d6d419ee774675bf9af4, type: 3}
     - {fileID: 527618203, guid: 6d6e32cb76a7d6d419ee774675bf9af4, type: 3}
+    - {fileID: 1030146765, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - {fileID: -752041289, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - {fileID: -273819024, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - {fileID: 1158264058, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - {fileID: 1030146765, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - {fileID: -752041289, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - {fileID: -273819024, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
+    - {fileID: 1158264058, guid: f8d000d74c4990d46bcbf21fde38b7b3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.46666667
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -89,6 +113,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
+    functionName: StartCounterAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.2
     functionName: StopCounterAttack
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -102,14 +133,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.2
-    functionName: StopCounterAttack
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.46666667
+  - time: 1
     functionName: AnimationTrigger
     data: 
     objectReferenceParameter: {fileID: 0}
