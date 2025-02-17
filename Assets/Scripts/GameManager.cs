@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public bool isBossDead;
+    public bool isPlayerEnetered;
 
     [Header("Common")]
 
@@ -22,11 +23,17 @@ public class GameManager : MonoBehaviour
             Destroy(instance.gameObject);
     }
 
+    private void Start()
+    {
+        isPlayerEnetered = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.GetComponent<Player>() != null)
-        {                
-            if(enteranceGate.isOpen)
+        {
+            isPlayerEnetered = true;
+            if (enteranceGate.isOpen)
                 StartCoroutine(enteranceGate.CloseGate(0));
         }
     }

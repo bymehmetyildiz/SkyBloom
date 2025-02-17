@@ -10,9 +10,11 @@ public class EnemyState
     protected Rigidbody2D rb;
 
     protected bool triggerCalled;
+    protected bool isAttackFinished;
     private string animBoolName;
 
     protected float stateTimer;
+
 
 
     public EnemyState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName)
@@ -25,6 +27,7 @@ public class EnemyState
     public virtual void Enter()
     {
         triggerCalled = false;
+        isAttackFinished = false;
         rb = baseEnemy.rb;
         baseEnemy.anim.SetBool(animBoolName, true);
         
@@ -33,6 +36,9 @@ public class EnemyState
     public virtual void Update()
     {
         stateTimer -= Time.deltaTime;
+     
+       
+
     }
 
     public virtual void FixedUpdate()
@@ -49,6 +55,11 @@ public class EnemyState
     {
         triggerCalled = true;
     }
+
+
+
+   
+
 
 
 

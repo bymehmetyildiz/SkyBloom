@@ -27,7 +27,14 @@ public class Enemy_AnimationTrigger : MonoBehaviour
     }
 
     private void StartCounterAttack() => enemy.StartCounterAttack();
+    
     private void StopCounterAttack() => enemy.StopCounterAttack();
+    
+    
+
+
+
+
 
 
 }

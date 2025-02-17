@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BanditStunState : EnemyState
 {
-    Bandit bandit;
+    private Bandit bandit;
 
     public BanditStunState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Bandit _bandit) : base(_baseEnemy, _stateMachine, _animBoolName)
     {

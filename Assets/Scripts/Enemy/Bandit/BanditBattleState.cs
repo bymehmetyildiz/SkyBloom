@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BanditBattleState : EnemyState
 {
-    Bandit bandit;
+    private Bandit bandit;
     private Transform player;
     private int moveDir;
 
