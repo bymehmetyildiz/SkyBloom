@@ -69,10 +69,10 @@ public class EnemyStats : EntityStats
     protected override void Dead()
     {
         base.Dead();
-        enemy.Dead();
-
         dropSystem.GenerateDrop();
-
+        enemy.Dead();
         Destroy(gameObject, 2.0f);
+
+
     }
 }

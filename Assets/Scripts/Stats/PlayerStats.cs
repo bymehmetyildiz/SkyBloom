@@ -28,7 +28,7 @@ public class PlayerStats : EntityStats
         base.Dead();
         player.Dead();
 
-        GetComponent<PlayerItemDrop>()?.GenerateDrop();
+        //GetComponent<PlayerItemDrop>()?.GenerateDrop();
     }
 
     protected override void DecreaseHealth(int _damage)

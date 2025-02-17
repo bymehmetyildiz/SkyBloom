@@ -204,9 +204,6 @@ public class SwordSkillController : MonoBehaviour
             SwordSkillDamage(enemy);
         }
 
-
-
-
         BounceSword(collision);
 
         StuckSword(collision);

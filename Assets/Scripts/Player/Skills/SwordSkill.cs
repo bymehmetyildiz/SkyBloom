@@ -62,16 +62,9 @@ public class SwordSkill : Skill
     {
         base.Start();
         inGameUI = FindObjectOfType<UI_InGame>();
+        inGameUI.SwitchSwordIcon(typeCounter);
         GenerateDots();
         SetupGravity();
-
-        inGameUI.SwitchSwordIcon(typeCounter);
-
-        regularSkillButton.GetComponentInChildren<Button>().onClick.AddListener(() => CheckRegular());
-        pierceSkillButton.GetComponentInChildren<Button>().onClick.AddListener(() => CheckPierce());
-        spinSkillButton.GetComponentInChildren<Button>().onClick.AddListener(() => CheckSpin());
-        bounceSkillButton.GetComponentInChildren<Button>().onClick.AddListener(() => CheckBounce());
-
     }
 
     private void SetupGravity()
@@ -176,7 +169,7 @@ public class SwordSkill : Skill
     public void CheckRegular()
     {
         if (regularSkillButton.unlocked)
-        {            
+        {
             isRegularUnlocked = true;
 
             if (unlockedTypes < 1)
@@ -186,6 +179,7 @@ public class SwordSkill : Skill
             SwitchSword();
         }
     }
+
 
     public void CheckPierce()
     {

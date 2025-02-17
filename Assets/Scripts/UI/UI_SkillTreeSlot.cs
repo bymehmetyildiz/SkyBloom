@@ -70,7 +70,11 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
             }
         }
 
-        unlocked = true;        
+        unlocked = true;
+        PlayerManager.instance.player.skillManager.swordSkill.CheckRegular(); // Addlistener kýsmý iþe yaramýyordu burda. Bu yüzden bu þekilde yaptým.
+        PlayerManager.instance.player.skillManager.swordSkill.CheckPierce();// Addlistener kýsmý iþe yaramýyordu burda. Bu yüzden bu þekilde yaptým.
+        PlayerManager.instance.player.skillManager.swordSkill.CheckSpin();// Addlistener kýsmý iþe yaramýyordu burda. Bu yüzden bu þekilde yaptým.
+        PlayerManager.instance.player.skillManager.swordSkill.CheckBounce();// Addlistener kýsmý iþe yaramýyordu burda. Bu yüzden bu þekilde yaptým.
         skillLock.UnlockSkill();
         
     }

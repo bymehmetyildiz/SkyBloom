@@ -15,4 +15,4 @@ MonoBehaviour:
   itemType: 0
   itemName: Iron
   itemIcon: {fileID: 1782331422, guid: 27fb482c6088ff64483c43db83a51ca1, type: 3}
-  dropChance: 17
+  dropChance: 100
