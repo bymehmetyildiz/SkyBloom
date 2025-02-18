@@ -54,6 +54,7 @@ public class WereWolfBattleState : EnemyState
 
         if (wereWolf.IsPlayerDetected())
         {
+            
             stateTimer = wereWolf.agroTime;
 
             if (wereWolf.IsPlayerDetected().distance <= wereWolf.attackDistance)

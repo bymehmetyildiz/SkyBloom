@@ -3,7 +3,7 @@ using UnityEngine;
 public class WereWolfAttackState : EnemyState
 {
     private WereWolf wereWolf;
-    private Transform player;
+    private Player player;
 
    
 
@@ -15,23 +15,19 @@ public class WereWolfAttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        player = PlayerManager.instance.player.transform;
+        player = PlayerManager.instance.player;
         wereWolf.SetZeroVelocity();
 
         if (wereWolf.comboCounter > 2)
             wereWolf.comboCounter = 0;
 
-        wereWolf.anim.SetInteger("ComboCounter", wereWolf.comboCounter);
-
     }
 
     public override void Exit()
     {
-        base.Exit();
-        wereWolf.lastAttackTime = Time.time;
+        base.Exit();        
         wereWolf.StopCounterAttack();
-
-        wereWolf.comboCounter++;
+        
     }
 
     public override void FixedUpdate()
@@ -42,10 +38,25 @@ public class WereWolfAttackState : EnemyState
     public override void Update()
     {
         base.Update();
+        Debug.Log(wereWolf.comboCounter);
+
+        if (player.gameObject.GetComponent<PlayerStats>().isDead)            
+            stateMachine.ChangeState(wereWolf.idleState);
 
         if (triggerCalled)
         {
-            stateMachine.ChangeState(wereWolf.battleState);           
+            if (wereWolf.IsPlayerDetected() &&
+                       wereWolf.IsPlayerDetected().distance <= 1.9f)
+            {
+                if (wereWolf.comboCounter > 2)
+                    wereWolf.comboCounter = 0;
+
+                wereWolf.anim.SetInteger("ComboCounter", wereWolf.comboCounter);
+            }
+            else
+            {
+                stateMachine.ChangeState(wereWolf.battleState);
+            }
         }
 
     }

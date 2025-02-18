@@ -34,11 +34,12 @@ public class WereWolfGroundedState : EnemyState
     {
         base.Update();
 
-        if (wereWolf.stateMachine.currentState == wereWolf.humanIdleState || wereWolf.stateMachine.currentState == wereWolf.transformState)
+        if (wereWolf.stateMachine.currentState == wereWolf.humanIdleState || wereWolf.stateMachine.currentState == wereWolf.transformState || player.GetComponent<PlayerStats>().isDead)
             return;
 
         if ((wereWolf.IsPlayerDetected() || Vector2.Distance(player.transform.position, wereWolf.transform.position) < 1))
             stateMachine.ChangeState(wereWolf.battleState);
         //return;
+
     }
 }
