@@ -30,6 +30,7 @@ public class Enemy : Entity
     [Header("Attack Info")]
     public float attackDistance;
     public float attackCoolDown;
+    public int comboCounter;
     [HideInInspector] public float lastAttackTime;
 
     public EnemyStateMachine stateMachine { get; private set; }
@@ -112,7 +113,10 @@ public class Enemy : Entity
     public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, detectDistance, player);
 
     public virtual void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
- 
+
+   
+
+
 
     protected override void OnDrawGizmos()
     {

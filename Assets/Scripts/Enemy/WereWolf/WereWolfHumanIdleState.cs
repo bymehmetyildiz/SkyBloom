@@ -11,7 +11,7 @@ public class WereWolfHumanIdleState : WereWolfGroundedState
     public override void Enter()
     {
         base.Enter();
-        
+        wereWolf.Flip();
     }
 
     public override void Exit()

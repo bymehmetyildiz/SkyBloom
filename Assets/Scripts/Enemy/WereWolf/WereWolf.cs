@@ -42,6 +42,8 @@ public class WereWolf : Enemy
     protected override void Update()
     {
         base.Update();
+
+       
     }
 
     public override bool CanBeStunned()

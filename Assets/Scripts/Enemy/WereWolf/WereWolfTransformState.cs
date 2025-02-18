@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WereWolfTransformState : WereWolfGroundedState
 {
+    
     public WereWolfTransformState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, WereWolf _wereWolf) : base(_baseEnemy, _stateMachine, _animBoolName, _wereWolf)
     {
     }
