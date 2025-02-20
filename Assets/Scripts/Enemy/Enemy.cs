@@ -15,7 +15,6 @@ public class Enemy : Entity
     public float idleTime;
     public float agroTime;
     private float defaultMoveSpeed;
-    
 
     [Header("Stun Info")]
     public float stunDur;
@@ -31,7 +30,10 @@ public class Enemy : Entity
     public float attackDistance;
     public float attackCoolDown;
     public int comboCounter;
+    public float agroDistance;
     [HideInInspector] public float lastAttackTime;
+
+    public EnemyStats stats;
 
     public EnemyStateMachine stateMachine { get; private set; }
 
@@ -45,6 +47,7 @@ public class Enemy : Entity
     {
         base.Start();
         defaultMoveSpeed = moveSpeed;
+        stats = GetComponent<EnemyStats>();
     }
 
     
@@ -148,7 +151,7 @@ public class Enemy : Entity
     }
 
     // Violent Knockback
-    protected override IEnumerator KnockBack()
+    public override IEnumerator KnockBack()
     {
         if (PlayerManager.instance.player.stateMachine.currentState == PlayerManager.instance.player.twisterState ||
             PlayerManager.instance.player.stateMachine.currentState == PlayerManager.instance.player.aerialSlamState)

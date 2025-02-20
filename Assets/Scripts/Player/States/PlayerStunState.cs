@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WereWolfBlockState : EnemyState
+public class PlayerStunState : PlayerState
 {
-    private WereWolf wereWolf;   
-
-    public WereWolfBlockState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, WereWolf _wereWolf) : base(_baseEnemy, _stateMachine, _animBoolName)
+    public PlayerStunState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
-        wereWolf = _wereWolf;
-        
     }
 
     public override void Enter()
     {
         base.Enter();
-      
+        
+        player.SetVelocity(player.knockBackPower.x, player.knockBackPower.y);
     }
 
     public override void Exit()
@@ -26,11 +23,15 @@ public class WereWolfBlockState : EnemyState
     public override void FixedUpdate()
     {
         base.FixedUpdate();
+        
+
     }
 
     public override void Update()
     {
         base.Update();
 
+        if (triggerCalled)
+            stateMachine.ChangeState(player.idleState);
     }
 }

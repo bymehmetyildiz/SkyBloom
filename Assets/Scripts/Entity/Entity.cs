@@ -102,7 +102,7 @@ public class Entity : MonoBehaviour
             knockBackDir = 1;
     }
 
-    protected virtual IEnumerator KnockBack()
+    public virtual IEnumerator KnockBack()
     {
         isKnocked = true;
         rb.velocity = new Vector2(knockBackPower.x * knockBackDir, knockBackPower.y);

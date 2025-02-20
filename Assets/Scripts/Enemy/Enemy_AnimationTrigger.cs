@@ -8,8 +8,7 @@ public class Enemy_AnimationTrigger : MonoBehaviour
 
     public void AnimationTrigger()
     {
-        enemy.AnimationTrigger();
-        enemy.comboCounter++;
+        enemy.AnimationTrigger();        
     }
 
     public void TriggerDamage()

@@ -65,6 +65,7 @@ public class Player : Entity
     // Battle States
     public PlayerPrimaryAttackState primaryAttackState { get; private set; }
     public PlayerBlockState blockState { get; private set; }
+   
 
     //SkillStates
     public PlayerAimSwordState aimSwordState { get; private set; }
@@ -101,6 +102,7 @@ public class Player : Entity
 
         primaryAttackState = new PlayerPrimaryAttackState(this, stateMachine, "Attack");
         blockState = new PlayerBlockState(this, stateMachine, "Block");
+       
 
         aimSwordState = new PlayerAimSwordState(this, stateMachine, "Aim");
         catchSwordState = new PlayerCatchSwordState(this, stateMachine, "Catch");
@@ -275,16 +277,13 @@ public class Player : Entity
 
     public void CollisionDamage(Collision2D collision)
     {
-        EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
-
-            
-        
+        EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();        
         entityStats.DoDamage(enemy);    
     }
 
     //Knockback
     protected override void SetupZeroKnockback()
     {
-        //knockBackPower = Vector2.zero;
+        knockBackPower = Vector2.zero;
     }
 }

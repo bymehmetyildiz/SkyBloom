@@ -13,6 +13,7 @@ public class WereWolf : Enemy
     public WereWolfDeadState deadState { get; private set; }
     public WereWolfHumanIdleState humanIdleState { get; private set; }
     public WereWolfTransformState transformState { get; private set; }
+    public WereWolfBlockState blockState { get; private set; }
 
     protected override void Awake()
     {
@@ -26,6 +27,7 @@ public class WereWolf : Enemy
         deadState = new WereWolfDeadState(this, stateMachine, "Dead", this);
         humanIdleState = new WereWolfHumanIdleState(this, stateMachine, "HumanIdle", this);
         transformState = new WereWolfTransformState(this, stateMachine, "Transform", this);
+        blockState = new WereWolfBlockState(this, stateMachine, "Block", this);
     }
 
     protected override void Start()
@@ -48,11 +50,17 @@ public class WereWolf : Enemy
 
     public override bool CanBeStunned()
     {
-        return base.CanBeStunned();
+        if (base.CanBeStunned())
+        {
+            stateMachine.ChangeState(stunState);
+            return true;
+        }
+        return false;
     }
 
     public override void Dead()
     {
         base.Dead();
+        stateMachine.ChangeState(deadState);
     }
 }

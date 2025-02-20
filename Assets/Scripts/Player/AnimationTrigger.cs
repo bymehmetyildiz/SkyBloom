@@ -40,8 +40,10 @@ public class AnimationTrigger : MonoBehaviour
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckDistance);
 
+
+
         for (int i = 0; i < colliders.Length; i++)
-        {
+        {  
             if (colliders[i].GetComponent<Enemy>() != null)
             {
                 //colliders[i].GetComponent<Enemy>().Damage(player.facingDir);
