@@ -16,11 +16,7 @@ public class Enemy : Entity
     public float agroTime;
     private float defaultMoveSpeed;
 
-    [Header("Stun Info")]
-    public float stunDur;
-    public Vector2 stunDir;
-    protected bool canStun;
-    [SerializeField] protected GameObject counterImage;
+    
 
     [Header("Collision Info")]
     [SerializeField] protected LayerMask player;

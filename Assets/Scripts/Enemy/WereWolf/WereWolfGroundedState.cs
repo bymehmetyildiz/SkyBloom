@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class WereWolfGroundedState : EnemyState
 {
-    protected WereWolf wereWolf;
-    private Transform player;
+    protected WereWolf wereWolf; 
 
     public WereWolfGroundedState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, WereWolf _wereWolf) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -14,9 +13,7 @@ public class WereWolfGroundedState : EnemyState
 
     public override void Enter()
     {
-        base.Enter();
-        player = PlayerManager.instance.player.transform;
-
+        base.Enter();  
     }
 
     public override void Exit()
@@ -37,8 +34,8 @@ public class WereWolfGroundedState : EnemyState
         if (wereWolf.stateMachine.currentState == wereWolf.humanIdleState || wereWolf.stateMachine.currentState == wereWolf.transformState || player.GetComponent<PlayerStats>().isDead)
             return;
 
-        if ((wereWolf.IsPlayerDetected() || Vector2.Distance(player.transform.position, wereWolf.transform.position) < 1))
-            stateMachine.ChangeState(wereWolf.battleState);
+        //if ((wereWolf.IsPlayerDetected() || Vector2.Distance(player.transform.position, wereWolf.transform.position) < 1))
+        //    stateMachine.ChangeState(wereWolf.battleState);
         //return;
 
     }

@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class WereWolfAttackState : EnemyState
 {
-    private WereWolf wereWolf;
-    private Player player;
+    private WereWolf wereWolf; 
 
     public WereWolfAttackState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, WereWolf _wereWolf) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -12,8 +11,7 @@ public class WereWolfAttackState : EnemyState
 
     public override void Enter()
     {
-        base.Enter();
-        player = PlayerManager.instance.player;
+        base.Enter();        
         wereWolf.SetZeroVelocity();
     }
 
@@ -32,18 +30,21 @@ public class WereWolfAttackState : EnemyState
     public override void Update()
     {
         base.Update();
-       
 
-        if (player.gameObject.GetComponent<PlayerStats>().isDead)            
+        if (player.gameObject.GetComponent<PlayerStats>().isDead)
             stateMachine.ChangeState(wereWolf.idleState);
+
 
         if (triggerCalled)
         {
             if (!wereWolf.IsPlayerDetected() || wereWolf.IsPlayerDetected().distance >= wereWolf.agroDistance)
-                stateMachine.ChangeState(wereWolf.battleState);
+                stateMachine.ChangeState(wereWolf.idleState);
+
+
 
             triggerCalled = false;
         }
 
     }
+ 
 }

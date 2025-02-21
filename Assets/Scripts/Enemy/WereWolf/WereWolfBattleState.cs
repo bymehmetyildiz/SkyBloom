@@ -5,7 +5,7 @@ using UnityEngine;
 public class WereWolfBattleState : EnemyState
 {
     private WereWolf wereWolf;
-    private Transform player;
+    
     private int moveDir;
 
     public WereWolfBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, WereWolf _wereWolf
@@ -16,8 +16,7 @@ public class WereWolfBattleState : EnemyState
 
     public override void Enter()
     {
-        base.Enter();
-        player = PlayerManager.instance.player.transform;
+        base.Enter();        
 
         if (player.GetComponent<PlayerStats>().isDead)
             stateMachine.ChangeState(wereWolf.moveState);

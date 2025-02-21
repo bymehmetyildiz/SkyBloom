@@ -11,8 +11,8 @@ public class PlayerStunState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        
-        player.SetVelocity(player.knockBackPower.x, player.knockBackPower.y);
+        rb.velocity = new Vector2(-player.facingDir * player.stunDir.x, player.stunDir.y);
+
     }
 
     public override void Exit()
@@ -23,7 +23,6 @@ public class PlayerStunState : PlayerState
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-        
 
     }
 
@@ -31,7 +30,7 @@ public class PlayerStunState : PlayerState
     {
         base.Update();
 
-        if (triggerCalled)
+        if (triggerCalled )
             stateMachine.ChangeState(player.idleState);
     }
 }

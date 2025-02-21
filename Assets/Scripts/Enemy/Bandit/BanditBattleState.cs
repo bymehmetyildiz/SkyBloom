@@ -3,7 +3,6 @@ using UnityEngine;
 public class BanditBattleState : EnemyState
 {
     private Bandit bandit;
-    private Transform player;
     private int moveDir;
 
     public BanditBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Bandit _bandit) : base(_baseEnemy, _stateMachine, _animBoolName)
@@ -13,9 +12,7 @@ public class BanditBattleState : EnemyState
 
     public override void Enter()
     {
-        base.Enter();
-        player = PlayerManager.instance.player.transform;
-
+        base.Enter(); 
         if (player.GetComponent<PlayerStats>().isDead)
             stateMachine.ChangeState(bandit.moveState);
     }

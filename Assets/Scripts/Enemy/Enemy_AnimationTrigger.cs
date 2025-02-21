@@ -22,7 +22,6 @@ public class Enemy_AnimationTrigger : MonoBehaviour
                 PlayerStats playerStats = colliders[i].GetComponent<PlayerStats>();
                 enemy.entityStats.DoDamage(playerStats);
             }
-
         }
     }
 

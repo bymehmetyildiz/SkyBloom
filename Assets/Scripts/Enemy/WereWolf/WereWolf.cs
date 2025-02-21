@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WereWolf : Enemy
 {
+    public GameObject shiledIcon;
+
     // States
     public WereWolfIdleState idleState { get; private set; }
     public WereWolfMoveState moveState { get; private set; }
@@ -14,6 +16,7 @@ public class WereWolf : Enemy
     public WereWolfHumanIdleState humanIdleState { get; private set; }
     public WereWolfTransformState transformState { get; private set; }
     public WereWolfBlockState blockState { get; private set; }
+    public WereWolfRunAttackState runAttackState { get; private set; }
 
     protected override void Awake()
     {
@@ -28,6 +31,7 @@ public class WereWolf : Enemy
         humanIdleState = new WereWolfHumanIdleState(this, stateMachine, "HumanIdle", this);
         transformState = new WereWolfTransformState(this, stateMachine, "Transform", this);
         blockState = new WereWolfBlockState(this, stateMachine, "Block", this);
+        runAttackState = new WereWolfRunAttackState(this, stateMachine, "RunAttack", this);
     }
 
     protected override void Start()

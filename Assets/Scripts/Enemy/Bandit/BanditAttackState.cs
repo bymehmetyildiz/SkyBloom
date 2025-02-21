@@ -3,7 +3,7 @@ using UnityEngine;
 public class BanditAttackState : EnemyState
 {
     private Bandit bandit;
-    private Transform player;
+ 
 
     public BanditAttackState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Bandit _bandit) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -12,8 +12,7 @@ public class BanditAttackState : EnemyState
 
     public override void Enter()
     {
-        base.Enter();
-        player = PlayerManager.instance.player.transform;
+        base.Enter();     
         bandit.SetZeroVelocity();
     }
 

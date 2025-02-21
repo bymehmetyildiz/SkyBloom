@@ -15,12 +15,14 @@ public class WereWolfBlockState : EnemyState
     public override void Enter()
     {
         base.Enter();
-      
+        wereWolf.SpawnBlockEffect(player.attackCheck);
+        wereWolf.shiledIcon.SetActive(true);
     }
 
     public override void Exit()
     {
         base.Exit();
+        wereWolf.shiledIcon.SetActive(false);
     }
 
     public override void FixedUpdate()
@@ -31,6 +33,16 @@ public class WereWolfBlockState : EnemyState
     public override void Update()
     {
         base.Update();
+
+        if (triggerCalled)
+        {
+            if (!wereWolf.IsPlayerDetected())
+                wereWolf.Flip();
+            else if (wereWolf.IsPlayerDetected())
+                stateMachine.ChangeState(wereWolf.runAttackState);
+           
+        }
+
 
     }
 }

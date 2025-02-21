@@ -65,6 +65,7 @@ public class Player : Entity
     // Battle States
     public PlayerPrimaryAttackState primaryAttackState { get; private set; }
     public PlayerBlockState blockState { get; private set; }
+    public PlayerStunState stunState { get; private set; }
    
 
     //SkillStates
@@ -102,6 +103,7 @@ public class Player : Entity
 
         primaryAttackState = new PlayerPrimaryAttackState(this, stateMachine, "Attack");
         blockState = new PlayerBlockState(this, stateMachine, "Block");
+        stunState = new PlayerStunState(this, stateMachine, "Stun");
        
 
         aimSwordState = new PlayerAimSwordState(this, stateMachine, "Aim");
@@ -284,6 +286,6 @@ public class Player : Entity
     //Knockback
     protected override void SetupZeroKnockback()
     {
-        knockBackPower = Vector2.zero;
+        knockBackPower = new Vector2(3,3);
     }
 }

@@ -17,9 +17,7 @@ public class WereWolfStunState : EnemyState
         wereWolf.fx.InvokeRepeating("StunFX", 0, 0.1f);
 
         stateTimer = wereWolf.stunDur;
-
         rb.velocity = new Vector2(-wereWolf.facingDir * wereWolf.stunDir.x, wereWolf.stunDir.y);
-
 
     }
 

@@ -15,6 +15,7 @@ public class EnemyState
 
     protected float stateTimer;
 
+    protected Player player;
 
 
     public EnemyState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName)
@@ -29,14 +30,12 @@ public class EnemyState
         triggerCalled = false;     
         rb = baseEnemy.rb;
         baseEnemy.anim.SetBool(animBoolName, true);
-        
+        player = PlayerManager.instance.player;
     }
 
     public virtual void Update()
     {
         stateTimer -= Time.deltaTime;
-     
-       
 
     }
 

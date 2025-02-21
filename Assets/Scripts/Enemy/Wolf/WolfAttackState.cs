@@ -5,7 +5,7 @@ using UnityEngine;
 public class WolfAttackState : EnemyState
 {
     private Wolf wolf;
-    private Transform player;
+
 
     public WolfAttackState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Wolf _wolf) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -15,7 +15,6 @@ public class WolfAttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        player = PlayerManager.instance.player.transform;
         wolf.SetZeroVelocity();
     }
 

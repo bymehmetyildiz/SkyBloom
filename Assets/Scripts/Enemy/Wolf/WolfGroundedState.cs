@@ -5,7 +5,6 @@ using UnityEngine;
 public class WolfGroundedState : EnemyState
 {
     protected Wolf wolf;
-    protected Transform player;
 
     public WolfGroundedState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Wolf _wolf) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -15,8 +14,6 @@ public class WolfGroundedState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        player = PlayerManager.instance.player.transform;
-
     }
 
     public override void Exit()

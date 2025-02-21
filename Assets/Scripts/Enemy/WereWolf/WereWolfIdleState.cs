@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WereWolfIdleState : WereWolfGroundedState
 {
+    private int blockChance;
     public WereWolfIdleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, WereWolf _wereWolf) : base(_baseEnemy, _stateMachine, _animBoolName, _wereWolf)
     {
     }
@@ -13,6 +14,8 @@ public class WereWolfIdleState : WereWolfGroundedState
         base.Enter();
         stateTimer = wereWolf.idleTime;
         wereWolf.SetZeroVelocity();
+
+        blockChance = Random.Range(0, 5);
     }
 
     public override void Exit()
@@ -29,11 +32,24 @@ public class WereWolfIdleState : WereWolfGroundedState
     {
         base.Update();
 
-        if (stateTimer < 0.0f)
+        if (player.stateMachine.currentState == player.primaryAttackState && blockChance > 1)
         {
-            wereWolf.Flip();
-            stateMachine.ChangeState(wereWolf.moveState);
+            stateMachine.ChangeState(wereWolf.blockState);
+            player.stateMachine.ChangeState(player.stunState);
         }
 
+
+        if (stateTimer < 0.0f)
+        {
+            if ((wereWolf.IsPlayerDetected() || Vector2.Distance(player.transform.position, wereWolf.transform.position) < 1))
+                stateMachine.ChangeState(wereWolf.battleState);
+
+            else
+            {
+                wereWolf.Flip();
+                stateMachine.ChangeState(wereWolf.moveState);
+            }
+
+        }
     }
 }

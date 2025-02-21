@@ -5,7 +5,6 @@ using UnityEngine;
 public class WolfBattleState : EnemyState
 {
     private Wolf wolf;
-    private Transform player;
     private int moveDir;
 
     public WolfBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Wolf _wolf) : base(_baseEnemy, _stateMachine, _animBoolName)
@@ -16,7 +15,6 @@ public class WolfBattleState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        player = PlayerManager.instance.player.transform;
 
         if (player.GetComponent<PlayerStats>().isDead)
             stateMachine.ChangeState(wolf.moveState);

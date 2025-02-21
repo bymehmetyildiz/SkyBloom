@@ -31,6 +31,16 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float knockBackDur;
     protected bool isKnocked;
 
+    [Header("Block Info")]
+    [SerializeField] private GameObject blockEffect;
+
+
+    [Header("Stun Info")]
+    public float stunDur;
+    public Vector2 stunDir;
+    protected bool canStun;
+    [SerializeField] protected GameObject counterImage;
+
     public System.Action onFlipped;
 
 
@@ -156,6 +166,13 @@ public class Entity : MonoBehaviour
         else if (_x < 0 && facingRight)
             Flip();
     }
+
+    //Instantiate Block Effect
+    public void SpawnBlockEffect(Transform _transform)
+    {
+        Instantiate(blockEffect, _transform.position, Quaternion.identity);
+    }
+
 
     // Dead
     public virtual void Dead()

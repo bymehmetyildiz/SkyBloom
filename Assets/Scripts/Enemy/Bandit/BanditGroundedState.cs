@@ -5,8 +5,6 @@ using UnityEngine;
 public class BanditGroundedState : EnemyState
 {
     protected Bandit bandit;
-    private Transform player;
-
 
     public BanditGroundedState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Bandit _bandit) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -16,8 +14,7 @@ public class BanditGroundedState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        player = PlayerManager.instance.player.transform;
-
+   
     }
 
     public override void Exit()
