@@ -17,6 +17,8 @@ public class WereWolfBlockState : EnemyState
         base.Enter();
         wereWolf.SpawnBlockEffect(player.attackCheck);
         wereWolf.shiledIcon.SetActive(true);
+        if (!wereWolf.IsPlayerDetected())
+            wereWolf.Flip();
     }
 
     public override void Exit()
@@ -34,15 +36,7 @@ public class WereWolfBlockState : EnemyState
     {
         base.Update();
 
-        if (triggerCalled)
-        {
-            if (!wereWolf.IsPlayerDetected())
-                wereWolf.Flip();
-            else if (wereWolf.IsPlayerDetected())
-                stateMachine.ChangeState(wereWolf.runAttackState);
-           
-        }
-
-
+        if (triggerCalled)        
+            stateMachine.ChangeState(wereWolf.prepareState);
     }
 }

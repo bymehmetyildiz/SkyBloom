@@ -222,7 +222,7 @@ public class EntityStats : MonoBehaviour
     protected virtual void DecreaseHealth(int _damage)
     {
         currentHealth -= _damage;
-
+        
         if(onHealthChanged != null)
             onHealthChanged();
     }

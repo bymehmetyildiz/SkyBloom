@@ -144,7 +144,10 @@ public class Player : Entity
         CheckDashInput();
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            Inventory.instance.UseFlask();
+            Inventory.instance.UseHealFlask();
+
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+            Inventory.instance.UseMagicFlask();
     }
 
     protected override void FixedUpdate()

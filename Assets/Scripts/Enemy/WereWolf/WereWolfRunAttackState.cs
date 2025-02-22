@@ -27,6 +27,7 @@ public class WereWolfRunAttackState : EnemyState
     {
         base.Exit();
         jumpTriggered = false;
+        wereWolf.Flip();
     }
 
     public override void FixedUpdate()

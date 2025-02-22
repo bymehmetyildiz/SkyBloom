@@ -14,9 +14,12 @@ public class UI_ItemSlot : MonoBehaviour , IPointerDownHandler, IPointerEnterHan
 
     protected UI_Controller ui;
 
+    protected EntityStats playerStats;
+
     public virtual void Start()
     {
         ui = GetComponentInParent<UI_Controller>();
+        playerStats = PlayerManager.instance.player.stats;
     }
 
     public void UpdateSlot(InventoryItem _newItem)
@@ -64,6 +67,9 @@ public class UI_ItemSlot : MonoBehaviour , IPointerDownHandler, IPointerEnterHan
 
         if (item.data.itemType == ItemType.Equipment)
             Inventory.instance.EquipItem(item.data);
+
+        UI_InGame.instance.UpdateHealth();
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -7,7 +7,8 @@ public enum EquipmentType
     Weapon,
     Armor,
     Amulet,
-    Flask
+    HealFlask,
+    MagicFlask
 }
 
 [CreateAssetMenu(fileName = "New Item Data", menuName = "Data/Equipment")]

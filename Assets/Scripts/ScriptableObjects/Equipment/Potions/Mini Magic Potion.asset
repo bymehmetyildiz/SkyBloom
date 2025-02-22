@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ece8722f6b19f4385a04170fa36abc, type: 3}
+  m_Name: Mini Magic Potion
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: Magic Potion
+  itemIcon: {fileID: 1708383856, guid: 27fb482c6088ff64483c43db83a51ca1, type: 3}
+  dropChance: 100
+  equipmentType: 4
+  itemCooldown: 2
+  itemEffects:
+  - {fileID: 11400000, guid: 9b7c0bc6e8d5663479e533b472ef92ff, type: 2}
+  strength: 0
+  agility: 0
+  intelligence: 0
+  vitality: 0
+  damage: 0
+  critChance: 0
+  critPower: 0
+  maxHealth: 0
+  armor: 0
+  evasion: 0
+  magicResistance: 0
+  fireDamage: 0
+  iceDamage: 0
+  shockDamage: 0
+  craftMaterials: []

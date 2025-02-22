@@ -16,6 +16,7 @@ public class WereWolf : Enemy
     public WereWolfHumanIdleState humanIdleState { get; private set; }
     public WereWolfTransformState transformState { get; private set; }
     public WereWolfBlockState blockState { get; private set; }
+    public WereWolfPrepareState prepareState { get; private set; }
     public WereWolfRunAttackState runAttackState { get; private set; }
 
     protected override void Awake()
@@ -32,6 +33,7 @@ public class WereWolf : Enemy
         transformState = new WereWolfTransformState(this, stateMachine, "Transform", this);
         blockState = new WereWolfBlockState(this, stateMachine, "Block", this);
         runAttackState = new WereWolfRunAttackState(this, stateMachine, "RunAttack", this);
+        prepareState = new WereWolfPrepareState(this, stateMachine, "Prepare", this);
     }
 
     protected override void Start()

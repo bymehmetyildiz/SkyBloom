@@ -286,19 +286,38 @@ public class Inventory : MonoBehaviour
     }
 
     //Use Flask
-    public void UseFlask()
+    public void UseHealFlask()
     {
-        ItemData_Equipment currentFlask = GetEquipment(EquipmentType.Flask);
+        ItemData_Equipment currentHealFlask = GetEquipment(EquipmentType.HealFlask);
 
-        if (currentFlask == null)
+        if (currentHealFlask == null)
             return;
 
         bool canUseFlask = Time.time > lastUseTimeOfFlusk + flaskCooldown;
 
         if (canUseFlask)
         {
-            flaskCooldown = currentFlask.itemCooldown;
-            currentFlask.Effect(null);
+            flaskCooldown = currentHealFlask.itemCooldown;
+            currentHealFlask.Effect(null);
+            lastUseTimeOfFlusk = Time.time;
+        }
+        else
+            Debug.Log("Effect On Cooldown");
+    }
+
+    public void UseMagicFlask()
+    {
+        ItemData_Equipment currentMagicFlask = GetEquipment(EquipmentType.MagicFlask);
+
+        if (currentMagicFlask == null)
+            return;
+
+        bool canUseFlask = Time.time > lastUseTimeOfFlusk + flaskCooldown;
+
+        if (canUseFlask)
+        {
+            flaskCooldown = currentMagicFlask.itemCooldown;
+            currentMagicFlask.Effect(null);
             lastUseTimeOfFlusk = Time.time;
         }
         else
@@ -306,6 +325,6 @@ public class Inventory : MonoBehaviour
     }
 
 
-  
+
 }
 

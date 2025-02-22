@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class UI_InGame : MonoBehaviour
 {
+    public static UI_InGame instance;
+
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Slider healthBar;
 
@@ -17,7 +19,10 @@ public class UI_InGame : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI currencyText;
 
-
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -31,7 +36,7 @@ public class UI_InGame : MonoBehaviour
        currencyText.text = PlayerManager.instance.GetCurrency().ToString("#,#");
     }
 
-    private void UpdateHealth()
+    public void UpdateHealth()
     {
         healthBar.maxValue = playerStats.GetMaxHealth();
         healthBar.value = playerStats.currentHealth;

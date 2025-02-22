@@ -22,10 +22,7 @@ public class UI_HealthBar : MonoBehaviour
         UpdateHealth();
     }
 
-    
-   
-
-    private void UpdateHealth()
+    public void UpdateHealth()
     {
         slider.maxValue = entityStats.GetMaxHealth();
         slider.value = entityStats.currentHealth;
