@@ -14,6 +14,7 @@ public class PlayerTwisterState : PlayerState
         base.Enter();
         player.cc.enabled = true;
         isExpanding = true; // Start expanding
+        player.skillManager.twisterSkill.UseSkill();
     }
 
     public override void Exit()

@@ -12,6 +12,7 @@ public class UI_InGame : MonoBehaviour
 
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Slider healthBar;
+    [SerializeField] private Slider magicBar;
 
     [Header("Throwing Sword")]
     [SerializeField] private Sprite[] swordSkillSprites;
@@ -41,6 +42,13 @@ public class UI_InGame : MonoBehaviour
         healthBar.maxValue = playerStats.GetMaxHealth();
         healthBar.value = playerStats.currentHealth;
     }
+
+    public void UpdateMagic()
+    {
+        magicBar.maxValue = playerStats.maxMagic.GetValue();
+        magicBar.value = playerStats.currentMagic;
+    }
+
 
     //private void SetCoolDown(Image _image)
     //{

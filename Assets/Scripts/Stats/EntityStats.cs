@@ -22,6 +22,7 @@ public class EntityStats : MonoBehaviour
     public Stat magicResistance;
 
     [Header("Magic Stats")]
+    public Stat maxMagic;
     public Stat fireDamage;
     public Stat iceDamage;
     public Stat shockDamage;
@@ -41,6 +42,7 @@ public class EntityStats : MonoBehaviour
     private int ignitionDamage;
 
     public int currentHealth;
+    public int currentMagic;
     public bool isDead { get; private set; }
 
     public System.Action onHealthChanged;
@@ -50,6 +52,7 @@ public class EntityStats : MonoBehaviour
     {
         critPower.SetDefaultValue(150);
         currentHealth = GetMaxHealth();
+        currentMagic = maxMagic.GetValue();
         fx = GetComponent<EntityFX>();
     }
 
@@ -239,7 +242,22 @@ public class EntityStats : MonoBehaviour
             onHealthChanged();
     }
 
-    // TODO Mana Bar ************************************************************
+    // Decrease Magic
+    public virtual void DecreaseMagic(int _amount)
+    {
+        currentMagic -= _amount;
+    }
+
+    //Increase Magic
+    public virtual void IncreaseMagic(int _amount)
+    {
+        currentMagic += _amount;
+
+        if(currentMagic > maxMagic.GetValue())
+            currentMagic = maxMagic.GetValue();
+    }
+
+
 
     // Die
     protected virtual void Dead()
@@ -311,22 +329,24 @@ public class EntityStats : MonoBehaviour
         return maxHealth.GetValue() + vitality.GetValue() * 5;
     }
 
+
     public Stat GetStat(StatType _statType)
     {
         if (_statType == StatType.Strength) return strength;
-        else if(_statType == StatType.Agility) return agility;
-        else if(_statType == StatType.Vitality) return vitality;
-        else if(_statType == StatType.Intelligence) return intelligence;
-        else if(_statType == StatType.Damage) return damage;
-        else if(_statType == StatType.CritChance) return critChance;
-        else if(_statType == StatType.CritPower) return critPower;
-        else if(_statType == StatType.Health) return maxHealth;
-        else if(_statType == StatType.Armor) return armor;
-        else if(_statType == StatType.Evasion) return evasion;
-        else if(_statType == StatType.MagicRes) return magicResistance;
-        else if(_statType == StatType.FireDamage) return fireDamage;
-        else if(_statType == StatType.IceDamage) return iceDamage;
-        else if(_statType == StatType.ShockDamage) return shockDamage;
+        else if (_statType == StatType.Agility) return agility;
+        else if (_statType == StatType.Vitality) return vitality;
+        else if (_statType == StatType.Intelligence) return intelligence;
+        else if (_statType == StatType.Damage) return damage;
+        else if (_statType == StatType.CritChance) return critChance;
+        else if (_statType == StatType.CritPower) return critPower;
+        else if (_statType == StatType.Health) return maxHealth;
+        else if (_statType == StatType.Armor) return armor;
+        else if (_statType == StatType.Evasion) return evasion;
+        else if (_statType == StatType.MagicRes) return magicResistance;
+        else if (_statType == StatType.FireDamage) return fireDamage;
+        else if (_statType == StatType.IceDamage) return iceDamage;
+        else if (_statType == StatType.ShockDamage) return shockDamage;
+        else if (_statType == StatType.Magic) return magicResistance;
 
         return null;
     }
@@ -342,6 +362,7 @@ public enum StatType
     CritChance,
     CritPower,
     Health,
+    Magic,
     Armor,
     Evasion,
     MagicRes,

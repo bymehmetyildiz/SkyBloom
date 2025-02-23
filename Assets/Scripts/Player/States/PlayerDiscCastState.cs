@@ -11,6 +11,7 @@ public class PlayerDiscCastState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.skillManager.fireDiscSkill.UseSkill();
     }
 
     public override void Exit()

@@ -11,6 +11,7 @@ public class PlayerFlurrySlashState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.skillManager.flurrySlashSkill.UseSkill();
     }
 
     public override void Exit()

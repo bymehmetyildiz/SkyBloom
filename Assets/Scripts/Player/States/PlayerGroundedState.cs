@@ -27,7 +27,8 @@ public class PlayerGroundedState : PlayerState
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword() && !Input.GetKey(KeyCode.LeftShift) && player.skillManager.swordSkill.swordType != SwordType.None)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword() && !Input.GetKey(KeyCode.LeftShift) && 
+            player.skillManager.swordSkill.swordType != SwordType.None && player.stats.currentMagic >= player.skillManager.swordSkill.magicAmount)
             stateMachine.ChangeState(player.aimSwordState);
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -42,13 +43,13 @@ public class PlayerGroundedState : PlayerState
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected())
             stateMachine.ChangeState(player.jumpState);
 
-        if (Input.GetKeyDown(KeyCode.F) && player.skillManager.swordRainSkill.CanUseSkill() && player.skillManager.swordRainSkill.IsSkillUnlocked())
+        if (Input.GetKeyDown(KeyCode.F) && (!Input.GetKey(KeyCode.LeftShift) && player.skillManager.swordRainSkill.CanUseSkill() && player.skillManager.swordRainSkill.IsSkillUnlocked()))
             stateMachine.ChangeState(player.rainCastState);
 
-        if (Input.GetKeyDown(KeyCode.E) && 
+        if (Input.GetKeyDown(KeyCode.F) && (Input.GetKey(KeyCode.LeftShift) &&
             !player.skillManager.thunderSkill.IsBlackHoleSpawned() && 
             player.skillManager.thunderSkill.CanUseSkill() && 
-            player.skillManager.thunderSkill.IsSkillUnlocked())
+            player.skillManager.thunderSkill.IsSkillUnlocked()))
                 stateMachine.ChangeState(player.thunderCastState);
 
         if (Input.GetKeyDown(KeyCode.R) && player.skillManager.fireDiscSkill.CanUseSkill() && player.skillManager.fireDiscSkill.IsSkillUnlocked())

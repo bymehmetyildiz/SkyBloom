@@ -11,6 +11,7 @@ public class PlayerRainCastState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.skillManager.rainSkill.UseSkill();
     }
 
     public override void Exit()

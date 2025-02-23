@@ -32,6 +32,7 @@ public class ItemData_Equipment : ItemData
 
     [Header("Defensive Stats")]
     public int maxHealth;
+    public int maxMagic;
     public int armor;
     public int evasion;
     public int magicResistance;
@@ -68,6 +69,7 @@ public class ItemData_Equipment : ItemData
         playerStats.critPower.AddModifier(critPower);
 
         playerStats.maxHealth.AddModifier(maxHealth);
+        playerStats.maxMagic.AddModifier(maxMagic);
         playerStats.armor.AddModifier(armor);
         playerStats.evasion.AddModifier(evasion);
         playerStats.magicResistance.AddModifier(magicResistance);
@@ -91,6 +93,7 @@ public class ItemData_Equipment : ItemData
         playerStats.critPower.RemoveModifier(critPower);
 
         playerStats.maxHealth.RemoveModifier(maxHealth);
+        playerStats.maxMagic.RemoveModifier(maxMagic);
         playerStats.armor.RemoveModifier(armor);
         playerStats.evasion.RemoveModifier(evasion);
         playerStats.magicResistance.RemoveModifier(magicResistance);

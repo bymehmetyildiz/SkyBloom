@@ -8,6 +8,7 @@ public class Skill : MonoBehaviour
 
     public float cooldown;
     protected float cooldownTimer;
+    public int magicAmount;
 
     protected Player player;
 
@@ -27,10 +28,9 @@ public class Skill : MonoBehaviour
 
     public virtual bool CanUseSkill()
     {
-        if(cooldownTimer < 0 )
+        if(cooldownTimer < 0 && player.stats.currentMagic > magicAmount)
         {
-            cooldownTimer = cooldown; 
-            UseSkill();
+            cooldownTimer = cooldown;
             return true;
         }
         return false;
@@ -38,8 +38,10 @@ public class Skill : MonoBehaviour
 
     public virtual bool IsSkillUnlocked()
     {
-        if(skillButton.unlocked)
+        if (skillButton.unlocked)
+        {
             return true;
+        }
 
         return false;
     }
@@ -47,7 +49,17 @@ public class Skill : MonoBehaviour
 
     public virtual void UseSkill()
     {
-      // Use Skill
+        if (player.stats.currentMagic >= magicAmount)
+        {
+            player.stats.DecreaseMagic(magicAmount);
+            UI_InGame.instance.UpdateMagic();
+        }
+        else
+        {
+            Debug.Log("Not Enough Magic");
+            return;
+        }
+
     }
 
   

@@ -11,7 +11,7 @@ public class PlayerDashAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-
+        player.skillManager.dashSkill.UseSkill();
         player.stats.Invincible(true);
     }
 

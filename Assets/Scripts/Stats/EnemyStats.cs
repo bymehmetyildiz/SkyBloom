@@ -35,6 +35,7 @@ public class EnemyStats : EntityStats
         Modify(critPower);
 
         Modify(maxHealth);
+        Modify(maxMagic);
         Modify(armor);
         Modify(evasion);
         Modify(magicResistance);

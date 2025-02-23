@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class UI_EquipmentSlot : UI_ItemSlot
 {
     public EquipmentType equipmentType;
-    
 
     public override void Start()
     {
@@ -30,6 +29,7 @@ public class UI_EquipmentSlot : UI_ItemSlot
 
 
         UI_InGame.instance.UpdateHealth();
+        UI_InGame.instance.UpdateMagic();
     }
 
    

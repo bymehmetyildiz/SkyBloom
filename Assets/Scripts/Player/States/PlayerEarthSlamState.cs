@@ -11,6 +11,7 @@ public class PlayerEarthSlamState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.skillManager.earthSlamSkill.UseSkill();
         
     }
 

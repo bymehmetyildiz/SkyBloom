@@ -94,6 +94,8 @@ public class Inventory : MonoBehaviour
         equipmentDictionary.Add(newEquipment, newItem);
         newEquipment.AddModifiers();
 
+        UI_Potions.instance.AssignPotions(newEquipment.itemIcon, newItem.stackSize.ToString(), newEquipment.equipmentType);
+
         RemoveItem(_item);
         UpdateSlotUI();
     }    
@@ -102,12 +104,13 @@ public class Inventory : MonoBehaviour
     public void UnequipItem(ItemData_Equipment _itemToRemove)
     {
         if (equipmentDictionary.TryGetValue(_itemToRemove, out InventoryItem value))
-        {
-            
+        { 
             equipment.Remove(value);
             equipmentDictionary.Remove(_itemToRemove);
             _itemToRemove.RemoveModifiers();
         }
+
+        UI_Potions.instance.RemovePotions(_itemToRemove.equipmentType);
     }
    
     // Update Slot
@@ -226,9 +229,6 @@ public class Inventory : MonoBehaviour
                 stashValue.RemoveStack();
             }
         }
-
-
-
         UpdateSlotUI();
     }
 

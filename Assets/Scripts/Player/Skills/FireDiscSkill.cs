@@ -24,6 +24,8 @@ public class FireDiscSkill : Skill
 
     public override void UseSkill()
     {
+        base.UseSkill();
+
         if(IsSkillUnlocked())
         StartCoroutine(UseFireDiscSkill());
        
@@ -37,7 +39,7 @@ public class FireDiscSkill : Skill
             (player.transform.position.y + yOffset)), Quaternion.identity);
         FireDisc _fireDisc = newFireDisc.GetComponent<FireDisc>();
         _fireDisc.Setup(direction, speed, hitEffect, player);
-        Debug.Log("Fire Disc: " +  _fireDisc);
+        
     }
 
 }

@@ -21,6 +21,7 @@ public class PlayerAimSwordState : PlayerState
         base.Exit();
 
         player.StartCoroutine(player.CheckBusy(0.2f));
+        player.skillManager.swordSkill.UseSkill();
     }
 
     public override void FixedUpdate()

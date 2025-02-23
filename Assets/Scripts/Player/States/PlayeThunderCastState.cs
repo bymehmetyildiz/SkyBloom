@@ -11,6 +11,7 @@ public class PlayeThunderCastState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.skillManager.thunderSkill.UseSkill();
     }
 
     public override void Exit()

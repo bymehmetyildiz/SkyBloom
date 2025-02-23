@@ -27,6 +27,7 @@ MonoBehaviour:
   critChance: 0
   critPower: 0
   maxHealth: 17
+  maxMagic: 15
   armor: 0
   evasion: 0
   magicResistance: 7

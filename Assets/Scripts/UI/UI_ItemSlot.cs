@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class UI_ItemSlot : MonoBehaviour , IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -65,12 +66,13 @@ public class UI_ItemSlot : MonoBehaviour , IPointerDownHandler, IPointerEnterHan
             return;
         }
 
-        if (item.data.itemType == ItemType.Equipment)
+        if (item.data.itemType == ItemType.Equipment)        
             Inventory.instance.EquipItem(item.data);
 
         UI_InGame.instance.UpdateHealth();
-
-    }
+        UI_InGame.instance.UpdateMagic();
+       
+    } 
 
     public void OnPointerEnter(PointerEventData eventData)
     {

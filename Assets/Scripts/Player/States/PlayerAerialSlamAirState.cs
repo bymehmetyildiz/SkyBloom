@@ -11,6 +11,7 @@ public class PlayerAerialSlamAirState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.skillManager.aerialSlamSkill.UseSkill();
     }
 
     public override void Exit()

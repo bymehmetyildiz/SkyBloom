@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ece8722f6b19f4385a04170fa36abc, type: 3}
-  m_Name: Magic Potion 2
+  m_Name: Big Magic Potion
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: Big Magic Potion
@@ -19,7 +19,7 @@ MonoBehaviour:
   equipmentType: 4
   itemCooldown: 2
   itemEffects:
-  - {fileID: 11400000, guid: 9b7c0bc6e8d5663479e533b472ef92ff, type: 2}
+  - {fileID: 11400000, guid: 813694e717aff064596b5121d5d201c1, type: 2}
   strength: 0
   agility: 0
   intelligence: 0
@@ -28,6 +28,7 @@ MonoBehaviour:
   critChance: 0
   critPower: 0
   maxHealth: 0
+  maxMagic: 0
   armor: 0
   evasion: 0
   magicResistance: 0

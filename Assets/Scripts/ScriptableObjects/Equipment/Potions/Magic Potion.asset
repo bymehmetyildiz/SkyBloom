@@ -19,7 +19,7 @@ MonoBehaviour:
   equipmentType: 4
   itemCooldown: 2
   itemEffects:
-  - {fileID: 11400000, guid: 9b7c0bc6e8d5663479e533b472ef92ff, type: 2}
+  - {fileID: 11400000, guid: 8ddba047db99628479a81493ff7669d0, type: 2}
   strength: 0
   agility: 0
   intelligence: 0
@@ -28,6 +28,7 @@ MonoBehaviour:
   critChance: 0
   critPower: 0
   maxHealth: 0
+  maxMagic: 0
   armor: 0
   evasion: 0
   magicResistance: 0
