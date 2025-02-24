@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
@@ -69,7 +70,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // Equip Item
+    //Equip Item
+    /*
     public void EquipItem(ItemData _item)
     {
         ItemData_Equipment newEquipment = _item as ItemData_Equipment;
@@ -94,11 +96,113 @@ public class Inventory : MonoBehaviour
         equipmentDictionary.Add(newEquipment, newItem);
         newEquipment.AddModifiers();
 
+
         UI_Potions.instance.AssignPotions(newEquipment.itemIcon, newItem.stackSize.ToString(), newEquipment.equipmentType);
 
         RemoveItem(_item);
         UpdateSlotUI();
-    }    
+    }
+    */
+
+    public void EquipItem(ItemData _item)
+    {
+        ItemData_Equipment newEquipment = _item as ItemData_Equipment;
+
+        // Special handling for flasks - transfer entire stack
+        if (newEquipment.equipmentType == EquipmentType.HealFlask ||
+            newEquipment.equipmentType == EquipmentType.MagicFlask)
+        {
+            // Get current stack size before removing from inventory
+            int newStackSize = 0;
+            if (inventoryDictionary.TryGetValue(_item, out InventoryItem inventoryItem))
+            {
+                newStackSize = inventoryItem.stackSize;
+            }
+
+            // Check for existing equipment of same type
+            ItemData_Equipment oldEquipment = null;
+            InventoryItem oldEquipmentItem = null;
+
+            foreach (KeyValuePair<ItemData_Equipment, InventoryItem> item in equipmentDictionary)
+            {
+                if (item.Key.equipmentType == newEquipment.equipmentType)
+                {
+                    oldEquipment = item.Key;
+                    oldEquipmentItem = item.Value;
+                    break;
+                }
+            }
+
+            // If there's existing equipment, move it back to inventory with its full stack
+            if (oldEquipment != null)
+            {
+                int oldStackSize = oldEquipmentItem.stackSize;
+
+                // Remove from equipment
+                UnequipItem(oldEquipment);
+
+                // Add back to inventory with full stack
+                InventoryItem returnedItem = new InventoryItem(oldEquipment);
+                returnedItem.stackSize = oldStackSize;
+
+                // Remove any existing entry of the same item
+                if (inventoryDictionary.ContainsKey(oldEquipment))
+                {
+                    inventory.Remove(inventoryDictionary[oldEquipment]);
+                    inventoryDictionary.Remove(oldEquipment);
+                }
+
+                inventory.Add(returnedItem);
+                inventoryDictionary.Add(oldEquipment, returnedItem);
+            }
+
+            // Create new equipment item with full stack
+            InventoryItem newItem = new InventoryItem(newEquipment);
+            newItem.stackSize = newStackSize;
+
+            // Add to equipment
+            equipment.Add(newItem);
+            equipmentDictionary.Add(newEquipment, newItem);
+            newEquipment.AddModifiers();
+
+            UI_Potions.instance.AssignPotions(newEquipment.itemIcon, newItem.stackSize.ToString(), newEquipment.equipmentType);
+
+            // Remove entire stack from inventory
+            if (inventoryDictionary.TryGetValue(_item, out InventoryItem value))
+            {
+                inventory.Remove(value);
+                inventoryDictionary.Remove(_item);
+            }
+        }
+        else
+        {
+            // Original equipment handling code for non-flask items
+            InventoryItem newItem = new InventoryItem(newEquipment);
+
+            ItemData_Equipment oldEquipment = null;
+            foreach (KeyValuePair<ItemData_Equipment, InventoryItem> item in equipmentDictionary)
+            {
+                if (item.Key.equipmentType == newEquipment.equipmentType)
+                    oldEquipment = item.Key;
+            }
+
+            if (oldEquipment != null)
+            {
+                UnequipItem(oldEquipment);
+                AddItem(oldEquipment);
+            }
+
+            equipment.Add(newItem);
+            equipmentDictionary.Add(newEquipment, newItem);
+            newEquipment.AddModifiers();
+
+            UI_Potions.instance.AssignPotions(newEquipment.itemIcon, newItem.stackSize.ToString(), newEquipment.equipmentType);
+
+            RemoveItem(_item);
+        }
+
+        UpdateSlotUI();
+    }
 
     // UnEquip Item
     public void UnequipItem(ItemData_Equipment _itemToRemove)
@@ -114,7 +218,7 @@ public class Inventory : MonoBehaviour
     }
    
     // Update Slot
-    private void UpdateSlotUI()
+    public void UpdateSlotUI()
     {
         for (int i = 0; i < equipmentSlot.Length; i++)
         {
@@ -284,8 +388,8 @@ public class Inventory : MonoBehaviour
 
         return equipedItem;
     }
-
-    //Use Flask
+   
+    // Use Flasks
     public void UseHealFlask()
     {
         ItemData_Equipment currentHealFlask = GetEquipment(EquipmentType.HealFlask);
@@ -295,14 +399,56 @@ public class Inventory : MonoBehaviour
 
         bool canUseFlask = Time.time > lastUseTimeOfFlusk + flaskCooldown;
 
-        if (canUseFlask)
+        // Check if player can be healed (not at full health)
+        EntityStats playerStats = PlayerManager.instance.player.stats;
+        bool canBeHealed = playerStats.currentHealth < playerStats.maxHealth.GetValue();
+
+        if (canUseFlask && canBeHealed)
         {
-            flaskCooldown = currentHealFlask.itemCooldown;
-            currentHealFlask.Effect(null);
-            lastUseTimeOfFlusk = Time.time;
+            if (equipmentDictionary.TryGetValue(currentHealFlask, out InventoryItem flaskItem))
+            {
+                flaskCooldown = currentHealFlask.itemCooldown;
+                currentHealFlask.Effect(null);
+                lastUseTimeOfFlusk = Time.time;
+
+                // Decrease stack and remove if empty
+                flaskItem.RemoveStack();
+
+                if (flaskItem.stackSize <= 0)
+                {
+                    // First clear the UI
+                    UI_Potions.instance.RemovePotions(currentHealFlask.equipmentType);
+
+                    // Then remove from equipment
+                    UnequipItem(currentHealFlask);
+
+                    // Clear the slot UI
+                    foreach (UI_EquipmentSlot slot in equipmentSlot)
+                    {
+                        if (slot.equipmentType == currentHealFlask.equipmentType)
+                        {
+                            slot.ClearSlot();
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    // Update UI only if potion still has charges
+                    UI_Potions.instance.AssignPotions(currentHealFlask.itemIcon, flaskItem.stackSize.ToString(), currentHealFlask.equipmentType);
+                }
+
+                UpdateSlotUI();
+            }
+        }
+        else if (!canBeHealed)
+        {
+            Debug.Log("Health is already full!");
         }
         else
+        {
             Debug.Log("Effect On Cooldown");
+        }
     }
 
     public void UseMagicFlask()
@@ -314,17 +460,56 @@ public class Inventory : MonoBehaviour
 
         bool canUseFlask = Time.time > lastUseTimeOfFlusk + flaskCooldown;
 
-        if (canUseFlask)
+        // Check if player can restore magic (not at full magic)
+        EntityStats playerStats = PlayerManager.instance.player.stats;
+        bool canRestoreMagic = playerStats.currentMagic < playerStats.maxMagic.GetValue();
+
+        if (canUseFlask && canRestoreMagic)
         {
-            flaskCooldown = currentMagicFlask.itemCooldown;
-            currentMagicFlask.Effect(null);
-            lastUseTimeOfFlusk = Time.time;
+            if (equipmentDictionary.TryGetValue(currentMagicFlask, out InventoryItem flaskItem))
+            {
+                flaskCooldown = currentMagicFlask.itemCooldown;
+                currentMagicFlask.Effect(null);
+                lastUseTimeOfFlusk = Time.time;
+
+                // Decrease stack and remove if empty
+                flaskItem.RemoveStack();
+
+                if (flaskItem.stackSize <= 0)
+                {
+                    // First clear the UI
+                    UI_Potions.instance.RemovePotions(currentMagicFlask.equipmentType);
+
+                    // Then remove from equipment
+                    UnequipItem(currentMagicFlask);
+
+                    // Clear the slot UI
+                    foreach (UI_EquipmentSlot slot in equipmentSlot)
+                    {
+                        if (slot.equipmentType == currentMagicFlask.equipmentType)
+                        {
+                            slot.ClearSlot();
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    // Update UI only if potion still has charges
+                    UI_Potions.instance.AssignPotions(currentMagicFlask.itemIcon, flaskItem.stackSize.ToString(), currentMagicFlask.equipmentType);
+                }
+
+                UpdateSlotUI();
+            }
+        }
+        else if (!canRestoreMagic)
+        {
+            Debug.Log("Magic is already full!");
         }
         else
+        {
             Debug.Log("Effect On Cooldown");
+        }
     }
-
-
-
 }
 

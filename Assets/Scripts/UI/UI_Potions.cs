@@ -22,7 +22,10 @@ public class UI_Potions : MonoBehaviour
 
     void Start()
     {
-        
+        if(healthIcon.sprite == null)
+            healthIcon.gameObject.SetActive(false);
+        if(magicIcon.sprite == null)
+            magicIcon.gameObject.SetActive(false);
     }
 
     

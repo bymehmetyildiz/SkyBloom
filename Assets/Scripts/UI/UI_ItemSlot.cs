@@ -23,7 +23,7 @@ public class UI_ItemSlot : MonoBehaviour , IPointerDownHandler, IPointerEnterHan
         playerStats = PlayerManager.instance.player.stats;
     }
 
-    public void UpdateSlot(InventoryItem _newItem)
+    public virtual void UpdateSlot(InventoryItem _newItem)
     {
         item = _newItem;
 

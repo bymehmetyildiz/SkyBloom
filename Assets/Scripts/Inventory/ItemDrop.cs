@@ -7,8 +7,8 @@ public class ItemDrop : MonoBehaviour
     [SerializeField] private int amountOfItems;
     [SerializeField] private ItemData[] possibleDrop;
     private List<ItemData> dropList = new List<ItemData>();
-
-    [SerializeField] private GameObject dropPrefab;  
+    [SerializeField] private GameObject dropPrefab;
+    [SerializeField] private float offsetY;
 
     public virtual void GenerateDrop()
     {
@@ -34,7 +34,7 @@ public class ItemDrop : MonoBehaviour
 
     protected void DropItem(ItemData _itemData)
     {
-        GameObject newDrop = Instantiate(dropPrefab, transform.position, Quaternion.identity);
+        GameObject newDrop = Instantiate(dropPrefab, new Vector2(transform.position.x, transform.position.y + offsetY), Quaternion.identity);
 
         Vector2 randomVelocity = new Vector2(0, Random.Range(10, 12));
 
