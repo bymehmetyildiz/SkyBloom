@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WereWolf : Enemy
 {
-    public GameObject shiledIcon;
 
     // States
     public WereWolfIdleState idleState { get; private set; }

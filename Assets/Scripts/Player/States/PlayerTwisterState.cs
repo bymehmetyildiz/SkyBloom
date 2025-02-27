@@ -7,6 +7,7 @@ public class PlayerTwisterState : PlayerState
     private bool isExpanding = false;
     public PlayerTwisterState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
+
     }
 
     public override void Enter()

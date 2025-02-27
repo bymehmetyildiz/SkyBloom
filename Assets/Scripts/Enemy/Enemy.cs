@@ -16,8 +16,6 @@ public class Enemy : Entity
     public float agroTime;
     private float defaultMoveSpeed;
 
-    
-
     [Header("Collision Info")]
     [SerializeField] protected LayerMask player;
     [SerializeField] private float detectDistance;
@@ -30,6 +28,7 @@ public class Enemy : Entity
     [HideInInspector] public float lastAttackTime;
 
     public EnemyStats stats;
+    public GameObject shiledIcon;
 
     public EnemyStateMachine stateMachine { get; private set; }
 

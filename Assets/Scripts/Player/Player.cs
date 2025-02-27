@@ -44,10 +44,6 @@ public class Player : Entity
     public float dashDirection { get; private set; }
     private float defaultDashSpeed;
 
-
-    
-
-
     //Move States
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }

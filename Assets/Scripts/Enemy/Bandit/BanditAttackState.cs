@@ -4,7 +4,6 @@ public class BanditAttackState : EnemyState
 {
     private Bandit bandit;
  
-
     public BanditAttackState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Bandit _bandit) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
         this.bandit = _bandit;

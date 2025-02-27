@@ -34,13 +34,10 @@ public class WereWolfAttackState : EnemyState
         if (player.gameObject.GetComponent<PlayerStats>().isDead)
             stateMachine.ChangeState(wereWolf.idleState);
 
-
         if (triggerCalled)
         {
             if (!wereWolf.IsPlayerDetected() || wereWolf.IsPlayerDetected().distance >= wereWolf.agroDistance)
                 stateMachine.ChangeState(wereWolf.idleState);
-
-
 
             triggerCalled = false;
         }
