@@ -17,7 +17,7 @@ public class SwordSkill : Skill
     public SwordType swordType = SwordType.None;   
     private int typeCounter;
     private int unlockedTypes;
-    private UI_InGame inGameUI;
+    [SerializeField] private UI_InGame inGameUI;
 
 
     [Header("Bounce Info")]
@@ -60,11 +60,12 @@ public class SwordSkill : Skill
 
     protected override void Start()
     {
+        
         base.Start();
-        inGameUI = FindObjectOfType<UI_InGame>();
-        inGameUI.SwitchSwordIcon(typeCounter);
         GenerateDots();
         SetupGravity();
+     
+        inGameUI.SwitchSwordIcon(typeCounter);
     }
 
     private void SetupGravity()
