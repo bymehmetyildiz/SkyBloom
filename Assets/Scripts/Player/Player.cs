@@ -269,8 +269,8 @@ public class Player : Entity
 
     // TwisterDamage;
     private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.GetComponent<Enemy>() != null)
+    {        
+        if (collision.gameObject.GetComponent<Enemy>() != null)
         {
             CollisionDamage(collision);
         }
@@ -283,7 +283,7 @@ public class Player : Entity
     }
 
     //Knockback
-    protected override void SetupZeroKnockback()
+    protected override void SetupDefaultKnockback()
     {
         knockBackPower = new Vector2(3,3);
     }

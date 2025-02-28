@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class WereWolfBlockState : EnemyState
 {
@@ -15,6 +16,7 @@ public class WereWolfBlockState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        wereWolf.fx.ScreenShake();
         wereWolf.SpawnBlockEffect(player.attackCheck);
         wereWolf.shiledIcon.SetActive(true);
         if (!wereWolf.IsPlayerDetected())

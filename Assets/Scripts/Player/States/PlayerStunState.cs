@@ -12,6 +12,7 @@ public class PlayerStunState : PlayerState
     {
         base.Enter();
         rb.velocity = new Vector2(-player.facingDir * player.stunDir.x, player.stunDir.y);
+        player.GetComponentInChildren<AnimationTrigger>().AnimTrigger();
 
     }
 

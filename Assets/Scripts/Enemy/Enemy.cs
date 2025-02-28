@@ -26,6 +26,9 @@ public class Enemy : Entity
     public int comboCounter;
     public float agroDistance;
     [HideInInspector] public float lastAttackTime;
+    public bool canExpand;
+    
+
 
     public EnemyStats stats;
     public GameObject shiledIcon;
@@ -162,4 +165,8 @@ public class Enemy : Entity
         yield return new WaitForSeconds(0.1f);
         knockBackPower = defaultKnockBack;
     }
+
+    //Sp Attack
+    public void CanExpand() => canExpand = true;
+  
 }

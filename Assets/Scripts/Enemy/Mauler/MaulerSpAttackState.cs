@@ -14,17 +14,14 @@ public class MaulerSpAttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        mauler.cc.enabled = true;
-        mauler.isExpanding = true;
+    
 
     }
 
     public override void Exit()
     {
         base.Exit();
-        mauler.cc.enabled = false;
-        mauler.cc.radius = 0;
-        mauler.isExpanding = false;
+        mauler.canExpand = false;
     }
 
     public override void FixedUpdate()
@@ -36,10 +33,6 @@ public class MaulerSpAttackState : EnemyState
     {
         base.Update();
 
-        if (mauler.isExpanding)
-        {
-            mauler.cc.radius = Mathf.MoveTowards(player.cc.radius, 0.0f, 0.1f * Time.deltaTime);
-        }
 
         if (triggerCalled)
             stateMachine.ChangeState(mauler.idleState);

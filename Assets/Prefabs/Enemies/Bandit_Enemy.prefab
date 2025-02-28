@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 1653490543873402146}
-  groundCheckDistance: 0.52
+  groundCheckDistance: 0.64
   wallCheck: {fileID: 2869331722950704018}
   wallCheckDistance: 0.4
   whatIsGround:
@@ -570,21 +570,28 @@ MonoBehaviour:
   attackCheck: {fileID: 4603495405014542891}
   attackCheckDistance: 0.5
   facingDir: 1
-  knockBackDir: {x: 3, y: 3}
+  knockBackPower: {x: 3, y: 3}
+  knockBackDir: 0
   knockBackDur: 0.1
-  moveSpeed: 1.5
-  idleTime: 2
-  agroTime: 3
+  blockEffect: {fileID: 0}
   stunDur: 1
   stunDir: {x: 2, y: 3}
   counterImage: {fileID: 8592767997475075410}
+  moveSpeed: 1.5
+  idleTime: 2
+  agroTime: 3
   player:
     serializedVersion: 2
     m_Bits: 8
   detectDistance: 4
   attackDistance: 0.5
   attackCoolDown: 0.4
+  comboCounter: 0
+  agroDistance: 0
   lastAttackTime: 0
+  canExpand: 0
+  stats: {fileID: 0}
+  shiledIcon: {fileID: 0}
 --- !u!50 &6666285526217538980
 Rigidbody2D:
   serializedVersion: 4
@@ -680,6 +687,9 @@ MonoBehaviour:
   shockColor:
   - {r: 1, g: 0.9098039, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
+  hitFX: {fileID: 6880915521518507169, guid: 3984f774bd188d94fad7f1576c82f4d1, type: 3}
+  shakeMultiplier: 0
+  shakePower: {x: 0, y: 0, z: 0}
 --- !u!114 &7322852651646448038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,7 +715,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 100
+    baseValue: 10
     modifiers: 
   critChance:
     baseValue: 99
@@ -714,7 +724,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 100
+    baseValue: 250
     modifiers: 
   armor:
     baseValue: 0
@@ -723,6 +733,9 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   magicResistance:
+    baseValue: 0
+    modifiers: 
+  maxMagic:
     baseValue: 0
     modifiers: 
   fireDamage:
@@ -739,8 +752,10 @@ MonoBehaviour:
   isFrozen: 0
   isShocked: 0
   currentHealth: 0
-  level: 5
-  percentageModifier: 0.4
+  currentMagic: 0
+  isInvincible: 0
+  level: 1
+  percentageModifier: 0.029
 --- !u!114 &6014714711578428959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,6 +776,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fd82a25ca12bfe42b59559c96ed0314, type: 2}
   - {fileID: 11400000, guid: 425e533205b8e37489b221a33905312f, type: 2}
   dropPrefab: {fileID: 4212661324000050600, guid: c46fbaae02023974db8e2a40694e3798, type: 3}
+  offsetY: 0
 --- !u!1 &4529825322997414842
 GameObject:
   m_ObjectHideFlags: 0

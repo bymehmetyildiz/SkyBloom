@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MaulerIdleState : MaulerGroundedState
 {
+    private int blockChance;
     public MaulerIdleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Mauler _mauler) : base(_baseEnemy, _stateMachine, _animBoolName, _mauler)
     {
     }
@@ -14,6 +15,8 @@ public class MaulerIdleState : MaulerGroundedState
 
         stateTimer = mauler.idleTime;
         mauler.SetZeroVelocity();
+
+        blockChance = Random.Range(0, 5);
     }
 
     public override void Exit()
@@ -30,10 +33,25 @@ public class MaulerIdleState : MaulerGroundedState
     {
         base.Update();
 
+
+        if (player.stateMachine.currentState == player.primaryAttackState && blockChance > 1)
+        {
+            stateMachine.ChangeState(mauler.blockState);
+            player.stateMachine.ChangeState(player.stunState);
+        }
+
+
         if (stateTimer < 0.0f)
         {
-            mauler.Flip();
-            stateMachine.ChangeState(mauler.moveState);
+            if ((mauler.IsPlayerDetected() || Vector2.Distance(player.transform.position, mauler.transform.position) < 1))
+                stateMachine.ChangeState(mauler.battleState);
+
+            else
+            {
+                mauler.Flip();
+                stateMachine.ChangeState(mauler.moveState);
+            }
+
         }
     }
 }

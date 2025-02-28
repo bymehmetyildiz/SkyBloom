@@ -13,7 +13,7 @@ public class MaulerBlockState : EnemyState
     public override void Enter()
     {
         base.Enter();
-
+        mauler.fx.ScreenShake();
         mauler.SpawnBlockEffect(player.attackCheck);
         mauler.shiledIcon.SetActive(true);
         if (!mauler.IsPlayerDetected())

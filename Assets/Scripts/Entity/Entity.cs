@@ -118,12 +118,12 @@ public class Entity : MonoBehaviour
         rb.velocity = new Vector2(knockBackPower.x * knockBackDir, knockBackPower.y);
         yield return new WaitForSeconds(knockBackDur);
         isKnocked = false;
-        SetupZeroKnockback();
+        SetupDefaultKnockback();
     }
 
     public void SetupKnockbackPower(Vector2 _knockbackPower) => knockBackPower = _knockbackPower;
 
-    protected virtual void SetupZeroKnockback()
+    protected virtual void SetupDefaultKnockback()
     {
 
     }
@@ -181,6 +181,5 @@ public class Entity : MonoBehaviour
     }
 
    
-
 
 }

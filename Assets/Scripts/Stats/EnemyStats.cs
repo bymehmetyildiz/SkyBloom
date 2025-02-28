@@ -76,4 +76,9 @@ public class EnemyStats : EntityStats
 
 
     }
+
+    public override void DoMagicalDamage(EntityStats _entityStats)
+    {
+        base.DoMagicalDamage(_entityStats);
+    }
 }

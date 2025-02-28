@@ -29,4 +29,9 @@ public class Enemy_AnimationTrigger : MonoBehaviour
     
     private void StopCounterAttack() => enemy.StopCounterAttack();
 
+    private void CanExpand() => enemy.CanExpand();
+
+    private void ScreenShake() => enemy.fx.ScreenShake();
+    
+
 }

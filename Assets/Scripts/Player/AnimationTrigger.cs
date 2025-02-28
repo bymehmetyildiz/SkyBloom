@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class AnimationTrigger : MonoBehaviour
 {
+    
     [HideInInspector] public Player player;
     [SerializeField] private Animator attackEffectAnimator;
     [SerializeField] private Animator dashEffectAnimator;
     [SerializeField] private Animator flurrySlashAnimator;
-    [SerializeField] private Animator aerialSlamAnimator;   
+    [SerializeField] private Animator aerialSlamAnimator;
 
     private void Start()
     {

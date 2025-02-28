@@ -110,7 +110,7 @@ public class EntityStats : MonoBehaviour
 
         totalDamage = CheckTargetArmor(_entityStats, totalDamage);
         _entityStats.TakeDamage(totalDamage);        
-        _entityStats.TakeDamage(totalDamage);        
+            
     }
 
     // Do Magic Damage
