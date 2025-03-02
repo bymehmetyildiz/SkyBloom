@@ -44,6 +44,9 @@ public class Mauler : Enemy
     {
         base.Update();
 
+        if (stats.isDamaged && (stateMachine.currentState == idleState || stateMachine.currentState == moveState))
+            stateMachine.ChangeState(battleState);
+
         ExpandSpecialAttack();
     }
 

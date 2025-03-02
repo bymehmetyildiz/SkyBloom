@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BanditBattleState : EnemyState
@@ -12,7 +13,10 @@ public class BanditBattleState : EnemyState
 
     public override void Enter()
     {
-        base.Enter(); 
+        base.Enter();
+
+        bandit.stats.isDamaged = false;
+
         if (player.GetComponent<PlayerStats>().isDead)
             stateMachine.ChangeState(bandit.moveState);
     }
@@ -50,13 +54,9 @@ public class BanditBattleState : EnemyState
         {
             stateTimer = bandit.agroTime;
 
-            if (bandit.IsPlayerDetected().distance <= bandit.attackDistance)
-            {
-                //if(CanAttack())
-                stateMachine.ChangeState(bandit.attackState);
-                //else
-                //    stateMachine.ChangeState(bandit.idleState);
-            }
+            if (bandit.IsPlayerDetected().distance <= bandit.attackDistance)                  
+                stateMachine.ChangeState(bandit.attackState);         
+            
         }
 
         if(bandit.IsWallDetected() || !bandit.IsGroundDetected())
@@ -67,15 +67,5 @@ public class BanditBattleState : EnemyState
 
     }
 
-    //private bool CanAttack()
-    //{
-    //    if (Time.time >= bandit.lastAttackTime + bandit.attackCoolDown)
-    //    {
-    //        bandit.lastAttackTime = Time.time;
-    //        return true;
-    //    }
-
-    //    return false;
-    //}
 
 }

@@ -8,7 +8,7 @@ public class BanditGroundedState : EnemyState
 
     public BanditGroundedState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Bandit _bandit) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
-        this.bandit = _bandit;
+        bandit = _bandit;
     }
 
     public override void Enter()

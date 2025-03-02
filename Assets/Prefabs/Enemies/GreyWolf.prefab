@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4334591494854153047}
   - component: {fileID: 427188263216173945}
   - component: {fileID: 5291577654549052166}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Entity_Status_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7568525567864707467}
   - component: {fileID: 8458105305787224578}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4477894402173814387}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -55.27, y: -0.48, z: -0.01539748}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 5
+    baseValue: 10
     modifiers: 
   critChance:
     baseValue: 0
@@ -426,6 +426,9 @@ MonoBehaviour:
   magicResistance:
     baseValue: 0
     modifiers: 
+  maxMagic:
+    baseValue: 0
+    modifiers: 
   fireDamage:
     baseValue: 0
     modifiers: 
@@ -440,6 +443,7 @@ MonoBehaviour:
   isFrozen: 0
   isShocked: 0
   currentHealth: 0
+  currentMagic: 0
   isInvincible: 0
   level: 1
   percentageModifier: 0.4
@@ -484,6 +488,7 @@ MonoBehaviour:
   amountOfItems: 0
   possibleDrop: []
   dropPrefab: {fileID: 4212661324000050600, guid: c46fbaae02023974db8e2a40694e3798, type: 3}
+  offsetY: 0
 --- !u!114 &6840553717497582132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,19 +514,25 @@ MonoBehaviour:
   knockBackPower: {x: 3, y: 3}
   knockBackDir: 0
   knockBackDur: 0.1
-  moveSpeed: 1.5
-  idleTime: 2
-  agroTime: 3
+  blockEffect: {fileID: 0}
   stunDur: 1
   stunDir: {x: 2, y: 3}
   counterImage: {fileID: 7288698708713472345}
+  moveSpeed: 1.5
+  idleTime: 2
+  agroTime: 3
   player:
     serializedVersion: 2
     m_Bits: 8
   detectDistance: 5
   attackDistance: 0.4
   attackCoolDown: 0.4
+  comboCounter: 0
+  agroDistance: 0
   lastAttackTime: 0
+  canExpand: 0
+  stats: {fileID: 0}
+  shiledIcon: {fileID: 0}
 --- !u!1 &4680139525592175210
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +575,7 @@ GameObject:
   - component: {fileID: 1633764334268789291}
   - component: {fileID: 2106730783019216584}
   - component: {fileID: 4829301815541499979}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,7 +648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1559067848848138246}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +939,7 @@ GameObject:
   - component: {fileID: 1372539549355027525}
   - component: {fileID: 4754629968079254072}
   - component: {fileID: 4602434033176558564}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -51,6 +51,7 @@ public class AnimationTrigger : MonoBehaviour
                 EnemyStats enemy = colliders[i].GetComponent<EnemyStats>();
 
                 player.entityStats.DoDamage(enemy);
+                enemy.isDamaged = true;
 
                 Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(enemy.transform);
             }

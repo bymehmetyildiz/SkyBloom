@@ -7,6 +7,7 @@ public class EnemyStats : EntityStats
 {
     private Enemy enemy;
     private ItemDrop dropSystem;
+    public bool isDamaged;
 
     [Header("Level Details")]
     [SerializeField] private int level = 1;
@@ -63,7 +64,7 @@ public class EnemyStats : EntityStats
 
     public override void TakeDamage(int _damage)
     {
-        base.TakeDamage(_damage);
+        base.TakeDamage(_damage);        
         enemy.DamageEffect();
     }
 

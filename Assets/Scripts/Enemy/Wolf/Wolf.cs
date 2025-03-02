@@ -40,6 +40,9 @@ public class Wolf : Enemy
     protected override void Update()
     {
         base.Update();
+
+        if (stats.isDamaged && (stateMachine.currentState == idleState || stateMachine.currentState == moveState))
+            stateMachine.ChangeState(battleState);
     }
 
     public override bool CanBeStunned()

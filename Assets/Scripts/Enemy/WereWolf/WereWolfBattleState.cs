@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WereWolfBattleState : EnemyState
@@ -16,7 +17,9 @@ public class WereWolfBattleState : EnemyState
 
     public override void Enter()
     {
-        base.Enter();        
+        base.Enter();
+
+        wereWolf.stats.isDamaged = false;
 
         if (player.GetComponent<PlayerStats>().isDead)
             stateMachine.ChangeState(wereWolf.moveState);

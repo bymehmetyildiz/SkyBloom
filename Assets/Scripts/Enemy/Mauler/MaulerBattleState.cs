@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MaulerBattleState : EnemyState
@@ -19,6 +20,9 @@ public class MaulerBattleState : EnemyState
     public override void Enter()
     {
         base.Enter();
+
+        mauler.stats.isDamaged = false;
+
         spAttackTimer = spAttackCooldown;
 
         if (player.GetComponent<PlayerStats>().isDead)

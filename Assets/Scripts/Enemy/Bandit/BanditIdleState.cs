@@ -11,6 +11,7 @@ public class BanditIdleState : BanditGroundedState
     public override void Enter()
     {
         base.Enter();
+
         stateTimer = bandit.idleTime;
         bandit.SetZeroVelocity();
     }
