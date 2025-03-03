@@ -42,6 +42,14 @@ public class PlayerPrimaryAttackState : PlayerState
 
         player.comboCounter++;
         lastAtttackTime = Time.time;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckDistance);
+
+        foreach (var hit in colliders)
+        {
+            //if (hit.GetComponent<Projectile>() != null)
+            //    hit.GetComponent<Projectile>().Flip();
+        }
     }
 
     public override void FixedUpdate()
@@ -55,6 +63,9 @@ public class PlayerPrimaryAttackState : PlayerState
     public override void Update()
     {
         base.Update();
+
+       
+
 
         if (triggerCalled)
             stateMachine.ChangeState(player.idleState);

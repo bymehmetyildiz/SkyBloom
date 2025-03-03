@@ -33,5 +33,5 @@ public class Enemy_AnimationTrigger : MonoBehaviour
 
     private void ScreenShake() => enemy.fx.ScreenShake();
     
-
+    private void ReleaseProjectile() => enemy.ReleaseProjectile();
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class AnimationTrigger : MonoBehaviour
@@ -44,7 +45,10 @@ public class AnimationTrigger : MonoBehaviour
 
 
         for (int i = 0; i < colliders.Length; i++)
-        {  
+        {
+            if (colliders[i].GetComponent<Projectile>() != null)
+                colliders[i].GetComponent<Projectile>().Flip();
+
             if (colliders[i].GetComponent<Enemy>() != null)
             {
                 //colliders[i].GetComponent<Enemy>().Damage(player.facingDir);

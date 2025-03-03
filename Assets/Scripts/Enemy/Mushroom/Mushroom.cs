@@ -51,5 +51,6 @@ public class Mushroom : Enemy
 
         if (stats.isDamaged && (stateMachine.currentState == idleState || stateMachine.currentState == moveState))
             stateMachine.ChangeState(battleState);
+        
     }
 }

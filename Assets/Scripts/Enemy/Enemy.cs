@@ -168,5 +168,10 @@ public class Enemy : Entity
 
     //Sp Attack
     public void CanExpand() => canExpand = true;
+
+    //Projectile
+    public virtual void ReleaseProjectile() { }
+
+    public virtual void InstantiateProjectile() { }
   
 }
