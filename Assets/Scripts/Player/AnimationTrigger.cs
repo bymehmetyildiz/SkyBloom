@@ -38,11 +38,9 @@ public class AnimationTrigger : MonoBehaviour
         attackEffectAnimator.SetInteger("ComboCounter", player.comboCounter);
     }
 
-    public void AttackTrigger()
+    public void TriggerAttack()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckDistance);
-
-
 
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -51,13 +49,13 @@ public class AnimationTrigger : MonoBehaviour
 
             if (colliders[i].GetComponent<Enemy>() != null)
             {
-                //colliders[i].GetComponent<Enemy>().Damage(player.facingDir);
-                EnemyStats enemy = colliders[i].GetComponent<EnemyStats>();
+                player.stunTrigger = true;
 
-                player.entityStats.DoDamage(enemy);
-                enemy.isDamaged = true;
+                EnemyStats enemyStats = colliders[i].GetComponent<EnemyStats>();
+                player.entityStats.DoDamage(enemyStats);
+                enemyStats.isDamaged = true; // To Check if Enemy damaged so it can go to battle state.
 
-                Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(enemy.transform);
+                Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(enemyStats.transform);
             }
         }
     }
@@ -78,9 +76,4 @@ public class AnimationTrigger : MonoBehaviour
     }
     public void AerialSlamEnd() => aerialSlamAnimator.SetBool("Slam", false);
     public void EarthSlam() => player.skillManager.earthSlamSkill.CreateExplosion();
-    
-
-
-
-
 }

@@ -32,7 +32,10 @@ public class WereWolfIdleState : WereWolfGroundedState
     {
         base.Update();
 
-        if (player.stateMachine.currentState == player.primaryAttackState && blockChance > 1)
+        if (wereWolf.stats.isDead)
+            return;
+
+        if (player.stateMachine.currentState == player.primaryAttackState && blockChance > 1 && player.stunTrigger)
         {
             stateMachine.ChangeState(wereWolf.blockState);
             player.stateMachine.ChangeState(player.stunState);

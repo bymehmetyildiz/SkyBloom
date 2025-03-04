@@ -72,7 +72,6 @@ public class EntityFX : MonoBehaviour
     {
         CancelInvoke();
         sr.color = Color.white;
-
     }
 
     // Ignite

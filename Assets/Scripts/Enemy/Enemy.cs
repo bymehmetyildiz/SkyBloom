@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
@@ -32,6 +34,7 @@ public class Enemy : Entity
 
     public EnemyStats stats;
     public GameObject shiledIcon;
+    public bool canBeDamaged;
 
     public EnemyStateMachine stateMachine { get; private set; }
 
@@ -46,7 +49,9 @@ public class Enemy : Entity
         base.Start();
         defaultMoveSpeed = moveSpeed;
         stats = GetComponent<EnemyStats>();
+        canBeDamaged = true;
     }
+
 
     
     protected override void Update()
@@ -98,6 +103,7 @@ public class Enemy : Entity
         counterImage.SetActive(false);
     }
 
+    // Can Be Stunned
     public virtual bool CanBeStunned()
     {
         if (canStun)
@@ -108,7 +114,6 @@ public class Enemy : Entity
         return false;
 
     }
-
 
     //Checks
     public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, detectDistance, player);
@@ -143,9 +148,7 @@ public class Enemy : Entity
     protected override void ReturnDefaultSpeed()
     {
         base.ReturnDefaultSpeed();
-
         moveSpeed = defaultMoveSpeed;
-        
     }
 
     // Violent Knockback
@@ -154,7 +157,6 @@ public class Enemy : Entity
         if (PlayerManager.instance.player.stateMachine.currentState == PlayerManager.instance.player.twisterState ||
             PlayerManager.instance.player.stateMachine.currentState == PlayerManager.instance.player.aerialSlamState)
             StartCoroutine(ViolentKnockBack());
-        
 
         return base.KnockBack();
     }
@@ -173,5 +175,5 @@ public class Enemy : Entity
     public virtual void ReleaseProjectile() { }
 
     public virtual void InstantiateProjectile() { }
-  
+
 }

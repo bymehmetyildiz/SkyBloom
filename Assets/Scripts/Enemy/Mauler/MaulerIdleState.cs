@@ -33,8 +33,10 @@ public class MaulerIdleState : MaulerGroundedState
     {
         base.Update();
 
+        if(mauler.stats.isDead)
+            return;
 
-        if (player.stateMachine.currentState == player.primaryAttackState && blockChance > 1)
+        if (player.stateMachine.currentState == player.primaryAttackState && blockChance > 1 && player.stunTrigger)
         {
             stateMachine.ChangeState(mauler.blockState);
             player.stateMachine.ChangeState(player.stunState);

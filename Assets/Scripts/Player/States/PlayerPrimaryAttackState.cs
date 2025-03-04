@@ -39,7 +39,7 @@ public class PlayerPrimaryAttackState : PlayerState
     {
         base.Exit();
         player.StartCoroutine(player.CheckBusy(0.25f));
-
+        player.stunTrigger = false;
         player.comboCounter++;
         lastAtttackTime = Time.time;
 

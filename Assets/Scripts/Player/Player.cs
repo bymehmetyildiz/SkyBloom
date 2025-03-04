@@ -30,6 +30,7 @@ public class Player : Entity
     public float attackMove = 1.0f;
     public int comboCounter;
     public float catchImpact;
+    public bool stunTrigger;
 
     [Header("Collision Info")]    
     [SerializeField] private Transform ledgeCheck;

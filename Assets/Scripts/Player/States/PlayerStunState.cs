@@ -13,12 +13,13 @@ public class PlayerStunState : PlayerState
         base.Enter();
         rb.velocity = new Vector2(-player.facingDir * player.stunDir.x, player.stunDir.y);
         player.GetComponentInChildren<AnimationTrigger>().AnimTrigger();
-
+        triggerCalled = false; // Bir yukarýda ki method yüzünden true oluyor. Tekrar false yapýyorum :)
+        player.stunTrigger = false;
     }
 
     public override void Exit()
     {
-        base.Exit();
+        base.Exit();  
     }
 
     public override void FixedUpdate()
