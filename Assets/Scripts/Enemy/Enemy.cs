@@ -120,9 +120,6 @@ public class Enemy : Entity
 
     public virtual void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
 
-   
-
-
 
     protected override void OnDrawGizmos()
     {

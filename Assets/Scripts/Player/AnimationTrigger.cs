@@ -44,20 +44,30 @@ public class AnimationTrigger : MonoBehaviour
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].GetComponent<Projectile>() != null)
-                colliders[i].GetComponent<Projectile>().Flip();
-
             if (colliders[i].GetComponent<Enemy>() != null)
             {
-                player.stunTrigger = true;
+                var enemy = colliders[i].GetComponent<Enemy>();
+                var enemyStats = colliders[i].GetComponent<EnemyStats>();
 
-                EnemyStats enemyStats = colliders[i].GetComponent<EnemyStats>();
-                player.entityStats.DoDamage(enemyStats);
-                enemyStats.isDamaged = true; // To Check if Enemy damaged so it can go to battle state.
+                if (enemy.canBeDamaged == false)
+                    return;
 
-                Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(enemyStats.transform);
+                StartCoroutine(DelayedDamage(enemyStats, enemy));
+               
+                
             }
+
         }
+    }
+
+    IEnumerator DelayedDamage(EnemyStats enemyStats, Enemy enemy)
+    {
+        yield return new WaitForSeconds(0.05f); // Small delay
+        player.stunTrigger = true;
+        if (!enemy.canBeDamaged) yield break; // Double-check
+        player.entityStats.DoDamage(enemyStats);
+        enemyStats.isDamaged = true;
+        Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(enemyStats.transform);
     }
 
     public void ThrowSword()
