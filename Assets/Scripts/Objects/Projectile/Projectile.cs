@@ -2,8 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ProjectileType
+{
+    Arrow,
+    Rock
+}
+
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private ProjectileType projectileType;
+    [SerializeField] private GameObject hitParticle;
+
     [SerializeField] private int damage;
     [SerializeField] private string targetLayerName = "Player";
 
@@ -18,6 +27,7 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        flipped = false;
     }
 
 
@@ -37,11 +47,36 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer(targetLayerName))
         {
+            
+
+            Player player = collision.GetComponent<Player>();
+
+            if (player.stateMachine.currentState == player.blockState)
+            {
+                Destroy(gameObject);
+                Instantiate(hitParticle, transform.position, Quaternion.identity);
+                return;
+            }
+
+
+            if (projectileType == ProjectileType.Rock)
+                Explode(collision);
+            else
+                Stuck(collision);
+
             collision.GetComponent<EntityStats>()?.TakeDamage(damage);
-            Explode(collision);
+
+           
+
         }
-        else if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            Explode(collision);
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            if (projectileType == ProjectileType.Rock)
+                Explode(collision);
+            else
+                Stuck(collision);
+        }
+       
     }
 
     private void Explode(Collider2D collision)
@@ -52,6 +87,18 @@ public class Projectile : MonoBehaviour
         xVelocity = 0;
         canMove = false;
     }
+
+    private void Stuck(Collider2D collision)
+    {
+        rb.isKinematic = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        xVelocity = 0;
+        canMove = false;
+        transform.parent = collision.gameObject.transform;
+        Destroy(gameObject);
+        Instantiate(hitParticle, transform.position, Quaternion.identity);
+    }
+
 
     public void Flip()
     {

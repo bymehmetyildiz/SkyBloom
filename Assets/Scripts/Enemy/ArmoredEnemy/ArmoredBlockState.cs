@@ -13,19 +13,19 @@ public class ArmoredBlockState : EnemyState
 
     public override void Enter()
     {
-        base.Enter();
-        
+        base.Enter();        
         stateTimer = blocDur;
         enemy.SetZeroVelocity();
         enemy.fx.ScreenShake();
         enemy.SpawnBlockEffect(enemy.attackCheck);
+        enemy.shiledIcon.SetActive(true);
     }
 
     public override void Exit()
     {
         base.Exit();
         enemy.canBeDamaged = true;
-       
+        enemy.shiledIcon.SetActive(false);
     }
 
     public override void Update()

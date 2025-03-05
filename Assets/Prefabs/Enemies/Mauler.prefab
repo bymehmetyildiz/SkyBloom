@@ -305,7 +305,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 20
+    baseValue: 0
     modifiers: 
   critChance:
     baseValue: 99
@@ -344,6 +344,7 @@ MonoBehaviour:
   currentHealth: 0
   currentMagic: 0
   isInvincible: 0
+  isDamaged: 0
   level: 1
   percentageModifier: 0
 --- !u!114 &4028602737487392339
@@ -432,6 +433,7 @@ MonoBehaviour:
   canExpand: 0
   stats: {fileID: 0}
   shiledIcon: {fileID: 2859272657964703076}
+  canBeDamaged: 0
   cc: {fileID: 4422619644853545540}
   expandSpeed: 10
 --- !u!114 &1421222616718317331

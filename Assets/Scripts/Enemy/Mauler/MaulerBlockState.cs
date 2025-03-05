@@ -24,6 +24,7 @@ public class MaulerBlockState : EnemyState
     {
         base.Exit();
         mauler.shiledIcon.SetActive(false);
+        mauler.canBeDamaged = true;
     }
 
     public override void FixedUpdate()

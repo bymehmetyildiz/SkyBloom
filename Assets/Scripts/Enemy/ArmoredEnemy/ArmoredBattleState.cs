@@ -45,8 +45,11 @@ public class ArmoredBattleState : EnemyState
         if (player.stateMachine.currentState == player.primaryAttackState && player.stunTrigger)
         {
             enemy.canBeDamaged = false;
-            stateMachine.ChangeState(enemy.blockState);            
+            stateMachine.ChangeState(enemy.blockState);
+            player.stateMachine.ChangeState(player.stunState);
         }
+
+        
 
 
         if (!enemy.IsGroundDetected())

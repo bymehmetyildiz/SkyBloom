@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -30,7 +31,8 @@ public class Player : Entity
     public float attackMove = 1.0f;
     public int comboCounter;
     public float catchImpact;
-    public bool stunTrigger;
+    public bool stunTrigger; // Variable for player to enter stun state
+    
 
     [Header("Collision Info")]    
     [SerializeField] private Transform ledgeCheck;
@@ -139,11 +141,18 @@ public class Player : Entity
         cooldownTimer -= Time.deltaTime;
         stateMachine.currentState.Update();
         CheckDashInput();
+        CheckHealInput();
+    }
+
+    private void CheckHealInput()
+    {
+        if(stats.isDead) 
+            return;
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
             Inventory.instance.UseHealFlask();
 
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
             Inventory.instance.UseMagicFlask();
     }
 
@@ -164,6 +173,8 @@ public class Player : Entity
     // Dash Check
     public void CheckDashInput()
     {
+        if (stats.isDead)
+            return;
 
         if (IsWallDetected())
             return;

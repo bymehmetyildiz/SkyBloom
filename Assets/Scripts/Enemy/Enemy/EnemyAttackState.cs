@@ -32,8 +32,10 @@ public class EnemyAttackState : EnemyState
 
         if (triggerCalled)
         {
-            if (Vector2.Distance(player.transform.position, enemy.transform.position) > enemy.attackDistance)
-                stateMachine.ChangeState(enemy.battleState);
+            if (!enemy.IsPlayerDetected() || enemy.IsPlayerDetected().distance >= enemy.agroDistance)
+                stateMachine.ChangeState(enemy.idleState);
+
+            triggerCalled = false;
         }
     }
 }

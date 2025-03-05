@@ -40,35 +40,38 @@ public class AnimationTrigger : MonoBehaviour
 
     public void TriggerAttack()
     {
+        player.stunTrigger = true;
+
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckDistance);
 
         for (int i = 0; i < colliders.Length; i++)
         {
+            if (colliders[i].GetComponent<Projectile>() != null)            
+                colliders[i].GetComponent<Projectile>().Flip();
+            
+
+
             if (colliders[i].GetComponent<Enemy>() != null)
             {
-                var enemy = colliders[i].GetComponent<Enemy>();
-                var enemyStats = colliders[i].GetComponent<EnemyStats>();
-
-                if (enemy.canBeDamaged == false)
-                    return;
-
-                StartCoroutine(DelayedDamage(enemyStats, enemy));
-               
-                
+                Enemy enemy = colliders[i].GetComponent<Enemy>();
+                EnemyStats enemyStats = colliders[i].GetComponent<EnemyStats>();
+                              
+                StartCoroutine(Check(enemy, enemyStats));
             }
 
         }
     }
 
-    IEnumerator DelayedDamage(EnemyStats enemyStats, Enemy enemy)
+    private IEnumerator Check(Enemy enemy, EnemyStats enemyStats)
     {
-        yield return new WaitForSeconds(0.05f); // Small delay
-        player.stunTrigger = true;
-        if (!enemy.canBeDamaged) yield break; // Double-check
+        yield return new WaitForSeconds(0.01f);
+        if (enemy.canBeDamaged == false)
+           yield break;
         player.entityStats.DoDamage(enemyStats);
         enemyStats.isDamaged = true;
         Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(enemyStats.transform);
     }
+
 
     public void ThrowSword()
     {

@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ed47b4059fde64fb83dd01e46ef21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileType: 1
   damage: 15
   targetLayerName: Player
   xVelocity: 5

@@ -27,6 +27,7 @@ public class WereWolfBlockState : EnemyState
     {
         base.Exit();
         wereWolf.shiledIcon.SetActive(false);
+        wereWolf.canBeDamaged = true;
     }
 
     public override void FixedUpdate()

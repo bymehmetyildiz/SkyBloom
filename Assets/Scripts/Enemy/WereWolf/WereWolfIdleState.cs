@@ -37,6 +37,7 @@ public class WereWolfIdleState : WereWolfGroundedState
 
         if (player.stateMachine.currentState == player.primaryAttackState && blockChance > 1 && player.stunTrigger)
         {
+            wereWolf.canBeDamaged = false;
             stateMachine.ChangeState(wereWolf.blockState);
             player.stateMachine.ChangeState(player.stunState);
         }
