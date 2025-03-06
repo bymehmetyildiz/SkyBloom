@@ -214,7 +214,7 @@ MonoBehaviour:
   shockColor:
   - {r: 1, g: 0.9098039, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  hitFX: {fileID: 6880915521518507169, guid: 3984f774bd188d94fad7f1576c82f4d1, type: 3}
+  hitFX: {fileID: 800424968691102434, guid: ef19b586751e34749987f316b9cda0aa, type: 3}
   shakeMultiplier: 0
   shakePower: {x: 0, y: 0, z: 0}
 --- !u!114 &8824468624653291745

@@ -531,7 +531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6777706675368741161}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.13, y: -4.05, z: -0.01539748}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -588,6 +588,7 @@ MonoBehaviour:
   canExpand: 0
   stats: {fileID: 0}
   shiledIcon: {fileID: 0}
+  canBeDamaged: 0
 --- !u!50 &5201508893532784096
 Rigidbody2D:
   serializedVersion: 4
@@ -683,7 +684,7 @@ MonoBehaviour:
   shockColor:
   - {r: 1, g: 0.9098039, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  hitFX: {fileID: 6880915521518507169, guid: 3984f774bd188d94fad7f1576c82f4d1, type: 3}
+  hitFX: {fileID: 800424968691102434, guid: ef19b586751e34749987f316b9cda0aa, type: 3}
   shakeMultiplier: 0
   shakePower: {x: 0, y: 0, z: 0}
 --- !u!114 &7616810517549175842
@@ -750,6 +751,7 @@ MonoBehaviour:
   currentHealth: 0
   currentMagic: 0
   isInvincible: 0
+  isDamaged: 0
   level: 1
   percentageModifier: 0.029
 --- !u!114 &1093060347011658748

@@ -445,6 +445,7 @@ MonoBehaviour:
   currentHealth: 0
   currentMagic: 0
   isInvincible: 0
+  isDamaged: 0
   level: 1
   percentageModifier: 0.4
 --- !u!114 &5948532349997095774
@@ -470,7 +471,7 @@ MonoBehaviour:
   shockColor:
   - {r: 1, g: 0.9098039, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  hitFX: {fileID: 6880915521518507169, guid: 3984f774bd188d94fad7f1576c82f4d1, type: 3}
+  hitFX: {fileID: 800424968691102434, guid: ef19b586751e34749987f316b9cda0aa, type: 3}
   shakeMultiplier: 0
   shakePower: {x: 0, y: 0, z: 0}
 --- !u!114 &1035973403756930392
@@ -533,6 +534,7 @@ MonoBehaviour:
   canExpand: 0
   stats: {fileID: 0}
   shiledIcon: {fileID: 0}
+  canBeDamaged: 0
 --- !u!1 &4680139525592175210
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,8 +33,12 @@ public class GameManager : MonoBehaviour
         if(collision.GetComponent<Player>() != null)
         {
             isPlayerEnetered = true;
-            if (enteranceGate.isOpen)
-                StartCoroutine(enteranceGate.CloseGate(0));
+            if(enteranceGate != null)
+            {
+                if (enteranceGate.isOpen)
+                    StartCoroutine(enteranceGate.CloseGate(0));
+            }
+            
         }
     }
 

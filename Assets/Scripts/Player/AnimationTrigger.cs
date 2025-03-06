@@ -48,8 +48,6 @@ public class AnimationTrigger : MonoBehaviour
         {
             if (colliders[i].GetComponent<Projectile>() != null)            
                 colliders[i].GetComponent<Projectile>().Flip();
-            
-
 
             if (colliders[i].GetComponent<Enemy>() != null)
             {
