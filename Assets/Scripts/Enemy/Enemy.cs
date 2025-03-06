@@ -21,6 +21,7 @@ public class Enemy : Entity
     [Header("Collision Info")]
     [SerializeField] protected LayerMask player;
     [SerializeField] private float detectDistance;
+    protected BoxCollider2D bc;
 
     [Header("Attack Info")]
     public float attackDistance;
@@ -29,8 +30,6 @@ public class Enemy : Entity
     public float agroDistance;
     [HideInInspector] public float lastAttackTime;
     public bool canExpand;
-    
-
 
     public EnemyStats stats;
     public GameObject shiledIcon;
@@ -50,6 +49,7 @@ public class Enemy : Entity
         defaultMoveSpeed = moveSpeed;
         stats = GetComponent<EnemyStats>();
         canBeDamaged = true;
+        bc = GetComponent<BoxCollider2D>();
     }
 
 

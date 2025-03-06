@@ -27,12 +27,17 @@ public class EntityFX : MonoBehaviour
     [SerializeField] private float shakeMultiplier;
     [SerializeField] private Vector3 shakePower;
 
+    private GameObject healthBar;
+
     private void Start()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
         player = PlayerManager.instance.player;
         screenShake = GetComponent<CinemachineImpulseSource>();
         originalMat = sr.material;
+
+        if(GetComponentInChildren<UI_HealthBar>() != null )
+            healthBar = GetComponentInChildren<UI_HealthBar>().gameObject;
     }
 
     //ScreenShake
@@ -134,9 +139,23 @@ public class EntityFX : MonoBehaviour
     {
         GameObject newHitFX = Instantiate(hitFX, _target.position, Quaternion.identity);
         newHitFX.transform.localScale = new Vector3(newHitFX.transform.localScale.x * _target.GetComponent<Entity>().knockBackDir, newHitFX.transform.localScale.y);
-        
 
         Destroy(newHitFX, 0.5f);
+    }
+
+    //Make Transparent
+    public void MakeTransparent(bool _transparent)
+    {
+        if (_transparent)
+        {
+            healthBar.SetActive(false);
+            sr.color = Color.clear;
+        }
+        else
+        {
+            healthBar.SetActive(true);
+            sr.color = Color.white;
+        }
     }
 
 

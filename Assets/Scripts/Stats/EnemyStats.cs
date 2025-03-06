@@ -76,7 +76,7 @@ public class EnemyStats : EntityStats
         base.Dead();
         dropSystem.GenerateDrop();
         enemy.Dead();
-        Destroy(gameObject, 2.0f);
+        Destroy(gameObject, 3.0f);
 
 
     }

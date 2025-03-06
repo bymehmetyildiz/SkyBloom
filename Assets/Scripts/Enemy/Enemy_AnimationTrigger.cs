@@ -38,4 +38,17 @@ public class Enemy_AnimationTrigger : MonoBehaviour
     private void ScreenShake() => enemy.fx.ScreenShake();
     
     private void ReleaseProjectile() => enemy.ReleaseProjectile();
+
+    private void Relocate()
+    {      
+        if (enemy is Ivy)
+        {
+            Ivy ivy = (Ivy)enemy;
+            ivy.FindPosition();
+        }
+    }
+
+    private void MakeInvisible() => enemy.fx.MakeTransparent(true);
+    private void MakeVisible() => enemy.fx.MakeTransparent(false);
+
 }
