@@ -6,11 +6,13 @@ public class Enemy_AnimationTrigger : MonoBehaviour
 {
     private Enemy enemy => GetComponentInParent<Enemy>();
 
+    //Call trigger Called
     public void AnimationTrigger()
     {
         enemy.AnimationTrigger();        
     }
 
+    // Trigger Damage
     public void TriggerDamage()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(enemy.attackCheck.position, enemy.attackCheckDistance);
@@ -29,16 +31,21 @@ public class Enemy_AnimationTrigger : MonoBehaviour
         }
     }
 
+    // Counter Attack
     private void StartCounterAttack() => enemy.StartCounterAttack();
     
     private void StopCounterAttack() => enemy.StopCounterAttack();
 
+    // Sp Attack (Mauler)
     private void CanExpand() => enemy.CanExpand();
 
+    // Screen Shake
     private void ScreenShake() => enemy.fx.ScreenShake();
     
+    // Projectile (Ranged Enemies)
     private void ReleaseProjectile() => enemy.ReleaseProjectile();
 
+    // Teleport (Ivy)
     private void Relocate()
     {      
         if (enemy is Ivy)
@@ -50,5 +57,15 @@ public class Enemy_AnimationTrigger : MonoBehaviour
 
     private void MakeInvisible() => enemy.fx.MakeTransparent(true);
     private void MakeVisible() => enemy.fx.MakeTransparent(false);
+
+    // Create Branch (Ivy)
+    private void CreateBranch()
+    {
+        if (enemy is Ivy)
+        {
+            Ivy ivy = (Ivy)enemy;
+            ivy.CreateBranch();
+        }
+    }
 
 }

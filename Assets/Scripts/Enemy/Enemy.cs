@@ -12,6 +12,8 @@ using UnityEngine;
 [RequireComponent(typeof(ItemDrop))]
 public class Enemy : Entity
 {
+    protected Player player;
+
     [Header("Move Info")]
     public float moveSpeed;
     public float idleTime;
@@ -19,7 +21,7 @@ public class Enemy : Entity
     private float defaultMoveSpeed;
 
     [Header("Collision Info")]
-    [SerializeField] protected LayerMask player;
+    [SerializeField] protected LayerMask playerLayer;
     [SerializeField] private float detectDistance;
     protected BoxCollider2D bc;
 
@@ -50,6 +52,7 @@ public class Enemy : Entity
         stats = GetComponent<EnemyStats>();
         canBeDamaged = true;
         bc = GetComponent<BoxCollider2D>();
+        player = PlayerManager.instance.player;
     }
 
 
@@ -116,7 +119,7 @@ public class Enemy : Entity
     }
 
     //Checks
-    public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, detectDistance, player);
+    public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, detectDistance, playerLayer);
 
     public virtual void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
 

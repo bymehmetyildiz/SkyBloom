@@ -25,16 +25,22 @@ public class IvyAttackState : EnemyState
     public override void FixedUpdate()
     {
         base.FixedUpdate();
+
+        if (enemy.transform.position.x > player.transform.position.x && enemy.facingDir == 1)
+            enemy.Flip();
+        else if (enemy.transform.position.x <= player.transform.position.x && enemy.facingDir == -1)
+            enemy.Flip();
     }
 
     public override void Update()
     {
         base.Update();
 
-        if (triggerCalled)
-            stateMachine.ChangeState(enemy.teleportState);
+        if (enemy.stats.isDamaged)
+            stateMachine.ChangeState(enemy.hitState);
 
-           
-        
+        if (!player.IsGroundDetected() && Vector2.Distance(player.transform.position, enemy.transform.position) > 1 && triggerCalled)
+            stateMachine.ChangeState(enemy.trapState);
+
     }
 }

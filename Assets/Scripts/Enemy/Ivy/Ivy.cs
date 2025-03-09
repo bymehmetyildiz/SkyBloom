@@ -8,15 +8,21 @@ public class Ivy : Enemy
     [SerializeField] private BoxCollider2D arena;
     [SerializeField] private Vector2 surroundCheck;
 
+    [Header("Branch Attack Details")]
+    [SerializeField] private GameObject branch;
+
+    [Header("Ranged Attack Details")]
+    [SerializeField] private GameObject ball;
+    [SerializeField] private Transform spawnPoint;
 
     //States
     public IvyIdleState idleState { get; private set; }
-    public IvyAttackState attackState { get; private set; }
-    public IvyBattleState battleState { get; private set; }
+    public IvyAttackState attackState { get; private set; }    
     public IvyTeleportState teleportState { get; private set;}
     public IvyDeadState deadState { get; private set; }
     public IvyBranchAttackState branchAttackState { get; private set; }
-    public IvyRangedAttackState rangedAttackState { get; private set;}
+    public IvyTrapState trapState { get; private set;}
+    public IvyHitState hitState { get; private set; }
 
 
 
@@ -25,12 +31,12 @@ public class Ivy : Enemy
         base.Awake();
 
         idleState = new IvyIdleState(this, stateMachine, "Idle", this);
-        attackState = new IvyAttackState(this, stateMachine, "Attack", this);
-        battleState = new IvyBattleState(this, stateMachine, "Move", this);
+        attackState = new IvyAttackState(this, stateMachine, "Attack", this);        
         teleportState = new IvyTeleportState(this, stateMachine, "Teleport", this);
         deadState = new IvyDeadState(this, stateMachine, "Dead", this);
         branchAttackState = new IvyBranchAttackState(this, stateMachine, "Branch", this);
-        rangedAttackState = new IvyRangedAttackState(this, stateMachine, "Ranged", this);
+        trapState = new IvyTrapState(this, stateMachine, "Ranged", this);
+        hitState = new IvyHitState(this, stateMachine, "Hit", this);
     }
 
     protected override void Start()
@@ -45,6 +51,7 @@ public class Ivy : Enemy
         stateMachine.ChangeState(deadState);
     }
 
+    // Teleport
     public void FindPosition()
     {
         float x = Random.Range(arena.bounds.min.x + 3, arena.bounds.max.x - 3);
@@ -56,7 +63,6 @@ public class Ivy : Enemy
         if (!GroundBelow() || IsSomethingAround())                   
             FindPosition();
         
-
     }
 
 
@@ -69,5 +75,34 @@ public class Ivy : Enemy
 
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - GroundBelow().distance));
         Gizmos.DrawWireCube(transform.position, surroundCheck);
+        
     }
+
+    // Create Branch
+    public void CreateBranch()
+    {
+        if(player.IsGroundDetected())
+            Instantiate(branch, (Vector2)player.transform.position + Vector2.up * 0.2f, Quaternion.identity);
+    }
+
+    //Create 
+
+    public void CreateBall()
+    {
+        GameObject ballPrefab = Instantiate(ball, spawnPoint.position, Quaternion.identity);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            CreateBall();
+        }
+    }
+
+
 }
+
+

@@ -93,11 +93,50 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_0
+      name: Idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ae076a3a4b2ab545b0148331a93bbf5
-      internalID: -561200503
+      spriteID: f1e01b65138fc004d9a5dda0181d210f
+      internalID: 2107788794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_1
+      name: Idle_1
       rect:
         serializedVersion: 2
         x: 128
@@ -132,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9042d0403f4a6924e817ec19b2be9acb
-      internalID: 1871905771
+      spriteID: 79da3773d50ca9b47b03491f669a1d97
+      internalID: 1562714963
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_2
+      name: Idle_2
       rect:
         serializedVersion: 2
         x: 256
@@ -153,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b69efc862cccc764faafa2e5d435c8a2
-      internalID: -323710877
+      spriteID: 4b3622d8ca9699d4d97835b7dc06e5ad
+      internalID: 525674428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_3
+      name: Idle_3
       rect:
         serializedVersion: 2
         x: 384
@@ -174,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 088304196ec69704db35e22cd6f1a5bf
-      internalID: 380894618
+      spriteID: d22024a7f81faf94faed233617053a0b
+      internalID: 114446172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_4
+      name: Idle_4
       rect:
         serializedVersion: 2
         x: 512
@@ -195,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b66417cd545bfac4f9d66c7042188614
-      internalID: 1835022269
+      spriteID: a09bad0514b93c54a85257a6aebe439f
+      internalID: 1715910755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_5
+      name: Idle_5
       rect:
         serializedVersion: 2
         x: 640
@@ -216,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f22872e2e8f10a4990a35daff3551d7
-      internalID: 536480163
+      spriteID: 9f2ce2f140025664191db0807bd7ea77
+      internalID: -1076722629
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_6
+      name: Idle_6
       rect:
         serializedVersion: 2
         x: 768
@@ -237,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c93e6af0d7d0864499a57fbf5753933b
-      internalID: -1561735935
+      spriteID: 7496ba0b7f94bcc41a441b7c52220737
+      internalID: 527277340
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_7
+      name: Idle_7
       rect:
         serializedVersion: 2
         x: 896
@@ -258,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22fedd55df7677f4a9cfbd812e46d470
-      internalID: -2023266577
+      spriteID: c553c5cdd7e030e40b7662514c739302
+      internalID: 738020749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_8
+      name: Idle_8
       rect:
         serializedVersion: 2
         x: 1024
@@ -279,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f57cb6c49aa0e7d48bfcb16417594445
-      internalID: 171922163
+      spriteID: c5c08e842065910438a4f361b765ff21
+      internalID: 2123279530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_9
+      name: Idle_9
       rect:
         serializedVersion: 2
         x: 1152
@@ -300,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c09f55e12b2443a43a41d7190a8abef5
-      internalID: -1092706479
+      spriteID: 06889e142e0a1784e941a08cd4b21380
+      internalID: -1302503175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_10
+      name: Idle_10
       rect:
         serializedVersion: 2
         x: 1280
@@ -321,14 +360,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c745336bce2d76b41b1c4e94e7b9c418
-      internalID: 733810851
+      spriteID: 03b69036994952d4c9122f2f3a6de781
+      internalID: -154339306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - idle_11
+      name: Idle_11
       rect:
         serializedVersion: 2
         x: 1408
@@ -342,8 +381,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fe43214e2e9f2b49a5bfd7ac801a80e
-      internalID: 1240285092
+      spriteID: 86758d02b561a9b4fb9d216d8362d572
+      internalID: -468659696
       vertices: []
       indices: 
       edges: []
@@ -359,18 +398,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bloomborne Enchanter - idle_0: -561200503
-      Bloomborne Enchanter - idle_1: 1871905771
-      Bloomborne Enchanter - idle_10: 733810851
-      Bloomborne Enchanter - idle_11: 1240285092
-      Bloomborne Enchanter - idle_2: -323710877
-      Bloomborne Enchanter - idle_3: 380894618
-      Bloomborne Enchanter - idle_4: 1835022269
-      Bloomborne Enchanter - idle_5: 536480163
-      Bloomborne Enchanter - idle_6: -1561735935
-      Bloomborne Enchanter - idle_7: -2023266577
-      Bloomborne Enchanter - idle_8: 171922163
-      Bloomborne Enchanter - idle_9: -1092706479
+      Idle_0: 2107788794
+      Idle_1: 1562714963
+      Idle_10: -154339306
+      Idle_11: -468659696
+      Idle_2: 525674428
+      Idle_3: 114446172
+      Idle_4: 1715910755
+      Idle_5: -1076722629
+      Idle_6: 527277340
+      Idle_7: 738020749
+      Idle_8: 2123279530
+      Idle_9: -1302503175
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

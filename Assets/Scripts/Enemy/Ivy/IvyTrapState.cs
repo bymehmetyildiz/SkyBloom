@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IvyTeleportState : EnemyState
+public class IvyTrapState : EnemyState
 {
     private Ivy enemy;
-    public IvyTeleportState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Ivy _enemy) : base(_baseEnemy, _stateMachine, _animBoolName)
+    public IvyTrapState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Ivy _enemy) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
         this.enemy = _enemy;
     }
@@ -13,16 +13,11 @@ public class IvyTeleportState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        enemy.canBeDamaged = false;
-
-       
-
     }
 
     public override void Exit()
     {
         base.Exit();
-        enemy.canBeDamaged = true;
     }
 
     public override void FixedUpdate()

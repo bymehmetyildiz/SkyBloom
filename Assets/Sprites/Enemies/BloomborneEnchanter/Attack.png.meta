@@ -93,16 +93,55 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_0
+      name: Attack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -111,19 +150,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d24e8eab343327549b2a816356306dbf
-      internalID: -414879590
+      spriteID: 0827ed9d5316cfc40ba99d68bcf1e892
+      internalID: 1302895430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_1
+      name: Attack_1
       rect:
         serializedVersion: 2
         x: 132
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -132,19 +171,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71f8e0f04ab44b2438142977747ea2ce
-      internalID: -470830713
+      spriteID: c7bfab39dd2517e4b8d16988b1d4840c
+      internalID: 636642373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_2
+      name: Attack_2
       rect:
         serializedVersion: 2
         x: 264
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -153,19 +192,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ab75f4a6a549234fafe8cda456cdead
-      internalID: 39603852
+      spriteID: 69774acf7dfb89f4baeded551a9065fb
+      internalID: 641951143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_3
+      name: Attack_3
       rect:
         serializedVersion: 2
         x: 396
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -174,19 +213,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0da9afc56220b942a99ec7c832d80ef
-      internalID: 946054499
+      spriteID: ca918da3281fa9c4dacefe81118b9eef
+      internalID: -495812194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_4
+      name: Attack_4
       rect:
         serializedVersion: 2
         x: 528
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -195,19 +234,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 225b9eeb0813af4469e9d41146ba76c4
-      internalID: 861366640
+      spriteID: 22ac6a9b702a16c47b979b4a25a5a666
+      internalID: 1788610436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_5
+      name: Attack_5
       rect:
         serializedVersion: 2
         x: 660
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -216,19 +255,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ac4639ab092fce4a9012cb7e50abc61
-      internalID: 1566233927
+      spriteID: 912985bf76b1b1c409d92f2d8f977eef
+      internalID: -1461138598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_6
+      name: Attack_6
       rect:
         serializedVersion: 2
         x: 792
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -237,19 +276,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e56bc0ff9ee47944981cd2210953c000
-      internalID: 1657937394
+      spriteID: 4c3628f2f7be09f4d9083d27a82d1fd6
+      internalID: -1150502560
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_7
+      name: Attack_7
       rect:
         serializedVersion: 2
         x: 924
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -258,19 +297,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ba537aad189d6c45be26573189afa1b
-      internalID: -923660208
+      spriteID: f4a3b065c5bbecf4fa67fcd36de117f4
+      internalID: 1519637658
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_8
+      name: Attack_8
       rect:
         serializedVersion: 2
         x: 1056
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -279,19 +318,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7c491c7b48505f41b5f4b98b231395f
-      internalID: 203464777
+      spriteID: a2a9687fc0129b64ebee87dd167a69c4
+      internalID: -266420823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_9
+      name: Attack_9
       rect:
         serializedVersion: 2
         x: 1188
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -300,19 +339,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a8185d2f5b5c704ab44dc1dac3176d4
-      internalID: 800319697
+      spriteID: 48e4eefcf3a7bdf47a13d61a5003e6c5
+      internalID: -2111835123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_10
+      name: Attack_10
       rect:
         serializedVersion: 2
         x: 1320
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -321,19 +360,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d51536d62aadf344aa0c284bd55fc414
-      internalID: 1920929708
+      spriteID: 75e55796ab37508469505bff262bb90b
+      internalID: 2072572013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_11
+      name: Attack_11
       rect:
         serializedVersion: 2
         x: 1452
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -342,19 +381,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fed600dfd05b5942ad0782c700226b4
-      internalID: -973000861
+      spriteID: 6691097589be19f4f876cfc96c8ded02
+      internalID: -1763873861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_12
+      name: Attack_12
       rect:
         serializedVersion: 2
         x: 1584
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -363,19 +402,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6020872a0d98ee45be570dfe57c1f48
-      internalID: 1699774132
+      spriteID: 2538e1891d4d0d5439f2b4cf2de620f5
+      internalID: 1073448046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_13
+      name: Attack_13
       rect:
         serializedVersion: 2
         x: 1716
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -384,19 +423,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c16ae09bf98d3034f8b3ca5b694da6b0
-      internalID: 1188772590
+      spriteID: a296ff9cc0e491a42b13b13ba5531dde
+      internalID: -1178819890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloomborne Enchanter - attack_14
+      name: Attack_14
       rect:
         serializedVersion: 2
         x: 1848
         y: 0
-        width: 132
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -405,8 +444,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce4efdeee9fb3624db1b9cd91b628864
-      internalID: -597775190
+      spriteID: 3abc2934eb86f7745b2725074e961d71
+      internalID: -1166270156
       vertices: []
       indices: 
       edges: []
@@ -422,21 +461,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bloomborne Enchanter - attack_0: -414879590
-      Bloomborne Enchanter - attack_1: -470830713
-      Bloomborne Enchanter - attack_10: 1920929708
-      Bloomborne Enchanter - attack_11: -973000861
-      Bloomborne Enchanter - attack_12: 1699774132
-      Bloomborne Enchanter - attack_13: 1188772590
-      Bloomborne Enchanter - attack_14: -597775190
-      Bloomborne Enchanter - attack_2: 39603852
-      Bloomborne Enchanter - attack_3: 946054499
-      Bloomborne Enchanter - attack_4: 861366640
-      Bloomborne Enchanter - attack_5: 1566233927
-      Bloomborne Enchanter - attack_6: 1657937394
-      Bloomborne Enchanter - attack_7: -923660208
-      Bloomborne Enchanter - attack_8: 203464777
-      Bloomborne Enchanter - attack_9: 800319697
+      Attack_0: 1302895430
+      Attack_1: 636642373
+      Attack_10: 2072572013
+      Attack_11: -1763873861
+      Attack_12: 1073448046
+      Attack_13: -1178819890
+      Attack_14: -1166270156
+      Attack_2: 641951143
+      Attack_3: -495812194
+      Attack_4: 1788610436
+      Attack_5: -1461138598
+      Attack_6: -1150502560
+      Attack_7: 1519637658
+      Attack_8: -266420823
+      Attack_9: -2111835123
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

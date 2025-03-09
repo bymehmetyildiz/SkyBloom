@@ -33,6 +33,9 @@ public class PlayerWallSlideState : PlayerState
     {
         base.Update();
 
+        if (!player.IsWallDetected())
+            stateMachine.ChangeState(player.idleState);
+
         if (xInput != 0 && player.facingDir == xInput && !player.IsGroundDetected())
             return;
 
@@ -42,9 +45,6 @@ public class PlayerWallSlideState : PlayerState
             return;
 
         }
-
-        if(!player.IsWallDetected())
-            stateMachine.ChangeState(player.idleState);
 
         if (xInput != 0 && player.facingDir != xInput && !player.IsGroundDetected())
             stateMachine.ChangeState(player.airState);

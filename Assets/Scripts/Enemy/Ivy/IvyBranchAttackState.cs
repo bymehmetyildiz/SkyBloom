@@ -9,4 +9,40 @@ public class IvyBranchAttackState : EnemyState
     {
         this.enemy = _enemy;
     }
+
+    public override void Enter()
+    {
+        base.Enter();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        enemy.stats.isDamaged = false;
+    }
+
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+
+        if (enemy.transform.position.x > player.transform.position.x && enemy.facingDir == 1)
+            enemy.Flip();
+        else if (enemy.transform.position.x <= player.transform.position.x && enemy.facingDir == -1)
+            enemy.Flip();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (enemy.stats.isDamaged)
+            stateMachine.ChangeState(enemy.hitState);
+
+        if ((enemy.IsPlayerDetected() && Vector2.Distance(player.transform.position, enemy.transform.position) < 1))
+            stateMachine.ChangeState(enemy.attackState);
+
+        if (!player.IsGroundDetected() && Vector2.Distance(player.transform.position, enemy.transform.position) > 1 && triggerCalled)
+            stateMachine.ChangeState(enemy.trapState);
+
+    }
 }
