@@ -42,9 +42,5 @@ public class IvyIdleState : EnemyState
 
         if ((enemy.IsPlayerDetected() && Vector2.Distance(player.transform.position, enemy.transform.position) < 1))
             stateMachine.ChangeState(enemy.attackState);
-
-        if (!player.IsGroundDetected() && Vector2.Distance(player.transform.position, enemy.transform.position) > 1 && triggerCalled)
-            stateMachine.ChangeState(enemy.trapState);
-
     }
 }

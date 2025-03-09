@@ -36,7 +36,9 @@ public class BranchController : MonoBehaviour
                     return;
 
                 player.SetupKnockBackDir(transform);
-                player.SetupKnockbackPower(new Vector2(3, 10));
+                if(!player.isBusy)
+                    player.SetupKnockbackPower(new Vector2(3, 10));
+
                 playerStats.TakeDamage(damage);
             }
         }

@@ -91,18 +91,6 @@ public class Ivy : Enemy
     {
         GameObject ballPrefab = Instantiate(ball, spawnPoint.position, Quaternion.identity);
     }
-
-    protected override void Update()
-    {
-        base.Update();
-
-        if(Input.GetKeyDown(KeyCode.V))
-        {
-            CreateBall();
-        }
-    }
-
-
 }
 
 

@@ -68,4 +68,15 @@ public class Enemy_AnimationTrigger : MonoBehaviour
         }
     }
 
+    // Create Trap (Ivy)
+    private void CreateBall()
+    {
+        if (enemy is Ivy)
+        {
+            Ivy ivy = (Ivy)enemy;
+            ivy.CreateBall();
+        }
+    }
+
+
 }

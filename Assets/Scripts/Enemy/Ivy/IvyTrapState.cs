@@ -31,5 +31,8 @@ public class IvyTrapState : EnemyState
 
         if (triggerCalled)
             stateMachine.ChangeState(enemy.idleState);
+
+        if (enemy.stats.isDamaged)
+            stateMachine.ChangeState(enemy.hitState);
     }
 }

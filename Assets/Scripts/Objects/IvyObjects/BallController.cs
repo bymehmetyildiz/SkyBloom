@@ -10,6 +10,8 @@ public class BallController : MonoBehaviour
     private Transform player;
     private Vector2 playerPositionAtSpawn;
     [SerializeField] private float maxHeight = 5f;
+    private BoxCollider2D bc;
+    private bool canTrap;
 
     void Start()
     {
@@ -17,8 +19,12 @@ public class BallController : MonoBehaviour
         animator = GetComponent<Animator>();
         player = PlayerManager.instance.player.transform;
         playerPositionAtSpawn = player.position;
+        canTrap = true;
+        bc = GetComponent<BoxCollider2D>();
         ShootProjectile();
     }
+
+    
 
     public void ShootProjectile()
     {
@@ -52,13 +58,36 @@ public class BallController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Player>() != null || collision.gameObject.layer == LayerMask.NameToLayer(ground))
+    {        
+        if (collision.gameObject.layer == LayerMask.NameToLayer(ground))
         {            
             animator.SetBool("Up", true);
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-
+            bc.size = new Vector2(0.25f, 0.5f);
+            transform.position += Vector3.up * 0.85f;
         }
-    }    
+
+        if (collision.GetComponent<Player>() != null)
+        {
+            if (canTrap)
+            {
+                Player player = collision.GetComponent<Player>();
+                player.isBusy = true;
+                player.SetZeroVelocity();
+                canTrap = false;
+            }
+        }
+    }
+
+    private IEnumerator SetTrapDown()
+    {
+        yield return new WaitForSeconds(2);
+        animator.SetBool("Up", false);        
+        yield return new WaitForSeconds(0.5f);
+        PlayerManager.instance.player.isBusy = false;
+
+    }
+
+    private void DestroyIvy() => Destroy(gameObject);
+
 }

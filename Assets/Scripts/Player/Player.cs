@@ -21,7 +21,7 @@ public class Player : Entity
     public bool isHanging;
     public Vector2 climbOffset;
     private float defaultMoveSpeed;
-    private float defaultJumpForce;
+    private float defaultJumpForce;   
 
     [Header("Block Info")]
     public float parryDur;
@@ -130,8 +130,7 @@ public class Player : Entity
         cc.radius = 0;
         defaultMoveSpeed = moveSpeed;
         defaultJumpForce = jumpForce;
-        defaultDashSpeed = dashSpeed;
-        
+        defaultDashSpeed = dashSpeed;        
     }
 
 
@@ -149,10 +148,10 @@ public class Player : Entity
         if(stats.isDead) 
             return;
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !isBusy)
             Inventory.instance.UseHealFlask();
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && !isBusy)
             Inventory.instance.UseMagicFlask();
     }
 
@@ -173,7 +172,7 @@ public class Player : Entity
     // Dash Check
     public void CheckDashInput()
     {
-        if (stats.isDead)
+        if (stats.isDead || isBusy)
             return;
 
         if (IsWallDetected())
