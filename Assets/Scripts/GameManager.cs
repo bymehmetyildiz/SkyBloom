@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     public bool isPlayerEnetered;
 
     [Header("Common")]
+    [SerializeField] private EnemyStats boss;
 
     [Header("Level 1")]
     [SerializeField] private DoorController enteranceGate;
-    [SerializeField] private DoorController exitGate;
+    public DoorController exitGate;
+ 
 
     private void Awake()
     {
@@ -28,6 +30,13 @@ public class GameManager : MonoBehaviour
         isPlayerEnetered = false;
     }
 
+    private void Update()
+    {
+        if(boss !=null)
+            if (boss.isDead)
+                IsBossDead();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.GetComponent<Player>() != null)
@@ -38,8 +47,17 @@ public class GameManager : MonoBehaviour
                 if (enteranceGate.isOpen)
                     StartCoroutine(enteranceGate.CloseGate(0));
             }
-            
+
         }
+    }
+
+    public void IsBossDead()
+    {
+        if (exitGate.isOpen)
+            return;
+
+        if(exitGate.isOpen == false)
+            StartCoroutine(exitGate.OpenGate(0));
     }
 
 }

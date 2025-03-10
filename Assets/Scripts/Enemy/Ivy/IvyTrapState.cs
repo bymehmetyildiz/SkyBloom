@@ -18,6 +18,7 @@ public class IvyTrapState : EnemyState
     public override void Exit()
     {
         base.Exit();
+        enemy.stats.isDamaged = false;
     }
 
     public override void FixedUpdate()
@@ -29,10 +30,12 @@ public class IvyTrapState : EnemyState
     {
         base.Update();
 
+        if (enemy.stats.isDamaged)
+            stateMachine.ChangeState(enemy.hitState);
+
         if (triggerCalled)
             stateMachine.ChangeState(enemy.idleState);
 
-        if (enemy.stats.isDamaged)
-            stateMachine.ChangeState(enemy.hitState);
+        
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Animator animator;
+    private Animator animator;    
     [SerializeField] private string ground = "Ground";
     private Transform player;
     private Vector2 playerPositionAtSpawn;
@@ -58,13 +58,16 @@ public class BallController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {        
+    {
         if (collision.gameObject.layer == LayerMask.NameToLayer(ground))
-        {            
-            animator.SetBool("Up", true);
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            bc.size = new Vector2(0.25f, 0.5f);
-            transform.position += Vector3.up * 0.85f;
+        {
+            if (rb.velocity.y < 0)
+            {
+                animator.SetBool("Up", true);
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                bc.size = new Vector2(0.25f, 0.5f);
+                transform.position += Vector3.up * 0.85f;
+            }
         }
 
         if (collision.GetComponent<Player>() != null)
@@ -72,6 +75,7 @@ public class BallController : MonoBehaviour
             if (canTrap)
             {
                 Player player = collision.GetComponent<Player>();
+                player.transform.position = new Vector2(transform.position.x, player.transform.position.y);
                 player.isBusy = true;
                 player.SetZeroVelocity();
                 canTrap = false;

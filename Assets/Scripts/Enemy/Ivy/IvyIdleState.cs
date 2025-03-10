@@ -21,6 +21,7 @@ public class IvyIdleState : EnemyState
     public override void Exit()
     {
         base.Exit();
+        enemy.stats.isDamaged = false;
     }
 
     public override void FixedUpdate()
@@ -36,6 +37,9 @@ public class IvyIdleState : EnemyState
     public override void Update()
     {
         base.Update();
+
+        if (enemy.stats.isDamaged)
+            stateMachine.ChangeState(enemy.hitState);
 
         if (GameManager.instance.isPlayerEnetered && Vector2.Distance(player.transform.position, enemy.transform.position) > 1 && player.IsGroundDetected())
             stateMachine.ChangeState(enemy.branchAttackState);

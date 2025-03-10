@@ -38,7 +38,7 @@ public class PlayerPrimaryAttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        player.StartCoroutine(player.CheckBusy(0.25f));
+        player.StartCoroutine(player.CheckBusy(0));
         player.stunTrigger = false;
         player.comboCounter++;
         lastAtttackTime = Time.time;

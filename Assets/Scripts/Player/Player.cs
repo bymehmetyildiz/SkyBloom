@@ -298,4 +298,21 @@ public class Player : Entity
     {
         knockBackPower = new Vector2(3,3);
     }
+
+    public bool IsGroundDetected(out float groundAngle)
+    {
+        
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+
+        if (hit.collider != null)
+        {
+            // Calculate the angle of the ground surface
+            Vector2 surfaceNormal = hit.normal;
+            groundAngle = Mathf.Atan2(surfaceNormal.x, surfaceNormal.y) * Mathf.Rad2Deg;
+            return true;
+        }
+
+        groundAngle = 0f;
+        return false;
+    }
 }
