@@ -285,6 +285,17 @@ public class Player : Entity
         {
             CollisionDamage(collision);
         }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("DangerZone"))
+        {
+            if (stats.isDead)
+                return;
+
+            stats.TakeDamage(stats.maxHealth.GetValue());
+
+            if(collision.gameObject.GetComponent<BoxCollider2D>() != null)
+            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
     }
 
     public void CollisionDamage(Collision2D collision)
@@ -315,4 +326,6 @@ public class Player : Entity
         groundAngle = 0f;
         return false;
     }
+
+    
 }
