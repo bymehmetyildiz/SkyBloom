@@ -47,17 +47,17 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer(targetLayerName))
         {
-            
-
-            Player player = collision.GetComponent<Player>();
-
-            if (player.stateMachine.currentState == player.blockState)
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                Destroy(gameObject);
-                Instantiate(hitParticle, transform.position, Quaternion.identity);
-                return;
-            }
+                Player player = collision.GetComponent<Player>();
 
+                if (player.stateMachine.currentState == player.blockState)
+                {
+                    Destroy(gameObject);
+                    Instantiate(hitParticle, transform.position, Quaternion.identity);
+                    return;
+                }
+            }
 
             if (projectileType == ProjectileType.Rock)
                 Explode(collision);

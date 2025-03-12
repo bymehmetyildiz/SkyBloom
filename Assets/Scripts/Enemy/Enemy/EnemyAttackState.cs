@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyAttackState : EnemyState
@@ -30,7 +31,7 @@ public class EnemyAttackState : EnemyState
     {
         base.Update();
 
-        if (triggerCalled)
+        if (triggerCalled || player.stats.isDead)
         {
             if (!enemy.IsPlayerDetected() || enemy.IsPlayerDetected().distance >= enemy.agroDistance)
                 stateMachine.ChangeState(enemy.idleState);
