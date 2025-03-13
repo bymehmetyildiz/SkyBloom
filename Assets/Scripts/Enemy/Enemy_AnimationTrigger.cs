@@ -29,6 +29,12 @@ public class Enemy_AnimationTrigger : MonoBehaviour
                 enemy.entityStats.DoDamage(playerStats);
             }
         }
+
+        if (enemy is Grim)
+        {
+            Grim grim = (Grim)enemy;
+            grim.fx.ScreenShake();
+        }
     }
 
     // Counter Attack
@@ -77,6 +83,18 @@ public class Enemy_AnimationTrigger : MonoBehaviour
             ivy.CreateBall();
         }
     }
+
+    // Create Spell (Grim)
+    private void CreateSpell()
+    {
+        if (enemy is Grim)
+        {
+            Grim grim = (Grim)enemy;
+            grim.CreateSpell();
+        }
+
+    }
+
 
 
 }

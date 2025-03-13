@@ -421,7 +421,7 @@ MonoBehaviour:
   moveSpeed: 3
   idleTime: 1
   agroTime: 5
-  player:
+  playerLayer:
     serializedVersion: 2
     m_Bits: 8
   detectDistance: 10
