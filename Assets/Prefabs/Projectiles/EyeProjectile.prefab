@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileType: 1
+  hitParticle: {fileID: 0}
   damage: 15
   targetLayerName: Player
   xVelocity: 5

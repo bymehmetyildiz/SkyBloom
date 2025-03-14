@@ -53,8 +53,18 @@ public class Projectile : MonoBehaviour
 
                 if (player.stateMachine.currentState == player.blockState)
                 {
-                    Destroy(gameObject);
-                    Instantiate(hitParticle, transform.position, Quaternion.identity);
+                    if (hitParticle != null)
+                    {
+                        Instantiate(hitParticle, transform.position, Quaternion.identity);
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        Explode(collision);
+                        Destroy(gameObject, 0.5f);
+                    }
+
+
                     return;
                 }
             }

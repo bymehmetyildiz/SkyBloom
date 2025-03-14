@@ -29,12 +29,6 @@ public class Enemy_AnimationTrigger : MonoBehaviour
                 enemy.entityStats.DoDamage(playerStats);
             }
         }
-
-        if (enemy is Grim)
-        {
-            Grim grim = (Grim)enemy;
-            grim.fx.ScreenShake();
-        }
     }
 
     // Counter Attack
