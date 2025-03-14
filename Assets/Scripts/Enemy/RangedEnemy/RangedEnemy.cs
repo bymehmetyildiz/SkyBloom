@@ -76,6 +76,12 @@ public class RangedEnemy : Enemy
 
     public override void InstantiateProjectile()
     {
-        Instantiate(projectile, spawnPoint.position, Quaternion.identity);
+        GameObject newObject = Instantiate(projectile, spawnPoint.position, Quaternion.identity);
+
+        if (facingDir < 0)
+        {
+            newObject.GetComponent<Projectile>().xVelocity = -1 * newObject.GetComponent<Projectile>().xVelocity;
+            newObject.GetComponent<Projectile>().transform.Rotate(0, 180, 0);
+        }
     }
 }

@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private string targetLayerName = "Player";
 
-    [SerializeField] private float xVelocity;
+    public float xVelocity;
     [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private bool canMove;
