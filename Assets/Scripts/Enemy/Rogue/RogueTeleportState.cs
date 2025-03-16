@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IvyTeleportState : EnemyState
+public class RogueTeleportState : EnemyState
 {
-    private Ivy enemy;
-    public IvyTeleportState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Ivy _enemy) : base(_baseEnemy, _stateMachine, _animBoolName)
+    private Rogue enemy;
+    public RogueTeleportState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Rogue _enemy) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
         this.enemy = _enemy;
     }
@@ -32,6 +32,7 @@ public class IvyTeleportState : EnemyState
         base.Update();
 
         if (triggerCalled)
-            stateMachine.ChangeState(enemy.idleState);
+            stateMachine.ChangeState(enemy.battleState);
+        
     }
 }

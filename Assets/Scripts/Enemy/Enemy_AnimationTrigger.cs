@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class Enemy_AnimationTrigger : MonoBehaviour
@@ -53,7 +54,23 @@ public class Enemy_AnimationTrigger : MonoBehaviour
             Ivy ivy = (Ivy)enemy;
             ivy.FindPosition();
         }
+        else if (enemy is Rogue)
+        {
+            Rogue rogue = (Rogue)enemy;
+            rogue.FindPosition();
+        }
+
     }
+
+    private void RelocateOnPlayer()
+    {
+        if (enemy is Rogue)
+        {
+            Rogue rogue = (Rogue)enemy;
+            rogue.transform.position = new Vector2(PlayerManager.instance.player.transform.position.x, PlayerManager.instance.player.transform.position.y + 3);
+        }
+    }
+
 
     private void MakeInvisible() => enemy.fx.MakeTransparent(true);
     private void MakeVisible() => enemy.fx.MakeTransparent(false);
