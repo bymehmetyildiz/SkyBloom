@@ -14,7 +14,7 @@ public class Enemy_AnimationTrigger : MonoBehaviour
     }
 
     // Trigger Damage
-    public void TriggerDamage()
+    public virtual void TriggerDamage()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(enemy.attackCheck.position, enemy.attackCheckDistance);
 
