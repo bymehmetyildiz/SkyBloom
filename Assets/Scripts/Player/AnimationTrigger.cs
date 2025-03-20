@@ -53,6 +53,8 @@ public class AnimationTrigger : MonoBehaviour
             {
                 Enemy enemy = colliders[i].GetComponent<Enemy>();
                 EnemyStats enemyStats = colliders[i].GetComponent<EnemyStats>();
+                if (enemyStats.isDead)
+                    return;
                               
                 StartCoroutine(Check(enemy, enemyStats));
             }
