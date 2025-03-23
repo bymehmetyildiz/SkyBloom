@@ -32,7 +32,7 @@ public class EnemyMoveState : EnemyGroundedState
     {
         base.Update();
 
-        if (enemy.IsWallDetected() || !enemy.IsGroundDetected())
+        if (enemy.IsWallDetected() || !enemy.IsGroundDetected() || enemy.IsDangerDetected())
             stateMachine.ChangeState(enemy.idleState);
     }
 }

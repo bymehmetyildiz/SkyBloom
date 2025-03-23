@@ -44,6 +44,7 @@ public class EntityStats : MonoBehaviour
     public int currentHealth;
     public int currentMagic;
     public bool isDead { get; private set; }
+    public bool isDamaged;
 
     public System.Action onHealthChanged;
     public bool isInvincible;
@@ -212,9 +213,8 @@ public class EntityStats : MonoBehaviour
     {
         if (isInvincible)
             return;
-
         DecreaseHealth(_damage);
-
+        
         if (currentHealth <= 0 && !isDead)
         {
             Dead();

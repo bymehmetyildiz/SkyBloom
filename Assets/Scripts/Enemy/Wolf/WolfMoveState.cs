@@ -30,7 +30,7 @@ public class WolfMoveState : WolfGroundedState
     {
         base.Update();
 
-        if (wolf.IsWallDetected() || !wolf.IsGroundDetected())
+        if (wolf.IsWallDetected() || !wolf.IsGroundDetected() || wolf.IsDangerDetected())
             stateMachine.ChangeState(wolf.idleState);
     }
 }

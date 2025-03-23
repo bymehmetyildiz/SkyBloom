@@ -31,6 +31,9 @@ public class EnemyAttackState : EnemyState
     {
         base.Update();
 
+        if (player.GetComponent<PlayerStats>().isDead)
+            stateMachine.ChangeState(enemy.idleState);
+
         if (triggerCalled || player.stats.isDead)
         {
             if (!enemy.IsPlayerDetected() || enemy.IsPlayerDetected().distance >= enemy.agroDistance)

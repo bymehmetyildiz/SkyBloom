@@ -49,7 +49,7 @@ public class GrimBattleState : EnemyState
 
         rangedTimer -= Time.deltaTime;
 
-        if (!enemy.IsGroundDetected() || enemy.IsWallDetected())
+        if (!enemy.IsGroundDetected() || enemy.IsWallDetected() || enemy.IsDangerDetected())
         {
             enemy.Flip();
             stateMachine.ChangeState(enemy.idleState);

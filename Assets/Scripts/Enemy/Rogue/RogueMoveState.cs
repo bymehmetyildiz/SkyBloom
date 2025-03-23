@@ -22,7 +22,7 @@ public class RogueMoveState : EnemyState
     {
         base.Update();
 
-        if (enemy.IsWallDetected() || !enemy.IsGroundDetected())
+        if (enemy.IsWallDetected() || !enemy.IsGroundDetected() || enemy.IsDangerDetected())
             stateMachine.ChangeState(enemy.idleState);
         if (enemy.IsPlayerDetected() || Vector2.Distance(player.transform.position, enemy.transform.position) < 1)
             stateMachine.ChangeState(enemy.battleState);

@@ -67,7 +67,7 @@ public class EyeBattleState : EnemyState
 
         }
 
-        if (eye.IsWallDetected() || !eye.IsGroundDetected())
+        if (eye.IsWallDetected() || !eye.IsGroundDetected() || eye.IsDangerDetected())
             stateMachine.ChangeState(eye.idleState);
 
         if (stateTimer < 0 || Vector2.Distance(player.transform.position, eye.transform.position) > 10)

@@ -38,7 +38,8 @@ public class IvyBranchAttackState : EnemyState
         if (enemy.stats.isDamaged)
             stateMachine.ChangeState(enemy.hitState);
 
-        if ((enemy.IsPlayerDetected() && Vector2.Distance(player.transform.position, enemy.transform.position) < 1))
+
+        if ((enemy.IsPlayerDetected() && Vector2.Distance(player.transform.position, enemy.transform.position) < 2))
             stateMachine.ChangeState(enemy.attackState);
 
         if (triggerCalled && !player.isBusy && player.IsGroundDetected())

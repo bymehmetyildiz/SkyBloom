@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TransformedBattleState : EnemyState
+
 {
     private TransformingEnemy enemy;
     private int moveDir;
@@ -59,7 +60,7 @@ public class TransformedBattleState : EnemyState
 
         }
 
-        if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10 || enemy.IsWallDetected())
+        if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10 || enemy.IsWallDetected() || enemy.IsDangerDetected())
             stateMachine.ChangeState(enemy.idleState);
 
     }

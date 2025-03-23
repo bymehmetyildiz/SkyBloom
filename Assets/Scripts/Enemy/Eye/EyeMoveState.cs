@@ -19,7 +19,7 @@ public class EyeMoveState : EyeGroundedState
     {
         base.Update();
 
-        if (eye.IsWallDetected() || !eye.IsGroundDetected())
+        if (eye.IsWallDetected() || !eye.IsGroundDetected() || eye.IsDangerDetected())
             stateMachine.ChangeState(eye.idleState);
     }
 }

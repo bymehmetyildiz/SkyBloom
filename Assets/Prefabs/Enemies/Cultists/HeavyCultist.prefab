@@ -323,6 +323,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  whatIsDanger:
+    serializedVersion: 2
+    m_Bits: 2048
   attackCheck: {fileID: 8709393848296625733}
   attackCheckDistance: 1
   facingDir: 1

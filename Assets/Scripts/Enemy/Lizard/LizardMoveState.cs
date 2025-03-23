@@ -30,7 +30,7 @@ public class LizardMoveState : LizardGroundedState
     {
         base.Update();
 
-        if (lizard.IsWallDetected() || !lizard.IsGroundDetected())
+        if (lizard.IsWallDetected() || !lizard.IsGroundDetected() || lizard.IsDangerDetected())
             stateMachine.ChangeState(lizard.idleState);
     }
 }

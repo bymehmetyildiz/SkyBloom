@@ -11,7 +11,7 @@ public class Player : Entity
     public PlayerStateMachine stateMachine { get; private set; }
     public SkillManager skillManager { get; private set; }
     public GameObject sword { get; private set; }
-    public EntityStats stats { get; private set; }
+    public PlayerStats stats { get; private set; }
     public CircleCollider2D cc { get; private set; }
 
     [Header("Move Info")]
@@ -124,7 +124,7 @@ public class Player : Entity
         stateMachine.Initialize(idleState);
         landTrigger = false;
         skillManager = SkillManager.instance;
-        stats = GetComponent<EntityStats>();
+        stats = GetComponent<PlayerStats>();
         cc = GetComponentInChildren<CircleCollider2D>();
         cc.enabled = false;
         cc.radius = 0;
@@ -141,7 +141,9 @@ public class Player : Entity
         stateMachine.currentState.Update();
         CheckDashInput();
         CheckHealInput();
+        
     }
+   
 
     private void CheckHealInput()
     {
@@ -291,10 +293,7 @@ public class Player : Entity
             if (stats.isDead)
                 return;
 
-            stats.TakeDamage(stats.maxHealth.GetValue());
-
-            if(collision.gameObject.GetComponent<BoxCollider2D>() != null)
-            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            stats.TakeDamage(stats.maxHealth.GetValue());          
         }
     }
 

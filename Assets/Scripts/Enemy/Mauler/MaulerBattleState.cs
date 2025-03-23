@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class MaulerBattleState : EnemyState
 {
@@ -50,7 +51,7 @@ public class MaulerBattleState : EnemyState
     {
         base.Update();
 
-        if (!mauler.IsGroundDetected())
+        if (!mauler.IsGroundDetected() || mauler.IsDangerDetected())
         {
             mauler.Flip();
             stateMachine.ChangeState(mauler.moveState);

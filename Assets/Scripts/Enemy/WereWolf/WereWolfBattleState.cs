@@ -68,7 +68,7 @@ public class WereWolfBattleState : EnemyState
             }
         }
 
-        if (wereWolf.IsWallDetected() || !wereWolf.IsGroundDetected())
+        if (wereWolf.IsWallDetected() || !wereWolf.IsGroundDetected() || wereWolf.IsDangerDetected())
             stateMachine.ChangeState(wereWolf.idleState);
 
         if (stateTimer < 0 || Vector2.Distance(player.transform.position, wereWolf.transform.position) > 10)

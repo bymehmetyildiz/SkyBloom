@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : EntityStats
 {
-    private Player player;
+    public Player player;
 
     protected override void Start()
     {
@@ -15,13 +15,19 @@ public class PlayerStats : EntityStats
     public override void TakeDamage(int _damage)
     {
         base.TakeDamage(_damage);
-
+        isDamaged = true;
         if (_damage > GetMaxHealth() * 0.3f)
-            player.SetupKnockbackPower(new Vector2(7, 10));
-
+            player.SetupKnockbackPower(new Vector2(7, 10));        
         player.DamageEffect();
-
+        player.StartCoroutine(IsDamagedDur());
     }
+
+    private IEnumerator IsDamagedDur()
+    {
+        yield return new WaitForSeconds(0.2f);
+        isDamaged = false;
+    }
+
 
     protected override void Dead()
     {

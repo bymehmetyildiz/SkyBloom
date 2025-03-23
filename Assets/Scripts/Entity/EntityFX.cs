@@ -29,15 +29,18 @@ public class EntityFX : MonoBehaviour
 
     private GameObject healthBar;
 
-    private void Start()
+    private void Awake()
     {
+        if (GetComponentInChildren<UI_HealthBar>() != null)
+            healthBar = GetComponentInChildren<UI_HealthBar>().gameObject;
+    }
+
+    private void Start()
+    {        
         sr = GetComponentInChildren<SpriteRenderer>();
         player = PlayerManager.instance.player;
         screenShake = GetComponent<CinemachineImpulseSource>();
         originalMat = sr.material;
-
-        if(GetComponentInChildren<UI_HealthBar>() != null )
-            healthBar = GetComponentInChildren<UI_HealthBar>().gameObject;
     }
 
     //ScreenShake
@@ -149,12 +152,15 @@ public class EntityFX : MonoBehaviour
         if (_transparent)
         {
             healthBar.SetActive(false);
-            sr.color = Color.clear;
+
+            if(sr != null)
+                sr.color = Color.clear;
         }
         else
         {
             healthBar.SetActive(true);
-            sr.color = Color.white;
+            if (sr != null)
+                sr.color = Color.white;
         }
     }
 

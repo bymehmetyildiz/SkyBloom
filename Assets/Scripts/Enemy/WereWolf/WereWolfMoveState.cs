@@ -34,7 +34,7 @@ public class WereWolfMoveState : WereWolfGroundedState
         if ((wereWolf.IsPlayerDetected() || Vector2.Distance(player.transform.position, wereWolf.transform.position) < 1))
             stateMachine.ChangeState(wereWolf.battleState);
 
-        if (wereWolf.IsWallDetected() || !wereWolf.IsGroundDetected())
+        if (wereWolf.IsWallDetected() || !wereWolf.IsGroundDetected() || wereWolf.IsDangerDetected())
             stateMachine.ChangeState(wereWolf.idleState);
     }
 }

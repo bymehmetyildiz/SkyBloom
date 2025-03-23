@@ -67,7 +67,7 @@ public class WolfBattleState : EnemyState
             }
         }
 
-        if (wolf.IsWallDetected() || !wolf.IsGroundDetected())
+        if (wolf.IsWallDetected() || !wolf.IsGroundDetected() || wolf.IsDangerDetected())
             stateMachine.ChangeState(wolf.idleState);
 
         if (stateTimer < 0 || Vector2.Distance(player.transform.position, wolf.transform.position) > 10)

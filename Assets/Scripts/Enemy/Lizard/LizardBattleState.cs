@@ -60,7 +60,7 @@ public class LizardBattleState : EnemyState
 
         }
 
-        if (lizard.IsWallDetected() || !lizard.IsGroundDetected())
+        if (lizard.IsWallDetected() || !lizard.IsGroundDetected() || lizard.IsDangerDetected())
             stateMachine.ChangeState(lizard.idleState);
 
         if (stateTimer < 0 || Vector2.Distance(player.transform.position, lizard.transform.position) > 10)

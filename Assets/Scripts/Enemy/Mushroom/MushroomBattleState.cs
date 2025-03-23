@@ -64,7 +64,7 @@ public class MushroomBattleState : EnemyState
             }
         }
 
-        if (mushroom.IsWallDetected() || !mushroom.IsGroundDetected())
+        if (mushroom.IsWallDetected() || !mushroom.IsGroundDetected() || mushroom.IsDangerDetected())
             stateMachine.ChangeState(mushroom.idleState);
 
         if (stateTimer < 0 || Vector2.Distance(player.transform.position, mushroom.transform.position) > 10)

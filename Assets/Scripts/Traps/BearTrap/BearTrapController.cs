@@ -14,7 +14,7 @@ public class BearTrapController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    
+
     public void Trap()
     {
         if (isTriggered)
@@ -25,11 +25,10 @@ public class BearTrapController : MonoBehaviour
             {
                 if (colliders[i].GetComponent<Player>() != null)
                 {
-                    //colliders[i].GetComponent<Enemy>().Damage(player.facingDir);
                     PlayerStats player = colliders[i].GetComponent<PlayerStats>();
-
+                    player.player.SetupKnockbackPower(transform.parent.up * 7);
                     player.TakeDamage(damage);
-
+                    
                 }
             }
         }
@@ -49,7 +48,5 @@ public class BearTrapController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, radius);
     }
-
-
 
 }

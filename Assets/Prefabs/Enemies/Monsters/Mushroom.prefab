@@ -461,8 +461,8 @@ MonoBehaviour:
   isShocked: 0
   currentHealth: 0
   currentMagic: 0
-  isInvincible: 0
   isDamaged: 0
+  isInvincible: 0
   level: 1
   percentageModifier: 0.4
 --- !u!114 &1412589414162842775
@@ -526,6 +526,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  whatIsDanger:
+    serializedVersion: 2
+    m_Bits: 2048
   attackCheck: {fileID: 2992859863036345205}
   attackCheckDistance: 0.7
   facingDir: 1
@@ -536,7 +539,7 @@ MonoBehaviour:
   stunDur: 1
   stunDir: {x: 3, y: 3}
   counterImage: {fileID: 4481529585724477767}
-  moveSpeed: 2
+  moveSpeed: 3
   idleTime: 2
   agroTime: 3
   playerLayer:
@@ -644,7 +647,7 @@ Transform:
   m_GameObject: {fileID: 6369202467472356622}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.167, y: 0.004, z: 0.043105505}
+  m_LocalPosition: {x: 0.167, y: -0.267, z: 0.043105505}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -999,7 +1002,7 @@ Transform:
   m_GameObject: {fileID: 8953145368944979922}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.208, y: -0.646, z: 0.043105505}
+  m_LocalPosition: {x: 0.314, y: -0.646, z: 0.043105505}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

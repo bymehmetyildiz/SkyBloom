@@ -563,6 +563,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  whatIsDanger:
+    serializedVersion: 2
+    m_Bits: 2048
   attackCheck: {fileID: 7477072242158898386}
   attackCheckDistance: 0.5
   facingDir: 1
@@ -578,7 +581,7 @@ MonoBehaviour:
   agroTime: 3
   playerLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   detectDistance: 4
   attackDistance: 0.5
   attackCoolDown: 0.4

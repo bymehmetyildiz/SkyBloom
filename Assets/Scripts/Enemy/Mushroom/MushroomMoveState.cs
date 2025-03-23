@@ -30,7 +30,7 @@ public class MushroomMoveState : MushroomGroundedState
     {
         base.Update();
 
-        if (mushroom.IsWallDetected() || !mushroom.IsGroundDetected())
+        if (mushroom.IsWallDetected() || !mushroom.IsGroundDetected() || mushroom.IsDangerDetected())
             stateMachine.ChangeState(mushroom.idleState);
     }
 }

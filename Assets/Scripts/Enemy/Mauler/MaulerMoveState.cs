@@ -29,7 +29,7 @@ public class MaulerMoveState : MaulerGroundedState
     {
         base.Update();
 
-        if (mauler.IsWallDetected() || !mauler.IsGroundDetected())
+        if (mauler.IsWallDetected() || !mauler.IsGroundDetected() || mauler.IsDangerDetected())
             stateMachine.ChangeState(mauler.idleState);
     }
 }

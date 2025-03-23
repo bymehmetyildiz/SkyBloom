@@ -69,7 +69,7 @@ public class ArmoredBattleState : EnemyState
 
         }
 
-        if (enemy.IsWallDetected() || !enemy.IsGroundDetected())
+        if (enemy.IsWallDetected() || !enemy.IsGroundDetected() || enemy.IsDangerDetected())
             stateMachine.ChangeState(enemy.idleState);
 
         if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10)

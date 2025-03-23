@@ -32,7 +32,7 @@ public class ArmoredMoveState : ArmoredGroundedState
     {
         base.Update();
 
-        if (enemy.IsWallDetected() || !enemy.IsGroundDetected())
+        if (enemy.IsWallDetected() || !enemy.IsGroundDetected() || enemy.IsDangerDetected())
             stateMachine.ChangeState(enemy.idleState);
     }
 }

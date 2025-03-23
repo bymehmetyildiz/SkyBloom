@@ -563,8 +563,8 @@ MonoBehaviour:
   isShocked: 0
   currentHealth: 0
   currentMagic: 0
-  isInvincible: 0
   isDamaged: 0
+  isInvincible: 0
   level: 1
   percentageModifier: 0.4
 --- !u!114 &8799160707993843890
@@ -622,6 +622,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  whatIsDanger:
+    serializedVersion: 2
+    m_Bits: 2048
   attackCheck: {fileID: 7729486752857791902}
   attackCheckDistance: 1
   facingDir: 1
@@ -637,7 +640,7 @@ MonoBehaviour:
   agroTime: 3
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   detectDistance: 11.1
   attackDistance: 0.8
   attackCoolDown: 0.4

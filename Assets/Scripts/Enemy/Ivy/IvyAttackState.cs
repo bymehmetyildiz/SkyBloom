@@ -39,5 +39,8 @@ public class IvyAttackState : EnemyState
         if (enemy.stats.isDamaged)
             stateMachine.ChangeState(enemy.hitState);
 
+        if (Vector2.Distance(player.transform.position, enemy.transform.position) > 2)
+            stateMachine.ChangeState(enemy.branchAttackState);
+
     }
 }

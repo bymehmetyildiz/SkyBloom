@@ -176,4 +176,14 @@ public class Enemy : Entity
 
     public virtual void InstantiateProjectile() { }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("DangerZone"))
+        {
+            if (stats.isDead)
+                return;
+
+            stats.TakeDamage(stats.maxHealth.GetValue());
+        }
+    }
 }

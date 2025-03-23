@@ -7,7 +7,7 @@ public class EnemyStats : EntityStats
 {
     private Enemy enemy;
     private ItemDrop dropSystem;
-    public bool isDamaged;
+    
 
     [Header("Level Details")]
     [SerializeField] private int level = 1;
