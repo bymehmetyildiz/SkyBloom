@@ -30,12 +30,17 @@ public class StandartMonsterBattleState : EnemyState
     {
         base.FixedUpdate();
 
-        if (player.transform.position.x > enemy.transform.position.x)
+        float dictanceToPlayer = Mathf.Abs(player.transform.position.x - enemy.transform.position.x);
+
+        if (dictanceToPlayer < 0.25f)
+            return;
+
+        if (player.transform.position.x >= enemy.transform.position.x)
             moveDir = 1;
         else if (player.transform.position.x < enemy.transform.position.x)
             moveDir = -1;
 
-        enemy.SetVelocity(enemy.moveSpeed * moveDir, rb.velocity.y);
+        enemy.SetVelocity(enemy.moveSpeed * 1.25f * moveDir, rb.velocity.y);
     }
 
     public override void Update()
@@ -58,12 +63,13 @@ public class StandartMonsterBattleState : EnemyState
                 stateMachine.ChangeState(enemy.attackState);
 
         }
+        else       
+        {
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10 )
+                stateMachine.ChangeState(enemy.idleState);
+        }
 
-        if (enemy.IsWallDetected() || !enemy.IsGroundDetected() || enemy.IsDangerDetected())
-            stateMachine.ChangeState(enemy.idleState);
-
-        if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10)
-            stateMachine.ChangeState(enemy.idleState);
+       
 
     }
 }

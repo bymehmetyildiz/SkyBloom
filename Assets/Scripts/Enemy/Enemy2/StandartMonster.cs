@@ -34,6 +34,7 @@ public class StandartMonster : Enemy
 
         if (stats.isDamaged && (stateMachine.currentState == idleState || stateMachine.currentState == moveState))
             stateMachine.ChangeState(battleState);
+
     }
 
     protected override void FixedUpdate()
