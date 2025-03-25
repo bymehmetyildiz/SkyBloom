@@ -6,13 +6,12 @@ using UnityEngine;
 public class Heal_Effect : ItemEffect
 {
     [Range(0f, 1f)]
-    [SerializeField] private float healthPercent;
-
+    public float percent;
     public override void ExecuteEffect(Transform _enemyPosition)
     {
         PlayerStats playerStats = PlayerManager.instance.player.GetComponent<PlayerStats>();
 
-        int healAmount = Mathf.RoundToInt(playerStats.GetMaxHealth() * healthPercent);
+        int healAmount = Mathf.RoundToInt(playerStats.GetMaxHealth() * percent);
 
         playerStats.IncreaseHealth(healAmount);
     }

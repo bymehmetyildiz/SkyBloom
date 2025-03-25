@@ -6,13 +6,12 @@ using UnityEngine;
 public class Magic_Effect : ItemEffect
 {
     [Range(0f, 1f)]
-    [SerializeField] private float magicPercent;
-
+    public float percent;
     public override void ExecuteEffect(Transform _enemyPosition)
     {
         PlayerStats playerStats = PlayerManager.instance.player.GetComponent<PlayerStats>();
 
-        int magicAmount = Mathf.RoundToInt(playerStats.maxMagic.GetValue() * magicPercent);
+        int magicAmount = Mathf.RoundToInt(playerStats.maxMagic.GetValue() * percent);
 
         playerStats.IncreaseMagic(magicAmount);
 

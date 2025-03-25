@@ -18,8 +18,7 @@ MonoBehaviour:
   dropChance: 100
   equipmentType: 0
   itemCooldown: 0
-  itemEffects:
-  - {fileID: 11400000, guid: 2d3194a691022c7479bc7dd39237efce, type: 2}
+  itemEffect: {fileID: 0}
   strength: 10
   agility: 0
   intelligence: 0
@@ -28,6 +27,7 @@ MonoBehaviour:
   critChance: 0
   critPower: 0
   maxHealth: 0
+  maxMagic: 0
   armor: 0
   evasion: 0
   magicResistance: 0

@@ -16,13 +16,13 @@ public class EntityStats : MonoBehaviour
     public Stat critPower;  //Default 150%
 
     [Header("Defensive Stats")]
-    public Stat maxHealth;
+    public Stat maxHealth;    
     public Stat armor;
     public Stat evasion;
     public Stat magicResistance;
 
     [Header("Magic Stats")]
-    public Stat maxMagic;
+    public Stat maxMagic;    
     public Stat fireDamage;
     public Stat iceDamage;
     public Stat shockDamage;

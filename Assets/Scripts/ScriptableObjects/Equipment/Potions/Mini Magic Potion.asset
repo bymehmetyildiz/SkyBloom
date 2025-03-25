@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Mini Magic Potion
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: Magic Potion
+  itemName: Mini Magic Potion
   itemIcon: {fileID: 1708383856, guid: 27fb482c6088ff64483c43db83a51ca1, type: 3}
   dropChance: 100
   equipmentType: 4
   itemCooldown: 2
-  itemEffects:
-  - {fileID: 11400000, guid: 9b5c1e5f32c70e54695fa46d9ac96d6d, type: 2}
+  itemEffect: {fileID: 11400000, guid: 9b5c1e5f32c70e54695fa46d9ac96d6d, type: 2}
   strength: 0
   agility: 0
   intelligence: 0

@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Health Potion
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: Big Health Potion
+  itemName: Health Potion
   itemIcon: {fileID: 1173000029, guid: 27fb482c6088ff64483c43db83a51ca1, type: 3}
   dropChance: 100
   equipmentType: 3
   itemCooldown: 2
-  itemEffects:
-  - {fileID: 11400000, guid: 818d0e27a4718044ca63298655060a2d, type: 2}
+  itemEffect: {fileID: 11400000, guid: 818d0e27a4718044ca63298655060a2d, type: 2}
   strength: 0
   agility: 0
   intelligence: 0
@@ -28,6 +27,7 @@ MonoBehaviour:
   critChance: 0
   critPower: 0
   maxHealth: 0
+  maxMagic: 0
   armor: 0
   evasion: 0
   magicResistance: 0

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fc78ba57430a24b9efb1ad896e95a3, type: 3}
   m_Name: Mini Magic
   m_EditorClassIdentifier: 
-  magicPercent: 0.25
+  percent: 0.25
