@@ -35,7 +35,7 @@ public class EnemyBattleState : EnemyState
         else if (player.transform.position.x < enemy.transform.position.x)
             moveDir = -1;
 
-        enemy.SetVelocity(enemy.moveSpeed * moveDir, rb.velocity.y);
+        enemy.SetVelocity(enemy.moveSpeed * moveDir * 1.5f, rb.velocity.y);
     }
 
     public override void Update()

@@ -40,7 +40,7 @@ public class StandartMonsterBattleState : EnemyState
         else if (player.transform.position.x < enemy.transform.position.x)
             moveDir = -1;
 
-        enemy.SetVelocity(enemy.moveSpeed * 1.25f * moveDir, rb.velocity.y);
+        enemy.SetVelocity(enemy.moveSpeed * 1.5f * moveDir, rb.velocity.y);
     }
 
     public override void Update()
