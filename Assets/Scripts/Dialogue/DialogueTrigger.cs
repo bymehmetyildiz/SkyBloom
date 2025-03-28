@@ -1,43 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DialogueTrigger : MonoBehaviour
 {    
     public Message[] messages;
     public Character[] characters;
 
-    private Player player;
-    private DialogueManager dialogueManager;
+    [SerializeField] private DialogueManager dialogueManager;
     private bool isSpoken = false;
-    private CapsuleCollider2D cc;
-    
+    [SerializeField] private CapsuleCollider2D cc;
 
-    private void Awake()
+    private bool canSpeak;
+    [SerializeField] private GameObject interactKey;
+
+    private void Start()
     {
-        player = FindObjectOfType<Player>();
-        dialogueManager = FindObjectOfType<DialogueManager>();
-        cc = GetComponent<CapsuleCollider2D>();
-        
+        canSpeak = false;
+        interactKey.SetActive(false);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {        
-
-        if (collision.gameObject.name == "Player")
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Player>() != null)
         {
-            
-            if (Input.GetKeyDown(KeyCode.E) && !isSpoken)
-            {                
-                dialogueManager.OpenDialoue(messages, characters);                
-                isSpoken=true;                
-            }
-        }     
 
+            if (interactKey.activeSelf == false && !isSpoken)
+                interactKey.SetActive(true);
+
+            canSpeak = true;
+           
+        }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Player>() != null)
+        {
+            if (interactKey.activeSelf == true)
+                interactKey.SetActive(false);
+
+            canSpeak = false;
+
+            if (dialogueManager != null)
+            {
+                dialogueManager.isActive = false;
+                dialogueManager.backgroundBox.SetActive(false);
+            }
+        }
+    }
+   
 
     private void Update()
     {
+        if (canSpeak)
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !isSpoken)
+            {
+                dialogueManager.OpenDialoue(messages, characters);
+                isSpoken = true;
+
+
+                if (interactKey.activeSelf == true)
+                    interactKey.SetActive(false);
+            }
+        }
+
         if (isSpoken && !dialogueManager.isActive)
         {
             cc.isTrigger = true;
@@ -52,6 +81,7 @@ public class DialogueTrigger : MonoBehaviour
 public class Message
 {
     public int characterID;
+    [TextArea(3, 10)]
     public string message;
 }
 

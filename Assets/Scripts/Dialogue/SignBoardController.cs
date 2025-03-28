@@ -9,9 +9,11 @@ public class SignBoardController : MonoBehaviour
 {
     [SerializeField] private GameObject tipPanel;
     [SerializeField] private GameObject interactKey;
+    [SerializeField] private TMP_Text header;
     [SerializeField] private TMP_Text description;
     [TextArea(3, 10)]
     [SerializeField] private string descriptionText;
+    [SerializeField] private string headerText;
     private bool canInteract;
 
     private void Start()
@@ -36,6 +38,7 @@ public class SignBoardController : MonoBehaviour
                 {
                     tipPanel.SetActive(true);
                     description.text = descriptionText;
+                    header.text = headerText;
                 }
                 else if (tipPanel.activeSelf == true)
                     tipPanel.SetActive(false);

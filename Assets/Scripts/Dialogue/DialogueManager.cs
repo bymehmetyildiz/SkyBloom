@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Text characterName;
-    public Text messageText;
+    public TMP_Text characterName;
+    public TMP_Text messageText;
     public GameObject backgroundBox;
 
     Message[] currentMessages;
@@ -38,31 +39,28 @@ public class DialogueManager : MonoBehaviour
 
     private void DisplayMessage()
     {
-        if (isTyping)
-        {
-            // If typing, stop the coroutine to instantly show the entire message.
-            StopAllCoroutines();
-            isTyping = false;
-            messageText.text = currentMessages[activeMessage].message;
-        }
-        else
-        {
-            // If not typing, start typing coroutine.
-            StartCoroutine(TypeMessage(currentMessages[activeMessage].message));
-        }
-
         characterName.text = currentCharacters[currentMessages[activeMessage].characterID].name;
+        StartCoroutine(TypeMessage(currentMessages[activeMessage].message));
     }
 
     // Coroutine to type the message letter by letter.
     private IEnumerator TypeMessage(string message)
     {
+        isTyping = true;
         messageText.text = "";
 
         foreach (char letter in message)
         {
             messageText.text += letter;
             yield return new WaitForSeconds(1 / typingSpeed);
+
+            // If E is pressed while typing, show full message instantly
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                messageText.text = message;
+                isTyping = false;
+                yield break; // Exit coroutine early
+            }
         }
 
         isTyping = false; // Typing is complete.
@@ -70,24 +68,35 @@ public class DialogueManager : MonoBehaviour
 
     public void NextMessage()
     {
-        activeMessage++;
-
-        if (activeMessage < currentMessages.Length)
+        if (isTyping)
         {
-            DisplayMessage();
+            // If typing, skip to the end of the current message
+            StopAllCoroutines();
+            messageText.text = currentMessages[activeMessage].message;
+            isTyping = false;
         }
         else
         {
-            isActive = false;
-            backgroundBox.SetActive(false);
+            // If not typing, move to the next message
+            activeMessage++;
+
+            if (activeMessage < currentMessages.Length)
+            {
+                DisplayMessage();
+            }
+            else
+            {
+                isActive = false;
+                backgroundBox.SetActive(false);
+            }
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isActive == true && !isTyping)
+        if (Input.GetKeyDown(KeyCode.E) && isActive)
         {
-            NextMessage();
+            NextMessage(); // Works both during typing and after
         }
     }
 }

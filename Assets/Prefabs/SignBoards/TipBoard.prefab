@@ -357,7 +357,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipPanel: {fileID: 6084321939884454481}
   interactKey: {fileID: 168582631945968973}
+  header: {fileID: 6692535245009883852}
   description: {fileID: 2148734911403998862}
+  descriptionText: Hold "A" or "D" To Move
+  headerText: 
 --- !u!61 &409336887955839172
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -602,7 +605,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hold "A" or "D" To Move
+  m_text: '
 
 '
   m_isRightToLeft: 0
