@@ -17,6 +17,8 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Start()
     {
+        dialogueManager = FindObjectOfType<DialogueManager>(true);
+        cc = GetComponent<CapsuleCollider2D>();
         canSpeak = false;
         interactKey.SetActive(false);
     }
