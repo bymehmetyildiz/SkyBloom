@@ -71,7 +71,8 @@ public class DialogueTrigger : MonoBehaviour
 
         if (isSpoken && !dialogueManager.isActive)
         {
-            cc.isTrigger = true;
+            if(cc != null)
+                cc.isTrigger = true;
         }
 
     }
