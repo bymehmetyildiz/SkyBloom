@@ -27,6 +27,7 @@ public class UI_InGame : MonoBehaviour
 
     void Start()
     {
+        playerStats = FindFirstObjectByType<PlayerStats>();
         if(playerStats != null)        
             playerStats.onHealthChanged += UpdateHealth;
     }
