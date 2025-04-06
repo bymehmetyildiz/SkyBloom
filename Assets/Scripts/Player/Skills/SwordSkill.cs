@@ -12,7 +12,7 @@ public enum SwordType
     Spin
 }
 
-public class SwordSkill : Skill
+public class SwordSkill : Skill, ISaveManager
 {
     public SwordType swordType = SwordType.None;   
     private int typeCounter;
@@ -66,6 +66,11 @@ public class SwordSkill : Skill
         SetupGravity();
      
         inGameUI.SwitchSwordIcon(typeCounter);
+
+        CheckRegular();
+        CheckPierce();
+        CheckSpin();
+        CheckBounce();
     }
 
     private void SetupGravity()
@@ -244,6 +249,14 @@ public class SwordSkill : Skill
         inGameUI.SwitchSwordIcon(typeCounter);
     }
 
+    public void LoadData(GameData _data)
+    {
+        if(_data.typeCounter != 0)
+            typeCounter = _data.typeCounter;
+    }
 
-   
+    public void SaveData(ref GameData _data)
+    {
+        _data.typeCounter = typeCounter;
+    }
 }

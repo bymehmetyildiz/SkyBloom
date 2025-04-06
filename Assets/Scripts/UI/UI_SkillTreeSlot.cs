@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISaveManager
 {
     private UI_Controller ui;
 
+    [SerializeField] private int skillCost;
     [SerializeField] private string skillName;
     [TextArea]
     [SerializeField] private string skillDecription;
-    [SerializeField] private int skillPrice;
 
     public bool unlocked;
 
@@ -38,9 +38,8 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         skillImage = skillLock.GetComponent<Image>();
         skillImage.gameObject.SetActive(!unlocked);
 
-
         ui = GetComponentInParent<UI_Controller>();
-
+        CheckThrowingSwordUnlock();
     }
 
     
@@ -49,14 +48,14 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if (unlocked)
             return;
 
-        if (PlayerManager.instance.HasEnoughMoney(skillPrice) == false)
+        if (PlayerManager.instance.HasEnoughMoney(skillCost) == false)
             return;
 
         for (int i = 0; i < shouldBeUnlocked.Length; i++)
         {
             if (shouldBeUnlocked[i].unlocked == false)
             {
-                Debug.Log("Can not unlock skill");                
+                Debug.Log("Can not unlock skill");
                 return;
             }
         }
@@ -65,21 +64,24 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         {
             if (shouldBeLocked[i].unlocked == true)
             {
-                Debug.Log("Can not unlock skill");                
+                Debug.Log("Can not unlock skill");
                 return;
             }
         }
 
         unlocked = true;
+        CheckThrowingSwordUnlock();
+        skillLock.UnlockSkill();
+
+    }
+
+    private static void CheckThrowingSwordUnlock()
+    {
         PlayerManager.instance.player.skillManager.swordSkill.CheckRegular(); // Addlistener kýsmý iþe yaramýyordu burda. Bu yüzden bu þekilde yaptým.
         PlayerManager.instance.player.skillManager.swordSkill.CheckPierce();// Addlistener kýsmý iþe yaramýyordu burda. Bu yüzden bu þekilde yaptým.
         PlayerManager.instance.player.skillManager.swordSkill.CheckSpin();// Addlistener kýsmý iþe yaramýyordu burda. Bu yüzden bu þekilde yaptým.
         PlayerManager.instance.player.skillManager.swordSkill.CheckBounce();// Addlistener kýsmý iþe yaramýyordu burda. Bu yüzden bu þekilde yaptým.
-        skillLock.UnlockSkill();
-        
     }
-
-
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -89,5 +91,25 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerExit(PointerEventData eventData)
     {
         ui.skillToolTip.HideToolTip();
+    }
+
+    public void LoadData(GameData _data)
+    {
+        if(_data.skillTree.TryGetValue(skillName, out bool value))
+        {
+            unlocked = value;
+        }
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        if (_data.skillTree.TryGetValue(skillName, out bool value))
+        {
+            _data.skillTree.Remove(skillName);
+            _data.skillTree.Add(skillName, unlocked);
+        }
+        else
+            _data.skillTree.Add(skillName, unlocked);
+
     }
 }

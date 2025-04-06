@@ -29,6 +29,7 @@ public class UI_Controller : MonoBehaviour
         itemToolTip.gameObject.SetActive(false);
         statToolTip.gameObject.SetActive(false);
         skillToolTip.gameObject.SetActive(false);
+        
     }
 
     void Update()
@@ -47,7 +48,7 @@ public class UI_Controller : MonoBehaviour
         if (_menu != null)
         {
             _menu.SetActive(true);
-        }       
+        }        
     }
 
     private void CheckInGameUI()
@@ -58,7 +59,7 @@ public class UI_Controller : MonoBehaviour
                 return;
 
         }
-        Switch(inGameUI);       
+        Switch(inGameUI);        
     }
 
     public void SwitchWithKey(GameObject _menu)

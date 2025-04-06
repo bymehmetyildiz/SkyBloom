@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 877282306645339435}
   - component: {fileID: 8065323698822370581}
   - component: {fileID: 8881516871254719295}
+  - component: {fileID: 3119706508791625515}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -229,15 +230,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 7223527764634556409}
-  groundCheckDistance: 0.3
+  groundCheckDistance: 0.27
   wallCheck: {fileID: 4502309387504810901}
-  wallCheckDistance: 0.05
+  wallCheckDistance: 0.26
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
   whatIsDanger:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   attackCheck: {fileID: 5753978747530447506}
   attackCheckDistance: 0.75
   facingDir: 1
@@ -271,7 +272,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2477324672487152043}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: b0da8a0dcb38b3542bb7ae3cdc94aa87, type: 2}
   m_IncludeLayers:
@@ -501,6 +502,51 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0, y: 0, z: 0}
+--- !u!61 &3119706508791625515
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477324672487152043}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: b0da8a0dcb38b3542bb7ae3cdc94aa87, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.023854256, y: 0.07667422}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5569935, y: 0.84665155}
+  m_EdgeRadius: 0
 --- !u!1 &2499409295548514524
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, ISaveManager
 {
     public static Inventory instance;
 
@@ -32,6 +33,12 @@ public class Inventory : MonoBehaviour
     [Header("Items Cooldown")]    
     private float lastUseTimeOfFlusk;
     private float flaskCooldown;
+
+    [Header("Data Base")]        
+    public List<InventoryItem> loadedItems;
+    public List<InventoryItem> loadedEquipment;
+
+    private int newStackSize = 0;
 
     private void Awake()
     {
@@ -62,11 +69,40 @@ public class Inventory : MonoBehaviour
       
     }
 
+    // Add starting Items
     private void StartItems()
     {
+        //foreach (ItemData_Equipment item in loadedEquipment)
+        //{
+        //    EquipItem(item);
+            
+        //}
+
+        foreach (InventoryItem item in loadedEquipment)
+        {
+            newStackSize = item.stackSize;
+            EquipItem(item.data);
+        }
+
+
+        if (loadedItems.Count > 0)
+        {
+            foreach (InventoryItem item in loadedItems)
+            {
+                for (int i = 0; i < item.stackSize; i++)
+                {
+                    AddItem(item.data);
+                }
+            }
+
+            return;
+        }
+
+
         for (int i = 0; i < startingItems.Count; i++)
         {
-            AddItem(startingItems[i]);
+            if (startingItems[i] != null)
+                AddItem(startingItems[i]);
         }
     }
 
@@ -112,8 +148,7 @@ public class Inventory : MonoBehaviour
         if (newEquipment.equipmentType == EquipmentType.HealFlask ||
             newEquipment.equipmentType == EquipmentType.MagicFlask)
         {
-            // Get current stack size before removing from inventory
-            int newStackSize = 0;
+            // Get current stack size before removing from inventory            
             if (inventoryDictionary.TryGetValue(_item, out InventoryItem inventoryItem))
             {
                 newStackSize = inventoryItem.stackSize;
@@ -274,7 +309,6 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-
     //Add Stash
     private void AddStash(ItemData _item)
     {
@@ -373,7 +407,6 @@ public class Inventory : MonoBehaviour
 
         return true;
     }
-
     public List<InventoryItem> GetEquipmentList() => equipment;
     public List<InventoryItem> GetStashList() => stash;
     public ItemData_Equipment GetEquipment(EquipmentType _type)
@@ -511,5 +544,71 @@ public class Inventory : MonoBehaviour
             Debug.Log("Effect On Cooldown");
         }
     }
+
+    public void LoadData(GameData _data)
+    {
+        foreach (KeyValuePair<string, int> pair in _data.inventory)
+        {
+            foreach (var item in GetItemDataBase())
+            {
+                if (item != null && item.itemId == pair.Key)
+                {
+                    InventoryItem itemToLoad = new InventoryItem(item);
+                    itemToLoad.stackSize = pair.Value;
+
+                    loadedItems.Add(itemToLoad);
+                }
+
+            }
+        }
+
+        foreach (KeyValuePair<string, int> pair in _data.equipment)
+        {
+            foreach (var item in GetItemDataBase())
+            {
+                if (item != null && item.itemId == pair.Key)
+                {
+                    InventoryItem itemToLoad = new InventoryItem(item);
+                    itemToLoad.stackSize = pair.Value;
+                   
+                    loadedEquipment.Add(itemToLoad);
+                }
+            }
+        }
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.inventory.Clear();
+        _data.equipment.Clear();
+
+        foreach (KeyValuePair<ItemData, InventoryItem> pair in inventoryDictionary)
+        {
+            _data.inventory.Add(pair.Key.itemId, pair.Value.stackSize);
+        }
+
+        foreach (KeyValuePair<ItemData_Equipment, InventoryItem> pair in equipmentDictionary)
+        {
+            _data.equipment.Add(pair.Key.itemId, pair.Value.stackSize);
+            
+        }
+
+    }
+
+    private List<ItemData> GetItemDataBase()
+    {
+        List<ItemData> itemDataBase = new List<ItemData>();
+        string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/Data/Equipment" });
+
+        foreach (string SOName in assetNames) // SOName = Scriptable Object Name;
+        {
+            var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
+            var itemData = AssetDatabase.LoadAssetAtPath<ItemData>(SOpath);
+            itemDataBase.Add(itemData);
+        }
+
+        return itemDataBase;
+    }
+
 }
 
