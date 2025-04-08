@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: 2c9e2341bc4a70f4e8487b4d04bb32ab
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tile_jungle_plants_objects 1_0
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 155
+        width: 64
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 662598d15eb301549bd5df4bdfb48ca2
+      internalID: -964306685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      tile_jungle_plants_objects 1_0: -964306685
+      tile_jungle_plants_objects 1_1: 1922611955
+      tile_jungle_plants_objects 1_10: -904739962
+      tile_jungle_plants_objects 1_11: 673859469
+      tile_jungle_plants_objects 1_12: -307497355
+      tile_jungle_plants_objects 1_13: -803170751
+      tile_jungle_plants_objects 1_14: -1140490056
+      tile_jungle_plants_objects 1_15: -630328144
+      tile_jungle_plants_objects 1_16: -1766963313
+      tile_jungle_plants_objects 1_17: 99483837
+      tile_jungle_plants_objects 1_18: 1486940660
+      tile_jungle_plants_objects 1_19: 1770900584
+      tile_jungle_plants_objects 1_2: -1823589694
+      tile_jungle_plants_objects 1_20: 1162330402
+      tile_jungle_plants_objects 1_21: 1570176200
+      tile_jungle_plants_objects 1_22: -342056336
+      tile_jungle_plants_objects 1_23: -946876222
+      tile_jungle_plants_objects 1_24: -1550084093
+      tile_jungle_plants_objects 1_25: -1177441179
+      tile_jungle_plants_objects 1_26: -750591444
+      tile_jungle_plants_objects 1_27: -1540163013
+      tile_jungle_plants_objects 1_28: -466870483
+      tile_jungle_plants_objects 1_29: 95670326
+      tile_jungle_plants_objects 1_3: -829557588
+      tile_jungle_plants_objects 1_30: -156112440
+      tile_jungle_plants_objects 1_31: -1077199284
+      tile_jungle_plants_objects 1_32: -1149983947
+      tile_jungle_plants_objects 1_33: -57921615
+      tile_jungle_plants_objects 1_34: -433912298
+      tile_jungle_plants_objects 1_35: -779264875
+      tile_jungle_plants_objects 1_36: 1751833285
+      tile_jungle_plants_objects 1_37: -1138032292
+      tile_jungle_plants_objects 1_38: 385123055
+      tile_jungle_plants_objects 1_39: 2119010403
+      tile_jungle_plants_objects 1_4: -1724647623
+      tile_jungle_plants_objects 1_40: 754222035
+      tile_jungle_plants_objects 1_41: -244682849
+      tile_jungle_plants_objects 1_42: -827559481
+      tile_jungle_plants_objects 1_43: 1871590193
+      tile_jungle_plants_objects 1_44: 1641160796
+      tile_jungle_plants_objects 1_45: 784351037
+      tile_jungle_plants_objects 1_46: -877918992
+      tile_jungle_plants_objects 1_5: 1976700200
+      tile_jungle_plants_objects 1_6: 1049737283
+      tile_jungle_plants_objects 1_7: -1515484776
+      tile_jungle_plants_objects 1_8: 1513085408
+      tile_jungle_plants_objects 1_9: 1617485962
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
