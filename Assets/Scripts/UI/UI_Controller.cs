@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class UI_Controller : MonoBehaviour
 {
+    [Header("End Screen")]
+    [SerializeField] private UI_FadeScreen fadeScreen;
+    [SerializeField] private GameObject endText;
+    [Space]
+
     public static UI_Controller instance;
 
     [SerializeField] private GameObject[] inventoryElemnets;
@@ -40,9 +45,13 @@ public class UI_Controller : MonoBehaviour
 
     public void Switch(GameObject _menu)
     {
+
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            bool fadeScreen = transform.GetChild(i).GetComponent<UI_FadeScreen>() != null; // This is to keep FadeScreen active.
+
+            if(!fadeScreen)
+                transform.GetChild(i).gameObject.SetActive(false);
         }
 
         if (_menu != null)
@@ -74,7 +83,17 @@ public class UI_Controller : MonoBehaviour
 
     }
 
-    
+    public void SwitchOnEndScreen()
+    {    
+        fadeScreen.FadeOut();
+        StartCoroutine(EndScreen());
+    }
 
+    IEnumerator EndScreen()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        endText.SetActive(true);
+    }
 
 }

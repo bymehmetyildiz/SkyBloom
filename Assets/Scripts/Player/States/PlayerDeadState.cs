@@ -12,7 +12,8 @@ public class PlayerDeadState : PlayerState
     {
         base.Enter();
         player.GetComponentInChildren<AnimationTrigger>().AnimTrigger();
-        
+
+        UI_Controller.instance.SwitchOnEndScreen();
     }
 
     public override void Exit()
