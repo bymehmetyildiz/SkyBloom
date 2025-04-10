@@ -8,6 +8,7 @@ public class UI_Controller : MonoBehaviour
     [Header("End Screen")]
     [SerializeField] private UI_FadeScreen fadeScreen;
     [SerializeField] private GameObject endText;
+    [SerializeField] private GameObject restartButton;
     [Space]
 
     public static UI_Controller instance;
@@ -25,10 +26,13 @@ public class UI_Controller : MonoBehaviour
             instance = this;
         else
             Destroy(instance.gameObject);
+
     }
 
     private void Start()
     {
+        fadeScreen.gameObject.SetActive(true);
+
         Switch(inGameUI);
 
         itemToolTip.gameObject.SetActive(false);
@@ -84,7 +88,7 @@ public class UI_Controller : MonoBehaviour
     }
 
     public void SwitchOnEndScreen()
-    {    
+    {  
         fadeScreen.FadeOut();
         StartCoroutine(EndScreen());
     }
@@ -92,8 +96,10 @@ public class UI_Controller : MonoBehaviour
     IEnumerator EndScreen()
     {
         yield return new WaitForSeconds(1.5f);
-
         endText.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        restartButton.SetActive(true);
     }
 
+    public void RestartGameButton() => GameManager.instance.RestartScene();
 }

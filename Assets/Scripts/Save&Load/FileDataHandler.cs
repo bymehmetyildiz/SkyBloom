@@ -29,7 +29,7 @@ public class FileDataHandler
 
             string dataToStore = JsonUtility.ToJson(_data, true);
 
-            if(encryptData)
+            if (encryptData)
                 dataToStore = EncryptDecrypt(dataToStore);
 
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
@@ -67,7 +67,7 @@ public class FileDataHandler
 
                 }
 
-                if(encryptData)
+                if (encryptData)
                     dataToLoad = EncryptDecrypt(dataToLoad);
 
                 loadData = JsonUtility.FromJson<GameData>(dataToLoad);

@@ -48,7 +48,7 @@ public class ItemData_Equipment : ItemData
     
 
     public void Effect(Transform _enemyPosition)
-    {
+    {        
         itemEffect.ExecuteEffect(_enemyPosition);
     }
 

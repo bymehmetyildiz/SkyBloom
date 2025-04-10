@@ -72,11 +72,6 @@ public class Inventory : MonoBehaviour, ISaveManager
     // Add starting Items
     private void StartItems()
     {
-        //foreach (ItemData_Equipment item in loadedEquipment)
-        //{
-        //    EquipItem(item);
-            
-        //}
 
         foreach (InventoryItem item in loadedEquipment)
         {
@@ -85,7 +80,7 @@ public class Inventory : MonoBehaviour, ISaveManager
         }
 
 
-        if (loadedItems.Count > 0)
+        if (SaveManager.instance.HasSavedData())
         {
             foreach (InventoryItem item in loadedItems)
             {
