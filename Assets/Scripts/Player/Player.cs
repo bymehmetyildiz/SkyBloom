@@ -136,6 +136,9 @@ public class Player : Entity
 
     protected override void Update()
     {
+        if (Time.timeScale == 0.0f)
+            return;
+
         base.Update();
         cooldownTimer -= Time.deltaTime;
         stateMachine.currentState.Update();

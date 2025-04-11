@@ -36,11 +36,7 @@ public class GameManager : MonoBehaviour, ISaveManager
     private void Start()
     {
         isPlayerEnetered = false;
-        
     }
-
-    
-
 
     private void Update()
     {
@@ -81,6 +77,15 @@ public class GameManager : MonoBehaviour, ISaveManager
         SceneManager.LoadScene(scene.name);
     }
 
+    public void ReturnToMenu()
+    {
+        SaveManager.instance.SaveGame();
+        SceneManager.LoadScene("Menu");
+    }
+
+   
+
+
     public void LoadData(GameData _data)
     {
         foreach (KeyValuePair<string, bool> pair in _data.checkPoints)
@@ -110,7 +115,9 @@ public class GameManager : MonoBehaviour, ISaveManager
 
     public void SaveData(ref GameData _data)
     {
-        _data.closestCheckPointId = FindClosestCheckPoint().id;
+        var closest = FindClosestCheckPoint();
+        _data.closestCheckPointId = closest != null ? closest.id : string.Empty;
+
         _data.checkPoints.Clear();
 
         foreach (CheckPoint checkPoint in checkPoints)
@@ -133,10 +140,18 @@ public class GameManager : MonoBehaviour, ISaveManager
                 closestDistance = distanceTocheckPoint;
                 closestCheckPoint = checkPoint;
             }
-
         }
-
+     
         return closestCheckPoint;
+     
+    }
+
+    public void PauseGame(bool _isPaused)
+    {
+        if(_isPaused)
+            Time.timeScale = 0.0f;
+        else
+            Time.timeScale = 1.0f;
     }
 
 }

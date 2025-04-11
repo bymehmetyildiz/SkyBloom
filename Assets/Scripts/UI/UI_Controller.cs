@@ -9,6 +9,7 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private UI_FadeScreen fadeScreen;
     [SerializeField] private GameObject endText;
     [SerializeField] private GameObject restartButton;
+    [SerializeField] private GameObject returnMenuButton;
     [Space]
 
     public static UI_Controller instance;
@@ -61,7 +62,17 @@ public class UI_Controller : MonoBehaviour
         if (_menu != null)
         {
             _menu.SetActive(true);
-        }        
+        }   
+        
+        if (GameManager.instance != null)
+        {
+            if (_menu == inGameUI)
+                GameManager.instance.PauseGame(false);
+            else
+                GameManager.instance.PauseGame(true);
+
+        }
+
     }
 
     private void CheckInGameUI()
@@ -99,7 +110,10 @@ public class UI_Controller : MonoBehaviour
         endText.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         restartButton.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        returnMenuButton.SetActive(true);
     }
 
     public void RestartGameButton() => GameManager.instance.RestartScene();
+    public void ReturnToMenu() => GameManager.instance.ReturnToMenu();
 }

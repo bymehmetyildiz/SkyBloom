@@ -28,12 +28,14 @@ public class SaveManager : MonoBehaviour
             Destroy(instance.gameObject);
         else
             instance = this;
+
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
+        saveManagers = FindAllSaveManagers();
     }
 
     private void Start()
     {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
-        saveManagers = FindAllSaveMAnagers();
+      
 
         LoadGame();
     }
@@ -73,7 +75,7 @@ public class SaveManager : MonoBehaviour
         SaveGame();
     }
 
-    private List<ISaveManager> FindAllSaveMAnagers()
+    private List<ISaveManager> FindAllSaveManagers()
     {
         IEnumerable<ISaveManager> saveManagers = FindObjectsOfType<MonoBehaviour>().OfType<ISaveManager>();
 

@@ -69,7 +69,13 @@ public class AnimationTrigger : MonoBehaviour
            yield break;
         player.entityStats.DoDamage(enemyStats);
         enemyStats.isDamaged = true;
-        Inventory.instance.GetEquipment(EquipmentType.Weapon)?.Effect(enemyStats.transform);
+
+        var weapon = Inventory.instance.GetEquipment(EquipmentType.Weapon);
+
+        if (weapon != null && weapon.itemEffect != null)
+        {
+            weapon.Effect(enemyStats.transform);
+        }
     }
 
 
