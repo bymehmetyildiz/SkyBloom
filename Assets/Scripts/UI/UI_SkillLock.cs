@@ -10,7 +10,7 @@ public class UI_SkillLock : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-
+        anim.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     public void UnlockSkill() => anim.SetBool("Open", true);

@@ -38,6 +38,15 @@ public class ItemObject : MonoBehaviour
 
     public void PickUpItem()
     {
+        if (itemData.itemType == ItemType.Currency)
+        {
+            ItemData_Currency item = (ItemData_Currency)itemData;
+            item.Effect(null);
+            Destroy(gameObject);
+            return;
+        }
+
+
         if (!Inventory.instance.CanAddItem() && itemData.itemType == ItemType.Equipment)
         {
             rb.velocity = Vector2.up * 7;

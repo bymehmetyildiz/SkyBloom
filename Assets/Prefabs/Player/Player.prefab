@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 7223527764634556409}
-  groundCheckDistance: 0.27
+  groundCheckDistance: 0.21
   wallCheck: {fileID: 4502309387504810901}
   wallCheckDistance: 0.26
   whatIsGround:
@@ -272,7 +272,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2477324672487152043}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: b0da8a0dcb38b3542bb7ae3cdc94aa87, type: 2}
   m_IncludeLayers:
@@ -509,7 +509,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2477324672487152043}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: b0da8a0dcb38b3542bb7ae3cdc94aa87, type: 2}
   m_IncludeLayers:

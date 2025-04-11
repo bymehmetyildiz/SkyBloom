@@ -1,0 +1,251 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1986760475080838364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 560177628208119299}
+  - component: {fileID: 3804695925817104544}
+  - component: {fileID: 7417479910659363670}
+  - component: {fileID: 3502396741944618156}
+  - component: {fileID: 2736771323662772430}
+  - component: {fileID: 4182868779387240031}
+  - component: {fileID: 5422945978566729308}
+  - component: {fileID: 7966722370178359297}
+  - component: {fileID: 1792067388260509234}
+  - component: {fileID: 8002909262498766297}
+  - component: {fileID: 6719829022349310088}
+  m_Layer: 0
+  m_Name: SkillManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &560177628208119299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986760475080838364}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -120.87532, y: 0.3841251, z: -0.027190246}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3804695925817104544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986760475080838364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407c61a1a09bb584f8391d13bd868111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7417479910659363670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986760475080838364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04ab657440a56a438eac2345d7fea33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 1
+  magicAmount: 30
+  skillButton: {fileID: 0}
+--- !u!114 &3502396741944618156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986760475080838364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663f166badae60b41bbbae32f2259bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 2
+  magicAmount: 20
+  skillButton: {fileID: 0}
+  fireDisc: {fileID: 9022445169282410151, guid: 77b8a75b4586bcf45acdac9f14980b2e, type: 3}
+  hitEffect: {fileID: 80184903843971099, guid: 6aa0e1ccb6409e845a7072fef95e01a6, type: 3}
+  speed: 15
+  xOffset: 1
+  yOffset: 0.2
+--- !u!114 &2736771323662772430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986760475080838364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67fbe73888507934cbb42e5042c9a2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 2
+  magicAmount: 35
+  skillButton: {fileID: 0}
+--- !u!114 &4182868779387240031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986760475080838364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50240527cfa4f2f4ba1c5d329ddb6c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 2
+  magicAmount: 40
+  skillButton: {fileID: 0}
+--- !u!114 &5422945978566729308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986760475080838364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae96587ae17c77f4ba83826f644594cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  magicAmount: 25
+  skillButton: {fileID: 0}
+  swordType: 0
+  inGameUI: {fileID: 0}
+  bounceSkillButton: {fileID: 0}
+  isBounceUnlocked: 0
+  bounceAmount: 15
+  bounceGravity: 4
+  pierceSkillButton: {fileID: 0}
+  isPierceUnlocked: 0
+  pierceAmount: 2
+  pierceGravity: 1
+  regularSkillButton: {fileID: 0}
+  isRegularUnlocked: 0
+  swordPrefab: {fileID: 7950115251636102032, guid: d6e5fd6a8e7110b4694c531839db374d, type: 3}
+  launchForce: {x: 35, y: 25}
+  swordGravity: 4
+  regularGravity: 4
+  freezeDur: 1
+  returnSpeed: 12
+  spinSkillButton: {fileID: 0}
+  isSpinUnlocked: 0
+  maxTravelDistance: 7
+  spinDuration: 1
+  spinGravity: 1
+  damageCooldown: 0.35
+  numberOfDots: 20
+  spaceBetweenDots: 0.05
+  dotPrefab: {fileID: 5625007569401625409, guid: d4fd0b7f01c30214ebeed23534eb4903, type: 3}
+  dotParent: {fileID: 0}
+--- !u!114 &7966722370178359297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986760475080838364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 370607a3456b7354cae2626d9ad268e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  magicAmount: 40
+  skillButton: {fileID: 0}
+  aerialSlamHit: {fileID: 2163835418000299438, guid: a5418878c2195234b9800980acd0b123, type: 3}
+  hitPosition: {fileID: 0}
+--- !u!114 &1792067388260509234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986760475080838364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc42d23d54ef0484da21eeac335a1a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 2
+  magicAmount: 40
+  skillButton: {fileID: 0}
+  explosionTransformPrefab: {fileID: 7122322077111855398, guid: 4291ba10c18c215488d52b523bca5cea, type: 3}
+  explosionPrefab: {fileID: 2163835418000299438, guid: a5418878c2195234b9800980acd0b123, type: 3}
+  groundCheckDistance: 0.45
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  speed: 6
+  expTimer: 0.1
+--- !u!114 &8002909262498766297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986760475080838364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f35ccf5e2f373142aaee03a371efc6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  magicAmount: 45
+  skillButton: {fileID: 0}
+  rainSwordPrefab: {fileID: 4447672558334270982, guid: 5ad1b55a4caccd94aad6497253d4da98, type: 3}
+  rainStuckPrefab: {fileID: 986826730891403745, guid: 09010b40d1120564dae8be26a9eaa45e, type: 3}
+  hitEffect: {fileID: 6764977949068930053, guid: 52e78a75119217f4dbf7132bdc26fb93, type: 3}
+  defaultSword: 100
+  rainDuration: 0.02
+  rainSpeed: 35
+  destroyDur: 100
+  canRain: 0
+  defaultStuck: 5
+--- !u!114 &6719829022349310088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986760475080838364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e796e0575347bd747a1b404f4f50a0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  magicAmount: 50
+  skillButton: {fileID: 0}
+  blackHolePrefab: {fileID: 6035624875270058622, guid: 0ceb8e97951383b4e8ded1d4dd5cfd98, type: 3}
+  spawnedBlackHole: {fileID: 0}
+  canGrow: 0
+  damage: 15
+  maxSize: 15
+  growSpeed: 2
+  castDelayTime: 2
+  speed: 50
+  offset: 3.5

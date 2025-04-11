@@ -18,6 +18,7 @@ public class UI_InGame : MonoBehaviour
     [SerializeField] private Sprite[] swordSkillSprites;
     [SerializeField] private Image swordSkillImage;
 
+    [Header("Currency Info")]
     [SerializeField] private TextMeshProUGUI currencyText;
 
     private void Awake()
@@ -35,7 +36,7 @@ public class UI_InGame : MonoBehaviour
     
     void Update()
     {
-       currencyText.text = PlayerManager.instance.GetCurrency().ToString("#,#");
+       currencyText.text = PlayerManager.instance.GetCurrency().ToString();
     }
 
     public void UpdateHealth()

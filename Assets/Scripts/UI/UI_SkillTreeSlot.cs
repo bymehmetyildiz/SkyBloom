@@ -60,19 +60,11 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
             }
         }
 
-        for (int i = 0; i < shouldBeLocked.Length; i++)
-        {
-            if (shouldBeLocked[i].unlocked == true)
-            {
-                Debug.Log("Can not unlock skill");
-                return;
-            }
-        }
+        PlayerManager.instance.SpendCurrency(skillCost);
 
         unlocked = true;
         CheckThrowingSwordUnlock();
         skillLock.UnlockSkill();
-
     }
 
     private static void CheckThrowingSwordUnlock()

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53767563c697e640bb7e260d0407d74, type: 3}
+  m_Name: Currency
+  m_EditorClassIdentifier: 
+  itemType: 2
+  itemName: Diamond
+  itemIcon: {fileID: -91118730, guid: 27fb482c6088ff64483c43db83a51ca1, type: 3}
+  itemId: a85605dc0af218449bd0c70b88981914
+  dropChance: 100
+  itemEffect: {fileID: 11400000, guid: cca4cf8d17181fb49b7d321ef2076048, type: 2}
