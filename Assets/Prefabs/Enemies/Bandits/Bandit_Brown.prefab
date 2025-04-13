@@ -576,7 +576,7 @@ MonoBehaviour:
   stunDur: 1
   stunDir: {x: 2, y: 3}
   counterImage: {fileID: 6828621154794625652}
-  moveSpeed: 1.5
+  moveSpeed: 3.5
   idleTime: 2
   agroTime: 3
   playerLayer:
