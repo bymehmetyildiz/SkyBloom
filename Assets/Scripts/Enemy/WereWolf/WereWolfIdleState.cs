@@ -35,13 +35,15 @@ public class WereWolfIdleState : WereWolfGroundedState
         if (wereWolf.stats.isDead)
             return;
 
-        if (player.stateMachine.currentState == player.primaryAttackState && blockChance > 1 && player.stunTrigger)
+        if (Vector2.Distance(wereWolf.transform.position, player.transform.position) < 3)
         {
-            wereWolf.canBeDamaged = false;
-            stateMachine.ChangeState(wereWolf.blockState);
-            player.stateMachine.ChangeState(player.stunState);
+            if (player.stateMachine.currentState == player.primaryAttackState && blockChance > 1 && player.stunTrigger)
+            {
+                wereWolf.canBeDamaged = false;
+                stateMachine.ChangeState(wereWolf.blockState);
+                player.stateMachine.ChangeState(player.stunState);
+            }
         }
-
 
         if (stateTimer < 0.0f)
         {

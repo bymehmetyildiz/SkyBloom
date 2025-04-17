@@ -42,13 +42,15 @@ public class ArmoredBattleState : EnemyState
     {
         base.Update();
 
-        if (player.stateMachine.currentState == player.primaryAttackState && player.stunTrigger)
+        if (Vector2.Distance(enemy.transform.position, player.transform.position) < 3)
         {
-            enemy.canBeDamaged = false;
-            stateMachine.ChangeState(enemy.blockState);
-            player.stateMachine.ChangeState(player.stunState);
+            if (player.stateMachine.currentState == player.primaryAttackState && player.stunTrigger)
+            {
+                enemy.canBeDamaged = false;
+                stateMachine.ChangeState(enemy.blockState);
+                player.stateMachine.ChangeState(player.stunState);
+            }
         }
-
         
 
 
