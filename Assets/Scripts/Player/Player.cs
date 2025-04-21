@@ -296,7 +296,9 @@ public class Player : Entity
             if (stats.isDead)
                 return;
 
-            stats.TakeDamage(stats.maxHealth.GetValue());          
+            SetZeroVelocity();
+            stats.TakeDamage(stats.maxHealth.GetValue());     
+            
         }
     }
 
