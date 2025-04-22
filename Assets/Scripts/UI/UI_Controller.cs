@@ -44,7 +44,7 @@ public class UI_Controller : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Tab))
+        if (Input.GetKeyUp(KeyCode.Tab) && PlayerManager.instance.player.stats.isDead == false)
             SwitchWithKey(inventoryElemnets[0]);
     }
 

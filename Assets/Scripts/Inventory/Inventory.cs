@@ -89,16 +89,16 @@ public class Inventory : MonoBehaviour, ISaveManager
                     AddItem(item.data);
                 }
             }
-
-            return;
         }
-
-
-        for (int i = 0; i < startingItems.Count; i++)
+        else
         {
-            if (startingItems[i] != null)
-                AddItem(startingItems[i]);
+            for (int i = 0; i < startingItems.Count; i++)
+            {
+                if (startingItems[i] != null)
+                    AddItem(startingItems[i]);
+            }
         }
+
     }
 
     //Equip Item
