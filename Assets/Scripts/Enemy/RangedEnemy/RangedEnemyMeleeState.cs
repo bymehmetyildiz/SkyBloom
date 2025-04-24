@@ -9,4 +9,22 @@ public class RangedEnemyMeleeState : EnemyState
     {
         this.enemy = _enemy;
     }
+
+    public override void Enter()
+    {
+        base.Enter();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (triggerCalled)
+            stateMachine.ChangeState(enemy.flipState);
+    }
 }

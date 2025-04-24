@@ -141,6 +141,13 @@ public class Entity : MonoBehaviour
         FlipController(_xVelocity);
     }
 
+    public void SetVelocity(float _velocity, Vector2 _angle, int _direction)
+    {
+        _angle.Normalize();
+        rb.velocity = new Vector2(_angle.x * _direction * _velocity, _angle.y * _velocity);
+        
+    }
+
     public void SetZeroVelocity()
     {
         if (isKnocked)

@@ -28,7 +28,6 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
             Debug.Log("Key count is not equal to Value count");
         }
 
-
         for (int i = 0; i < keys.Count; i++)
         {
             this.Add(keys[i], values[i]);

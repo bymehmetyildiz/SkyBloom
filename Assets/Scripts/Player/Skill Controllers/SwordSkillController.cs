@@ -166,12 +166,27 @@ public class SwordSkillController : MonoBehaviour
     {
         if (isBouncing && enemies.Count > 0)
         {
-            transform.position = Vector2.MoveTowards(transform.position, enemies[targetIndex].position, bounceSpeed * Time.deltaTime);
+            // Clean up null entries (e.g., destroyed enemies)
+            enemies.RemoveAll(e => e == null);
+
+            // Exit early if no valid enemies remain
+            if (enemies.Count == 0)
+            {
+                isBouncing = false;
+                isReturning = true;
+                return;
+            }
+
+            Transform currentTarget = enemies[targetIndex];
+
+            transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, bounceSpeed * Time.deltaTime);
             transform.Rotate(0, 0, returnRotSpeed);
 
-            if (Vector2.Distance(transform.position, enemies[targetIndex].position) < 0.1f)
+            if (Vector2.Distance(transform.position, currentTarget.position) < 0.1f)
             {
-                player.stats.DoDamage(enemies[targetIndex].GetComponent<EnemyStats>());
+                var enemyStats = currentTarget.GetComponent<EnemyStats>();
+                if (enemyStats != null)
+                    player.stats.DoDamage(enemyStats);
 
                 targetIndex++;
                 amountOfBounce--;
@@ -184,11 +199,9 @@ public class SwordSkillController : MonoBehaviour
                     isBouncing = false;
                     isReturning = true;
                 }
-
             }
 
             anim.SetBool("Flip", isBouncing);
-
         }
     }
 

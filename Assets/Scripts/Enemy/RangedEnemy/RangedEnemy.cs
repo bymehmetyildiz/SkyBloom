@@ -13,6 +13,8 @@ public class RangedEnemy : Enemy
     public RangedType rangedType;
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform flipCheck;
+    [SerializeField] private float flipCheckDistance;
     public bool releaseProjectile;
 
     // States
@@ -23,6 +25,7 @@ public class RangedEnemy : Enemy
     public RangedEnemyStunState stunState { get; private set; }
     public RangedEnemyDeadState deadState { get; private set; }
     public RangedEnemyMeleeState meleeState { get; private set; }
+    public RangedEnemyFlipState flipState { get; private set; }
 
 
     protected override void Awake()
@@ -36,6 +39,7 @@ public class RangedEnemy : Enemy
         stunState = new RangedEnemyStunState(this, stateMachine, "Stun", this);
         deadState = new RangedEnemyDeadState(this, stateMachine, "Dead", this);
         meleeState = new RangedEnemyMeleeState(this, stateMachine, "Melee", this);
+        flipState = new RangedEnemyFlipState(this, stateMachine, "Flip", this);
     }
     protected override void Start()
     {
@@ -84,4 +88,6 @@ public class RangedEnemy : Enemy
             newObject.GetComponent<Projectile>().transform.Rotate(0, 180, 0);
         }
     }
+
+    public virtual bool CanFlip() => Physics2D.Raycast(flipCheck.position, Vector2.down, flipCheckDistance, whatIsGround);
 }

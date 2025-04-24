@@ -16,6 +16,9 @@ public class RangedEnemyAttackState : EnemyState
     {
         base.Enter();
         enemy.SetZeroVelocity();
+
+        if (!enemy.IsPlayerDetected())
+            enemy.Flip();
     }
 
     public override void Exit()
@@ -33,26 +36,27 @@ public class RangedEnemyAttackState : EnemyState
     {
         base.Update();
 
+        var hit = enemy.IsPlayerDetected();
+
         if (enemy.releaseProjectile)
         {
             enemy.InstantiateProjectile();
             enemy.releaseProjectile = false;
         }
 
+        if (hit && hit.distance <= enemy.attackCheckDistance)
+        {
+            if (enemy.rangedType == RangedType.Melee)
+                stateMachine.ChangeState(enemy.meleeState);
+        }
+
         if (triggerCalled)
         {
-            if (!enemy.IsPlayerDetected() || enemy.IsPlayerDetected().distance >= enemy.agroDistance)
+            if (!hit || hit.distance >= enemy.agroDistance)
                 stateMachine.ChangeState(enemy.idleState);
-
-            else if (enemy.IsPlayerDetected().distance <= enemy.attackCheckDistance)
-            {
-                if(enemy.rangedType == RangedType.Melee)
-                    stateMachine.ChangeState(enemy.meleeState);
-            }
 
             triggerCalled = false;
         }
-        
-        
+
     }
 }

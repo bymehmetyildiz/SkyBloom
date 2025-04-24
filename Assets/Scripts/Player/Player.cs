@@ -96,14 +96,11 @@ public class Player : Entity
         wallJumpState = new PlayerWallJumpState(this, stateMachine, "Jump");
         ledgeGrabState = new PlayerLedgeGrabState(this, stateMachine, "LedgeGrab");
         ledgeClimbState = new PlayerLedgeClimbState(this, stateMachine, "LedgeClimb");
-        deadState = new PlayerDeadState(this, stateMachine, "Dead");
-
-        
+        deadState = new PlayerDeadState(this, stateMachine, "Dead");        
 
         primaryAttackState = new PlayerPrimaryAttackState(this, stateMachine, "Attack");
         blockState = new PlayerBlockState(this, stateMachine, "Block");
-        stunState = new PlayerStunState(this, stateMachine, "Stun");
-       
+        stunState = new PlayerStunState(this, stateMachine, "Stun");       
 
         aimSwordState = new PlayerAimSwordState(this, stateMachine, "Aim");
         catchSwordState = new PlayerCatchSwordState(this, stateMachine, "Catch");
@@ -116,7 +113,7 @@ public class Player : Entity
         aerialSlamAirState = new PlayerAerialSlamAirState(this, stateMachine, "AerialJump");
         aerialSlamState = new PlayerAerialSlamState(this, stateMachine, "AerialSlam");
         earthSlamState = new PlayerEarthSlamState(this, stateMachine, "EarthSlam");
-     }
+    }
 
     protected override void Start()
     {
