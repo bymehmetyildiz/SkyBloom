@@ -16,9 +16,9 @@ public class RangedEnemyFlipState : EnemyState
         base.Enter();
 
         if (enemy.CanFlip())        
-            enemy.SetVelocity(5 * -enemy.facingDir, 8);        
+            enemy.SetVelocity(5 * -enemy.facingDir, 10);        
         else        
-            enemy.SetVelocity(5 * enemy.facingDir, 8);
+            enemy.SetVelocity(5 * enemy.facingDir, 10);
     }
 
     public override void Exit()
