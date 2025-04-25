@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -583870909
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1323674944, guid: 5348178668478fd4bbde628df3b13da6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -781,8 +781,8 @@ MonoBehaviour:
   isShocked: 0
   currentHealth: 0
   currentMagic: 0
-  isInvincible: 0
   isDamaged: 0
+  isInvincible: 0
   level: 1
   percentageModifier: 0.029
 --- !u!114 &5994751865846841321

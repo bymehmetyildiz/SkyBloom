@@ -481,7 +481,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e0d7552c0b79df4391c34c107cc70c1, type: 2}
   - {fileID: 11400000, guid: c15b396fed4e51a4f9f87d73fd40de86, type: 2}
   - {fileID: 11400000, guid: 7fd82a25ca12bfe42b59559c96ed0314, type: 2}
-  - {fileID: 11400000, guid: 425e533205b8e37489b221a33905312f, type: 2}
   dropPrefab: {fileID: 4212661324000050600, guid: c46fbaae02023974db8e2a40694e3798, type: 3}
   offsetY: 0
 --- !u!114 &8957147168892187487

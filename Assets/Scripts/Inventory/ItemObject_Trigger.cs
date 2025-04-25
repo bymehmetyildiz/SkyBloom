@@ -13,7 +13,7 @@ public class ItemObject_Trigger : MonoBehaviour
     {
         if (collision.GetComponent<Player>() != null)
         {
-            if(collision.GetComponent<EntityStats>().isDead)
+            if(collision.GetComponent<PlayerStats>().isDead)
                 return;
 
             if(IsGroundDetected())
