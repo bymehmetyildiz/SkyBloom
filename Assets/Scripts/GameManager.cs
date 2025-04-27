@@ -21,7 +21,10 @@ public class GameManager : MonoBehaviour, ISaveManager
     [Header("Level 1")]
     [SerializeField] private DoorController enteranceGate;
     public DoorController exitGate;
- 
+
+    [Header("The River")]
+    [SerializeField] private GameObject ladder;
+
 
     private void Awake()
     {
@@ -56,8 +59,24 @@ public class GameManager : MonoBehaviour, ISaveManager
                     StartCoroutine(enteranceGate.CloseGate(0));
             }
 
+            if (ladder != null)
+                StartCoroutine(DestructLadder());
         }
     }
+
+    private IEnumerator DestructLadder()
+    {
+        ladder.GetComponent<BoxCollider2D>().isTrigger = true;
+        HingeJoint2D[] hinges = ladder.GetComponentsInChildren<HingeJoint2D>();
+
+        foreach (var hinge in hinges)
+        {
+            hinge.enabled = false;
+        }
+        yield return new WaitForSeconds(2);
+        Destroy(ladder);
+    }
+
 
     public void IsBossDead()
     {

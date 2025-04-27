@@ -32,6 +32,9 @@ public class WarlordAttackState : EnemyState
     public override void FixedUpdate()
     {
         base.FixedUpdate();
+
+        if(enemy.comboCounter == 2)
+            enemy.SetVelocity(1 * enemy.facingDir, rb.velocity.y);
     }
 
     public override void Update()
