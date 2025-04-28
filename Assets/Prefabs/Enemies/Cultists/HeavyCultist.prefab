@@ -253,8 +253,8 @@ MonoBehaviour:
   isShocked: 0
   currentHealth: 0
   currentMagic: 0
-  isInvincible: 0
   isDamaged: 0
+  isInvincible: 0
   level: 1
   percentageModifier: 0.029
 --- !u!114 &2379348015140469149
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 8897306777192175014}
-  groundCheckDistance: 0.64
+  groundCheckDistance: 0.24
   wallCheck: {fileID: 735749999885768319}
   wallCheckDistance: 0.4
   whatIsGround:
@@ -555,7 +555,7 @@ Transform:
   m_GameObject: {fileID: 2884992823284944528}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.54099756, y: -0.84800005, z: 0}
+  m_LocalPosition: {x: 0.82, y: -0.84800005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -633,8 +633,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -583870909
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 696451401, guid: 08149eeb513a2764ca0cae4b6b307aac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

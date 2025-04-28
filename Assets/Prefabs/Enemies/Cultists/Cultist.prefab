@@ -178,8 +178,8 @@ MonoBehaviour:
   isShocked: 0
   currentHealth: 0
   currentMagic: 0
-  isInvincible: 0
   isDamaged: 0
+  isInvincible: 0
   level: 1
   percentageModifier: 0.029
 --- !u!114 &6027082063308097115
@@ -280,6 +280,8 @@ MonoBehaviour:
   rangedType: 0
   projectile: {fileID: 604367738101430043, guid: ac90adac8b80c1d4b9a77b6acefecf70, type: 3}
   spawnPoint: {fileID: 4659117472843978462}
+  flipCheck: {fileID: 0}
+  flipCheckDistance: 0
   releaseProjectile: 0
 --- !u!1 &421737728300383789
 GameObject:
@@ -656,7 +658,7 @@ Transform:
   m_GameObject: {fileID: 6295782056728586664}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.227, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -909,7 +911,7 @@ Transform:
   m_GameObject: {fileID: 8380477058048395487}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.296, y: -0.799, z: 0}
+  m_LocalPosition: {x: 0.57, y: -0.799, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

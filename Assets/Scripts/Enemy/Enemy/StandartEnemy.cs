@@ -31,9 +31,6 @@ public class StandartEnemy : Enemy
     protected override void Update()
     {
         base.Update();
-
-        if (stats.isDamaged && (stateMachine.currentState == idleState || stateMachine.currentState == moveState))
-            stateMachine.ChangeState(battleState);
     }
 
     protected override void FixedUpdate()

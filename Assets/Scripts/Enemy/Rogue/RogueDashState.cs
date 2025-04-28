@@ -14,7 +14,7 @@ public class RogueDashState : EnemyState
     {
         base.Enter();
         stateTimer = 0.1f;
-        rb.velocity = new Vector2(enemy.facingDir * enemy.stunDir.x * 2, enemy.stunDir.y * 4);
+        rb.velocity = new Vector2(enemy.facingDir * enemy.stunDir.x, enemy.stunDir.y);
     }
 
     public override void Exit()

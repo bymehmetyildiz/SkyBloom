@@ -43,32 +43,40 @@ public class RogueBattleState : EnemyState
     {
         base.Update();
 
-        if (enemy.IsPlayerDetected())
+        var playerDetected = enemy.IsPlayerDetected();
+        var playerDistance = Vector2.Distance(player.transform.position, enemy.transform.position);
+
+        if (playerDetected)
         {
             stateTimer = enemy.agroTime;
-            if (enemy.IsPlayerDetected().distance <= enemy.agroDistance)
+
+            if (playerDetected.distance <= enemy.attackDistance)
+            {
                 stateMachine.ChangeState(enemy.dashState);
+                return;
+            }
         }
-        else if (!enemy.IsPlayerDetected())
+        else
         {
             enemy.Flip();
-            if (enemy.IsPlayerDetected())
+            playerDetected = enemy.IsPlayerDetected(); // Check again after flipping
+
+            if (playerDetected && playerDetected.distance <= enemy.attackDistance)
             {
                 stateTimer = enemy.agroTime;
-                if (enemy.IsPlayerDetected().distance <= enemy.agroDistance)
-                    stateMachine.ChangeState(enemy.dashState);
+                stateMachine.ChangeState(enemy.dashState);
+                return;
             }
             else
             {
                 stateMachine.ChangeState(enemy.ambushState);
+                return;
             }
         }
 
-        if (enemy.IsWallDetected() || !enemy.IsGroundDetected())
+        if (enemy.IsWallDetected() || !enemy.IsGroundDetected() || enemy.IsDangerDetected() || stateTimer < 0 || playerDistance > 10f)
+        {
             stateMachine.ChangeState(enemy.idleState);
-
-        if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10 || enemy.IsDangerDetected())
-            stateMachine.ChangeState(enemy.idleState);
-
+        }
     }
 }

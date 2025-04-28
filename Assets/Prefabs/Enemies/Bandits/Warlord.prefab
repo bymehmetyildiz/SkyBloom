@@ -251,7 +251,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   attackCheck: {fileID: 630709781447577414}
-  attackCheckDistance: 1.1
+  attackCheckDistance: 1.4
   facingDir: 1
   knockBackPower: {x: 0, y: 0}
   knockBackDir: 0

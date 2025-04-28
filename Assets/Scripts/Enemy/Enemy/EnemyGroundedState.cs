@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class EnemyGroundedState : EnemyState
@@ -32,7 +33,7 @@ public class EnemyGroundedState : EnemyState
     {
         base.Update();
 
-        if ((enemy.IsPlayerDetected() || Vector2.Distance(player.transform.position, enemy.transform.position) < 1))
+        if (enemy.IsPlayerDetected() || Vector2.Distance(player.transform.position, enemy.transform.position) < 1 || enemy.stats.isDamaged)
             stateMachine.ChangeState(enemy.battleState);
         //return;
     }
