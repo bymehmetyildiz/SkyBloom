@@ -40,7 +40,7 @@ public class WereWolfRunAttackState : EnemyState
             if (jumpDelay <= 0)
             {
                 // Jump logic here
-                wereWolf.SetVelocity(wereWolf.moveSpeed * 3 * -wereWolf.knockBackDir, 3);
+                wereWolf.SetVelocity(wereWolf.moveSpeed * 3 * -wereWolf.knockBackDir, 7);
                 jumpTriggered = true;
             }
            

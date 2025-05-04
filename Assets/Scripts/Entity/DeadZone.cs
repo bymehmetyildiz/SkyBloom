@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class DeadZone : MonoBehaviour
 {
-    private void OnTriggerExit2D(Collider2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.GetComponent<EntityStats>() != null)
+        var stats = collision.gameObject.GetComponent<PlayerStats>() ?? (EntityStats)collision.gameObject.GetComponent<EnemyStats>();
+
+        if (stats != null)
         {
-            collision.GetComponent<EntityStats>().KillEntity();
-            collision.GetComponent<EntityStats>().gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            stats.Dead();
+            collision.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         }
-       
     }
+
+  
+
 }

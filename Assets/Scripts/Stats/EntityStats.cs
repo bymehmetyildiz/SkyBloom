@@ -259,17 +259,12 @@ public class EntityStats : MonoBehaviour
 
 
     // Die
-    protected virtual void Dead()
+    public virtual void Dead()
     {
         isDead = true;
     }
 
-    public void KillEntity()
-    {
-        if(!isDead)
-            Dead();
-    }
-        
+  
     //Invincible
     public void Invincible(bool _isInvincible) => isInvincible = _isInvincible;
 

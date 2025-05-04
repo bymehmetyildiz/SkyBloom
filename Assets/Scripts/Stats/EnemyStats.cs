@@ -71,7 +71,7 @@ public class EnemyStats : EntityStats
         enemy.DamageEffect();
     }
 
-    protected override void Dead()
+    public override void Dead()
     {
         base.Dead();
         dropSystem.GenerateDrop();

@@ -65,11 +65,8 @@ public class StandartMonsterBattleState : EnemyState
         }
         else       
         {
-            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10 )
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10 || !enemy.IsPlayerDetected())
                 stateMachine.ChangeState(enemy.idleState);
         }
-
-       
-
     }
 }

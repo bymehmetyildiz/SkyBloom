@@ -821,6 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d18c3a8824a0e44abb0f1c95fa6c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
 --- !u!1 &9099653528301188094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1048,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e0d7552c0b79df4391c34c107cc70c1, type: 2}
   - {fileID: 11400000, guid: c15b396fed4e51a4f9f87d73fd40de86, type: 2}
   - {fileID: 11400000, guid: 7fd82a25ca12bfe42b59559c96ed0314, type: 2}
-  - {fileID: 11400000, guid: 425e533205b8e37489b221a33905312f, type: 2}
   dropPrefab: {fileID: 4212661324000050600, guid: c46fbaae02023974db8e2a40694e3798, type: 3}
   offsetY: 0
 --- !u!114 &4331015116868039364
@@ -1101,4 +1101,6 @@ MonoBehaviour:
   rangedType: 0
   projectile: {fileID: 4740538662093073445, guid: 1b01866c22c20a14487bdf3a6a408ca2, type: 3}
   spawnPoint: {fileID: 1270861898717845733}
+  flipCheck: {fileID: 0}
+  flipCheckDistance: 0
   releaseProjectile: 0

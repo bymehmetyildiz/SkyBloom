@@ -7,7 +7,7 @@ public class UI_HealthBar : MonoBehaviour
 {
     private Entity entity => GetComponentInParent<Entity>();
     private EntityStats entityStats => GetComponentInParent<EntityStats>();
-    private RectTransform rectTransform;
+    [SerializeField] private RectTransform rectTransform;
     private Slider slider;
 
     void Start()

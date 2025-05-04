@@ -29,7 +29,7 @@ public class PlayerStats : EntityStats
     }
 
 
-    protected override void Dead()
+    public override void Dead()
     {
         base.Dead();
         player.Dead();

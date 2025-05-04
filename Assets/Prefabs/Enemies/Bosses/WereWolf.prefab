@@ -489,8 +489,8 @@ MonoBehaviour:
   isShocked: 0
   currentHealth: 0
   currentMagic: 0
-  isInvincible: 0
   isDamaged: 0
+  isInvincible: 0
   level: 1
   percentageModifier: 0
 --- !u!114 &3244853977306054308
@@ -572,7 +572,7 @@ MonoBehaviour:
   agroTime: 5
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   detectDistance: 10
   attackDistance: 0.8
   attackCoolDown: 0.4
