@@ -43,6 +43,7 @@ public class Ivy : Enemy
     {
         base.Start();
         stateMachine.Initialize(idleState);
+        arena = GameManager.instance.GetComponent<BoxCollider2D>();
     }
 
     public override void Dead()

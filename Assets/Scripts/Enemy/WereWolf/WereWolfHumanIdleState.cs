@@ -29,7 +29,7 @@ public class WereWolfHumanIdleState : WereWolfGroundedState
     {
         base.Update();
 
-        if (GameManager.instance.isPlayerEnetered)
+        if (GameManager.instance.isPlayerEnetered || wereWolf.IsPlayerDetected().distance < 1 || wereWolf.stats.isDamaged) 
             stateMachine.ChangeState(wereWolf.transformState);
     }
 }
