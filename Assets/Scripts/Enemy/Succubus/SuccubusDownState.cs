@@ -13,6 +13,7 @@ public class SuccubusDownState : EnemyState
     public override void Exit()
     {
         base.Exit();
+        enemy.flyTimer = 0;
     }
 
     public override void FixedUpdate()

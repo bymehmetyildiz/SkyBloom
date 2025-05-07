@@ -9,4 +9,11 @@ public class SuccubusKickState : EnemyState
     {
         this.enemy = _enemy;
     }
+
+    public override void Update()
+    {
+        base.Update();
+        if(triggerCalled)
+            stateMachine.ChangeState(enemy.idleState);
+    }
 }

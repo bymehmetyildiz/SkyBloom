@@ -54,7 +54,8 @@ public class BallController : MonoBehaviour
         float velocityY = displacementY / timeToTarget + 0.5f * gravity * timeToTarget;
 
         // Apply the calculated velocity
-        rb.velocity = new Vector2(velocityX, velocityY);
+        if(rb != null)
+            rb.velocity = new Vector2(velocityX, velocityY);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

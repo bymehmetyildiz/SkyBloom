@@ -13,6 +13,7 @@ public class SuccubusUpState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        
     }
 
     public override void Exit()
@@ -24,7 +25,7 @@ public class SuccubusUpState : EnemyState
     {
         base.FixedUpdate();
 
-        enemy.SetVelocity(rb.velocity.x, enemy.flySpeed);
+        enemy.SetVelocity(0, enemy.flySpeed);
     }
 
     public override void Update()

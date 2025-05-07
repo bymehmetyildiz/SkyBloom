@@ -9,7 +9,9 @@ public class Succubus : Enemy
     public float flySpeed;   
     [HideInInspector] public Enemy currentEnemy;
     [SerializeField] private SpawnThunder thunder;
-    private BoxCollider2D arena;
+    [SerializeField] private BoxCollider2D arena;
+    public float flyTimer;
+    public float flyDur;
 
     //States
     public SuccubusHumanState humanState {  get; private set; }
@@ -52,9 +54,8 @@ public class Succubus : Enemy
     protected override void Update()
     {
         base.Update();
+        flyTimer += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.L))
-            stateMachine.ChangeState(upState);
     }
 
     protected override void FixedUpdate()

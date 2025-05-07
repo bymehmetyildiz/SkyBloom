@@ -32,7 +32,7 @@ public class SuccubusFlyState : EnemyState
             enemy.Flip();
 
         if (enemy.transform.position.y < enemy.riseDistance)
-            enemy.SetVelocity(rb.velocity.x, enemy.flySpeed);
+            enemy.SetVelocity(0, enemy.flySpeed);
     }
 
     public override void Update()

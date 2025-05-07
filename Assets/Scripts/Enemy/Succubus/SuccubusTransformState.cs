@@ -10,4 +10,12 @@ public class SuccubusTransformState : EnemyState
     {
         enemy = _enemy;
     }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if(triggerCalled)
+            stateMachine.ChangeState(enemy.upState);
+    }
 }

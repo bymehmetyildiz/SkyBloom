@@ -20,6 +20,10 @@ public class SuccubusBattleState : EnemyState
 
         if (player.GetComponent<PlayerStats>().isDead)
             stateMachine.ChangeState(enemy.moveState);
+
+        enemy.comboCounter++;
+        if (enemy.comboCounter > 1)
+            enemy.comboCounter = 0;
     }
 
     public override void Exit()
@@ -56,8 +60,12 @@ public class SuccubusBattleState : EnemyState
             stateTimer = enemy.agroTime;
 
             if (enemy.IsPlayerDetected().distance <= enemy.attackDistance)
-                stateMachine.ChangeState(enemy.attackState);
-
+            {
+                if(enemy.comboCounter == 1)
+                    stateMachine.ChangeState(enemy.attackState);
+                else if (enemy.comboCounter == 0)
+                    stateMachine.ChangeState(enemy.kickState);
+            }
         }
 
         if (enemy.IsWallDetected() || !enemy.IsGroundDetected() || enemy.IsDangerDetected())
@@ -65,6 +73,11 @@ public class SuccubusBattleState : EnemyState
 
         if ((stateTimer < 0 && !enemy.IsPlayerDetected()) || Vector2.Distance(player.transform.position, enemy.transform.position) > 35)
             stateMachine.ChangeState(enemy.idleState);
+
+        if (enemy.flyTimer >= enemy.flyDur)
+        {
+            stateMachine.ChangeState(enemy.upState);
+        }
 
     }
 }

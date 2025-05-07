@@ -9,4 +9,21 @@ public class SuccubusHumanState : EnemyState
     {
         this.enemy = _enemy;
     }
+
+    public override void Enter()
+    {
+        base.Enter();
+        enemy.Flip();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            stateMachine.ChangeState(enemy.transformState);
+
+        }
+    }
 }
