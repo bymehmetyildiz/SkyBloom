@@ -9,12 +9,30 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 3d3199a2bc84f024baa32191c861d39d
   - enabled: 1
-    path: Assets/Scenes/SkyBloom.unity
+    path: Assets/Scenes/SunflowerFields.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/SilverStream.unity
+    path: Assets/Scenes/LongfordTown.unity
     guid: 69c346013ec71f342b4ef03eb1ff730d
   - enabled: 1
-    path: Assets/Scenes/WildForest.unity
+    path: Assets/Scenes/OakHeaven.unity
     guid: e3b673262ac7f7d4bbccdf033c24e630
+  - enabled: 1
+    path: Assets/Scenes/SilverStream.unity
+    guid: 0363246f0675a4141b101a61ddcddb34
+  - enabled: 1
+    path: Assets/Scenes/TempleRuins.unity
+    guid: ed6ecd2d0a5d902478adc30ae14f5e91
+  - enabled: 1
+    path: Assets/Scenes/MoonCementery.unity
+    guid: 0f3ed328c1009f5409d114fdffc412d4
+  - enabled: 1
+    path: Assets/Scenes/TheCoalMine.unity
+    guid: b9bcd70d98737324f8693f49ca61ce7d
+  - enabled: 1
+    path: Assets/Scenes/TheFalconsNest.unity
+    guid: c5e9da4b2faae3d4792b5a66aa4e1c36
+  - enabled: 1
+    path: Assets/Scenes/MountainCastle.unity
+    guid: 504ec0599bd044b44ad84194c93956f6
   m_configObjects: {}

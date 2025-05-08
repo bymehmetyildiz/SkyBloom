@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    [SerializeField] private GameObject fire;
+    [SerializeField] private Animator anim;
     public string id;
     public bool isActivated;
 
     void Start()
     {
-     
+        anim = GetComponent<Animator>();     
     }
 
     [ContextMenu("Generate Checkpoint Id")]
@@ -30,7 +30,7 @@ public class CheckPoint : MonoBehaviour
     public void ActivateCheckPoint()
     {
         isActivated = true;
-        fire.SetActive(true);
+        anim.SetBool("Lit", isActivated);
     }
 
 

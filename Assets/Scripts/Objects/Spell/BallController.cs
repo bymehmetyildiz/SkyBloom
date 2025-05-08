@@ -9,7 +9,7 @@ public class BallController : MonoBehaviour
     [SerializeField] private string ground = "Ground";
     private Transform player;
     private Vector2 playerPositionAtSpawn;
-    [SerializeField] private float maxHeight = 5f;
+    [SerializeField] private float maxHeight;
     private BoxCollider2D bc;
     private bool canTrap;
 
@@ -19,6 +19,7 @@ public class BallController : MonoBehaviour
         animator = GetComponent<Animator>();
         player = PlayerManager.instance.player.transform;
         playerPositionAtSpawn = player.position;
+        maxHeight = player.position.y + 5;
         canTrap = true;
         bc = GetComponent<BoxCollider2D>();
         ShootProjectile();
@@ -53,9 +54,8 @@ public class BallController : MonoBehaviour
         // Calculate initial velocity Y using the time and displacement
         float velocityY = displacementY / timeToTarget + 0.5f * gravity * timeToTarget;
 
-        // Apply the calculated velocity
-        if(rb != null)
-            rb.velocity = new Vector2(velocityX, velocityY);
+        // Apply the calculated velocity     
+        rb.velocity = new Vector2(velocityX, velocityY);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
