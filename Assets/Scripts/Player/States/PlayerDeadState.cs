@@ -14,6 +14,7 @@ public class PlayerDeadState : PlayerState
         player.GetComponentInChildren<AnimationTrigger>().AnimTrigger();
 
         UI_Controller.instance.SwitchOnEndScreen();
+        SaveManager.instance.SaveGame();
     }
 
     public override void Exit()

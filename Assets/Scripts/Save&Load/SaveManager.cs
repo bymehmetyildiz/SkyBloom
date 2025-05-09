@@ -5,6 +5,8 @@ using System.Linq;
 
 public class SaveManager : MonoBehaviour
 {
+    #region Previous
+    
     public static SaveManager instance;
 
     [SerializeField] private string fileName;
@@ -27,7 +29,11 @@ public class SaveManager : MonoBehaviour
         if(instance != null)
             Destroy(instance.gameObject);
         else
-            instance = this;
+        {
+            instance = this;           
+
+        }
+
 
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
         saveManagers = FindAllSaveManagers();
@@ -88,7 +94,7 @@ public class SaveManager : MonoBehaviour
         }
         return false;
     }
-
-
+    
+    #endregion
 
 }

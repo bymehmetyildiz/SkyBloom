@@ -99,7 +99,8 @@ public class UI_Controller : MonoBehaviour
     }
 
     public void SwitchOnEndScreen()
-    {  
+    {
+        SaveManager.instance.SaveGame();
         fadeScreen.FadeOut();
         StartCoroutine(EndScreen());
     }
@@ -116,4 +117,6 @@ public class UI_Controller : MonoBehaviour
 
     public void RestartGameButton() => GameManager.instance.RestartScene();
     public void ReturnToMenu() => GameManager.instance.ReturnToMenu();
+    public void Save() => SaveManager.instance.SaveGame();
+    public void Resume() => CheckInGameUI();
 }

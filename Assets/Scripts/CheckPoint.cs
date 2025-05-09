@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckPoint : MonoBehaviour, ISaveManager
+public class CheckPoint : MonoBehaviour
 {
     [SerializeField] private Animator anim;
     public string id;
@@ -31,18 +31,5 @@ public class CheckPoint : MonoBehaviour, ISaveManager
     {
         isActivated = true;
         anim.SetBool("Lit", isActivated);
-    }
-
-    public void LoadData(GameData _data)
-    {
-        if (_data != null)
-            this.isActivated = _data.isActivated;
-        else
-            this.isActivated = false;
-    }
-
-    public void SaveData(ref GameData _data)
-    {
-        _data.isActivated = isActivated;
     }
 }

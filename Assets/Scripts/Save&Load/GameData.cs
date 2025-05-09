@@ -8,7 +8,6 @@ public class GameData
     public int currency;
     public int typeCounter;
     public int sceneIndex;
-    public bool isActivated;
 
     public SerializableDictionary<string, bool> skillTree;
     public SerializableDictionary<string, int> inventory;
@@ -22,7 +21,7 @@ public class GameData
         currency = 0;        
         typeCounter = 0;
         sceneIndex = 1;
-        isActivated = false;
+        
         skillTree = new SerializableDictionary<string, bool>();
         inventory = new SerializableDictionary<string, int>();
         equipment = new SerializableDictionary<string, int>();

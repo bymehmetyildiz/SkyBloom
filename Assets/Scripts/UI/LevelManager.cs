@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour, ISaveManager
 {
+    #region Previous
+    
     public static LevelManager instance;
     public int sceneIndex;
 
@@ -23,7 +25,10 @@ public class LevelManager : MonoBehaviour, ISaveManager
 
             SaveManager.instance.SaveGame();
 
-            StartCoroutine(LoadNewScene());
+            if (sceneIndex <= 10)
+                StartCoroutine(LoadNewScene());
+            else
+                Debug.Log("Final Scene");
         } 
     }
 
@@ -46,4 +51,7 @@ public class LevelManager : MonoBehaviour, ISaveManager
     {
         _data.sceneIndex = sceneIndex;
     }
+    
+    #endregion
+   
 }

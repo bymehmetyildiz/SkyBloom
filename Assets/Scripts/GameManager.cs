@@ -169,4 +169,8 @@ public class GameManager : MonoBehaviour, ISaveManager
             Time.timeScale = 1.0f;
     }
 
+    private void OnApplicationQuit()
+    {
+        SaveManager.instance.SaveGame();
+    }
 }

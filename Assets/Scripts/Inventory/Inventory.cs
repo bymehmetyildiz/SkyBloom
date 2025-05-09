@@ -64,52 +64,24 @@ public class Inventory : MonoBehaviour, ISaveManager
         equipmentSlot = equipmentSlotParent.GetComponentsInChildren<UI_EquipmentSlot>();
         statSlot = statSlotParent.GetComponentsInChildren<UI_StatSlot>();
 
+        SaveManager.instance.LoadGame();
+
         StartItems();
     }
-
-    // Add starting Items
-    //private void StartItems()
-    //{
-
-    //    foreach (InventoryItem item in loadedEquipment)
-    //    {
-    //        newStackSize = item.stackSize;
-    //        EquipItem(item.data);
-    //    }
-
-
-    //    if (SaveManager.instance.HasSavedData())
-    //    {
-    //        foreach (InventoryItem item in loadedItems)
-    //        {
-    //            for (int i = 0; i < item.stackSize; i++)
-    //            {
-    //                AddItem(item.data);
-    //            }
-    //        }
-    //    }
-    //    else
-    //    {
-    //        for (int i = 0; i < startingItems.Count; i++)
-    //        {
-    //            if (startingItems[i] != null)
-    //                AddItem(startingItems[i]);
-    //        }
-    //    }
-
-    //}
-
+    #region StartItems
+    
     private void StartItems()
     {
-        // Process equipment items
-        foreach (InventoryItem item in loadedEquipment)
+        if (loadedEquipment != null)
         {
-            newStackSize = item.stackSize;
-            EquipItem(item.data);
+            //Process equipment items
+            foreach (InventoryItem item in loadedEquipment)
+            {
+                newStackSize = item.stackSize;
+                EquipItem(item.data);
+            }
         }
-
-        // Always process loadedItems if they exist, regardless of HasSavedData()
-        if (loadedItems != null && loadedItems.Count > 0)
+        if (SaveManager.instance.HasSavedData())
         {
             foreach (InventoryItem item in loadedItems)
             {
@@ -132,11 +104,14 @@ public class Inventory : MonoBehaviour, ISaveManager
             }
         }
 
+
         // Update the UI
         UpdateSlotUI();
     }
+    
+    #endregion
 
-
+   
 
     public void EquipItem(ItemData _item)
     {
@@ -542,7 +517,8 @@ public class Inventory : MonoBehaviour, ISaveManager
             Debug.Log("Effect On Cooldown");
         }
     }
-
+    #region Save/Load Data
+    
     public void LoadData(GameData _data)
     {
         foreach (KeyValuePair<string, int> pair in _data.inventory)
@@ -607,6 +583,7 @@ public class Inventory : MonoBehaviour, ISaveManager
 
         return itemDataBase;
     }
-
+    
+    #endregion 
+   
 }
-
