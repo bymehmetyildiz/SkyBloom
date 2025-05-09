@@ -35,8 +35,6 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
-      
-
         LoadGame();
     }
 
@@ -90,5 +88,7 @@ public class SaveManager : MonoBehaviour
         }
         return false;
     }
+
+
 
 }

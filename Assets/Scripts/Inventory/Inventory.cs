@@ -65,33 +65,66 @@ public class Inventory : MonoBehaviour, ISaveManager
         statSlot = statSlotParent.GetComponentsInChildren<UI_StatSlot>();
 
         StartItems();
-
-      
     }
 
     // Add starting Items
+    //private void StartItems()
+    //{
+
+    //    foreach (InventoryItem item in loadedEquipment)
+    //    {
+    //        newStackSize = item.stackSize;
+    //        EquipItem(item.data);
+    //    }
+
+
+    //    if (SaveManager.instance.HasSavedData())
+    //    {
+    //        foreach (InventoryItem item in loadedItems)
+    //        {
+    //            for (int i = 0; i < item.stackSize; i++)
+    //            {
+    //                AddItem(item.data);
+    //            }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        for (int i = 0; i < startingItems.Count; i++)
+    //        {
+    //            if (startingItems[i] != null)
+    //                AddItem(startingItems[i]);
+    //        }
+    //    }
+
+    //}
+
     private void StartItems()
     {
-
+        // Process equipment items
         foreach (InventoryItem item in loadedEquipment)
         {
             newStackSize = item.stackSize;
             EquipItem(item.data);
         }
 
-
-        if (SaveManager.instance.HasSavedData())
+        // Always process loadedItems if they exist, regardless of HasSavedData()
+        if (loadedItems != null && loadedItems.Count > 0)
         {
             foreach (InventoryItem item in loadedItems)
             {
-                for (int i = 0; i < item.stackSize; i++)
-                {
-                    AddItem(item.data);
-                }
+                // Create a new inventory item with the correct stack size
+                InventoryItem newItem = new InventoryItem(item.data);
+                newItem.stackSize = item.stackSize;
+
+                // Add directly to inventory and dictionary
+                inventory.Add(newItem);
+                inventoryDictionary.Add(item.data, newItem);
             }
         }
         else
         {
+            // No loaded items, use starting items
             for (int i = 0; i < startingItems.Count; i++)
             {
                 if (startingItems[i] != null)
@@ -99,41 +132,11 @@ public class Inventory : MonoBehaviour, ISaveManager
             }
         }
 
-    }
-
-    //Equip Item
-    /*
-    public void EquipItem(ItemData _item)
-    {
-        ItemData_Equipment newEquipment = _item as ItemData_Equipment;
-        InventoryItem newItem = new InventoryItem(newEquipment);
-
-        ItemData_Equipment oldEquipment = null;
-
-        foreach (KeyValuePair<ItemData_Equipment, InventoryItem> item in equipmentDictionary)
-        {
-            if (item.Key.equipmentType == newEquipment.equipmentType)
-                oldEquipment = item.Key;
-        }
-
-        if (oldEquipment != null)
-        {
-            UnequipItem(oldEquipment);
-            AddItem(oldEquipment);
-        }
-
-
-        equipment.Add(newItem);
-        equipmentDictionary.Add(newEquipment, newItem);
-        newEquipment.AddModifiers();
-
-
-        UI_Potions.instance.AssignPotions(newEquipment.itemIcon, newItem.stackSize.ToString(), newEquipment.equipmentType);
-
-        RemoveItem(_item);
+        // Update the UI
         UpdateSlotUI();
     }
-    */
+
+
 
     public void EquipItem(ItemData _item)
     {

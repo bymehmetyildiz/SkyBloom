@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class UI_MainMenu : MonoBehaviour
 {
-    [SerializeField] private string sceneName = "SkyBloom";
+    [SerializeField] private string sceneName;
     [SerializeField] private GameObject continueButton;
     [SerializeField] private UI_FadeScreen fadeScreen;
 
     private void Start()
     {
-        if (SaveManager.instance.HasSavedData() == false)
+        if (!SaveManager.instance.HasSavedData())
             continueButton.SetActive(false);
     }
 
@@ -38,7 +38,11 @@ public class UI_MainMenu : MonoBehaviour
 
         yield return new WaitForSeconds(_delay);
 
-        SceneManager.LoadScene(sceneName);
+        if (LevelManager.instance.sceneIndex <= 0)
+            SceneManager.LoadScene(sceneName);
+        else
+            SceneManager.LoadScene(LevelManager.instance.sceneIndex);
     }
 
+   
 }

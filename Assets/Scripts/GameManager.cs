@@ -102,9 +102,6 @@ public class GameManager : MonoBehaviour, ISaveManager
         SceneManager.LoadScene("Menu");
     }
 
-   
-
-
     public void LoadData(GameData _data)
     {
         foreach (KeyValuePair<string, bool> pair in _data.checkPoints)
@@ -114,7 +111,6 @@ public class GameManager : MonoBehaviour, ISaveManager
             {
                 if (checkPoint.id == pair.Key && pair.Value == true)
                     checkPoint.ActivateCheckPoint();
-
             }
         }
 
