@@ -17,7 +17,7 @@ public class UI_Potions : MonoBehaviour
         if (instance == null)
             instance = this;
         else
-            Destroy(instance.gameObject);
+            Destroy(gameObject);
     }
 
     void Start()
@@ -26,12 +26,6 @@ public class UI_Potions : MonoBehaviour
             healthIcon.gameObject.SetActive(false);
         if(magicIcon.sprite == null)
             magicIcon.gameObject.SetActive(false);
-    }
-
-    
-    void Update()
-    {
-        
     }
 
     public void AssignPotions(Sprite _icon, string _amount, EquipmentType _equipmentType)

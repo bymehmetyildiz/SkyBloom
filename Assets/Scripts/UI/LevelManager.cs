@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour, ISaveManager
 {
-    #region Previous
+
     
     public static LevelManager instance;
     public int sceneIndex;
@@ -51,7 +51,6 @@ public class LevelManager : MonoBehaviour, ISaveManager
     {
         _data.sceneIndex = sceneIndex;
     }
-    
-    #endregion
+
    
 }

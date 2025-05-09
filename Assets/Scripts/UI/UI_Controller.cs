@@ -14,7 +14,7 @@ public class UI_Controller : MonoBehaviour
 
     public static UI_Controller instance;
 
-    [SerializeField] private GameObject[] inventoryElemnets;
+    [SerializeField] private GameObject[] inventoryElements;
     public GameObject inGameUI;
 
     public UI_ItemToolTip itemToolTip;
@@ -45,7 +45,7 @@ public class UI_Controller : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Tab) && PlayerManager.instance.player.stats.isDead == false)
-            SwitchWithKey(inventoryElemnets[0]);
+            SwitchWithKey(inventoryElements[0]);
     }
 
     public void Switch(GameObject _menu)
@@ -77,7 +77,7 @@ public class UI_Controller : MonoBehaviour
 
     private void CheckInGameUI()
     {
-        for (int i = 0; i < inventoryElemnets.Length; i++)
+        for (int i = 0; i < inventoryElements.Length; i++)
         {
             if (transform.GetChild(i).gameObject.activeSelf)
                 return;
@@ -116,7 +116,12 @@ public class UI_Controller : MonoBehaviour
     }
 
     public void RestartGameButton() => GameManager.instance.RestartScene();
-    public void ReturnToMenu() => GameManager.instance.ReturnToMenu();
+    public void ReturnToMenu()
+    {
+        Time.timeScale = 1f; // Resume time just in case it's frozen
+        GameManager.instance.ReturnToMenu();
+    }
+
     public void Save() => SaveManager.instance.SaveGame();
     public void Resume() => CheckInGameUI();
 }
