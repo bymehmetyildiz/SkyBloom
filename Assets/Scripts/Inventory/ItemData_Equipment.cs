@@ -48,7 +48,10 @@ public class ItemData_Equipment : ItemData
     
 
     public void Effect(Transform _enemyPosition)
-    {        
+    {
+        if (itemEffect == null)
+            return;
+
         itemEffect.ExecuteEffect(_enemyPosition);
     }
 
