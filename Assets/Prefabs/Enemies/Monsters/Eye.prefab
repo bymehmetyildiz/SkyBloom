@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 3744036141554255503}
-  groundCheckDistance: 0.1
+  groundCheckDistance: 0.22
   wallCheck: {fileID: 8055400575401989884}
   wallCheckDistance: 0.1
   whatIsGround:
@@ -778,6 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d18c3a8824a0e44abb0f1c95fa6c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
 --- !u!1 &6494206332485048192
 GameObject:
   m_ObjectHideFlags: 0

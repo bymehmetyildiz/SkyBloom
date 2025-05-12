@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour, ISaveManager
 
     
     public static LevelManager instance;
+    [SerializeField] private UI_FadeScreen fadeScreen;
     public int sceneIndex;
 
     private void Awake()
@@ -17,10 +18,17 @@ public class LevelManager : MonoBehaviour, ISaveManager
         else
             instance = this;
     }
+    private void Start()
+    {
+        fadeScreen = FindObjectOfType<UI_FadeScreen>();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>() != null)
         {
+
             sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
             SaveManager.instance.SaveGame();
@@ -35,9 +43,18 @@ public class LevelManager : MonoBehaviour, ISaveManager
     private IEnumerator LoadNewScene()
     {
         yield return new WaitForSeconds(0.1f);
-        SceneManager.LoadScene(sceneIndex);
+        StartCoroutine(LoadScreenWithFadeEffect(1, sceneIndex));
+        
     }
 
+    IEnumerator LoadScreenWithFadeEffect(float _delay, int _sceneIndex)
+    {
+        fadeScreen.FadeOut();
+
+        yield return new WaitForSeconds(_delay);
+
+        SceneManager.LoadScene(_sceneIndex);
+    }
 
     public void LoadData(GameData _data)
     {

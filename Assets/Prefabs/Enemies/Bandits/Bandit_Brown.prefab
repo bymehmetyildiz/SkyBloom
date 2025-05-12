@@ -771,8 +771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountOfItems: 1
-  possibleDrop:
-  - {fileID: 11400000, guid: b673060230678844cbb0f72875387c23, type: 2}
+  possibleDrop: []
   dropPrefab: {fileID: 4212661324000050600, guid: c46fbaae02023974db8e2a40694e3798, type: 3}
   offsetY: 0
 --- !u!1 &6828621154794625652

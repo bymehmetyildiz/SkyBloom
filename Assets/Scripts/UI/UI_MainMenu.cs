@@ -9,6 +9,7 @@ public class UI_MainMenu : MonoBehaviour
     [SerializeField] private GameObject continueButton;
     [SerializeField] private UI_FadeScreen fadeScreen;
     [SerializeField] private RectTransform warningPanel;
+    [SerializeField] private RectTransform creditsPanel;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class UI_MainMenu : MonoBehaviour
             continueButton.SetActive(false);
 
         warningPanel.localScale = Vector2.zero;
+        creditsPanel.localScale = Vector2.zero;
     }
 
     public void ContinueGame()
@@ -27,13 +29,24 @@ public class UI_MainMenu : MonoBehaviour
     {
         if (continueButton.activeSelf == false)        
             AcceptNewGame();        
-        else        
-            StartCoroutine(WarningPanel());
+        else
+        {
+            creditsPanel.localScale = Vector2.zero;
+            StartCoroutine(ScalePanel(warningPanel));
+        }
+            
         
     }
 
+    public void Credits()
+    {
+        warningPanel.localScale = Vector2.zero;
+        StartCoroutine(ScalePanel(creditsPanel));
+    }
 
-    private IEnumerator WarningPanel()
+
+
+    private IEnumerator ScalePanel(RectTransform _panel)
     {
         float duration = 0.3f; // Duration of the tween in seconds
         float elapsed = 0f;
@@ -44,11 +57,11 @@ public class UI_MainMenu : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
-            warningPanel.localScale = Vector3.Lerp(startScale, endScale, t);
+            _panel.localScale = Vector3.Lerp(startScale, endScale, t);
             yield return null;
         }
 
-        warningPanel.localScale = endScale; // Ensure it's fully scaled at the end
+        _panel.localScale = endScale; // Ensure it's fully scaled at the end
     }
 
     public void AcceptNewGame()

@@ -10,6 +10,8 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private GameObject endText;
     [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject returnMenuButton;
+    [SerializeField] private RectTransform controlsPanel;
+    [SerializeField] private RectTransform settingsPanel;
     [Space]
 
     public static UI_Controller instance;
@@ -39,7 +41,9 @@ public class UI_Controller : MonoBehaviour
         itemToolTip.gameObject.SetActive(false);
         statToolTip.gameObject.SetActive(false);
         skillToolTip.gameObject.SetActive(false);
-        
+        settingsPanel.localScale = Vector3.zero;
+        controlsPanel.localScale = Vector3.zero;
+
     }
 
     void Update()
@@ -120,6 +124,35 @@ public class UI_Controller : MonoBehaviour
     {
         Time.timeScale = 1f; // Resume time just in case it's frozen
         GameManager.instance.ReturnToMenu();
+    }
+
+    public void Settings()
+    {     
+        controlsPanel.localScale = Vector3.zero;
+        StartCoroutine(ScalePanel(settingsPanel, Vector3.zero, Vector3.one));
+    }
+
+    public void Controls()
+    { 
+        settingsPanel.localScale = Vector3.zero;
+        StartCoroutine(ScalePanel(controlsPanel, Vector3.zero, Vector3.one));
+    }
+
+
+    public IEnumerator ScalePanel(RectTransform _panel, Vector3 _startScale, Vector3 _endScale)
+    {
+        float duration = 0.3f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime; // Use unscaled time
+            float t = Mathf.Clamp01(elapsed / duration);
+            _panel.localScale = Vector3.Lerp(_startScale, _endScale, t);
+            yield return null;
+        }
+
+        _panel.localScale = _endScale;
     }
 
     public void Save() => SaveManager.instance.SaveGame();

@@ -5,7 +5,7 @@ using Cainos.LucidEditor;
 
 namespace Cainos.PixelArtPlatformer_VillageProps
 {
-    public class Chest : MonoBehaviour
+    public class Chest : MonoBehaviour, ISaveManager
     {
         [FoldoutGroup("Reference")]
         public Animator animator;
@@ -18,6 +18,15 @@ namespace Cainos.PixelArtPlatformer_VillageProps
         {
             key.SetActive(false);
             itemDrop = GetComponent<ItemDrop>();
+
+            Invoke("CheckOpenedChest", 0.1f);
+         
+        }
+
+        private void CheckOpenedChest()
+        {
+            if (isOpened)
+                Open();
         }
 
         [FoldoutGroup("Runtime"), ShowInInspector, DisableInEditMode]
@@ -72,6 +81,19 @@ namespace Cainos.PixelArtPlatformer_VillageProps
                 isPlayerNearby = false;
                 key.SetActive(false);
             }
+        }
+
+        public void LoadData(GameData _data)
+        {
+            if (_data != null)
+                this.isOpened = _data.isOpened;
+            else
+                this.isOpened = false;
+        }
+
+        public void SaveData(ref GameData _data)
+        {
+            _data.isOpened = this.isOpened;
         }
     }
 }
