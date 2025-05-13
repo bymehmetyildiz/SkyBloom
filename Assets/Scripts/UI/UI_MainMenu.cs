@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UI_MainMenu : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class UI_MainMenu : MonoBehaviour
     [SerializeField] private UI_FadeScreen fadeScreen;
     [SerializeField] private RectTransform warningPanel;
     [SerializeField] private RectTransform creditsPanel;
+    [SerializeField] private ScrollRect scrollRect;
 
     private void Start()
     {
@@ -32,16 +34,17 @@ public class UI_MainMenu : MonoBehaviour
         else
         {
             creditsPanel.localScale = Vector2.zero;
-            StartCoroutine(ScalePanel(warningPanel));
+            if (warningPanel.localScale != Vector3.one)
+                StartCoroutine(ScalePanel(warningPanel));
         }
-            
-        
     }
 
     public void Credits()
     {
         warningPanel.localScale = Vector2.zero;
-        StartCoroutine(ScalePanel(creditsPanel));
+
+        if(creditsPanel.localScale != Vector3.one)
+            StartCoroutine(ScalePanel(creditsPanel));
     }
 
 
@@ -62,6 +65,10 @@ public class UI_MainMenu : MonoBehaviour
         }
 
         _panel.localScale = endScale; // Ensure it's fully scaled at the end
+
+        // Reset scroll to top
+        if (scrollRect != null)
+            scrollRect.verticalNormalizedPosition = 1f;
     }
 
     public void AcceptNewGame()
@@ -70,7 +77,7 @@ public class UI_MainMenu : MonoBehaviour
         StartCoroutine(LoadScreenWithFadeEffect(2));
     }
 
-    public void RejectNewGame() => warningPanel.localScale = Vector3.zero;
+    public void Reject(RectTransform _panel) => _panel.localScale = Vector3.zero;
 
 
     public void ExitGame()

@@ -12,6 +12,8 @@ public class Succubus : Enemy
     [SerializeField] private BoxCollider2D arena;
     public float flyTimer;
     public float flyDur;
+    public DialogueTrigger npc;
+    public DialogueManager dialogueManager;
 
     //States
     public SuccubusHumanState humanState {  get; private set; }
@@ -50,6 +52,7 @@ public class Succubus : Enemy
         base.Start();
         stateMachine.Initialize(humanState);
         arena = GameManager.instance.GetComponent<BoxCollider2D>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
     }
     protected override void Update()
     {

@@ -5,10 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class GameData 
 {
-    public int currency;
-    public int typeCounter;
-    public int sceneIndex;
-    public bool isOpened;
+    public int currency; // Money
+    public int typeCounter; // Sword Throw Skill Type Counter
+    public int sceneIndex; // Scene Index
+    public bool isOpened; // Is Chest Opeened
+   
 
     public SerializableDictionary<string, bool> skillTree;
     public SerializableDictionary<string, int> inventory;
@@ -17,12 +18,15 @@ public class GameData
     public SerializableDictionary<string, bool> checkPoints;
     public string closestCheckPointId;
 
+    public SerializableDictionary<string, bool> npc;
+
     public GameData()
     {
         currency = 0;        
         typeCounter = 0;
         sceneIndex = 1;
         isOpened = false;
+       
         
         skillTree = new SerializableDictionary<string, bool>();
         inventory = new SerializableDictionary<string, int>();
@@ -30,6 +34,8 @@ public class GameData
 
         checkPoints = new SerializableDictionary<string, bool>();
         closestCheckPointId = string.Empty;
+
+        npc = new SerializableDictionary<string, bool>();
     }
 
 }

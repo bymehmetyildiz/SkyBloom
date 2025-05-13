@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour, ISaveManager
     [Header("CheckPoints")]
     private CheckPoint[] checkPoints;
     private string closestCheckPointId;
+
+    [Header("NPC")]
+    private DialogueTrigger[] dialogueTriggers;
     
 
     [Header("Common")]
@@ -34,6 +37,8 @@ public class GameManager : MonoBehaviour, ISaveManager
             Destroy(instance.gameObject);
 
         checkPoints = FindObjectsOfType<CheckPoint>();
+
+        dialogueTriggers = FindObjectsOfType<DialogueTrigger>();
     }
 
     private void Start()
@@ -117,6 +122,16 @@ public class GameManager : MonoBehaviour, ISaveManager
         closestCheckPointId = _data.closestCheckPointId;
         //Invoke("PlacePlayerAtClosestCheckPoint", 0.1f);
         PlacePlayerAtClosestCheckPoint();
+
+        foreach (KeyValuePair<string, bool> _npc in _data.npc)
+        {
+            foreach (var npc in dialogueTriggers)
+            {
+                if(npc.name == _npc.Key && npc.name != "SuccubusNPC")
+                    npc.isSpoken = _npc.Value;
+            }
+        }
+
     }
 
     private void PlacePlayerAtClosestCheckPoint()
@@ -138,6 +153,12 @@ public class GameManager : MonoBehaviour, ISaveManager
         foreach (CheckPoint checkPoint in checkPoints)
         {
             _data.checkPoints.Add(checkPoint.id, checkPoint.isActivated);
+        }
+
+        _data.npc.Clear();
+        foreach (var npc in dialogueTriggers)
+        {
+            _data.npc.Add(npc.name, npc.isSpoken);
         }
     }
 

@@ -20,10 +20,9 @@ public class SuccubusHumanState : EnemyState
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
+        if (enemy.npc.isSpoken && !enemy.dialogueManager.isActive)        
             stateMachine.ChangeState(enemy.transformState);
 
-        }
+        
     }
 }

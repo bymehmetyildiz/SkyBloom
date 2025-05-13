@@ -9,7 +9,7 @@ public class DialogueTrigger : MonoBehaviour
     public Character[] characters;
 
     [SerializeField] private DialogueManager dialogueManager;
-    private bool isSpoken = false;
+    public bool isSpoken = false;
     [SerializeField] private CapsuleCollider2D cc;
 
     private bool canSpeak;
@@ -74,9 +74,7 @@ public class DialogueTrigger : MonoBehaviour
             if(cc != null)
                 cc.isTrigger = true;
         }
-
     }
-
 }
 
 
