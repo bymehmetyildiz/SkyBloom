@@ -5,7 +5,8 @@ using UnityEngine;
 public class WarlordBattleState : EnemyState
 {
     private Warlord enemy;
-    private int moveDir;
+    private int moveDir; 
+    private float distanceToPlayer;
 
     public WarlordBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Warlord _enemy) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -31,6 +32,11 @@ public class WarlordBattleState : EnemyState
     {
         base.FixedUpdate();
 
+        distanceToPlayer = Mathf.Abs(player.transform.position.x - enemy.transform.position.x);
+
+        if (distanceToPlayer < 0.2f)
+            return;
+
         if (player.transform.position.x > enemy.transform.position.x)
             moveDir = 1;
         else if (player.transform.position.x < enemy.transform.position.x)
@@ -54,7 +60,7 @@ public class WarlordBattleState : EnemyState
         // Check player detection
         var playerHit = enemy.IsPlayerDetected();
 
-        if (playerHit)
+        if (playerHit || (distanceToPlayer <= enemy.attackDistance && player.IsGroundDetected()))
         {
             stateTimer = enemy.agroTime;
 
@@ -62,6 +68,13 @@ public class WarlordBattleState : EnemyState
             {
                 stateMachine.ChangeState(enemy.attackState);
                 return;
+            }
+        }
+        else
+        {
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10f)
+            {
+                stateMachine.ChangeState(enemy.idleState);
             }
         }
 
@@ -72,10 +85,7 @@ public class WarlordBattleState : EnemyState
             return;
         }
 
-        // Idle if out of time or player too far
-        if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10f)
-        {
-            stateMachine.ChangeState(enemy.idleState);
-        }
+        
+       
     }
 }

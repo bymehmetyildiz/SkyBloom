@@ -42,30 +42,52 @@ public class EarthSlamExplosion : MonoBehaviour
         timer -= Time.deltaTime;
         transform.Translate(direciton * Vector2.right * Time.deltaTime * speed);
 
-        if (timer <= 0)
+        if (timer <= 0 && gameObject != null)
             Destroy(gameObject);
     }
 
     private bool IsGroundDetected() => Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+    private bool IsWallDetected() => Physics2D.Raycast(transform.position, Vector2.right * direciton, groundCheckDistance/2, whatIsGround);
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundCheckDistance));
-    }
 
     public IEnumerator CrateExplosion()
     {
         for (int i = 0; i < expCounter; i++)
-        {           
-            if (IsGroundDetected())
-            { 
+        {
+            if (this == null || gameObject == null)
+                yield break;
+
+            // Add a local flag before using MonoBehaviour methods
+            bool groundDetected = false;
+            bool wallDetected = false;
+
+            // Try-catch to prevent errors from destroyed components
+            try
+            {
+                groundDetected = IsGroundDetected();
+                wallDetected = IsWallDetected();
+            }
+            catch (MissingReferenceException)
+            {
+                yield break; // Object destroyed
+            }
+
+            if (groundDetected && !wallDetected)
+            {
                 Instantiate(explosionPrefab, new Vector3(transform.position.x, transform.position.y - groundCheckDistance), Quaternion.identity);
                 yield return new WaitForSeconds(expTimer);
+
                 if (!canSpawnExp)
                     break;
-            } 
+            }
+            else
+            {
+                yield return null; // Let next frame run
+            }
         }
-        Destroy(gameObject, 0.1f);
+
+        if (this != null && gameObject != null)
+            Destroy(gameObject, 0.1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

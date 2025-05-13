@@ -7,6 +7,7 @@ public class EyeBattleState : EnemyState
     private Eye eye;
     private int moveDir;
     private float rangedTimer;
+    private float distanceToPlayer;
     public EyeBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Eye _eye) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
         eye = _eye;
@@ -32,6 +33,11 @@ public class EyeBattleState : EnemyState
     {
         base.FixedUpdate();
 
+        distanceToPlayer = Mathf.Abs(player.transform.position.x - eye.transform.position.x);
+
+        if (distanceToPlayer < 0.2f)
+            return;
+
         if (player.transform.position.x > eye.transform.position.x)
             moveDir = 1;
         else if (player.transform.position.x < eye.transform.position.x)
@@ -56,7 +62,7 @@ public class EyeBattleState : EnemyState
         if (rangedTimer < 0)
             stateMachine.ChangeState(eye.rangedState);
 
-        if (eye.IsPlayerDetected())
+        if (eye.IsPlayerDetected() || (distanceToPlayer <= eye.attackDistance && player.IsGroundDetected()))
         {
             stateTimer = eye.agroTime;
 
@@ -66,11 +72,14 @@ public class EyeBattleState : EnemyState
             }
 
         }
+        else
+        {
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, eye.transform.position) > 10)
+                stateMachine.ChangeState(eye.idleState);
+        }
 
         if (eye.IsWallDetected() || !eye.IsGroundDetected() || eye.IsDangerDetected())
             stateMachine.ChangeState(eye.idleState);
 
-        if (stateTimer < 0 || Vector2.Distance(player.transform.position, eye.transform.position) > 10)
-            stateMachine.ChangeState(eye.idleState);
     }
 }

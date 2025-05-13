@@ -6,6 +6,7 @@ public class TrapEnemyBattleState : EnemyState
 {
     private TrapEnemy enemy;
     private int moveDir;
+    private float distanceToPlayer;
 
     public TrapEnemyBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, TrapEnemy _enemy) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -31,6 +32,11 @@ public class TrapEnemyBattleState : EnemyState
     {
         base.FixedUpdate();
 
+        distanceToPlayer = Mathf.Abs(player.transform.position.x - enemy.transform.position.x);
+
+        if (distanceToPlayer < 0.2f)
+            return;
+
         if (player.transform.position.x > enemy.transform.position.x)
             moveDir = 1;
         else if (player.transform.position.x < enemy.transform.position.x)
@@ -51,7 +57,7 @@ public class TrapEnemyBattleState : EnemyState
         }
 
 
-        if (enemy.IsPlayerDetected())
+        if (enemy.IsPlayerDetected() || (distanceToPlayer <= enemy.attackDistance && player.IsGroundDetected()))
         {
             stateTimer = enemy.agroTime;
 
@@ -59,8 +65,13 @@ public class TrapEnemyBattleState : EnemyState
                 stateMachine.ChangeState(enemy.attackState);
 
         }
+        else
+        {
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10)
+                stateMachine.ChangeState(enemy.idleState);
+        }
 
-        if (enemy.IsWallDetected() || !enemy.IsGroundDetected() || stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10 || enemy.IsDangerDetected())
+        if (enemy.IsWallDetected() || !enemy.IsGroundDetected())
             stateMachine.ChangeState(enemy.idleState);
 
     }

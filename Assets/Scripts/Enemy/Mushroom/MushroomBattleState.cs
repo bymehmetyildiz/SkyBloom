@@ -7,6 +7,7 @@ public class MushroomBattleState : EnemyState
 {
     private Mushroom mushroom;
     private int moveDir;
+    private float distanceToPlayer;
 
     public MushroomBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Mushroom _mushroom) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -33,6 +34,11 @@ public class MushroomBattleState : EnemyState
     {
         base.FixedUpdate();
 
+        distanceToPlayer = Mathf.Abs(player.transform.position.x - mushroom.transform.position.x);
+
+        if (distanceToPlayer < 0.2f)
+            return;
+
         if (player.transform.position.x > mushroom.transform.position.x)
             moveDir = 1;
         else if (player.transform.position.x < mushroom.transform.position.x)
@@ -53,7 +59,7 @@ public class MushroomBattleState : EnemyState
         }
 
 
-        if (mushroom.IsPlayerDetected())
+        if (mushroom.IsPlayerDetected() || (distanceToPlayer <= mushroom.attackDistance && player.IsGroundDetected()))
         {
             stateTimer = mushroom.agroTime;
 
@@ -63,11 +69,13 @@ public class MushroomBattleState : EnemyState
                
             }
         }
+        else
+        {
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, mushroom.transform.position) > 10)
+                stateMachine.ChangeState(mushroom.idleState);
+        }
 
         if (mushroom.IsWallDetected() || !mushroom.IsGroundDetected() || mushroom.IsDangerDetected())
-            stateMachine.ChangeState(mushroom.idleState);
-
-        if (stateTimer < 0 || Vector2.Distance(player.transform.position, mushroom.transform.position) > 10)
             stateMachine.ChangeState(mushroom.idleState);
     }
 }

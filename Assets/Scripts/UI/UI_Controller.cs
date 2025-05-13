@@ -9,7 +9,7 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private UI_FadeScreen fadeScreen;
     [SerializeField] private GameObject endText;
     [SerializeField] private GameObject restartButton;
-    [SerializeField] private GameObject returnMenuButton;
+    [SerializeField] private GameObject returnMenuButton;    
     [SerializeField] private RectTransform controlsPanel;
     [SerializeField] private RectTransform settingsPanel;
     [Space]

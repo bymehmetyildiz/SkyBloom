@@ -6,6 +6,8 @@ public class StandartMonsterBattleState : EnemyState
 {
     private StandartMonster enemy;
     private int moveDir;
+    private float distanceToPlayer;
+
     public StandartMonsterBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, StandartMonster _enemy) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
         this.enemy = _enemy;
@@ -30,9 +32,9 @@ public class StandartMonsterBattleState : EnemyState
     {
         base.FixedUpdate();
 
-        float dictanceToPlayer = Mathf.Abs(player.transform.position.x - enemy.transform.position.x);
+        distanceToPlayer = Mathf.Abs(player.transform.position.x - enemy.transform.position.x);
 
-        if (dictanceToPlayer < 0.25f)
+        if (distanceToPlayer < 0.2f)
             return;
 
         if (player.transform.position.x >= enemy.transform.position.x)
@@ -55,7 +57,7 @@ public class StandartMonsterBattleState : EnemyState
         }
 
 
-        if (enemy.IsPlayerDetected())
+        if (enemy.IsPlayerDetected() || (distanceToPlayer <= enemy.attackDistance && player.IsGroundDetected()))
         {
             stateTimer = enemy.agroTime;
 

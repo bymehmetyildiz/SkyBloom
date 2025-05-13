@@ -8,7 +8,8 @@ public class GrimBattleState : EnemyState
     private Grim enemy;
     private int moveDir;
     private float rangedTimer;
-    
+    private float distanceToPlayer;
+
     public GrimBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Grim _enemy) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
         this.enemy = _enemy;
@@ -35,6 +36,11 @@ public class GrimBattleState : EnemyState
     {
         base.FixedUpdate();
 
+        distanceToPlayer = Mathf.Abs(player.transform.position.x - enemy.transform.position.x);
+
+        if (distanceToPlayer < 0.2f)
+            return;
+
         if (player.transform.position.x > enemy.transform.position.x)
             moveDir = 1;
         else if (player.transform.position.x < enemy.transform.position.x)
@@ -56,7 +62,7 @@ public class GrimBattleState : EnemyState
         }
 
 
-        if (enemy.IsPlayerDetected())
+        if (enemy.IsPlayerDetected() || (distanceToPlayer <= enemy.attackDistance && player.IsGroundDetected()))
         {
             stateTimer = enemy.agroTime;
 

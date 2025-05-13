@@ -119,7 +119,21 @@ public class Enemy : Entity
     }
 
     //Checks
-    public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, detectDistance, playerLayer);
+    public virtual RaycastHit2D IsPlayerDetected()
+    {
+        RaycastHit2D playerDetected = Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, detectDistance, playerLayer);
+        RaycastHit2D wallDetected = Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, detectDistance, whatIsGround);
+
+        if (wallDetected)
+        {
+            if(wallDetected.distance < playerDetected.distance)
+                return default(RaycastHit2D);
+        }
+
+        return playerDetected;
+
+
+    }
 
     public virtual void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
 

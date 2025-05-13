@@ -7,6 +7,7 @@ public class TransformedBattleState : EnemyState
 {
     private TransformingEnemy enemy;
     private int moveDir;
+    private float distanceToPlayer;
 
     public TransformedBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, TransformingEnemy _enemy) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -32,6 +33,11 @@ public class TransformedBattleState : EnemyState
     {
         base.FixedUpdate();
 
+        distanceToPlayer = Mathf.Abs(player.transform.position.x - enemy.transform.position.x);
+
+        if (distanceToPlayer < 0.2f)
+            return;
+
         if (player.transform.position.x > enemy.transform.position.x)
             moveDir = 1;
         else if (player.transform.position.x < enemy.transform.position.x)
@@ -51,7 +57,7 @@ public class TransformedBattleState : EnemyState
             return;
         }
 
-        if (enemy.IsPlayerDetected())
+        if (enemy.IsPlayerDetected() || (distanceToPlayer <= enemy.attackDistance && player.IsGroundDetected()))
         {
             stateTimer = enemy.agroTime;
 
@@ -59,8 +65,14 @@ public class TransformedBattleState : EnemyState
                 stateMachine.ChangeState(enemy.attackState);
 
         }
+        else
+        {
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10)
+                stateMachine.ChangeState(enemy.idleState);
+        }
 
-        if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10 || enemy.IsWallDetected() || enemy.IsDangerDetected())
+
+        if (enemy.IsWallDetected() || !enemy.IsGroundDetected() || enemy.IsDangerDetected())
             stateMachine.ChangeState(enemy.idleState);
 
     }

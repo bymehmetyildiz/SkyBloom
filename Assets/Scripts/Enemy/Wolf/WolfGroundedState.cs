@@ -14,6 +14,7 @@ public class WolfGroundedState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        stateTimer = 1;
     }
 
     public override void Exit()

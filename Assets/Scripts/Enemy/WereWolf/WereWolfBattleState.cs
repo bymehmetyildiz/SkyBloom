@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class WereWolfBattleState : EnemyState
 {
-    private WereWolf wereWolf;
-    
+    private WereWolf wereWolf;    
     private int moveDir;
+    private float distanceToPlayer;
 
     public WereWolfBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, WereWolf _wereWolf
         ) : base(_baseEnemy, _stateMachine, _animBoolName)
@@ -34,6 +34,11 @@ public class WereWolfBattleState : EnemyState
     {
         base.FixedUpdate();
 
+        distanceToPlayer = Mathf.Abs(player.transform.position.x - wereWolf.transform.position.x);
+
+        if (distanceToPlayer < 0.2f)
+            return;
+
         if (player.transform.position.x > wereWolf.transform.position.x)
             moveDir = 1;
         else if (player.transform.position.x < wereWolf.transform.position.x)
@@ -54,7 +59,7 @@ public class WereWolfBattleState : EnemyState
         }
 
 
-        if (wereWolf.IsPlayerDetected())
+        if (wereWolf.IsPlayerDetected() || (distanceToPlayer <= wereWolf.attackDistance && player.IsGroundDetected()))
         {
             
             stateTimer = wereWolf.agroTime;
@@ -67,12 +72,16 @@ public class WereWolfBattleState : EnemyState
                 //    stateMachine.ChangeState(bandit.idleState);
             }
         }
+        else
+        {
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, wereWolf.transform.position) > 10)
+                stateMachine.ChangeState(wereWolf.idleState);
+        }
 
         if (wereWolf.IsWallDetected() || !wereWolf.IsGroundDetected() || wereWolf.IsDangerDetected())
             stateMachine.ChangeState(wereWolf.idleState);
 
-        if (stateTimer < 0 || Vector2.Distance(player.transform.position, wereWolf.transform.position) > 10)
-            stateMachine.ChangeState(wereWolf.idleState);
+        
 
     }
 }

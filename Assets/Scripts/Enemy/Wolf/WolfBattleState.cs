@@ -7,6 +7,7 @@ public class WolfBattleState : EnemyState
 {
     private Wolf wolf;
     private int moveDir;
+    private float distanceToPlayer;
 
     public WolfBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Wolf _wolf) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -23,6 +24,7 @@ public class WolfBattleState : EnemyState
             stateMachine.ChangeState(wolf.moveState);
 
         wolf.StopCounterAttack();
+       
     }
 
     public override void Exit()
@@ -34,6 +36,11 @@ public class WolfBattleState : EnemyState
     {
         base.FixedUpdate();
 
+       distanceToPlayer = Mathf.Abs(player.transform.position.x - wolf.transform.position.x);
+
+        if (distanceToPlayer < 0.2f)
+            return;
+
         if (player.transform.position.x > wolf.transform.position.x)
             moveDir = 1;
         else if (player.transform.position.x < wolf.transform.position.x)
@@ -44,7 +51,7 @@ public class WolfBattleState : EnemyState
 
     public override void Update()
     {
-        base.Update();
+        base.Update();        
 
         if (!wolf.IsGroundDetected())
         {
@@ -54,7 +61,7 @@ public class WolfBattleState : EnemyState
         }
 
 
-        if (wolf.IsPlayerDetected())
+        if (wolf.IsPlayerDetected() || (distanceToPlayer <= wolf.attackDistance && player.IsGroundDetected()))
         {
             stateTimer = wolf.agroTime;
 
@@ -66,12 +73,16 @@ public class WolfBattleState : EnemyState
                 //    stateMachine.ChangeState(bandit.idleState);
             }
         }
+        else
+        {           
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, wolf.transform.position) > 10)
+                stateMachine.ChangeState(wolf.idleState);
+        }
 
         if (wolf.IsWallDetected() || !wolf.IsGroundDetected() || wolf.IsDangerDetected())
             stateMachine.ChangeState(wolf.idleState);
 
-        if (stateTimer < 0 || Vector2.Distance(player.transform.position, wolf.transform.position) > 10)
-            stateMachine.ChangeState(wolf.idleState);
+       
 
     }
 }

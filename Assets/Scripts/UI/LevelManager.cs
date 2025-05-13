@@ -11,6 +11,9 @@ public class LevelManager : MonoBehaviour, ISaveManager
     [SerializeField] private UI_FadeScreen fadeScreen;
     public int sceneIndex;
 
+    [Header("End Panel")]
+    [SerializeField] private GameObject endPanel;
+
     private void Awake()
     {
         if (instance != null) 
@@ -21,6 +24,9 @@ public class LevelManager : MonoBehaviour, ISaveManager
     private void Start()
     {
         fadeScreen = FindObjectOfType<UI_FadeScreen>();
+
+        if(endPanel != null )
+            endPanel.SetActive(false);
     }
 
 
@@ -33,10 +39,10 @@ public class LevelManager : MonoBehaviour, ISaveManager
 
             SaveManager.instance.SaveGame();
 
-            if (sceneIndex <= 10)
+            if (sceneIndex < 10)
                 StartCoroutine(LoadNewScene());
             else
-                Debug.Log("Final Scene");
+                SwitchOnEndScreen();
         } 
     }
 
@@ -69,5 +75,34 @@ public class LevelManager : MonoBehaviour, ISaveManager
         _data.sceneIndex = sceneIndex;
     }
 
-   
+    public void SwitchOnEndScreen()
+    {
+        fadeScreen.FadeOut();
+        StartCoroutine(EndScreen());
+    }
+
+    IEnumerator EndScreen()
+    {
+        yield return new WaitForSeconds(1.5f);
+        fadeScreen.FadeIn();
+        if (endPanel != null)
+            endPanel.SetActive(true);
+    }
+
+    public void ReturnMenu()
+    {
+        SaveManager.instance.DeleteSavedData();
+        StartCoroutine(LoadScreenWithFadeEffect(1, 0));
+    }
+
+    public void NewGamePlus()
+    {
+        sceneIndex = 1;
+        StartCoroutine(LoadScreenWithFadeEffect(1, sceneIndex));
+    }
+
+
+
+
+
 }

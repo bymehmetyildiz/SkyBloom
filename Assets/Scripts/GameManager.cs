@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour, ISaveManager
     [Header("The River")]
     [SerializeField] private GameObject ladder;
 
+    
 
     private void Awake()
     {

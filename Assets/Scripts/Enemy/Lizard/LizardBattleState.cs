@@ -6,6 +6,7 @@ public class LizardBattleState : EnemyState
 {
     private Lizard lizard;
     private int moveDir;
+    private float distanceToPlayer;
 
     public LizardBattleState(Enemy _baseEnemy, EnemyStateMachine _stateMachine, string _animBoolName, Lizard _lizard) : base(_baseEnemy, _stateMachine, _animBoolName)
     {
@@ -31,6 +32,11 @@ public class LizardBattleState : EnemyState
     {
         base.FixedUpdate();
 
+        distanceToPlayer = Mathf.Abs(player.transform.position.x - lizard.transform.position.x);
+
+        if (distanceToPlayer < 0.2f)
+            return;
+
         if (player.transform.position.x > lizard.transform.position.x)
             moveDir = 1;
         else if (player.transform.position.x < lizard.transform.position.x)
@@ -51,7 +57,7 @@ public class LizardBattleState : EnemyState
         }
 
 
-        if (lizard.IsPlayerDetected())
+        if (lizard.IsPlayerDetected() || (distanceToPlayer <= lizard.attackDistance && player.IsGroundDetected()))
         {
             stateTimer = lizard.agroTime;
 
@@ -59,11 +65,14 @@ public class LizardBattleState : EnemyState
                 stateMachine.ChangeState(lizard.attackState);
 
         }
+        else
+        {
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, lizard.transform.position) > 10)
+                stateMachine.ChangeState(lizard.idleState);
+        }
 
         if (lizard.IsWallDetected() || !lizard.IsGroundDetected() || lizard.IsDangerDetected())
             stateMachine.ChangeState(lizard.idleState);
-
-        if (stateTimer < 0 || Vector2.Distance(player.transform.position, lizard.transform.position) > 10)
-            stateMachine.ChangeState(lizard.idleState);
+        
     }
 }
