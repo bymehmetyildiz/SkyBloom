@@ -51,7 +51,7 @@ public class ThunderSkillController : MonoBehaviour
     {
         yield return new WaitForSeconds(_seconds);
 
-        foreach (Transform t in targets)
+        foreach (Transform t in new List<Transform>(targets))
         {
             GameObject newThunder = Instantiate(thunder, new Vector2(t.position.x, t.position.y + offset), Quaternion.identity);
             newThunder.GetComponent<Thunder>().SetUpThunder(speed, damage, player);

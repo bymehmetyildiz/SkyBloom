@@ -206,7 +206,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 10
+    baseValue: 13
     modifiers: 
   critChance:
     baseValue: 99
@@ -215,7 +215,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 250
+    baseValue: 140
     modifiers: 
   armor:
     baseValue: 0

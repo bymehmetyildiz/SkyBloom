@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 
 
 public class Inventory : MonoBehaviour, ISaveManager
@@ -34,7 +34,8 @@ public class Inventory : MonoBehaviour, ISaveManager
     private float lastUseTimeOfFlusk;
     private float flaskCooldown;
 
-    [Header("Data Base")]        
+    [Header("Data Base")]
+    public List<ItemData> itemDataBase;
     public List<InventoryItem> loadedItems;
     public List<InventoryItem> loadedEquipment;
 
@@ -518,38 +519,39 @@ public class Inventory : MonoBehaviour, ISaveManager
         }
     }
     #region Save/Load Data
-    
+
     public void LoadData(GameData _data)
     {
+        loadedItems = new List<InventoryItem>();
+        loadedEquipment = new List<InventoryItem>();
+
         foreach (KeyValuePair<string, int> pair in _data.inventory)
         {
-            foreach (var item in GetItemDataBase())
+            foreach (var item in itemDataBase)
             {
                 if (item != null && item.itemId == pair.Key)
                 {
                     InventoryItem itemToLoad = new InventoryItem(item);
                     itemToLoad.stackSize = pair.Value;
-
                     loadedItems.Add(itemToLoad);
                 }
-
             }
         }
 
         foreach (KeyValuePair<string, int> pair in _data.equipment)
         {
-            foreach (var item in GetItemDataBase())
+            foreach (var item in itemDataBase)
             {
                 if (item != null && item.itemId == pair.Key)
                 {
                     InventoryItem itemToLoad = new InventoryItem(item);
                     itemToLoad.stackSize = pair.Value;
-                   
                     loadedEquipment.Add(itemToLoad);
                 }
             }
         }
     }
+
 
     public void SaveData(ref GameData _data)
     {
@@ -569,6 +571,9 @@ public class Inventory : MonoBehaviour, ISaveManager
 
     }
 
+#if UNITY_EDITOR
+    [ContextMenu("Fill Item DataBase")]
+    private void FillItemDB() => itemDataBase = new List<ItemData>(GetItemDataBase());
     private List<ItemData> GetItemDataBase()
     {
         List<ItemData> itemDataBase = new List<ItemData>();
@@ -583,7 +588,8 @@ public class Inventory : MonoBehaviour, ISaveManager
 
         return itemDataBase;
     }
-    
-    #endregion 
-   
+#endif
+
+#endregion
+
 }

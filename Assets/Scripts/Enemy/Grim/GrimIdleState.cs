@@ -36,20 +36,20 @@ public class GrimIdleState : EnemyState
         if (enemy.stats.isDead)
             return;
 
-        if (stateTimer < 0.0f)
+        if (!enemy.IsPlayerDetected() && stateTimer < 0)
         {
             enemy.Flip();
-            stateMachine.ChangeState(enemy.battleState);
+            stateTimer = enemy.idleTime;
         }
+
 
         if (enemy.IsPlayerDetected())
         {
-            if(Vector2.Distance(player.transform.position, enemy.transform.position) < enemy.attackDistance)
+            if (Vector2.Distance(player.transform.position, enemy.transform.position) < enemy.attackDistance)
                 stateMachine.ChangeState(enemy.attackState);
 
             else if (Vector2.Distance(player.transform.position, enemy.transform.position) >= enemy.attackDistance)
                 stateMachine.ChangeState(enemy.battleState);
-
         }
     }
 }

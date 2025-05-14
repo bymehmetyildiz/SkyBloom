@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TheCoalMine.unity
     guid: b9bcd70d98737324f8693f49ca61ce7d
   - enabled: 1
+    path: Assets/Scenes/NarrowPassage.unity
+    guid: de95be5eb505d18479c35a1a559c99fa
+  - enabled: 1
     path: Assets/Scenes/TheFalconsNest.unity
     guid: c5e9da4b2faae3d4792b5a66aa4e1c36
   - enabled: 1

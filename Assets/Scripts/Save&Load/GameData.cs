@@ -20,6 +20,8 @@ public class GameData
 
     public SerializableDictionary<string, bool> npc;
 
+    public SerializableDictionary<string, bool> chest;
+
     public GameData()
     {
         currency = 0;        
@@ -36,6 +38,8 @@ public class GameData
         closestCheckPointId = string.Empty;
 
         npc = new SerializableDictionary<string, bool>();
+
+        chest = new SerializableDictionary<string, bool>();
     }
 
 }

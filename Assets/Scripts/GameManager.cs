@@ -16,16 +16,16 @@ public class GameManager : MonoBehaviour, ISaveManager
 
     [Header("NPC")]
     private DialogueTrigger[] dialogueTriggers;
-    
+
+    [Header("Chest")]
+    private Chest[] chests;
 
     [Header("Common")]
-    [SerializeField] private EnemyStats boss;
-
-    [Header("Level 1")]
+    [SerializeField] private EnemyStats boss;   
     [SerializeField] private DoorController enteranceGate;
     public DoorController exitGate;
 
-    [Header("The River")]
+    [Header("SilverStream")]
     [SerializeField] private GameObject ladder;
 
     
@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour, ISaveManager
         checkPoints = FindObjectsOfType<CheckPoint>();
 
         dialogueTriggers = FindObjectsOfType<DialogueTrigger>();
+
+        chests = FindObjectsOfType<Chest>();
     }
 
     private void Start()
@@ -133,6 +135,17 @@ public class GameManager : MonoBehaviour, ISaveManager
             }
         }
 
+        foreach (KeyValuePair<string, bool> _chest in _data.chest)
+        {
+            foreach (var chest in chests)
+            {
+                if(chest.id == _chest.Key)
+                    chest.IsOpened = _chest.Value;
+            }
+
+        }
+
+
     }
 
     private void PlacePlayerAtClosestCheckPoint()
@@ -161,6 +174,15 @@ public class GameManager : MonoBehaviour, ISaveManager
         {
             _data.npc.Add(npc.name, npc.isSpoken);
         }
+
+        _data.chest.Clear();
+
+        foreach (var chest in chests)
+        {
+            _data.chest.Add(chest.id, chest.IsOpened);
+        }
+
+
     }
 
     private CheckPoint FindClosestCheckPoint()

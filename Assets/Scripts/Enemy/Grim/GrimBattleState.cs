@@ -55,14 +55,7 @@ public class GrimBattleState : EnemyState
 
         rangedTimer -= Time.deltaTime;
 
-        if (!enemy.IsGroundDetected() || enemy.IsWallDetected() || enemy.IsDangerDetected())
-        {
-            enemy.Flip();
-            stateMachine.ChangeState(enemy.idleState);
-        }
-
-
-        if (enemy.IsPlayerDetected() || (distanceToPlayer <= enemy.attackDistance && player.IsGroundDetected()))
+        if (enemy.IsPlayerDetected() || (distanceToPlayer <= enemy.attackDistance/2 && player.IsGroundDetected()))
         {
             stateTimer = enemy.agroTime;
 
@@ -76,6 +69,11 @@ public class GrimBattleState : EnemyState
         if (rangedTimer < 0)
             stateMachine.ChangeState(enemy.spellState);
 
+        if (!enemy.IsGroundDetected() || enemy.IsWallDetected() || enemy.IsDangerDetected())
+        {
+            enemy.Flip();
+            stateMachine.ChangeState(enemy.idleState);
+        }
 
     }
 }

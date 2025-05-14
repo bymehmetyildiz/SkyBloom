@@ -34,9 +34,6 @@ public class Grim : Enemy
     protected override void Update()
     {
         base.Update();
-
-        if (stats.isDamaged && (stateMachine.currentState == idleState || stateMachine.currentState == battleState))
-            stateMachine.ChangeState(battleState);
     }
 
     protected override void FixedUpdate()

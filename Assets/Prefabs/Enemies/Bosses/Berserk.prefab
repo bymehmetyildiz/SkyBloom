@@ -603,6 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d18c3a8824a0e44abb0f1c95fa6c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
 --- !u!1 &7189934661308709598
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +753,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 250
+    baseValue: 215
     modifiers: 
   armor:
     baseValue: 0
@@ -784,7 +785,7 @@ MonoBehaviour:
   isDamaged: 0
   isInvincible: 0
   level: 1
-  percentageModifier: 0.029
+  percentageModifier: 0.142
 --- !u!114 &5994751865846841321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -863,7 +864,7 @@ MonoBehaviour:
   stunDur: 1
   stunDir: {x: 2, y: 2}
   counterImage: {fileID: 7938081240600255295}
-  moveSpeed: 5
+  moveSpeed: 3
   idleTime: 1
   agroTime: 5
   playerLayer:

@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d18c3a8824a0e44abb0f1c95fa6c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
 --- !u!1 &2202461287137573231
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,7 +963,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 10
+    baseValue: 15
     modifiers: 
   critChance:
     baseValue: 99
@@ -971,7 +972,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 100
+    baseValue: 140
     modifiers: 
   armor:
     baseValue: 0
@@ -1002,8 +1003,8 @@ MonoBehaviour:
   currentMagic: 0
   isDamaged: 0
   isInvincible: 0
-  level: 1
-  percentageModifier: 0
+  level: 2
+  percentageModifier: 0.2
 --- !u!114 &2838954820619463039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,8 +1043,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63edd7f61a28434f8dd97a5882caca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfItems: 0
-  possibleDrop: []
+  amountOfItems: 3
+  possibleDrop:
+  - {fileID: 11400000, guid: ac54664233a3ce74e896fc47c46d102b, type: 2}
+  - {fileID: 11400000, guid: 5a6afc95a055eb843aaf6ed898c67527, type: 2}
+  - {fileID: 11400000, guid: e442b9dcb88925243a5a981b7a719d61, type: 2}
   dropPrefab: {fileID: 4212661324000050600, guid: c46fbaae02023974db8e2a40694e3798, type: 3}
   offsetY: 2
 --- !u!114 &1061328550350140424

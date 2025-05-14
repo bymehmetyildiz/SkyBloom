@@ -232,7 +232,7 @@ MonoBehaviour:
   groundCheck: {fileID: 7223527764634556409}
   groundCheckDistance: 0.21
   wallCheck: {fileID: 4502309387504810901}
-  wallCheckDistance: 0.26
+  wallCheckDistance: 0.08
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -447,7 +447,7 @@ MonoBehaviour:
   possibleDrop: []
   dropPrefab: {fileID: 4212661324000050600, guid: c46fbaae02023974db8e2a40694e3798, type: 3}
   offsetY: 2
-  chanseToDropEquipment: 99
+  chanseToDropEquipment: 0
   chanseToDropItem: 0
 --- !u!114 &8881516871254719295
 MonoBehaviour:
@@ -534,7 +534,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.023854256, y: 0.07667422}
+  m_Offset: {x: -0.016767979, y: 0.07667422}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -545,7 +545,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5569935, y: 0.84665155}
+  m_Size: {x: 0.40109444, y: 0.84665155}
   m_EdgeRadius: 0
 --- !u!1 &2499409295548514524
 GameObject:
@@ -1056,6 +1056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d18c3a8824a0e44abb0f1c95fa6c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
 --- !u!1 &4898891911780493916
 GameObject:
   m_ObjectHideFlags: 0
