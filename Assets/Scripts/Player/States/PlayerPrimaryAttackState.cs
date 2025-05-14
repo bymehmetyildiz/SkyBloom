@@ -17,6 +17,8 @@ public class PlayerPrimaryAttackState : PlayerState
     {
         base.Enter();
 
+        AudioManager.instance.PlaySFX(1, null);
+
         xInput = 0; // This is to prevent a bug
 
         if (player.comboCounter > 3 || Time.time >= lastAtttackTime + comboWindow)
@@ -50,6 +52,8 @@ public class PlayerPrimaryAttackState : PlayerState
             //if (hit.GetComponent<Projectile>() != null)
             //    hit.GetComponent<Projectile>().Flip();
         }
+
+        AudioManager.instance.StopSFX(1);
     }
 
     public override void FixedUpdate()

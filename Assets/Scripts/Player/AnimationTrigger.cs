@@ -23,7 +23,7 @@ public class AnimationTrigger : MonoBehaviour
         player.landTrigger = true;
       
     }
-
+   
     public void AnimTrigger()
     {
         player.AnimationTrigger();

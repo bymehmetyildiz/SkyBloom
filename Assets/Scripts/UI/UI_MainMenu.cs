@@ -89,6 +89,9 @@ public class UI_MainMenu : MonoBehaviour
     {
         fadeScreen.FadeOut();
 
+        if (AudioManager.instance != null)
+            yield return StartCoroutine(AudioManager.instance.FadeOutBGM());
+
         yield return new WaitForSeconds(_delay);
 
         if (LevelManager.instance.sceneIndex <= 0)
@@ -97,5 +100,5 @@ public class UI_MainMenu : MonoBehaviour
             SceneManager.LoadScene(LevelManager.instance.sceneIndex);
     }
 
-   
+
 }
