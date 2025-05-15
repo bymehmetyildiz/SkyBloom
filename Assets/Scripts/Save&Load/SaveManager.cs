@@ -88,13 +88,14 @@ public class SaveManager : MonoBehaviour
 
     public bool HasSavedData()
     {
-        if (dataHandler.Load() != null)
+        GameData loadedData = dataHandler.Load();
+        if (loadedData != null && !string.IsNullOrEmpty(loadedData.closestCheckPointId))
         {
             return true;
         }
         return false;
     }
-    
+
     #endregion
 
 }

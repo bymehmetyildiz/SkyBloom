@@ -48,8 +48,12 @@ public class UI_Controller : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Tab) && PlayerManager.instance.player.stats.isDead == false)
+        if (Input.GetKeyDown(KeyCode.Tab) && PlayerManager.instance.player.stats.isDead == false)
             SwitchWithKey(inventoryElements[0]);
+
+
+        if (Input.GetKeyDown(KeyCode.Escape) && PlayerManager.instance.player.stats.isDead == false)
+            SwitchWithKey(inventoryElements[2]);
     }
 
     public void Switch(GameObject _menu)
