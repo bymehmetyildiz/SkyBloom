@@ -14,6 +14,8 @@ public class PlayerDashState : PlayerState
         stateTimer = player.dashDuration;
 
         player.stats.Invincible(true);
+
+        AudioManager.instance.PlaySFX(4, null);
     }
 
     public override void Exit()
@@ -21,6 +23,7 @@ public class PlayerDashState : PlayerState
         base.Exit();
         player.SetVelocity(0, rb.velocity.y);
         player.stats.Invincible(false);
+        AudioManager.instance.StopSFX(4);
     }
 
     public override void FixedUpdate()

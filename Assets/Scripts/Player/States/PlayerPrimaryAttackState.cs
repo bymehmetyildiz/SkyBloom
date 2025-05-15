@@ -16,7 +16,7 @@ public class PlayerPrimaryAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-
+        
         AudioManager.instance.PlaySFX(1, null);
 
         xInput = 0; // This is to prevent a bug
@@ -53,7 +53,7 @@ public class PlayerPrimaryAttackState : PlayerState
             //    hit.GetComponent<Projectile>().Flip();
         }
 
-        AudioManager.instance.StopSFX(1);
+        AudioManager.instance.StopSFX(1);    
     }
 
     public override void FixedUpdate()

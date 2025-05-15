@@ -5,12 +5,33 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     [SerializeField] private Animator anim;
+    [SerializeField] private AudioSource fireSFX;
     public string id;
     public bool isActivated;
 
     void Awake()
     {
         anim = GetComponent<Animator>();     
+    }
+
+    private void Update()
+    {
+        float distance = Vector2.Distance(PlayerManager.instance.player.transform.position, transform.position);
+
+        if (distance <= fireSFX.maxDistance)
+        {
+            if (isActivated && !fireSFX.isPlaying)
+            {
+                fireSFX.Play();
+            }
+        }
+        else
+        {
+            if (fireSFX.isPlaying)
+            {
+                fireSFX.Stop();
+            }
+        }
     }
 
     [ContextMenu("Generate Checkpoint Id")]

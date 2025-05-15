@@ -50,12 +50,12 @@ public class AnimationTrigger : MonoBehaviour
                 colliders[i].GetComponent<Projectile>().Flip();
 
             if (colliders[i].GetComponent<Enemy>() != null)
-            {
+            {                
                 Enemy enemy = colliders[i].GetComponent<Enemy>();
                 EnemyStats enemyStats = colliders[i].GetComponent<EnemyStats>();
                 if (enemyStats.isDead)
                     return;
-                              
+
                 StartCoroutine(Check(enemy, enemyStats));
             }
 

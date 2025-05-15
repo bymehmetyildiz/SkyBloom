@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
 
         if (source != null && Vector2.Distance(PlayerManager.instance.player.transform.position, source.position) > sfxMinDist)
             return;
-
+        
         if (index < sfx.Length)
         {
             if (index != 0)

@@ -14,13 +14,16 @@ public class PlayerLandState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(3, null);
     }
 
     public override void Exit()
     {
         base.Exit();
         player.landTrigger = false;
-       
+        AudioManager.instance.StopSFX(3);
+
+
     }
 
     public override void FixedUpdate()

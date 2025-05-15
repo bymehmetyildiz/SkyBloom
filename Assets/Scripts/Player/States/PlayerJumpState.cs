@@ -11,14 +11,14 @@ public class PlayerJumpState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        player.rb.velocity = new Vector2(rb.velocity.x, player.jumpForce);
         
+        player.rb.velocity = new Vector2(rb.velocity.x, player.jumpForce);
     }
 
     public override void Exit()
     {
-        base.Exit();
-        
+        base.Exit();  
+        AudioManager.instance.StopSFX(5);
     }
 
     public override void FixedUpdate()

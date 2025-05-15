@@ -28,7 +28,7 @@ public class Player : Entity
     public int comboCounter;
     public float catchImpact;
     public bool stunTrigger; // Variable for player to enter stun state
-    
+   
 
     [Header("Collision Info")]    
     [SerializeField] private Transform ledgeCheck;
