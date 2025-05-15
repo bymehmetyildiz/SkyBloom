@@ -16,6 +16,7 @@ public class WolfAttackState : EnemyState
     {
         base.Enter();
         wolf.SetZeroVelocity();
+        AudioManager.instance.PlaySFX(7, wolf.transform);
     }
 
     public override void Exit()
@@ -35,7 +36,7 @@ public class WolfAttackState : EnemyState
 
         if (triggerCalled)
         {
-            if (Vector2.Distance(player.transform.position, wolf.transform.position) > wolf.attackDistance)
+            if (Vector2.Distance(player.transform.position, wolf.transform.position) > wolf.attackDistance || !wolf.IsPlayerDetected())
                 stateMachine.ChangeState(wolf.battleState);
         }
     }

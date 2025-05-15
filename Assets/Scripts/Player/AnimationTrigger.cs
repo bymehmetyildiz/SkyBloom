@@ -29,7 +29,8 @@ public class AnimationTrigger : MonoBehaviour
         player.AnimationTrigger();
         attackEffectAnimator.SetBool("Attack", false);
         dashEffectAnimator.SetBool("Dash", false);
-        flurrySlashAnimator.SetBool("Flurry", false);       
+        flurrySlashAnimator.SetBool("Flurry", false);
+        
     }
 
     public void EffectAnimTrigger()
@@ -50,7 +51,8 @@ public class AnimationTrigger : MonoBehaviour
                 colliders[i].GetComponent<Projectile>().Flip();
 
             if (colliders[i].GetComponent<Enemy>() != null)
-            {                
+            {
+                AudioManager.instance.PlaySFX(6, colliders[i].GetComponent<Enemy>().transform);
                 Enemy enemy = colliders[i].GetComponent<Enemy>();
                 EnemyStats enemyStats = colliders[i].GetComponent<EnemyStats>();
                 if (enemyStats.isDead)

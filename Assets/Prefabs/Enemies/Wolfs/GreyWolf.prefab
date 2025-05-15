@@ -530,7 +530,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   detectDistance: 5
-  attackDistance: 0.4
+  attackDistance: 0.3
   attackCoolDown: 0.4
   comboCounter: 0
   agroDistance: 0

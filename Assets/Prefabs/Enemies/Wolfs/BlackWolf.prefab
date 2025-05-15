@@ -291,7 +291,7 @@ MonoBehaviour:
   isDamaged: 0
   isInvincible: 0
   level: 1
-  percentageModifier: 0.4
+  percentageModifier: 0.204
 --- !u!114 &7726279239905867617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   attackCheck: {fileID: 2502568344861973469}
-  attackCheckDistance: 0.59
+  attackCheckDistance: 0.6
   facingDir: 1
   knockBackPower: {x: 3, y: 3}
   knockBackDir: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   detectDistance: 5
-  attackDistance: 0.4
+  attackDistance: 0.3
   attackCoolDown: 0.4
   comboCounter: 0
   agroDistance: 0

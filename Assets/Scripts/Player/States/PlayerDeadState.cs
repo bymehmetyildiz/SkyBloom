@@ -12,7 +12,8 @@ public class PlayerDeadState : PlayerState
     {
         base.Enter();
         player.GetComponentInChildren<AnimationTrigger>().AnimTrigger();
-
+        AudioManager.instance.StopSFX(9);
+        AudioManager.instance.PlaySFX(10, null);
         UI_Controller.instance.SwitchOnEndScreen();
         SaveManager.instance.SaveGame();
     }

@@ -13,6 +13,7 @@ public class WolfDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(8, wolf.transform);
     }
 
     public override void Exit()
