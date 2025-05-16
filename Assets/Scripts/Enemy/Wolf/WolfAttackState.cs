@@ -17,6 +17,7 @@ public class WolfAttackState : EnemyState
         base.Enter();
         wolf.SetZeroVelocity();
         AudioManager.instance.PlaySFX(7, wolf.transform);
+        Debug.Log("Entered Attack State");
     }
 
     public override void Exit()

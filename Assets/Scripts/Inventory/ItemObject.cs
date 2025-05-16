@@ -46,12 +46,25 @@ public class ItemObject : MonoBehaviour
             return;
         }
 
-
         if (!Inventory.instance.CanAddItem() && itemData.itemType == ItemType.Equipment)
         {
             rb.velocity = Vector2.up * 7;
             return;
         }
+
+        if (itemData is ItemData_Equipment equipmentData)
+        {
+            if (equipmentData.equipmentType == EquipmentType.HealFlask ||
+                equipmentData.equipmentType == EquipmentType.MagicFlask)
+            {
+                AudioManager.instance.PlaySFX(13, this.transform);
+            }
+            else
+            {
+                AudioManager.instance.PlaySFX(14, this.transform);
+            }
+        }
+
 
         Inventory.instance.AddItem(itemData);
         Destroy(gameObject);

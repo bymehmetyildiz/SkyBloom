@@ -64,6 +64,7 @@ public class Chest : MonoBehaviour
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.E) && !IsOpened)
         {
             Open();
+            AudioManager.instance.PlaySFX(12, this.transform);
             key.SetActive(false);
             itemDrop.GenerateDrop();
         }

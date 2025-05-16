@@ -38,7 +38,7 @@ public class WolfBattleState : EnemyState
 
        distanceToPlayer = Mathf.Abs(player.transform.position.x - wolf.transform.position.x);
 
-        if (distanceToPlayer < 0.2f)
+        if (distanceToPlayer < 0.1f)
             return;
 
         if (player.transform.position.x > wolf.transform.position.x)
@@ -60,29 +60,21 @@ public class WolfBattleState : EnemyState
             return;
         }
 
-
         if (wolf.IsPlayerDetected() || (distanceToPlayer <= wolf.attackDistance && player.IsGroundDetected()))
         {
             stateTimer = wolf.agroTime;
 
-            if (wolf.IsPlayerDetected().distance <= wolf.attackDistance)
-            {
-                //if(CanAttack())
+            if (wolf.IsPlayerDetected().distance <= wolf.attackDistance)            
                 stateMachine.ChangeState(wolf.attackState);
-                //else
-                //    stateMachine.ChangeState(bandit.idleState);
-            }
+            
         }
-        else
-        {           
+        //else
+        //{           
             if (stateTimer < 0 || Vector2.Distance(player.transform.position, wolf.transform.position) > 10)
                 stateMachine.ChangeState(wolf.idleState);
-        }
+        //}
 
         if (wolf.IsWallDetected() || !wolf.IsGroundDetected() || wolf.IsDangerDetected())
             stateMachine.ChangeState(wolf.idleState);
-
-       
-
     }
 }

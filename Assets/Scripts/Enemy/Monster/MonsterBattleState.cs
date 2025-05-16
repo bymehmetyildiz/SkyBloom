@@ -64,11 +64,11 @@ public class MonsterBattleState : EnemyState
                 stateMachine.ChangeState(enemy.attackState);
 
         }
-        else
-        {
+        //else
+        //{
             if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10)
                 stateMachine.ChangeState(enemy.idleState);
-        }
+        //}
 
         if (enemy.IsWallDetected() || !enemy.IsGroundDetected() || enemy.IsDangerDetected())
             stateMachine.ChangeState(enemy.idleState);

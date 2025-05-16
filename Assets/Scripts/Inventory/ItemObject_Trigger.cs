@@ -8,6 +8,7 @@ public class ItemObject_Trigger : MonoBehaviour
     [SerializeField] private float groundCheckDist;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
+   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
