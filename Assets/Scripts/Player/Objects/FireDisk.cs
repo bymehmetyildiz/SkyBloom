@@ -13,8 +13,16 @@ public class FireDisc: MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 2.0f);
+        StartCoroutine(DestroyDisc());
     }
+
+    private IEnumerator DestroyDisc()
+    {
+        yield return new WaitForSeconds(2);
+        AudioManager.instance.StopSFX(18);
+        Destroy(gameObject);
+    }
+
 
     public void Setup(int _direction, int _speed, GameObject _hitEffect, Player _player)
     {
@@ -44,7 +52,8 @@ public class FireDisc: MonoBehaviour
         }
         var collisionPoint = collision.ClosestPoint(transform.position);
         Instantiate(hitEffect, collisionPoint, Quaternion.identity);
-
+        AudioManager.instance.StopSFX(18);
+        AudioManager.instance.PlaySFX(17, null);
         Destroy(gameObject);
 
     }

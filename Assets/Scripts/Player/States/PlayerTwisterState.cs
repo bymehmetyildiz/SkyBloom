@@ -13,6 +13,7 @@ public class PlayerTwisterState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(20, null);
         player.cc.enabled = true;
         isExpanding = true; // Start expanding
         player.skillManager.twisterSkill.UseSkill();
@@ -24,6 +25,7 @@ public class PlayerTwisterState : PlayerState
         player.cc.enabled = false;
         player.cc.radius = 0;
         isExpanding = false; // Stop expanding
+        AudioManager.instance.StopSFX(20);
     }
 
     public override void FixedUpdate()

@@ -12,6 +12,7 @@ public class PlayerFlurrySlashState : PlayerState
     {
         base.Enter();
         player.skillManager.flurrySlashSkill.UseSkill();
+        AudioManager.instance.PlaySFX(21, null);
     }
 
     public override void Exit()

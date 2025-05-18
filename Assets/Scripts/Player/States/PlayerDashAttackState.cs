@@ -11,6 +11,7 @@ public class PlayerDashAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(19, null);
         player.skillManager.dashSkill.UseSkill();
         player.stats.Invincible(true);
     }
@@ -19,8 +20,9 @@ public class PlayerDashAttackState : PlayerState
     {
         base.Exit();
         player.SetVelocity(0, rb.velocity.y);
-
+        AudioManager.instance.StopSFX(19);
         player.stats.Invincible(false);
+        
     }
 
     public override void FixedUpdate()

@@ -69,6 +69,7 @@ public class EnemyStats : EntityStats
 
         base.TakeDamage(_damage);        
         enemy.DamageEffect();
+        AudioManager.instance.PlaySFX(6, null);
     }
 
     public override void Dead()

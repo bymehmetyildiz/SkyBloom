@@ -12,6 +12,7 @@ public class PlayerDiscCastState : PlayerState
     {
         base.Enter();
         player.skillManager.fireDiscSkill.UseSkill();
+        AudioManager.instance.PlaySFX(18, player.transform);
     }
 
     public override void Exit()

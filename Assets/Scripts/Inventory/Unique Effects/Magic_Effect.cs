@@ -16,5 +16,8 @@ public class Magic_Effect : ItemEffect
         playerStats.IncreaseMagic(magicAmount);
 
         UI_InGame.instance.UpdateMagic();
+
+        AudioManager.instance.PlaySFX(15, null);
+
     }
 }

@@ -60,7 +60,7 @@ public class WolfBattleState : EnemyState
             return;
         }
 
-        if (wolf.IsPlayerDetected() || (distanceToPlayer <= wolf.attackDistance && player.IsGroundDetected()))
+        if (wolf.IsPlayerDetected() || (distanceToPlayer <= wolf.attackDistance/2 && player.IsGroundDetected()))
         {
             stateTimer = wolf.agroTime;
 

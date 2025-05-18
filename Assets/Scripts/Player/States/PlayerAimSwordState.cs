@@ -34,11 +34,12 @@ public class PlayerAimSwordState : PlayerState
     {
         base.Update();
 
-        if (Input.GetKeyUp(KeyCode.Mouse1))        
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
             stateMachine.ChangeState(player.idleState);
-         
-        
-
+            AudioManager.instance.PlaySFX(16, null);
+        }
+          
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (player.transform.position.x > mousePos.x && player.facingDir == 1)

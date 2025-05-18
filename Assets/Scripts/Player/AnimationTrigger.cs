@@ -51,10 +51,11 @@ public class AnimationTrigger : MonoBehaviour
                 colliders[i].GetComponent<Projectile>().Flip();
 
             if (colliders[i].GetComponent<Enemy>() != null)
-            {
-                AudioManager.instance.PlaySFX(6, colliders[i].GetComponent<Enemy>().transform);
+            {                
                 Enemy enemy = colliders[i].GetComponent<Enemy>();
                 EnemyStats enemyStats = colliders[i].GetComponent<EnemyStats>();
+                player.stats.IncreaseMagic(Mathf.CeilToInt(player.stats.maxMagic.GetValue() * 0.005f));
+                UI_InGame.instance.UpdateMagic();
                 if (enemyStats.isDead)
                     return;
 

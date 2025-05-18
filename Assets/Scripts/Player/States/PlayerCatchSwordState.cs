@@ -13,6 +13,9 @@ public class PlayerCatchSwordState : PlayerState
     {
         base.Enter();
 
+        AudioManager.instance.PlaySFX(17, null);
+        AudioManager.instance.StopSFX(18);
+
         sword = player.sword.transform;
 
         if (player.transform.position.x > sword.position.x && player.facingDir == 1)

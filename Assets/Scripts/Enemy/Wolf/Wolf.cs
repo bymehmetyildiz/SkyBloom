@@ -42,7 +42,12 @@ public class Wolf : Enemy
         base.Update();
 
         if (stats.isDamaged && (stateMachine.currentState == idleState || stateMachine.currentState == moveState))
+        {
+            if (!IsPlayerDetected())
+                Flip();
             stateMachine.ChangeState(battleState);
+        }
+
     }
 
     public override bool CanBeStunned()

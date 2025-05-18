@@ -45,8 +45,6 @@ public class SwordSkillController : MonoBehaviour
     private void Start()
     {
         Destroy(this.gameObject, 7.0f);
-
-
     }
 
     public void SetUpSword(Vector2 _dir, float _gravityScale, Player _player, float _freezeDur, float _returnSpeed)
@@ -91,6 +89,7 @@ public class SwordSkillController : MonoBehaviour
         transform.parent = null;
         isReturning = true;
         anim.SetBool("Flip", false);
+        AudioManager.instance.StopSFX(18);
     }
 
     
@@ -102,9 +101,10 @@ public class SwordSkillController : MonoBehaviour
             transform.right = rb.velocity;
 
         if (isReturning)
-        {
+        {            
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, returnSpeed * Time.deltaTime);
             transform.Rotate(0, 0, returnRotSpeed);
+            AudioManager.instance.PlaySFX(18, null);
             if (Vector2.Distance(transform.position, player.transform.position) < 1)
                 player.CatchSword();
         }
@@ -117,7 +117,7 @@ public class SwordSkillController : MonoBehaviour
     {
         if (isSpinnig)
         {
-
+            AudioManager.instance.PlaySFX(18, null);
             if (Vector2.Distance(player.transform.position, transform.position) > maxTravelDis && !isStopped)
             {
                 StopForSpinnig();
@@ -166,6 +166,7 @@ public class SwordSkillController : MonoBehaviour
     {
         if (isBouncing && enemies.Count > 0)
         {
+            AudioManager.instance.PlaySFX(18, null);
             // Clean up null entries (e.g., destroyed enemies)
             enemies.RemoveAll(e => e == null);
 
