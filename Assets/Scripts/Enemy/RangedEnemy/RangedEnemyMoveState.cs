@@ -9,6 +9,18 @@ public class RangedEnemyMoveState : RangedEnemyGroundedState
 
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        AudioManager.instance.PlaySFX(24, enemy.transform);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        AudioManager.instance.StopSFX(24);
+    }
+
     public override void FixedUpdate()
     {
         base.FixedUpdate();

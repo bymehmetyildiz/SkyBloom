@@ -5,12 +5,13 @@ using UnityEngine;
 public class HitEffect : MonoBehaviour
 {
     private Animator anim;
-    
+    [SerializeField] private AudioSource explosion;
 
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        anim.SetBool("Hit", true);        
+        anim.SetBool("Hit", true);
+        explosion.Play();
     }
 
     

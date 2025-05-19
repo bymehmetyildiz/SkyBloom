@@ -14,6 +14,7 @@ public class EyeAttackState : EnemyState
     {
         base.Enter();
         eye.SetZeroVelocity();
+        AudioManager.instance.PlaySFX(29, player.transform);
     }
 
     public override void Exit()

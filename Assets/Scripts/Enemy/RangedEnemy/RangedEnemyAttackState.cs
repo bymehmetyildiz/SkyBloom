@@ -17,6 +17,7 @@ public class RangedEnemyAttackState : EnemyState
         base.Enter();
         enemy.SetZeroVelocity();
 
+
         if (!enemy.IsPlayerDetected())
             enemy.Flip();
     }

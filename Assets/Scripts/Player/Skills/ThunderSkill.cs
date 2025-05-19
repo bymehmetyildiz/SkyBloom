@@ -15,6 +15,7 @@ public class ThunderSkill : Skill
     public float castDelayTime;
     public float speed;
     public float offset;
+   
 
     protected override void Start()
     {

@@ -12,7 +12,8 @@ public class PlayerEarthSlamState : PlayerState
     {
         base.Enter();
         player.skillManager.earthSlamSkill.UseSkill();
-        
+        AudioManager.instance.PlaySFX(1, null);
+
     }
 
     public override void Exit()

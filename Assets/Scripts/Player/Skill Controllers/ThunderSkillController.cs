@@ -12,6 +12,7 @@ public class ThunderSkillController : MonoBehaviour
     private float offset;
     private int damage;
     private float speed;
+    [SerializeField] private AudioSource thunderSFX;
 
     public List<Transform> targets = new List<Transform>();
 
@@ -51,6 +52,7 @@ public class ThunderSkillController : MonoBehaviour
     {
         yield return new WaitForSeconds(_seconds);
 
+        thunderSFX.Play();
         foreach (Transform t in new List<Transform>(targets))
         {
             GameObject newThunder = Instantiate(thunder, new Vector2(t.position.x, t.position.y + offset), Quaternion.identity);

@@ -15,7 +15,7 @@ public class StandartMonsterBattleState : EnemyState
 
     public override void Enter()
     {
-        base.Enter();
+        base.Enter();       
 
         enemy.stats.isDamaged = false;
 
@@ -26,6 +26,7 @@ public class StandartMonsterBattleState : EnemyState
     public override void Exit()
     {
         base.Exit();
+        
     }
 
     public override void FixedUpdate()

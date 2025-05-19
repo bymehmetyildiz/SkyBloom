@@ -13,6 +13,8 @@ public class RangedEnemyMeleeState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        if (player.stats.isDead)
+            stateMachine.ChangeState(enemy.moveState);
     }
 
     public override void Exit()

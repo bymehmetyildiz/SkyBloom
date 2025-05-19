@@ -64,6 +64,7 @@ public class Eye : Enemy
     public override void ReleaseProjectile()
     {
         releaseProjectile = true;
+        AudioManager.instance.PlaySFX(26, player.transform);
     }
 
     public override void InstantiateProjectile()

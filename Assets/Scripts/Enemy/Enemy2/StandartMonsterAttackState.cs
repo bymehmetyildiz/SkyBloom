@@ -13,12 +13,14 @@ public class StandartMonsterAttackState : EnemyState
     {
         base.Enter();
         enemy.SetZeroVelocity();
+        AudioManager.instance.PlaySFX(31, player.transform);
     }
 
     public override void Exit()
     {
         base.Exit();
         enemy.lastAttackTime = Time.time;
+        AudioManager.instance.StopSFX(31);
     }
 
     public override void FixedUpdate()

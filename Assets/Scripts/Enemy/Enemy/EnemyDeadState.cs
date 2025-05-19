@@ -13,6 +13,7 @@ public class EnemyDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(25, player.transform);
     }
 
     public override void Exit()

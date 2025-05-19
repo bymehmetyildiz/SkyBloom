@@ -14,17 +14,18 @@ public class DropSwordContoller : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask whatIsGround;
-    
-    
+    [SerializeField] private AudioSource whistle;
 
     void Start()
     {
+        whistle.Play();
         if (IsGroundDetected())
             Destroy(gameObject);
         else
             Destroy(gameObject, destroyDur);  
         
         player = FindObjectOfType<Player>();
+        
     }
 
     public void SetUpRainSword(float _speed, SwordRainSkill _swordRainSkillController, float _destroyDur)

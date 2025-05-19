@@ -7,10 +7,11 @@ public class Thunder : MonoBehaviour
     private Player player;
 
     private Rigidbody2D rb;
-    private float speed; 
+    private float speed;
+    
 
-    void Start()
-    {
+    public void Start()
+    {        
         rb = GetComponent<Rigidbody2D>();      
     }
 
@@ -35,11 +36,6 @@ public class Thunder : MonoBehaviour
             player.stats.DoMagicalDamage(collision.GetComponent<EnemyStats>());
             rb.velocity = Vector2.zero;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-            //ItemData_Equipment equipedAmulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);
-
-            //if (equipedAmulet != null)
-            //    equipedAmulet.Effect(collision.GetComponent<EnemyStats>().transform);
         }
     }
 }

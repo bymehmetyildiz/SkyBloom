@@ -98,4 +98,6 @@ public class AnimationTrigger : MonoBehaviour
     }
     public void AerialSlamEnd() => aerialSlamAnimator.SetBool("Slam", false);
     public void EarthSlam() => player.skillManager.earthSlamSkill.CreateExplosion();
+
+    public void BattleCry() => AudioManager.instance.PlaySFX(23, null);
 }

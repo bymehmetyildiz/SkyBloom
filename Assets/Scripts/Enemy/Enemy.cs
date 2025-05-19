@@ -186,7 +186,7 @@ public class Enemy : Entity
     public void CanExpand() => canExpand = true;
 
     //Projectile
-    public virtual void ReleaseProjectile() { }
+    public virtual void ReleaseProjectile() {  }
 
     public virtual void InstantiateProjectile() { }
 

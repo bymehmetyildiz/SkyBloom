@@ -15,6 +15,7 @@ public class PlayerStats : EntityStats
     public override void TakeDamage(int _damage)
     {
         base.TakeDamage(_damage);
+        AudioManager.instance.PlaySFX(9, null);
         isDamaged = true;
         if (_damage > GetMaxHealth() * 0.3f)
             player.SetupKnockbackPower(new Vector2(7, 10));        

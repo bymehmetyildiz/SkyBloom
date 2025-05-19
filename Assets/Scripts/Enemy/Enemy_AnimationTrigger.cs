@@ -22,7 +22,7 @@ public class Enemy_AnimationTrigger : MonoBehaviour
         {
             if (colliders[i].GetComponent<Player>() != null)
             {
-                AudioManager.instance.PlaySFX(9, null);
+                AudioManager.instance.PlaySFX(5, PlayerManager.instance.player.transform);                
                 PlayerStats playerStats = colliders[i].GetComponent<PlayerStats>();
                 if (playerStats.isDead)
                     return;

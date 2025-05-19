@@ -23,8 +23,6 @@ public class SwordRainSkill : Skill
     public int defaultStuck;
     private int amountOfStucks;
 
-    
-
     protected override void Start()
     {
         base.Start();
@@ -96,7 +94,11 @@ public class SwordRainSkill : Skill
 
     }
 
-    public void SpawnHitEffect(Vector2 hitPoint) => Instantiate(hitEffect, hitPoint, Quaternion.identity);
+    public void SpawnHitEffect(Vector2 hitPoint)
+    {       
+        Instantiate(hitEffect, hitPoint, Quaternion.identity);
+    }
+
 
     public override bool IsSkillUnlocked()
     {

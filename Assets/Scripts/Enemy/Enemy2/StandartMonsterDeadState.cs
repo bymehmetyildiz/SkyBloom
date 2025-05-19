@@ -9,4 +9,10 @@ public class StandartMonsterDeadState : EnemyState
     {
         this.enemy = _enemy;
     }
+
+    public override void Enter()
+    {
+        base.Enter();
+        AudioManager.instance.PlaySFX(30, player.transform);
+    }
 }

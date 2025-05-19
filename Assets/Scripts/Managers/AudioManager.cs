@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        // No DontDestroyOnLoad here — BGM will reset each scene
+
     }
 
     private void Start()

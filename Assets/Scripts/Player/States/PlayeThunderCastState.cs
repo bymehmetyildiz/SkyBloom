@@ -12,6 +12,7 @@ public class PlayeThunderCastState : PlayerState
     {
         base.Enter();
         player.skillManager.thunderSkill.UseSkill();
+        AudioManager.instance.PlaySFX(22, null);
     }
 
     public override void Exit()

@@ -12,6 +12,7 @@ public class PlayerAerialSlamAirState : PlayerState
     {
         base.Enter();
         player.skillManager.aerialSlamSkill.UseSkill();
+        AudioManager.instance.PlaySFX(1, null);
     }
 
     public override void Exit()
