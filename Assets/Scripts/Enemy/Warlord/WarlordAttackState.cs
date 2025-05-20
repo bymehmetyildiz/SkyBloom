@@ -14,6 +14,8 @@ public class WarlordAttackState : EnemyState
     {
         base.Enter();
 
+        AudioManager.instance.PlaySFX(32, enemy.transform);
+
         if (enemy.comboCounter > 2)
             enemy.comboCounter = 0;
 

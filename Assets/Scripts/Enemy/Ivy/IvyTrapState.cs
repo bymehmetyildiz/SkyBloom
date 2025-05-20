@@ -13,12 +13,14 @@ public class IvyTrapState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        
     }
 
     public override void Exit()
     {
         base.Exit();
         enemy.stats.isDamaged = false;
+        AudioManager.instance.StopSFX(37);
     }
 
     public override void FixedUpdate()

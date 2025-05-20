@@ -14,12 +14,14 @@ public class GrimAttackState : EnemyState
     {
         base.Enter();
         enemy.SetZeroVelocity();
+        AudioManager.instance.PlaySFX(33, enemy.transform);
     }
 
     public override void Exit()
     {
         base.Exit();
         enemy.lastAttackTime = Time.time;
+        AudioManager.instance.StopSFX(33);
     }
 
     public override void FixedUpdate()

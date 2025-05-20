@@ -11,14 +11,12 @@ public class EnemyMoveState : EnemyGroundedState
 
     public override void Enter()
     {
-        base.Enter();
-        AudioManager.instance.PlaySFX(24, enemy.transform);
+        base.Enter();    
     }
 
     public override void Exit()
     {
         base.Exit();
-        AudioManager.instance.StopSFX(24);
     }
 
     public override void FixedUpdate()

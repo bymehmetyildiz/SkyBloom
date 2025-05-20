@@ -9,4 +9,10 @@ public class GrimDeadState : EnemyState
     {
         this.enemy = _enemy;
     }
+
+    public override void Enter()
+    {
+        base.Enter();
+        AudioManager.instance.PlaySFX(34, enemy.transform);
+    }
 }

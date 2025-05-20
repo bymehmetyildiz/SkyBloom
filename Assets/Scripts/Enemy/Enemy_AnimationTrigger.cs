@@ -82,6 +82,8 @@ public class Enemy_AnimationTrigger : MonoBehaviour
         {
             Ivy ivy = (Ivy)enemy;
             ivy.CreateBranch();
+            AudioManager.instance.PlaySFX(39, null);
+            AudioManager.instance.PlaySFX(40, null);
         }
     }
 
@@ -92,6 +94,7 @@ public class Enemy_AnimationTrigger : MonoBehaviour
         {
             Ivy ivy = (Ivy)enemy;
             ivy.CreateBall();
+            AudioManager.instance.PlaySFX(37, null);
         }
     }
 

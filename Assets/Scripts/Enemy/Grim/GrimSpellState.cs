@@ -14,6 +14,7 @@ public class GrimSpellState : EnemyState
     {
         base.Enter();
         enemy.SetZeroVelocity();
+        AudioManager.instance.PlaySFX(35, enemy.transform);
     }
 
     public override void Exit()

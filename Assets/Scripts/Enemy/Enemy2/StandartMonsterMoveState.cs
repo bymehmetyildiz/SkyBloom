@@ -11,14 +11,12 @@ public class StandartMonsterMoveState : StandartMonsterGroundedState
 
     public override void Enter()
     {
-        base.Enter();
-        AudioManager.instance.PlaySFX(24, enemy.transform);
+        base.Enter();     
     }
 
     public override void Exit()
     {
-        base.Exit();
-        AudioManager.instance.StopSFX(24);
+        base.Exit();       
     }
 
     public override void FixedUpdate()

@@ -13,12 +13,14 @@ public class IvyBranchAttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(36, enemy.transform);
     }
 
     public override void Exit()
     {
         base.Exit();
         enemy.stats.isDamaged = false;
+        AudioManager.instance.StopSFX(36);
     }
 
     public override void FixedUpdate()

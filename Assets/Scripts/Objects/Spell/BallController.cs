@@ -12,6 +12,7 @@ public class BallController : MonoBehaviour
     [SerializeField] private float maxHeight;
     private BoxCollider2D bc;
     private bool canTrap;
+    [SerializeField] private AudioSource trapSFX;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class BallController : MonoBehaviour
         canTrap = true;
         bc = GetComponent<BoxCollider2D>();
         ShootProjectile();
+        
     }
 
     
@@ -68,6 +70,7 @@ public class BallController : MonoBehaviour
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 bc.size = new Vector2(0.25f, 0.5f);
                 transform.position += Vector3.up * 0.85f;
+                trapSFX.Play();
             }
         }
 
@@ -80,6 +83,7 @@ public class BallController : MonoBehaviour
                 player.isBusy = true;
                 player.SetZeroVelocity();
                 canTrap = false;
+                trapSFX.Play();
             }
         }
     }
