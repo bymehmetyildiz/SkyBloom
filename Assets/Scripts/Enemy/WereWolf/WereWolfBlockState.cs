@@ -17,6 +17,7 @@ public class WereWolfBlockState : EnemyState
     {
         base.Enter();
         wereWolf.fx.ScreenShake();
+        AudioManager.instance.PlaySFX(11, null);
         wereWolf.SpawnBlockEffect(player.attackCheck);
         wereWolf.shiledIcon.SetActive(true);
         if (!wereWolf.IsPlayerDetected())

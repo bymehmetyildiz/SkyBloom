@@ -13,6 +13,7 @@ public class WereWolfAttackState : EnemyState
     {
         base.Enter();        
         wereWolf.SetZeroVelocity();
+        AudioManager.instance.PlaySFX(44, null);
     }
 
     public override void Exit()

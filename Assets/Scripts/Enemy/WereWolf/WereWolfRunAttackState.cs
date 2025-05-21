@@ -20,6 +20,7 @@ public class WereWolfRunAttackState : EnemyState
         base.Enter();
         wereWolf.SetupKnockBackDir(player.transform);
         isPalyerDetected = false;
+        AudioManager.instance.PlaySFX(44, null);
     }
 
   
@@ -60,7 +61,11 @@ public class WereWolfRunAttackState : EnemyState
                 if (colliders[i].GetComponent<Player>() != null)
                 {
                     if (player.stateMachine.currentState == player.blockState)
+                    {
+                        player.fx.ScreenShake();
+                        AudioManager.instance.PlaySFX(11, null);
                         stateMachine.ChangeState(wereWolf.stunState);
+                    }
 
                     else
                     {

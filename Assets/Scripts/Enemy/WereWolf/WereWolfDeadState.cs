@@ -13,6 +13,7 @@ public class WereWolfDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(38, null);
     }
 
     public override void Exit()

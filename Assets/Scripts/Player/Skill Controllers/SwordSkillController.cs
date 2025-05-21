@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,7 +45,14 @@ public class SwordSkillController : MonoBehaviour
 
     private void Start()
     {
-        Destroy(this.gameObject, 7.0f);
+        StartCoroutine(DestroySword());
+    }
+
+    private IEnumerator DestroySword()
+    {
+        yield return new WaitForSeconds(7.0f);
+        Destroy(this.gameObject);
+        AudioManager.instance.StopSFX(18);
     }
 
     public void SetUpSword(Vector2 _dir, float _gravityScale, Player _player, float _freezeDur, float _returnSpeed)

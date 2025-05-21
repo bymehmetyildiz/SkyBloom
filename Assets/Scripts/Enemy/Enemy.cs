@@ -131,8 +131,6 @@ public class Enemy : Entity
         }
 
         return playerDetected;
-
-
     }
 
     public virtual void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();

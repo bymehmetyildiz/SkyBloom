@@ -12,6 +12,7 @@ public class WereWolfTransformState : WereWolfGroundedState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(43, null);
     }
 
     public override void Exit()
