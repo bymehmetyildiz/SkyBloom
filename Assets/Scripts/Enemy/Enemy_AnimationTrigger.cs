@@ -17,12 +17,12 @@ public class Enemy_AnimationTrigger : MonoBehaviour
     public virtual void TriggerDamage()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(enemy.attackCheck.position, enemy.attackCheckDistance);
-
+        AudioManager.instance.PlaySFX(5, null);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].GetComponent<Player>() != null)
             {
-                AudioManager.instance.PlaySFX(5, PlayerManager.instance.player.transform);                
+                               
                 PlayerStats playerStats = colliders[i].GetComponent<PlayerStats>();
                 if (playerStats.isDead)
                     return;
