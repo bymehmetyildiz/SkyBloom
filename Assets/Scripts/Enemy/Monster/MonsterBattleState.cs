@@ -20,6 +20,7 @@ public class MonsterBattleState : EnemyState
 
         if (player.GetComponent<PlayerStats>().isDead)
             stateMachine.ChangeState(enemy.moveState);
+        AudioManager.instance.PlaySFX(46, null);
     }
 
     public override void Exit()

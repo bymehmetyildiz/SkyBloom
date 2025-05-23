@@ -13,7 +13,7 @@ public class StandartMonsterAttackState : EnemyState
     {
         base.Enter();
         enemy.SetZeroVelocity();
-        AudioManager.instance.PlaySFX(31, player.transform);
+        AudioManager.instance.PlaySFX(31, enemy.transform);
     }
 
     public override void Exit()

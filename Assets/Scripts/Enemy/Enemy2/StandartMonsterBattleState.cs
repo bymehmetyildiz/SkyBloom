@@ -21,6 +21,7 @@ public class StandartMonsterBattleState : EnemyState
 
         if (player.GetComponent<PlayerStats>().isDead)
             stateMachine.ChangeState(enemy.moveState);
+        
     }
 
     public override void Exit()

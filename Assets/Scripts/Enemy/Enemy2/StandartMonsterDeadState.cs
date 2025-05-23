@@ -13,6 +13,6 @@ public class StandartMonsterDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        AudioManager.instance.PlaySFX(30, player.transform);
+        AudioManager.instance.PlaySFX(30, enemy.transform);
     }
 }

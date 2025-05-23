@@ -10,6 +10,13 @@ public class TransformState : EnemyState
         this.enemy = _enemy;
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        AudioManager.instance.PlaySFX(45, null);
+       
+    }
+
     public override void Update()
     {
         base.Update();

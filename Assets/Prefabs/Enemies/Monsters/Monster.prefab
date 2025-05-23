@@ -1043,11 +1043,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63edd7f61a28434f8dd97a5882caca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfItems: 3
+  amountOfItems: 2
   possibleDrop:
   - {fileID: 11400000, guid: ac54664233a3ce74e896fc47c46d102b, type: 2}
   - {fileID: 11400000, guid: 5a6afc95a055eb843aaf6ed898c67527, type: 2}
-  - {fileID: 11400000, guid: e442b9dcb88925243a5a981b7a719d61, type: 2}
   dropPrefab: {fileID: 4212661324000050600, guid: c46fbaae02023974db8e2a40694e3798, type: 3}
   offsetY: 2
 --- !u!114 &1061328550350140424
@@ -1073,7 +1072,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   attackCheck: {fileID: 7467439178716752345}
-  attackCheckDistance: 0.9
+  attackCheckDistance: 1.35
   facingDir: 1
   knockBackPower: {x: 0, y: 0}
   knockBackDir: 0

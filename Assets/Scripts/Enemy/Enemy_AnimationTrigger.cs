@@ -68,6 +68,7 @@ public class Enemy_AnimationTrigger : MonoBehaviour
         {
             Rogue rogue = (Rogue)enemy;
             rogue.transform.position = new Vector2(PlayerManager.instance.player.transform.position.x, PlayerManager.instance.player.transform.position.y + 3);
+            AudioManager.instance.PlaySFX(41, null);
         }
     }
 

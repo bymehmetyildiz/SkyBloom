@@ -14,6 +14,7 @@ public class RogueTeleportState : EnemyState
     {
         base.Enter();
         enemy.canBeDamaged = false;
+        AudioManager.instance.PlaySFX(41, null);
     }
 
     public override void Exit()
