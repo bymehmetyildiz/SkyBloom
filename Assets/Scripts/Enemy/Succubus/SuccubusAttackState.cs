@@ -13,6 +13,7 @@ public class SuccubusAttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(56, null);
         enemy.SetZeroVelocity();
     }
 

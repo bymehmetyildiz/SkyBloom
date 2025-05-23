@@ -11,6 +11,13 @@ public class SuccubusTransformState : EnemyState
         enemy = _enemy;
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        enemy.sing.Stop();
+        AudioManager.instance.PlaySFX(55, null);
+    }
+
     public override void Update()
     {
         base.Update();

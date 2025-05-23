@@ -9,4 +9,10 @@ public class MonsterDeadState : EnemyState
     {
         this.enemy = _enemy;
     }
+
+    public override void Enter()
+    {
+        base.Enter();
+        AudioManager.instance.PlaySFX(38, player.transform);
+    }
 }

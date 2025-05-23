@@ -14,6 +14,7 @@ public class Succubus : Enemy
     public float flyDur;
     public DialogueTrigger npc;
     public DialogueManager dialogueManager;
+    public AudioSource sing;
 
     //States
     public SuccubusHumanState humanState {  get; private set; }

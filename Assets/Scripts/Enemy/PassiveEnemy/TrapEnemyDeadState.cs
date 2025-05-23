@@ -9,4 +9,10 @@ public class TrapEnemyDeadState : EnemyState
     {
         enemy = _enemy;
     }
+
+    public override void Enter()
+    {
+        base.Enter();
+        AudioManager.instance.PlaySFX(50, enemy.transform);
+    }
 }

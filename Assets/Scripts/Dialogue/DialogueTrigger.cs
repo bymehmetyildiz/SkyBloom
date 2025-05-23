@@ -6,7 +6,8 @@ using UnityEngine.UIElements;
 public class DialogueTrigger : MonoBehaviour
 {    
     public Message[] messages;
-    public Character[] characters;
+    public Character[] characters;   
+    private bool isPlayed;
 
     [SerializeField] private DialogueManager dialogueManager;
     public bool isSpoken = false;
@@ -21,6 +22,7 @@ public class DialogueTrigger : MonoBehaviour
         cc = GetComponent<CapsuleCollider2D>();
         canSpeak = false;
         interactKey.SetActive(false);
+        isPlayed = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,6 +34,16 @@ public class DialogueTrigger : MonoBehaviour
                 interactKey.SetActive(true);
 
             canSpeak = true;
+
+            if (isPlayed == false)
+            {
+                if (this.gameObject.name == "SuccubusNPC")
+                {
+                    AudioManager.instance.PlaySFX(54, null);
+                    isPlayed = true;
+                }
+            }
+
            
         }
     }

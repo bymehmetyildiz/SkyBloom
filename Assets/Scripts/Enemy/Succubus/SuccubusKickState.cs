@@ -10,6 +10,12 @@ public class SuccubusKickState : EnemyState
         this.enemy = _enemy;
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        AudioManager.instance.PlaySFX(56, null);
+    }
+
     public override void Update()
     {
         base.Update();

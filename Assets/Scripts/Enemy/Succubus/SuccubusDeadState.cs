@@ -14,7 +14,8 @@ public class SuccubusDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        
+        AudioManager.instance.PlaySFX(57, null);
+
     }
 
     public override void Exit()

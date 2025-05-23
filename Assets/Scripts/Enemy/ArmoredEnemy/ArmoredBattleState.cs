@@ -55,6 +55,8 @@ public class ArmoredBattleState : EnemyState
                 enemy.canBeDamaged = false;
                 stateMachine.ChangeState(enemy.blockState);
                 player.stateMachine.ChangeState(player.stunState);
+                AudioManager.instance.PlaySFX(11, null);
+                AudioManager.instance.PlaySFX(9, null);
             }
         }
         

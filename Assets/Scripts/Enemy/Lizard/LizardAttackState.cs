@@ -15,6 +15,7 @@ public class LizardAttackState : EnemyState
     {
         base.Enter();
         lizard.SetZeroVelocity();
+        AudioManager.instance.PlaySFX(47, lizard.transform);
     }
 
     public override void Exit()

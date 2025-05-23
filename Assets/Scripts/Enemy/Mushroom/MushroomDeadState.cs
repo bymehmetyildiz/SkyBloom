@@ -13,6 +13,7 @@ public class MushroomDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(52, null);
     }
 
     public override void Exit()

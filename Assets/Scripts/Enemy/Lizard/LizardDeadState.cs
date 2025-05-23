@@ -14,6 +14,7 @@ public class LizardDeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(48, lizard.transform);
     }
 
     public override void Exit()

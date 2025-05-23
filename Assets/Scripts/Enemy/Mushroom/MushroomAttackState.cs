@@ -14,6 +14,7 @@ public class MushroomAttackState : EnemyState
     {
         base.Enter();
         mushroom.SetZeroVelocity();
+        AudioManager.instance.PlaySFX(53, mushroom.transform);
     }
 
     public override void Exit()

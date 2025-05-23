@@ -20,6 +20,7 @@ public class ArmoredAttackState : EnemyState
     {
         base.Exit();
         enemy.lastAttackTime = Time.time;
+        AudioManager.instance.StopSFX(5);
     }
 
     public override void FixedUpdate()

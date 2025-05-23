@@ -10,6 +10,12 @@ public class TrapEnemySpawnState : EnemyState
         this.enemy = _enemy;
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        AudioManager.instance.PlaySFX(49, null);
+    }
+
     public override void Exit()
     {
         base.Exit();
