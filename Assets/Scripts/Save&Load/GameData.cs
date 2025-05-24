@@ -9,6 +9,8 @@ public class GameData
     public int typeCounter; // Sword Throw Skill Type Counter
     public int sceneIndex; // Scene Index
     public bool isOpened; // Is Chest Opeened
+    public float musicVolume;
+  
    
 
     public SerializableDictionary<string, bool> skillTree;
@@ -29,6 +31,7 @@ public class GameData
         sceneIndex = 1;
         isOpened = false;
        
+        musicVolume = 0.5f;
         
         skillTree = new SerializableDictionary<string, bool>();
         inventory = new SerializableDictionary<string, int>();

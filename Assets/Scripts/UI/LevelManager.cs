@@ -40,9 +40,18 @@ public class LevelManager : MonoBehaviour, ISaveManager
             SaveManager.instance.SaveGame();
 
             if (sceneIndex < 10)
+            {
+                StartCoroutine(AudioManager.instance.FadeOutBGM(AudioManager.instance.levelBGM));
                 StartCoroutine(LoadNewScene());
+            }
+
             else
+            {
                 SwitchOnEndScreen();
+                AudioManager.instance.menuBGM.Play();
+            }
+
+
         } 
     }
 

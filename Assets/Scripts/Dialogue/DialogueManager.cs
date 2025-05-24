@@ -41,6 +41,7 @@ public class DialogueManager : MonoBehaviour
     {
         characterName.text = currentCharacters[currentMessages[activeMessage].characterID].name;
         StartCoroutine(TypeMessage(currentMessages[activeMessage].message));
+        AudioManager.instance.PlaySFX(60, null);
     }
 
     // Coroutine to type the message letter by letter.
@@ -48,6 +49,8 @@ public class DialogueManager : MonoBehaviour
     {
         isTyping = true;
         messageText.text = "";
+
+       
 
         foreach (char letter in message)
         {
@@ -58,13 +61,15 @@ public class DialogueManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 messageText.text = message;
-                isTyping = false;
-                yield break; // Exit coroutine early
+                break; // Break out of the loop, but still stop the sound properly
             }
         }
 
-        isTyping = false; // Typing is complete.
+        
+
+        isTyping = false;
     }
+
 
     public void NextMessage()
     {
@@ -74,9 +79,12 @@ public class DialogueManager : MonoBehaviour
             StopAllCoroutines();
             messageText.text = currentMessages[activeMessage].message;
             isTyping = false;
+            // Stop the typing sound
+            
         }
         else
-        {
+        { 
+            
             // If not typing, move to the next message
             activeMessage++;
 
@@ -98,5 +106,10 @@ public class DialogueManager : MonoBehaviour
         {
             NextMessage(); // Works both during typing and after
         }
+
+        if(!isTyping)
+            AudioManager.instance.StopSFX(60);
+        else
+            AudioManager.instance.PlaySFX(60, null);
     }
 }

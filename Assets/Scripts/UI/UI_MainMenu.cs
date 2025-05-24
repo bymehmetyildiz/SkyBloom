@@ -25,6 +25,7 @@ public class UI_MainMenu : MonoBehaviour
     public void ContinueGame()
     {
         StartCoroutine(LoadScreenWithFadeEffect(2f));
+        AudioManager.instance.PlaySFX(58, null);
     }
 
     public void NewGame()
@@ -37,10 +38,12 @@ public class UI_MainMenu : MonoBehaviour
             if (warningPanel.localScale != Vector3.one)
                 StartCoroutine(ScalePanel(warningPanel));
         }
+        AudioManager.instance.PlaySFX(58, null);
     }
 
     public void Credits()
     {
+        AudioManager.instance.PlaySFX(58, null);
         warningPanel.localScale = Vector2.zero;
 
         if(creditsPanel.localScale != Vector3.one)
@@ -73,15 +76,21 @@ public class UI_MainMenu : MonoBehaviour
 
     public void AcceptNewGame()
     {
+        AudioManager.instance.PlaySFX(58, null);
         SaveManager.instance.DeleteSavedData();
         StartCoroutine(LoadScreenWithFadeEffect(2));
     }
 
-    public void Reject(RectTransform _panel) => _panel.localScale = Vector3.zero;
+    public void Reject(RectTransform _panel)
+    {
+        AudioManager.instance.PlaySFX(58, null);
+        _panel.localScale = Vector3.zero;
+    }
 
 
     public void ExitGame()
     {
+        AudioManager.instance.PlaySFX(58, null);
         Application.Quit();
     }
 
@@ -90,7 +99,7 @@ public class UI_MainMenu : MonoBehaviour
         fadeScreen.FadeOut();
 
         if (AudioManager.instance != null)
-            yield return StartCoroutine(AudioManager.instance.FadeOutBGM());
+            yield return StartCoroutine(AudioManager.instance.FadeOutBGM(AudioManager.instance.menuBGM));
 
         yield return new WaitForSeconds(_delay);
 

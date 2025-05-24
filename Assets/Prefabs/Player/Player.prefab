@@ -264,7 +264,7 @@ MonoBehaviour:
   ledgeCheckDistance: 0.45
   dashSpeed: 10
   dashDuration: 0.3
-  cooldown: 2
+  cooldown: 0.5
 --- !u!70 &4429474863871298728
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -414,13 +414,13 @@ MonoBehaviour:
     baseValue: 100
     modifiers: 
   fireDamage:
-    baseValue: 0
+    baseValue: 50
     modifiers: 
   iceDamage:
-    baseValue: 0
+    baseValue: 10
     modifiers: 
   shockDamage:
-    baseValue: 0
+    baseValue: 50
     modifiers: 
   ailmentDur: 4
   isIgnited: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISaveManager
 {
@@ -12,6 +13,7 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private string skillName;
     [TextArea]
     [SerializeField] private string skillDecription;
+    
 
     public bool unlocked;
 
@@ -40,6 +42,8 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
         ui = GetComponentInParent<UI_Controller>();
         CheckThrowingSwordUnlock();
+
+     
     }
 
     
@@ -54,8 +58,8 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         for (int i = 0; i < shouldBeUnlocked.Length; i++)
         {
             if (shouldBeUnlocked[i].unlocked == false)
-            {
-                Debug.Log("Can not unlock skill");
+            {                 
+                StartCoroutine(ui.ScalePanel("Unlock Previous Skill First!"));                
                 return;
             }
         }
@@ -63,9 +67,12 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         PlayerManager.instance.SpendCurrency(skillCost);
 
         unlocked = true;
+        AudioManager.instance.PlaySFX(61, null);
         CheckThrowingSwordUnlock();
         skillLock.UnlockSkill();
     }
+
+   
 
     private static void CheckThrowingSwordUnlock()
     {

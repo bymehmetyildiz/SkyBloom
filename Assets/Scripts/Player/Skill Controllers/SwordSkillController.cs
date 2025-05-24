@@ -247,14 +247,13 @@ public class SwordSkillController : MonoBehaviour
     {
         if (collision.GetComponent<Enemy>() != null)
         {
-
             if (isBouncing && enemies.Count <= 0)
             {
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 10);
 
                 foreach (var hit in colliders)
                 {
-                    if (hit.GetComponent<Enemy>() != null)
+                    if (hit.GetComponent<Enemy>() != null && collision.GetComponent<Enemy>().stats.isDead == false)
                         enemies.Add(hit.transform);
                 }
 

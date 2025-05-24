@@ -29,6 +29,7 @@ public class SignBoardController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                AudioManager.instance.PlaySFX(59, null);
                 if (interactKey.activeSelf == true)
                     interactKey.SetActive(false);
                 else if (interactKey.activeSelf == false)

@@ -102,12 +102,15 @@ public class GameManager : MonoBehaviour, ISaveManager
         Scene scene = SceneManager.GetActiveScene();
 
         SceneManager.LoadScene(scene.name);
+
+        AudioManager.instance.PlaySFX(58, null);
     }
 
     public void ReturnToMenu()
     {
         SaveManager.instance.SaveGame();
         SceneManager.LoadScene("Menu");
+        AudioManager.instance.PlaySFX(58, null);
     }
 
     public void LoadData(GameData _data)
@@ -207,10 +210,15 @@ public class GameManager : MonoBehaviour, ISaveManager
 
     public void PauseGame(bool _isPaused)
     {
-        if(_isPaused)
+        if (_isPaused)
+        {        
             Time.timeScale = 0.0f;
+        }
         else
+        {          
             Time.timeScale = 1.0f;
+        }
+
     }
 
     private void OnApplicationQuit()

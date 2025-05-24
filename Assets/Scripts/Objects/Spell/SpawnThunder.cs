@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +11,7 @@ public class SpawnThunder : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private Succubus succubus;
+    [SerializeField] private AudioSource thuınder;
    
 
 
@@ -20,6 +21,7 @@ public class SpawnThunder : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         succubus = FindObjectOfType<Succubus>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        thuınder.Play();
        
     }
 

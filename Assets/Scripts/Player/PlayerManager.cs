@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour, ISaveManager
     {
         if (_price > currency)
         {
-            Debug.Log("Not Enough Money !");
+            StartCoroutine(UI_Controller.instance.ScalePanel("You Don't Have Enough Crystals !"));
         }
         return currency >= _price;
     }

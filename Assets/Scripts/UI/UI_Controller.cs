@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Controller : MonoBehaviour
+public class UI_Controller : MonoBehaviour, ISaveManager
 {
+    public static UI_Controller instance;
+
     [Header("End Screen")]
     [SerializeField] private UI_FadeScreen fadeScreen;
     [SerializeField] private GameObject endText;
@@ -14,7 +17,13 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private RectTransform settingsPanel;
     [Space]
 
-    public static UI_Controller instance;
+    [Header("Sound Effects")]  
+    [SerializeField] private Slider bgmSlider;
+    [Space]
+
+    [Header("Skill Panel")]
+    [SerializeField] private RectTransform warningPanel;
+    [SerializeField] private TMP_Text warningMessage;
 
     [SerializeField] private GameObject[] inventoryElements;
     public GameObject inGameUI;
@@ -37,6 +46,7 @@ public class UI_Controller : MonoBehaviour
         fadeScreen.gameObject.SetActive(true);
 
         Switch(inGameUI);
+        AudioManager.instance.StopSFX(58);
 
         itemToolTip.gameObject.SetActive(false);
         statToolTip.gameObject.SetActive(false);
@@ -44,21 +54,67 @@ public class UI_Controller : MonoBehaviour
         settingsPanel.localScale = Vector3.zero;
         controlsPanel.localScale = Vector3.zero;
 
+        SaveManager.instance.LoadGame();
+        bgmSlider.onValueChanged.AddListener(delegate { SetMusicVolume(); });
+        warningPanel.localScale = Vector3.zero;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab) && PlayerManager.instance.player.stats.isDead == false)
+        {
             SwitchWithKey(inventoryElements[0]);
-
+            AudioManager.instance.PauseAllSFX();
+            
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape) && PlayerManager.instance.player.stats.isDead == false)
-            SwitchWithKey(inventoryElements[2]);
+        {
+            SwitchWithKey(inventoryElements[2]);           
+            AudioManager.instance.PauseAllSFX();
+            
+        }
+        SetMusicVolume();
+    }
+
+    public IEnumerator ScalePanel(string _text)
+    {
+        float duration = 0.3f; // Duration of the tween in seconds
+        float elapsed = 0f;
+        Vector3 startScale = Vector3.zero;
+        Vector3 endScale = Vector3.one;
+        warningMessage.text = _text;
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = elapsed / duration;
+            warningPanel.localScale = Vector3.Lerp(startScale, endScale, t);
+            yield return null;
+        }
+        
+        warningPanel.localScale = endScale;
+        yield return new WaitForSecondsRealtime(2.0f);
+        CloseWarningPanel();
+    }
+
+    public void CloseWarningPanel()
+    {
+        warningPanel.localScale = Vector2.zero;      
+    }
+
+    public void SetMusicVolume()
+    {
+        if (bgmSlider != null)
+        {
+            if(AudioManager.instance.levelBGM.isPlaying)
+                AudioManager.instance.levelBGM.volume = bgmSlider.value;
+        }
+
     }
 
     public void Switch(GameObject _menu)
     {
-
+        
         for (int i = 0; i < transform.childCount; i++)
         {
             bool fadeScreen = transform.GetChild(i).GetComponent<UI_FadeScreen>() != null; // This is to keep FadeScreen active.
@@ -80,7 +136,7 @@ public class UI_Controller : MonoBehaviour
                 GameManager.instance.PauseGame(true);
 
         }
-
+        AudioManager.instance.PlaySFX(58, null);
     }
 
     private void CheckInGameUI()
@@ -134,12 +190,14 @@ public class UI_Controller : MonoBehaviour
     {     
         controlsPanel.localScale = Vector3.zero;
         StartCoroutine(ScalePanel(settingsPanel, Vector3.zero, Vector3.one));
+        AudioManager.instance.PlaySFX(58, null);
     }
 
     public void Controls()
     { 
         settingsPanel.localScale = Vector3.zero;
         StartCoroutine(ScalePanel(controlsPanel, Vector3.zero, Vector3.one));
+        AudioManager.instance.PlaySFX(58, null);
     }
 
 
@@ -159,6 +217,26 @@ public class UI_Controller : MonoBehaviour
         _panel.localScale = _endScale;
     }
 
-    public void Save() => SaveManager.instance.SaveGame();
+    public void Save()
+    {
+        SaveManager.instance.SaveGame();
+        AudioManager.instance.PlaySFX(58, null);
+    }
     public void Resume() => CheckInGameUI();
+
+    public void LoadData(GameData _data)
+    {
+        if (_data != null)
+        {
+            bgmSlider.value = _data.musicVolume;            
+        }
+        else
+            bgmSlider.value = 0.5f;
+          
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.musicVolume = bgmSlider.value;       
+    }
 }

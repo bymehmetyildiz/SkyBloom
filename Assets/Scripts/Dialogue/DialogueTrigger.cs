@@ -74,7 +74,7 @@ public class DialogueTrigger : MonoBehaviour
             {
                 dialogueManager.OpenDialoue(messages, characters);
                 isSpoken = true;
-
+                AudioManager.instance.PlaySFX(59, null);
 
                 if (interactKey.activeSelf == true)
                     interactKey.SetActive(false);
