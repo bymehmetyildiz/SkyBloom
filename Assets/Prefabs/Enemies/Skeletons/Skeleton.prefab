@@ -254,7 +254,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 250
+    baseValue: 125
     modifiers: 
   armor:
     baseValue: 0
@@ -285,8 +285,8 @@ MonoBehaviour:
   currentMagic: 0
   isDamaged: 0
   isInvincible: 0
-  level: 1
-  percentageModifier: 0.029
+  level: 2
+  percentageModifier: 0.4
 --- !u!114 &1263460564589044466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,13 +299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63edd7f61a28434f8dd97a5882caca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfItems: 1
-  possibleDrop:
-  - {fileID: 11400000, guid: b673060230678844cbb0f72875387c23, type: 2}
-  - {fileID: 11400000, guid: 7e0d7552c0b79df4391c34c107cc70c1, type: 2}
-  - {fileID: 11400000, guid: c15b396fed4e51a4f9f87d73fd40de86, type: 2}
-  - {fileID: 11400000, guid: 7fd82a25ca12bfe42b59559c96ed0314, type: 2}
-  - {fileID: 11400000, guid: 425e533205b8e37489b221a33905312f, type: 2}
+  amountOfItems: 0
+  possibleDrop: []
   dropPrefab: {fileID: 4212661324000050600, guid: c46fbaae02023974db8e2a40694e3798, type: 3}
   offsetY: 0
 --- !u!1 &3515630572995052673
@@ -897,6 +892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d18c3a8824a0e44abb0f1c95fa6c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
 --- !u!1 &7232261784427880234
 GameObject:
   m_ObjectHideFlags: 0

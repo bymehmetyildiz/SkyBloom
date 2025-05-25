@@ -191,3 +191,4 @@ MonoBehaviour:
   rb: {fileID: 9186559504782675508}
   canMove: 1
   flipped: 0
+  projectileSFX: {fileID: 0}

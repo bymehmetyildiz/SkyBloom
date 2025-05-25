@@ -129,6 +129,7 @@ MonoBehaviour:
   rb: {fileID: 7304468644033444806}
   canMove: 1
   flipped: 0
+  projectileSFX: {fileID: 0}
 --- !u!58 &4623938770182451372
 CircleCollider2D:
   m_ObjectHideFlags: 0

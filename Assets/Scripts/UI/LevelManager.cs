@@ -1,3 +1,4 @@
+using CrazyGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,12 +35,14 @@ public class LevelManager : MonoBehaviour, ISaveManager
     {
         if (collision.GetComponent<Player>() != null)
         {
-
-            sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            if (SceneManager.GetActiveScene().buildIndex % 2 != 0 && SceneManager.GetActiveScene().buildIndex > 1)
+                ShowMidgameAd();
+            else
+                sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
             SaveManager.instance.SaveGame();
 
-            if (sceneIndex < 10)
+            if (sceneIndex < 12)
             {
                 StartCoroutine(AudioManager.instance.FadeOutBGM(AudioManager.instance.levelBGM));
                 StartCoroutine(LoadNewScene());
@@ -50,9 +53,27 @@ public class LevelManager : MonoBehaviour, ISaveManager
                 SwitchOnEndScreen();
                 AudioManager.instance.menuBGM.Play();
             }
-
-
         } 
+    }
+
+    public void ShowMidgameAd()
+    {
+        CrazySDK.Ad.RequestAd(
+            CrazyAdType.Midgame,
+            () =>
+            {
+                Debug.Log("Midgame ad started");
+            },
+            (error) =>
+            {
+                Debug.Log("Midgame ad error: " + error);
+            },
+            () =>
+            {
+                sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+                Debug.Log("Midgame ad finished");
+            }
+        );
     }
 
     private IEnumerator LoadNewScene()

@@ -103,7 +103,7 @@ public class UI_MainMenu : MonoBehaviour
 
         yield return new WaitForSeconds(_delay);
 
-        if (LevelManager.instance.sceneIndex <= 0)
+        if (LevelManager.instance.sceneIndex <= 1)
             SceneManager.LoadScene(sceneName);
         else
             SceneManager.LoadScene(LevelManager.instance.sceneIndex);

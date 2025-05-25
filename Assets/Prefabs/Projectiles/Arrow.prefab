@@ -253,6 +253,7 @@ MonoBehaviour:
   rb: {fileID: 2257567799094841817}
   canMove: 1
   flipped: 0
+  projectileSFX: {fileID: 0}
 --- !u!50 &2257567799094841817
 Rigidbody2D:
   serializedVersion: 4

@@ -526,8 +526,8 @@ MonoBehaviour:
   currentMagic: 0
   isDamaged: 0
   isInvincible: 0
-  level: 1
-  percentageModifier: 0.4
+  level: 3
+  percentageModifier: 0.2
 --- !u!114 &2036823397630857650
 MonoBehaviour:
   m_ObjectHideFlags: 0

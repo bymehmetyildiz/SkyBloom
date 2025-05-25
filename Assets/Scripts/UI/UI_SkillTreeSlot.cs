@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using CrazyGames;
 
 public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISaveManager
 {
@@ -64,15 +65,34 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
             }
         }
 
-        PlayerManager.instance.SpendCurrency(skillCost);
+        ShowRewardedAd();
+    }
+    public void ShowRewardedAd()
+    {
+        CrazySDK.Ad.RequestAd(
+            CrazyAdType.Rewarded,
+            () =>
+            {
+                Debug.Log("Rewarded ad started");
+            },
+            (error) =>
+            {
+                Debug.Log("Rewarded ad error: " + error);
+            },
+            () =>
+            {
+                PlayerManager.instance.SpendCurrency(skillCost);
 
-        unlocked = true;
-        AudioManager.instance.PlaySFX(61, null);
-        CheckThrowingSwordUnlock();
-        skillLock.UnlockSkill();
+                unlocked = true;
+                AudioManager.instance.PlaySFX(61, null);
+                CheckThrowingSwordUnlock();
+                skillLock.UnlockSkill();
+                Debug.Log("Rewarded ad finished, reward the player here");
+            }
+        );
     }
 
-   
+
 
     private static void CheckThrowingSwordUnlock()
     {

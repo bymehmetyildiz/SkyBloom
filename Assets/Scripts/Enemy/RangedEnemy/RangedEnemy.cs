@@ -50,6 +50,14 @@ public class RangedEnemy : Enemy
     protected override void Update()
     {
         base.Update();
+
+        if (stateMachine.currentState == idleState || stateMachine.currentState == moveState)
+            if (stats.isDamaged)
+            {
+                if (!IsDangerDetected())
+                    Flip();
+                stateMachine.ChangeState(battleState);
+            }
     }
 
     protected override void FixedUpdate()

@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5772777527750602917}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 40.83, y: -4.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -258,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6428743653994107985}
   key: {fileID: 7384352220215971769}
+  id: 391b6283-85c8-4c4e-861a-dd207d82b431
 --- !u!61 &5432141303010373018
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -315,13 +316,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63edd7f61a28434f8dd97a5882caca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfItems: 3
+  amountOfItems: 5
   possibleDrop:
   - {fileID: 11400000, guid: e442b9dcb88925243a5a981b7a719d61, type: 2}
-  - {fileID: 11400000, guid: a70313f625b8d974e8c7ac97893d03d0, type: 2}
-  - {fileID: 11400000, guid: 7c3bed014b348f44a94a75e0ce578683, type: 2}
+  - {fileID: 11400000, guid: b67298a3cca19744e91f24a4d1bd22ff, type: 2}
+  - {fileID: 11400000, guid: b9fed7c529c029346a7b6c759e342cdf, type: 2}
+  - {fileID: 11400000, guid: 83e9ce29f0933a44fa7df7aa662cfe5f, type: 2}
+  - {fileID: 11400000, guid: 2cab47060a5ff8f4aab3dc0732be5b04, type: 2}
   dropPrefab: {fileID: 4212661324000050600, guid: c46fbaae02023974db8e2a40694e3798, type: 3}
-  offsetY: 0.5
+  offsetY: 0.2
 --- !u!1 &7384352220215971769
 GameObject:
   m_ObjectHideFlags: 0

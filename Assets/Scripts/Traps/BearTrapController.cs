@@ -8,6 +8,7 @@ public class BearTrapController : MonoBehaviour
     [SerializeField] private float radius;
     [SerializeField] private int damage;
     private bool isTriggered;
+    [SerializeField] AudioSource trapSFX;
 
     void Start()
     {
@@ -38,8 +39,13 @@ public class BearTrapController : MonoBehaviour
     {
         if (collision.GetComponent<Player>() != null)
         {
+            if(!isTriggered)
+                trapSFX.Play();
+
             isTriggered = true;
             anim.SetBool("isTriggered", isTriggered);
+
+            
         }
 
     }

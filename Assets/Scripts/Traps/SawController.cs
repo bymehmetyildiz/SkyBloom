@@ -10,6 +10,7 @@ public class SawController : MonoBehaviour
     [SerializeField] private Transform pointA, pointB;
     [SerializeField] private int damage;
     private Transform targetPosition;
+    [SerializeField] private AudioSource sawTrapSFX;
 
     void Start()
     {
@@ -25,6 +26,23 @@ public class SawController : MonoBehaviour
         if (Vector2.Distance(transform.position, targetPosition.position) < 0.1f)
         {
             targetPosition = (targetPosition == pointA) ? pointB : pointA;
+        }
+
+        float distance = Vector2.Distance(PlayerManager.instance.player.transform.position, transform.position);
+
+        if (distance <= sawTrapSFX.maxDistance)
+        {
+            if (!sawTrapSFX.isPlaying)
+            {
+                sawTrapSFX.Play();
+            }
+        }
+        else
+        {
+            if (sawTrapSFX.isPlaying)
+            {
+                sawTrapSFX.Stop();
+            }
         }
     }
 

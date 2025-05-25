@@ -44,17 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a30d6fda6ae804e98dd7bc8bb49d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingItems:
-  - {fileID: 11400000, guid: b8e2f94f29544a547ad7bfd86f726bf8, type: 2}
-  - {fileID: 11400000, guid: 5a6afc95a055eb843aaf6ed898c67527, type: 2}
-  - {fileID: 11400000, guid: 491915047d9a8a246a392516775e46f1, type: 2}
-  - {fileID: 11400000, guid: ac54664233a3ce74e896fc47c46d102b, type: 2}
-  - {fileID: 11400000, guid: 5a6afc95a055eb843aaf6ed898c67527, type: 2}
-  - {fileID: 11400000, guid: 83e9ce29f0933a44fa7df7aa662cfe5f, type: 2}
-  - {fileID: 11400000, guid: 83e9ce29f0933a44fa7df7aa662cfe5f, type: 2}
-  - {fileID: 11400000, guid: 5a6afc95a055eb843aaf6ed898c67527, type: 2}
-  - {fileID: 11400000, guid: 75198437a66927642a4eefd3e98f7b6f, type: 2}
-  - {fileID: 11400000, guid: a064bf61645fca344b92f45db6cf4c79, type: 2}
+  startingItems: []
   equipment: []
   inventory: []
   stash: []

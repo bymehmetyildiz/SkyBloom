@@ -975,7 +975,7 @@ MonoBehaviour:
     baseValue: 140
     modifiers: 
   armor:
-    baseValue: 0
+    baseValue: 25
     modifiers: 
   evasion:
     baseValue: 0
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   isDamaged: 0
   isInvincible: 0
   level: 2
-  percentageModifier: 0.2
+  percentageModifier: 0
 --- !u!114 &2838954820619463039
 MonoBehaviour:
   m_ObjectHideFlags: 0

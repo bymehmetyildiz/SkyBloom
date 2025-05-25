@@ -9,6 +9,7 @@ public class AxeTrapController : MonoBehaviour
     private bool isWarned;
     [SerializeField] private GameObject warning;
     [SerializeField] private int moveSpeed;
+    [SerializeField] private AudioSource axeTrapSFX;
 
     void Start()
     {
@@ -52,6 +53,7 @@ public class AxeTrapController : MonoBehaviour
             isWarned = true;
             warning.SetActive(false);            
             canMove = true;
+            axeTrapSFX.Play();
         }
     }
 

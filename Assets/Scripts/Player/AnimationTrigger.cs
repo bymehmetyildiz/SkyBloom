@@ -56,8 +56,8 @@ public class AnimationTrigger : MonoBehaviour
                 EnemyStats enemyStats = colliders[i].GetComponent<EnemyStats>();
                 player.stats.IncreaseMagic(Mathf.CeilToInt(player.stats.maxMagic.GetValue() * 0.005f));
                 UI_InGame.instance.UpdateMagic();
-                if (enemyStats.isDead)
-                    return;
+                //if (enemyStats.isDead)
+                //    return;
 
                 StartCoroutine(Check(enemy, enemyStats));
             }

@@ -22,6 +22,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private bool canMove;
     [SerializeField] private bool flipped;
 
+    [SerializeField] private AudioSource projectileSFX;
+
     private Animator animator;
 
     private void Start()
@@ -76,8 +78,6 @@ public class Projectile : MonoBehaviour
 
             collision.GetComponent<EntityStats>()?.TakeDamage(damage);
 
-           
-
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
@@ -86,7 +86,8 @@ public class Projectile : MonoBehaviour
             else
                 Stuck(collision);
         }
-       
+
+        AudioManager.instance.PlaySFX(62, null);
     }
 
     private void Explode(Collider2D collision)

@@ -36,9 +36,9 @@ public class AudioManager : MonoBehaviour, ISaveManager
     {
         SaveManager.instance.LoadGame();
 
-        if (!isPlaying && SceneManager.GetActiveScene().buildIndex == 0)
+        if (!isPlaying && SceneManager.GetActiveScene().buildIndex == 1)
             StartCoroutine(FadeInBGM(menuBGM));
-        else if (!isPlaying && SceneManager.GetActiveScene().buildIndex > 0 && SceneManager.GetActiveScene().buildIndex < 10)
+        else if (!isPlaying && SceneManager.GetActiveScene().buildIndex > 0 && SceneManager.GetActiveScene().buildIndex < 11)
             StartCoroutine(FadeInBGM(levelBGM));
 
         isPaused = false;

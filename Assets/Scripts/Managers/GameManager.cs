@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using CrazyGames;
 
 public class GameManager : MonoBehaviour, ISaveManager
 {
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour, ISaveManager
             instance = this;
         else
             Destroy(instance.gameObject);
+
+        CrazySDK.Init(() => { });
 
         checkPoints = FindObjectsOfType<CheckPoint>();
 
