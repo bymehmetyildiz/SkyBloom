@@ -4,14 +4,13 @@ using UnityEngine;
 using System.Linq;
 
 public class SaveManager : MonoBehaviour
-{
-    #region Previous
-    
+{  
     public static SaveManager instance;
 
     [SerializeField] private string fileName;
+    [SerializeField] private string filePath = "idbfs/mehmetyildiz20041991";
     [SerializeField] private bool encryptData;
-
+    
     private GameData gameData;
     private List<ISaveManager> saveManagers;
     private FileDataHandler dataHandler;
@@ -19,7 +18,8 @@ public class SaveManager : MonoBehaviour
     [ContextMenu("Delete Save File")]
     public void DeleteSavedData()
     {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
+        //dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData); // Default kayýr yeri olursa bunu kullan.
+        dataHandler = new FileDataHandler(filePath, fileName, encryptData); // WebGL olursa bunu.
         dataHandler.DeleteData();
     }
 
@@ -35,7 +35,8 @@ public class SaveManager : MonoBehaviour
         }
 
 
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
+        //dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData); // Default kayýr yeri olursa bunu kullan.
+        dataHandler = new FileDataHandler(filePath, fileName, encryptData); // WebGL olursa bunu.
         saveManagers = FindAllSaveManagers();
     }
 
@@ -95,7 +96,4 @@ public class SaveManager : MonoBehaviour
         }
         return false;
     }
-
-    #endregion
-
 }

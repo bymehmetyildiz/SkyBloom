@@ -28,6 +28,8 @@ public class LevelManager : MonoBehaviour, ISaveManager
 
         if(endPanel != null )
             endPanel.SetActive(false);
+
+ 
     }
 
 
@@ -40,7 +42,6 @@ public class LevelManager : MonoBehaviour, ISaveManager
             else
                 sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
-            SaveManager.instance.SaveGame();
 
             if (sceneIndex < 12)
             {
@@ -50,10 +51,11 @@ public class LevelManager : MonoBehaviour, ISaveManager
 
             else
             {
-                SwitchOnEndScreen();
+                SwitchOnEndScreen();                
                 AudioManager.instance.menuBGM.Play();
             }
         } 
+            SaveManager.instance.SaveGame();
     }
 
     public void ShowMidgameAd()
@@ -127,7 +129,7 @@ public class LevelManager : MonoBehaviour, ISaveManager
 
     public void NewGamePlus()
     {
-        sceneIndex = 1;
+        sceneIndex = 2;
         StartCoroutine(LoadScreenWithFadeEffect(1, sceneIndex));
     }
 

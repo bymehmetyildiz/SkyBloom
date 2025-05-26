@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour, ISaveManager
     [SerializeField] private float sfxMinDist;
     public bool isPlaying;
     public bool isPaused;
-    private float musicLevel = 0.5f;
+    private float musicLevel = 0.3f;
 
     
 
@@ -114,7 +114,7 @@ public class AudioManager : MonoBehaviour, ISaveManager
         if (_data != null)
             this.musicLevel = _data.musicVolume;
         else
-            this.musicLevel = 0.5f;
+            this.musicLevel = 0.3f;
     }
 
     public void SaveData(ref GameData _data)

@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba62a3a656afca47aa8dabdaefb051d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: data.leyltech
+  fileName: data.thejourney
+  filePath: idbfs/mehmetyildiz20041991
   encryptData: 1

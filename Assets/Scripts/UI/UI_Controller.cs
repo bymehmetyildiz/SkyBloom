@@ -231,7 +231,7 @@ public class UI_Controller : MonoBehaviour, ISaveManager
             bgmSlider.value = _data.musicVolume;            
         }
         else
-            bgmSlider.value = 0.5f;
+            bgmSlider.value = 0.3f;
           
     }
 

@@ -16,6 +16,7 @@ public class SuccubusTransformState : EnemyState
         base.Enter();
         enemy.sing.Stop();
         AudioManager.instance.PlaySFX(55, null);
+        enemy.npc.gameObject.SetActive(false);
     }
 
     public override void Update()
