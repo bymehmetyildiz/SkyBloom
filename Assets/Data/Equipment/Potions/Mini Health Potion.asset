@@ -15,9 +15,10 @@ MonoBehaviour:
   itemType: 1
   itemName: Mini Health Potion
   itemIcon: {fileID: -764431530, guid: 27fb482c6088ff64483c43db83a51ca1, type: 3}
+  itemId: e442b9dcb88925243a5a981b7a719d61
   dropChance: 100
   equipmentType: 3
-  itemCooldown: 2
+  itemCooldown: 0.5
   itemEffect: {fileID: 11400000, guid: 9b7c0bc6e8d5663479e533b472ef92ff, type: 2}
   strength: 0
   agility: 0

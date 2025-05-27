@@ -24,8 +24,20 @@ public class UI_MainMenu : MonoBehaviour
 
     public void ContinueGame()
     {
-        StartCoroutine(LoadScreenWithFadeEffect(2f));
+        StartCoroutine(LoadContinueGame());
         AudioManager.instance.PlaySFX(58, null);
+    }
+
+    IEnumerator LoadContinueGame()
+    {
+        fadeScreen.FadeOut();
+
+        if (AudioManager.instance != null)
+            yield return StartCoroutine(AudioManager.instance.FadeOutBGM(AudioManager.instance.menuBGM));
+
+        yield return new WaitForSeconds(2f);
+
+        SceneManager.LoadScene(LevelManager.instance.sceneIndex);
     }
 
     public void NewGame()
@@ -78,7 +90,7 @@ public class UI_MainMenu : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(58, null);
         SaveManager.instance.DeleteSavedData();
-        StartCoroutine(LoadScreenWithFadeEffect(2));
+        StartCoroutine(LoadScreenWithFadeEffect(2, "SunflowerFields"));
     }
 
     public void Reject(RectTransform _panel)
@@ -94,7 +106,7 @@ public class UI_MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    IEnumerator LoadScreenWithFadeEffect(float _delay)
+    IEnumerator LoadScreenWithFadeEffect(float _delay, string _sceneName)
     {
         fadeScreen.FadeOut();
 
@@ -103,10 +115,8 @@ public class UI_MainMenu : MonoBehaviour
 
         yield return new WaitForSeconds(_delay);
 
-        if (LevelManager.instance.sceneIndex <= 1)
-            SceneManager.LoadScene(sceneName);
-        else
-            SceneManager.LoadScene(LevelManager.instance.sceneIndex);
+        // Always start new game from the defined scene
+        SceneManager.LoadScene(_sceneName);
     }
 
 

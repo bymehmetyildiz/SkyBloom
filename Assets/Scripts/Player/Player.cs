@@ -9,6 +9,7 @@ public class Player : Entity
     public GameObject sword { get; private set; }
     public PlayerStats stats { get; private set; }
     public CircleCollider2D cc { get; private set; }
+    public Animator effectAnim;
 
     [Header("Move Info")]
     public float moveSpeed = 12.0f;

@@ -35,48 +35,28 @@ public class LevelManager : MonoBehaviour, ISaveManager
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Player>() != null)
+        if (collision.GetComponent<Player>() == null)
+            return;
+
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextIndex = currentIndex + 1;
+
+        // If player is at the last scene
+        if (nextIndex >= SceneManager.sceneCountInBuildSettings)
         {
-            if (SceneManager.GetActiveScene().buildIndex % 2 != 0 && SceneManager.GetActiveScene().buildIndex > 1)
-                ShowMidgameAd();
-            else
-                sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-
-            if (sceneIndex < 12)
-            {
-                StartCoroutine(AudioManager.instance.FadeOutBGM(AudioManager.instance.levelBGM));
-                StartCoroutine(LoadNewScene());
-            }
-
-            else
-            {
-                SwitchOnEndScreen();                
-                AudioManager.instance.menuBGM.Play();
-            }
-        } 
+            SwitchOnEndScreen();
+            AudioManager.instance.menuBGM.Play();
             SaveManager.instance.SaveGame();
+            return;
+        }
+        sceneIndex = nextIndex;
+
+        StartCoroutine(AudioManager.instance.FadeOutBGM(AudioManager.instance.levelBGM));
+        StartCoroutine(LoadNewScene());
+
+        SaveManager.instance.SaveGame();
     }
 
-    public void ShowMidgameAd()
-    {
-        CrazySDK.Ad.RequestAd(
-            CrazyAdType.Midgame,
-            () =>
-            {
-                Debug.Log("Midgame ad started");
-            },
-            (error) =>
-            {
-                Debug.Log("Midgame ad error: " + error);
-            },
-            () =>
-            {
-                sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-                Debug.Log("Midgame ad finished");
-            }
-        );
-    }
 
     private IEnumerator LoadNewScene()
     {
@@ -132,9 +112,4 @@ public class LevelManager : MonoBehaviour, ISaveManager
         sceneIndex = 2;
         StartCoroutine(LoadScreenWithFadeEffect(1, sceneIndex));
     }
-
-
-
-
-
 }

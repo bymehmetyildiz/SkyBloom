@@ -15,9 +15,10 @@ MonoBehaviour:
   itemType: 1
   itemName: Magic Potion
   itemIcon: {fileID: 547960167, guid: 27fb482c6088ff64483c43db83a51ca1, type: 3}
+  itemId: 5a6afc95a055eb843aaf6ed898c67527
   dropChance: 100
   equipmentType: 4
-  itemCooldown: 2
+  itemCooldown: 0.5
   itemEffect: {fileID: 11400000, guid: 8ddba047db99628479a81493ff7669d0, type: 2}
   strength: 0
   agility: 0

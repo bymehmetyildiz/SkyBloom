@@ -53,7 +53,9 @@ public class PlayerPrimaryAttackState : PlayerState
             //    hit.GetComponent<Projectile>().Flip();
         }
 
-        AudioManager.instance.StopSFX(1);    
+        AudioManager.instance.StopSFX(1);
+
+        player.effectAnim.SetBool("Attack", false);
     }
 
     public override void FixedUpdate()

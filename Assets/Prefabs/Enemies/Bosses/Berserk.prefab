@@ -784,8 +784,8 @@ MonoBehaviour:
   currentMagic: 0
   isDamaged: 0
   isInvincible: 0
-  level: 1
-  percentageModifier: 0.142
+  level: 4
+  percentageModifier: 0.8
 --- !u!114 &5994751865846841321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,12 +824,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63edd7f61a28434f8dd97a5882caca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfItems: 1
+  amountOfItems: 2
   possibleDrop:
-  - {fileID: 11400000, guid: b673060230678844cbb0f72875387c23, type: 2}
-  - {fileID: 11400000, guid: 7e0d7552c0b79df4391c34c107cc70c1, type: 2}
-  - {fileID: 11400000, guid: c15b396fed4e51a4f9f87d73fd40de86, type: 2}
-  - {fileID: 11400000, guid: 7fd82a25ca12bfe42b59559c96ed0314, type: 2}
+  - {fileID: 11400000, guid: 491915047d9a8a246a392516775e46f1, type: 2}
+  - {fileID: 11400000, guid: 3df681ae7ade2734fb6031c5cf3cf052, type: 2}
   dropPrefab: {fileID: 4212661324000050600, guid: c46fbaae02023974db8e2a40694e3798, type: 3}
   offsetY: 0
 --- !u!114 &8024021020396286191

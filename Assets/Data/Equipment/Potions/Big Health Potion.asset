@@ -15,9 +15,10 @@ MonoBehaviour:
   itemType: 1
   itemName: Big Health Potion
   itemIcon: {fileID: 668341814, guid: 27fb482c6088ff64483c43db83a51ca1, type: 3}
+  itemId: 491915047d9a8a246a392516775e46f1
   dropChance: 100
   equipmentType: 3
-  itemCooldown: 2
+  itemCooldown: 0.5
   itemEffect: {fileID: 11400000, guid: 5eec917cdfccf814dad9701df53806be, type: 2}
   strength: 0
   agility: 0

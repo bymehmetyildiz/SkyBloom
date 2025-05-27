@@ -100,9 +100,6 @@ public class SwordSkillController : MonoBehaviour
         AudioManager.instance.StopSFX(18);
     }
 
-    
-
-
     private void Update()
     {
         if (canRotate && !isReturning)
@@ -175,6 +172,7 @@ public class SwordSkillController : MonoBehaviour
         if (isBouncing && enemies.Count > 0)
         {
             AudioManager.instance.PlaySFX(18, null);
+
             // Clean up null entries (e.g., destroyed enemies)
             enemies.RemoveAll(e => e == null);
 
@@ -185,6 +183,10 @@ public class SwordSkillController : MonoBehaviour
                 isReturning = true;
                 return;
             }
+
+            // Make sure targetIndex is within range
+            if (targetIndex >= enemies.Count)
+                targetIndex = 0;
 
             Transform currentTarget = enemies[targetIndex];
 

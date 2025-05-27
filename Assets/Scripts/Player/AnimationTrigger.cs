@@ -15,7 +15,6 @@ public class AnimationTrigger : MonoBehaviour
     private void Start()
     {
         player = GetComponentInParent<Player>();
-
     }
 
     public void TriggerLand()

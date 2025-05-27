@@ -91,11 +91,13 @@ public class GameManager : MonoBehaviour, ISaveManager
 
     public void IsBossDead()
     {
+        if (exitGate == null)
+            return;
+
         if (exitGate.isOpen)
             return;
 
-        if(exitGate.isOpen == false)
-            StartCoroutine(exitGate.OpenGate(0));
+        StartCoroutine(exitGate.OpenGate(0));
     }
 
     public void RestartScene()

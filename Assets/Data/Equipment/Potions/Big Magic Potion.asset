@@ -15,9 +15,10 @@ MonoBehaviour:
   itemType: 1
   itemName: Big Magic Potion
   itemIcon: {fileID: 1330483589, guid: 27fb482c6088ff64483c43db83a51ca1, type: 3}
+  itemId: 3df681ae7ade2734fb6031c5cf3cf052
   dropChance: 100
   equipmentType: 4
-  itemCooldown: 2
+  itemCooldown: 0.5
   itemEffect: {fileID: 11400000, guid: 813694e717aff064596b5121d5d201c1, type: 2}
   strength: 0
   agility: 0

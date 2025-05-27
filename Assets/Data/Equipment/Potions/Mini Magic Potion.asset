@@ -15,9 +15,10 @@ MonoBehaviour:
   itemType: 1
   itemName: Mini Magic Potion
   itemIcon: {fileID: 1708383856, guid: 27fb482c6088ff64483c43db83a51ca1, type: 3}
+  itemId: 83e9ce29f0933a44fa7df7aa662cfe5f
   dropChance: 100
   equipmentType: 4
-  itemCooldown: 2
+  itemCooldown: 0.5
   itemEffect: {fileID: 11400000, guid: 9b5c1e5f32c70e54695fa46d9ac96d6d, type: 2}
   strength: 0
   agility: 0

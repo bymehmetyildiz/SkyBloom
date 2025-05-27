@@ -249,6 +249,7 @@ MonoBehaviour:
   stunDur: 1
   stunDir: {x: 3, y: 3}
   counterImage: {fileID: 0}
+  effectAnim: {fileID: 7911083599012392897}
   moveSpeed: 5
   jumpForce: 13
   landTrigger: 0
@@ -414,13 +415,13 @@ MonoBehaviour:
     baseValue: 100
     modifiers: 
   fireDamage:
-    baseValue: 50
+    baseValue: 0
     modifiers: 
   iceDamage:
-    baseValue: 10
+    baseValue: 0
     modifiers: 
   shockDamage:
-    baseValue: 50
+    baseValue: 100
     modifiers: 
   ailmentDur: 4
   isIgnited: 0
