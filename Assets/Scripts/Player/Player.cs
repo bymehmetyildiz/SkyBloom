@@ -1,3 +1,4 @@
+using CrazyGames;
 using System.Collections;
 using UnityEngine;
 
@@ -124,7 +125,8 @@ public class Player : Entity
         cc.radius = 0;
         defaultMoveSpeed = moveSpeed;
         defaultJumpForce = jumpForce;
-        defaultDashSpeed = dashSpeed;        
+        defaultDashSpeed = dashSpeed;
+
     }
 
 

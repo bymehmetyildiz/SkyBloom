@@ -28,8 +28,7 @@ public class LevelManager : MonoBehaviour, ISaveManager
 
         if(endPanel != null )
             endPanel.SetActive(false);
-
- 
+        Debug.Log(sceneIndex);
     }
 
 
@@ -79,7 +78,7 @@ public class LevelManager : MonoBehaviour, ISaveManager
         if (_data != null)
             this.sceneIndex = _data.sceneIndex;
         else
-            this.sceneIndex = 1;
+            this.sceneIndex = 2;
     }
 
     public void SaveData(ref GameData _data)

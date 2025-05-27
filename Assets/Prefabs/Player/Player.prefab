@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 7223527764634556409}
-  groundCheckDistance: 0.21
+  groundCheckDistance: 0.25
   wallCheck: {fileID: 4502309387504810901}
   wallCheckDistance: 0.08
   whatIsGround:
@@ -391,7 +391,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 10
+    baseValue: 12
     modifiers: 
   critChance:
     baseValue: 0
@@ -415,7 +415,7 @@ MonoBehaviour:
     baseValue: 100
     modifiers: 
   fireDamage:
-    baseValue: 0
+    baseValue: 10
     modifiers: 
   iceDamage:
     baseValue: 0
@@ -573,7 +573,7 @@ Transform:
   m_GameObject: {fileID: 2499409295548514524}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.094, y: 0.273, z: 0}
+  m_LocalPosition: {x: 0.094, y: 0.349, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

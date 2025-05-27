@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour, ISaveManager
     [Header("SilverStream")]
     [SerializeField] private GameObject ladder;
 
-    
+    private bool happyTirggered;
 
     private void Awake()
     {
@@ -50,13 +50,23 @@ public class GameManager : MonoBehaviour, ISaveManager
     private void Start()
     {
         isPlayerEnetered = false;
+        happyTirggered = false;
     }
 
     private void Update()
     {
         if(boss !=null)
             if (boss.isDead)
+            {
                 IsBossDead();
+                
+                if (!happyTirggered)
+                {
+                    CrazySDK.Game.HappyTime();
+                    happyTirggered=true;
+                }
+
+            }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -218,10 +228,12 @@ public class GameManager : MonoBehaviour, ISaveManager
         if (_isPaused)
         {        
             Time.timeScale = 0.0f;
+            CrazySDK.Game.GameplayStop();
         }
         else
         {          
             Time.timeScale = 1.0f;
+            CrazySDK.Game.GameplayStart();
         }
 
     }

@@ -20,11 +20,14 @@ public class UI_MainMenu : MonoBehaviour
 
         warningPanel.localScale = Vector2.zero;
         creditsPanel.localScale = Vector2.zero;
+
+        SaveManager.instance.LoadGame();
     }
 
     public void ContinueGame()
     {
         StartCoroutine(LoadContinueGame());
+        
         AudioManager.instance.PlaySFX(58, null);
     }
 
@@ -37,7 +40,10 @@ public class UI_MainMenu : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        SceneManager.LoadScene(LevelManager.instance.sceneIndex);
+        if(LevelManager.instance.sceneIndex > 1)
+            SceneManager.LoadScene(LevelManager.instance.sceneIndex);
+        else
+            SceneManager.LoadScene(2);
     }
 
     public void NewGame()
