@@ -96,13 +96,11 @@ public class EarthSlamExplosion : MonoBehaviour
             return;
        
         if (collision.GetComponent<Enemy>() != null)
-            {
-
-                StartCoroutine(collision.GetComponent<Enemy>().ViolentKnockBack());
-
-                EnemyStats enemy = collision.GetComponent<EnemyStats>();
-
-                PlayerManager.instance.player.entityStats.DoDamage(enemy);
+        {
+            StartCoroutine(collision.GetComponent<Enemy>().ViolentKnockBack());
+            EnemyStats enemy = collision.GetComponent<EnemyStats>();
+            enemy.GetComponent<Entity>().SetupKnockBackDir(transform);
+            enemy.TakeDamage(50);
         }
         
            

@@ -15,13 +15,16 @@ public class UI_MainMenu : MonoBehaviour
 
     private void Start()
     {
-        if (!SaveManager.instance.HasSavedData())
-            continueButton.SetActive(false);
-
         warningPanel.localScale = Vector2.zero;
         creditsPanel.localScale = Vector2.zero;
 
         SaveManager.instance.LoadGame();
+
+        if (!SaveManager.instance.HasSavedData())
+        {
+            continueButton.SetActive(false);
+            SceneManager.LoadScene("SunflowerFields");
+        }      
     }
 
     public void ContinueGame()

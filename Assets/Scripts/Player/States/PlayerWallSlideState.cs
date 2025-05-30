@@ -42,27 +42,32 @@ public class PlayerWallSlideState : PlayerState
     {
         base.Update();
 
+        // Prioritize wall jump first
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            stateMachine.ChangeState(player.wallJumpState);
+            return;
+        }
+
+        // If facing away from the wall or damaged, fall off
         if ((xInput != 0 && player.facingDir != xInput && !player.IsGroundDetected()) || player.stats.isDamaged)
         {
             stateMachine.ChangeState(player.airState);
             return;
         }
 
-        
+        // Lose wall slide if no longer against wall
         if (!player.IsWallDetected())
-            stateMachine.ChangeState(player.idleState);
-
-        if (xInput != 0 && player.facingDir == xInput && !player.IsGroundDetected())
-            return;
-
-        if (Input.GetKeyDown(KeyCode.Space))
         {
-            stateMachine.ChangeState(player.wallJumpState);
+            stateMachine.ChangeState(player.airState); // Better than idle if in air
             return;
-
         }
-            
+
+        // Landed on ground
         if (player.IsGroundDetected())
+        {
             stateMachine.ChangeState(player.idleState);
+            return;
+        }
     }
 }

@@ -24,6 +24,9 @@ public class PlayerJumpState : PlayerState
     public override void FixedUpdate()
     {
         base.FixedUpdate();
+
+        if (xInput != 0)
+            player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y);
     }
 
     public override void Update()

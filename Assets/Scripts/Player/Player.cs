@@ -300,8 +300,9 @@ public class Player : Entity
 
     public void CollisionDamage(Collision2D collision)
     {
-        EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();        
-        entityStats.DoDamage(enemy);    
+        EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
+        enemy.GetComponent<Entity>().SetupKnockBackDir(transform);
+        enemy.TakeDamage(50);
     }
 
     //Knockback
