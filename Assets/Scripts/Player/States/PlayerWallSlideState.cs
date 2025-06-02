@@ -17,7 +17,7 @@ public class PlayerWallSlideState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        
+
     }
 
     public override void FixedUpdate()
@@ -30,7 +30,7 @@ public class PlayerWallSlideState : PlayerState
             return;
         }
 
-            
+
 
         if (yInput < 0)
             rb.velocity = new Vector2(0, rb.velocity.y);
@@ -42,8 +42,8 @@ public class PlayerWallSlideState : PlayerState
     {
         base.Update();
 
-        // Prioritize wall jump first
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Only allow wall jump if still touching the wall
+        if (player.IsWallDetected() && Input.GetKeyDown(KeyCode.Space))
         {
             stateMachine.ChangeState(player.wallJumpState);
             return;
@@ -59,7 +59,7 @@ public class PlayerWallSlideState : PlayerState
         // Lose wall slide if no longer against wall
         if (!player.IsWallDetected())
         {
-            stateMachine.ChangeState(player.airState); // Better than idle if in air
+            stateMachine.ChangeState(player.airState);
             return;
         }
 
@@ -68,6 +68,7 @@ public class PlayerWallSlideState : PlayerState
         {
             stateMachine.ChangeState(player.idleState);
             return;
+
         }
     }
 }

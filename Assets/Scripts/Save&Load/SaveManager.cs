@@ -4,39 +4,33 @@ using UnityEngine;
 using System.Linq;
 
 public class SaveManager : MonoBehaviour
-{  
+{
     public static SaveManager instance;
 
-    [SerializeField] private string fileName;
-    [SerializeField] private string filePath = "idbfs/mehmetyildiz20041991";
     [SerializeField] private bool encryptData;
-    
+
     private GameData gameData;
     private List<ISaveManager> saveManagers;
-    private FileDataHandler dataHandler;
+    private PlayerPrefsDataHandler dataHandler;
 
     [ContextMenu("Delete Save File")]
     public void DeleteSavedData()
     {
-        //dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData); // Default kayýr yeri olursa bunu kullan.
-        dataHandler = new FileDataHandler(filePath, fileName, encryptData); // WebGL olursa bunu.
+        if (dataHandler == null)
+        {
+            dataHandler = new PlayerPrefsDataHandler(encryptData);
+        }
         dataHandler.DeleteData();
     }
 
-
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
             Destroy(instance.gameObject);
         else
-        {
-            instance = this;           
+            instance = this;
 
-        }
-
-
-        //dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData); // Default kayýr yeri olursa bunu kullan.
-        dataHandler = new FileDataHandler(filePath, fileName, encryptData); // WebGL olursa bunu.
+        dataHandler = new PlayerPrefsDataHandler(encryptData);
         saveManagers = FindAllSaveManagers();
     }
 
@@ -55,7 +49,7 @@ public class SaveManager : MonoBehaviour
         gameData = dataHandler.Load();
 
         if (gameData == null)
-        {            
+        {
             NewGame();
         }
 
@@ -83,17 +77,12 @@ public class SaveManager : MonoBehaviour
     private List<ISaveManager> FindAllSaveManagers()
     {
         IEnumerable<ISaveManager> saveManagers = FindObjectsOfType<MonoBehaviour>().OfType<ISaveManager>();
-
         return new List<ISaveManager>(saveManagers);
     }
 
     public bool HasSavedData()
     {
         GameData loadedData = dataHandler.Load();
-        if (loadedData != null )
-        {
-            return true;
-        }
-        return false;
+        return loadedData != null;
     }
 }

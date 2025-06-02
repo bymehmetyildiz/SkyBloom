@@ -11,11 +11,9 @@ public class PlayerWallJumpState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        
-        AudioManager.instance.PlaySFX(5, null);
-        
-        stateTimer = 1.0f;
         player.SetVelocity(5 * -player.facingDir, player.jumpForce);
+        stateTimer = 0.5f;        
+        AudioManager.instance.PlaySFX(5, null);        
     }
 
     public override void Exit()
@@ -36,7 +34,8 @@ public class PlayerWallJumpState : PlayerState
         if (stateTimer < 0)
             stateMachine.ChangeState(player.airState);
 
-        if (player.IsGroundDetected())
-            stateMachine.ChangeState(player.idleState);
+        // Add this: If touching wall and not grounded, go to wall slide
+        if (player.IsWallDetected() && !player.IsGroundDetected())
+            stateMachine.ChangeState(player.wallSlideState);
     }
 }

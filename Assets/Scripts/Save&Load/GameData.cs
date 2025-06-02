@@ -10,8 +10,9 @@ public class GameData
     public int sceneIndex; // Scene Index
     public bool isOpened; // Is Chest Opeened
     public float musicVolume;
-  
-   
+    public bool isControlShown; // Is Control Panel Shown
+
+
 
     public SerializableDictionary<string, bool> skillTree;
     public SerializableDictionary<string, int> inventory;
@@ -30,7 +31,9 @@ public class GameData
         typeCounter = 0;
         sceneIndex = 1;
         isOpened = false;
-       
+        isControlShown = false;
+
+
         musicVolume = 0.5f;
         
         skillTree = new SerializableDictionary<string, bool>();

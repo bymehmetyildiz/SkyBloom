@@ -14,6 +14,10 @@ public class LevelManager : MonoBehaviour, ISaveManager
 
     [Header("End Panel")]
     [SerializeField] private GameObject endPanel;
+    [Space]    
+    [Header("Controller Panel")]
+    [SerializeField] private GameObject controllersPanel;
+    private bool isControlShown;
 
     private void Awake()
     {
@@ -26,10 +30,42 @@ public class LevelManager : MonoBehaviour, ISaveManager
     {
         fadeScreen = FindObjectOfType<UI_FadeScreen>();
 
-        if(endPanel != null )
+        if (endPanel != null)
             endPanel.SetActive(false);
-        Debug.Log(sceneIndex);
+
+        SaveManager.instance.LoadGame();
+
+        // Only show the panel if on scene 2 and it hasn't been shown before
+        if (SceneManager.GetActiveScene().buildIndex == 2 && !isControlShown)
+        {
+            if (controllersPanel != null)
+                controllersPanel.SetActive(true);
+        }
+        else
+        {
+            if (controllersPanel != null)
+                controllersPanel.SetActive(false);
+        }
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            CloseControlPanel();
+        }
+    }
+
+    public void CloseControlPanel()
+    {
+        if (controllersPanel != null && controllersPanel.activeSelf)
+        {
+            controllersPanel.SetActive(false);
+            isControlShown = true;
+            SaveManager.instance.SaveGame(); // Save the state so it persists
+        }
+    }
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,19 +85,32 @@ public class LevelManager : MonoBehaviour, ISaveManager
             return;
         }
         sceneIndex = nextIndex;
+        SaveManager.instance.SaveGame();
 
         StartCoroutine(AudioManager.instance.FadeOutBGM(AudioManager.instance.levelBGM));
-        StartCoroutine(LoadNewScene());
-
-        SaveManager.instance.SaveGame();
+        ShowMidgameAdAndLoadScene();
     }
 
-
-    private IEnumerator LoadNewScene()
+    private void ShowMidgameAdAndLoadScene()
     {
-        yield return new WaitForSeconds(0.1f);
-        StartCoroutine(LoadScreenWithFadeEffect(1, sceneIndex));
-        
+        CrazySDK.Ad.RequestAd(
+            CrazyAdType.Midgame,
+            () =>
+            {
+                Debug.Log("Midgame ad started");
+            },
+            (error) =>
+            {
+                Debug.Log("Midgame ad error: " + error);
+                // Fallback: load scene even if ad fails
+                StartCoroutine(LoadScreenWithFadeEffect(1, sceneIndex));
+            },
+            () =>
+            {
+                Debug.Log("Midgame ad finished");
+                StartCoroutine(LoadScreenWithFadeEffect(1, sceneIndex));
+            }
+        );
     }
 
     IEnumerator LoadScreenWithFadeEffect(float _delay, int _sceneIndex)
@@ -76,14 +125,22 @@ public class LevelManager : MonoBehaviour, ISaveManager
     public void LoadData(GameData _data)
     {
         if (_data != null)
+        {
             this.sceneIndex = _data.sceneIndex;
+            this.isControlShown = _data.isControlShown;
+        }
         else
+        {
             this.sceneIndex = 2;
+            isControlShown = false;
+        }
+
     }
 
     public void SaveData(ref GameData _data)
     {
         _data.sceneIndex = sceneIndex;
+        _data.isControlShown = isControlShown;
     }
 
     public void SwitchOnEndScreen()

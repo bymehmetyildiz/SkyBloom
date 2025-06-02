@@ -4855,7 +4855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 6653618206910008379}
-  endText: {fileID: 6450379408919914045}
+  diedText: {fileID: 6450379408919914045}
   restartButton: {fileID: 6656886016367377099}
   returnMenuButton: {fileID: 5223093749018240908}
   controlsPanel: {fileID: 6069286082674513790}
@@ -11772,7 +11772,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dash: "C"
+  m_text: 'Dash: "C", Air Dash: Space + C
 
 '
   m_isRightToLeft: 0
@@ -18862,8 +18862,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -21692,7 +21692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6069286082674513790
 RectTransform:
   m_ObjectHideFlags: 0

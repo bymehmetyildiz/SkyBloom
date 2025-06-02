@@ -1,3 +1,4 @@
+using CrazyGames;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,7 +11,7 @@ public class UI_Controller : MonoBehaviour, ISaveManager
 
     [Header("End Screen")]
     [SerializeField] private UI_FadeScreen fadeScreen;
-    [SerializeField] private GameObject endText;
+    [SerializeField] private GameObject diedText;
     [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject returnMenuButton;    
     [SerializeField] private RectTransform controlsPanel;
@@ -171,15 +172,50 @@ public class UI_Controller : MonoBehaviour, ISaveManager
 
     IEnumerator EndScreen()
     {
+        //yield return new WaitForSeconds(1.5f);
+        diedText.SetActive(true);
         yield return new WaitForSeconds(1.5f);
-        endText.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        // Now pause the game
+        GameManager.instance.PauseGame(true);
+        yield return new WaitForSecondsRealtime(1.0f);
         restartButton.SetActive(true);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSecondsRealtime(0.25f);
         returnMenuButton.SetActive(true);
     }
 
-    public void RestartGameButton() => GameManager.instance.RestartScene();
+    // Show MidGame Ad
+    public void RestartGameButton()
+    {
+        if (PlayerManager.instance.player.stats.isDead)
+        {
+            ShowMidgameAd();
+        }
+        else
+            GameManager.instance.RestartScene();
+    }
+    public void ShowMidgameAd()
+    {
+        CrazySDK.Ad.RequestAd(
+            CrazyAdType.Midgame,
+            () =>
+            {
+                Debug.Log("Midgame ad started");
+            },
+            (error) =>
+            {
+                Debug.Log("Midgame ad error: " + error);
+                // Fallback: restart scene even if ad fails (important for QA)
+                GameManager.instance.RestartScene();
+            },
+            () =>
+            {
+                Debug.Log("Midgame ad finished");
+                GameManager.instance.RestartScene();
+            }
+        );
+    }
+    /**********************/
+
     public void ReturnToMenu()
     {
         Time.timeScale = 1f; // Resume time just in case it's frozen

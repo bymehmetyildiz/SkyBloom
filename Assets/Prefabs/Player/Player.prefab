@@ -232,7 +232,7 @@ MonoBehaviour:
   groundCheck: {fileID: 7223527764634556409}
   groundCheckDistance: 0.25
   wallCheck: {fileID: 4502309387504810901}
-  wallCheckDistance: 0.08
+  wallCheckDistance: 0.1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength:
-    baseValue: 10
+    baseValue: 30
     modifiers: 
   agility:
     baseValue: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 12
+    baseValue: 30
     modifiers: 
   critChance:
     baseValue: 0
@@ -400,7 +400,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 100
+    baseValue: 300
     modifiers: 
   armor:
     baseValue: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxMagic:
-    baseValue: 100
+    baseValue: 150
     modifiers: 
   fireDamage:
     baseValue: 10
