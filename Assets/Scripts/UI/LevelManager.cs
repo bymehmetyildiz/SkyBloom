@@ -88,29 +88,36 @@ public class LevelManager : MonoBehaviour, ISaveManager
         SaveManager.instance.SaveGame();
 
         StartCoroutine(AudioManager.instance.FadeOutBGM(AudioManager.instance.levelBGM));
-        ShowMidgameAdAndLoadScene();
+        StartCoroutine(LoadScreenWithAdAfterFade(1, sceneIndex));
     }
 
-    private void ShowMidgameAdAndLoadScene()
+    private IEnumerator LoadScreenWithAdAfterFade(float delay, int _sceneIndex)
     {
+        fadeScreen.FadeOut();
+        yield return new WaitForSeconds(delay); // Wait for fade to complete
+
+        // Now screen is black, show ad
+        bool adFinished = false;
+        bool adError = false;
+
         CrazySDK.Ad.RequestAd(
             CrazyAdType.Midgame,
-            () =>
-            {
-                Debug.Log("Midgame ad started");
-            },
-            (error) =>
-            {
+            () => { Debug.Log("Midgame ad started"); },
+            (error) => {
                 Debug.Log("Midgame ad error: " + error);
-                // Fallback: load scene even if ad fails
-                StartCoroutine(LoadScreenWithFadeEffect(1, sceneIndex));
+                adError = true;
             },
-            () =>
-            {
+            () => {
                 Debug.Log("Midgame ad finished");
-                StartCoroutine(LoadScreenWithFadeEffect(1, sceneIndex));
+                adFinished = true;
             }
         );
+
+        // Wait until ad is finished or errored
+        while (!adFinished && !adError)
+            yield return null;
+
+        SceneManager.LoadScene(_sceneIndex);
     }
 
     IEnumerator LoadScreenWithFadeEffect(float _delay, int _sceneIndex)

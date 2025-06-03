@@ -10,8 +10,7 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
 {
     private UI_Controller ui;
 
-    [SerializeField] private int skillCost;
-    [SerializeField] private TMP_Text skillCostText;  
+    [SerializeField] private int skillCost;    
     [SerializeField] private string skillName;
     [TextArea]
     [SerializeField] private string skillDecription;
@@ -45,18 +44,11 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         ui = GetComponentInParent<UI_Controller>();
         CheckThrowingSwordUnlock();
 
-        if(unlocked)
-        {
-            skillCostText.gameObject.SetActive(false);
+        if(unlocked) 
             crystalImage.gameObject.SetActive(false);
-        }
+        
         else
-        {
-            skillCostText.gameObject.SetActive(true);
             crystalImage.gameObject.SetActive(true);
-            skillCostText.text = skillCost.ToString();
-        }
-
     }
 
     
@@ -78,8 +70,7 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         }
 
         PlayerManager.instance.SpendCurrency(skillCost);
-        unlocked = true;
-        skillCostText.gameObject.SetActive(false);
+        unlocked = true;        
         crystalImage.gameObject.SetActive(false);
         AudioManager.instance.PlaySFX(61, null);
         CheckThrowingSwordUnlock();

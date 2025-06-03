@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ac5dd026b90b23d488630c859e182c83
+guid: 587df4dacdd335a458e6b8151134ae27
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1-Key_0
+      name: Arrows_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 175
+        y: 270
+        width: 159
+        height: 156
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 056e401951ac8aa41b11761ada89565b
-      internalID: 1225732893
+      spriteID: af8a781e8ac92bc4ebb211016e69c9b9
+      internalID: 364319514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1-Key_1
+      name: Arrows_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
+        x: 0
+        y: 86
+        width: 153
+        height: 166
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,8 +171,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d7120031a9832b438cbd3b94ffd7428
-      internalID: 1551376718
+      spriteID: 66d5669a71f62ea479dfc5c3f6a0dce7
+      internalID: -1320883675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrows_2
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 85
+        width: 160
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db7169fa4da2fa243912e1f44326f88f
+      internalID: -1917300474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrows_3
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 85
+        width: 158
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a01d011392fdb114981a54ac71daf782
+      internalID: 653615993
       vertices: []
       indices: 
       edges: []
@@ -188,8 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      1-Key_0: 1225732893
-      1-Key_1: 1551376718
+      Arrows_0: 364319514
+      Arrows_1: -1320883675
+      Arrows_2: -1917300474
+      Arrows_3: 653615993
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

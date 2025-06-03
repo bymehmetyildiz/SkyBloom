@@ -17,4 +17,4 @@ MonoBehaviour:
   itemIcon: {fileID: -91118730, guid: 27fb482c6088ff64483c43db83a51ca1, type: 3}
   itemId: a85605dc0af218449bd0c70b88981914
   dropChance: 100
-  itemEffect: {fileID: 11400000, guid: cca4cf8d17181fb49b7d321ef2076048, type: 2}
+  amount: 1

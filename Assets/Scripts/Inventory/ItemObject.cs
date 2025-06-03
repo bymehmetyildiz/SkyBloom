@@ -41,8 +41,8 @@ public class ItemObject : MonoBehaviour
         if (itemData.itemType == ItemType.Currency)
         {
             ItemData_Currency item = (ItemData_Currency)itemData;
-            item.Effect(null);
-            StartCoroutine(UI_Controller.instance.ShowAdIcon());
+            item.ExecuteEffect();
+            UI_Controller.instance.ShowAdIcon();
             Destroy(gameObject);
             return;
         }

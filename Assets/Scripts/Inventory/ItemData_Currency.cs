@@ -5,8 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item Data", menuName = "Data/Currency")]
 public class ItemData_Currency : ItemData
 {
-    public ItemEffect itemEffect;
+    public int amount;
 
-    public void Effect(Transform _enemyPosition) => itemEffect.ExecuteEffect(_enemyPosition); 
+    public void ExecuteEffect()
+    {
+        PlayerManager.instance.currency += amount;
+    }
+
     
 }

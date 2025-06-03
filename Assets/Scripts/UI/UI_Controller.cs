@@ -28,6 +28,7 @@ public class UI_Controller : MonoBehaviour, ISaveManager
 
     [Header("Currency Ad Params")]    
     [SerializeField] private GameObject AdButton;
+    [SerializeField] private GameObject adEffect;
 
     [SerializeField] private GameObject[] inventoryElements;
     public GameObject inGameUI;
@@ -62,6 +63,7 @@ public class UI_Controller : MonoBehaviour, ISaveManager
         bgmSlider.onValueChanged.AddListener(delegate { SetMusicVolume(); });
         warningPanel.localScale = Vector3.zero;
         AdButton.SetActive(false);
+        
     }
 
     void Update()
@@ -73,12 +75,21 @@ public class UI_Controller : MonoBehaviour, ISaveManager
             
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && PlayerManager.instance.player.stats.isDead == false)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && PlayerManager.instance.player.stats.isDead == false)
         {
             SwitchWithKey(inventoryElements[2]);           
             AudioManager.instance.PauseAllSFX();
             
         }
+
+        if (Input.GetKeyDown(KeyCode.I) && PlayerManager.instance.player.stats.isDead == false)
+        {
+            SwitchWithKey(inventoryElements[1]);
+            AudioManager.instance.PauseAllSFX();
+
+        }
+
+
         SetMusicVolume();
     }
 
@@ -102,11 +113,13 @@ public class UI_Controller : MonoBehaviour, ISaveManager
         CloseWarningPanel();
     }
 
-    // On collision to Currency, Show Rewarded Ad
-    public IEnumerator ShowAdIcon()
+    
+    public void ShowAdIcon() => StartCoroutine(ShowAdIconRoutine());
+
+    private IEnumerator ShowAdIconRoutine()
     {
         AdButton.SetActive(true);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(10);
         AdButton.SetActive(false);
     }
 
@@ -126,6 +139,8 @@ public class UI_Controller : MonoBehaviour, ISaveManager
             {
                 PlayerManager.instance.currency += 1;
                 AdButton.SetActive(false);
+                Instantiate(adEffect, AdButton.transform.position, Quaternion.identity);
+                PlayerManager.instance.player.isBusy = false;
                 Debug.Log("Rewarded ad finished, reward the player here");
             }
         );
