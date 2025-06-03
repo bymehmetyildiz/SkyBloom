@@ -26,6 +26,9 @@ public class UI_Controller : MonoBehaviour, ISaveManager
     [SerializeField] private RectTransform warningPanel;
     [SerializeField] private TMP_Text warningMessage;
 
+    [Header("Currency Ad Params")]    
+    [SerializeField] private GameObject AdButton;
+
     [SerializeField] private GameObject[] inventoryElements;
     public GameObject inGameUI;
 
@@ -58,6 +61,7 @@ public class UI_Controller : MonoBehaviour, ISaveManager
         SaveManager.instance.LoadGame();
         bgmSlider.onValueChanged.AddListener(delegate { SetMusicVolume(); });
         warningPanel.localScale = Vector3.zero;
+        AdButton.SetActive(false);
     }
 
     void Update()
@@ -97,6 +101,36 @@ public class UI_Controller : MonoBehaviour, ISaveManager
         yield return new WaitForSecondsRealtime(2.0f);
         CloseWarningPanel();
     }
+
+    // On collision to Currency, Show Rewarded Ad
+    public IEnumerator ShowAdIcon()
+    {
+        AdButton.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
+        AdButton.SetActive(false);
+    }
+
+    public void ShowRewardedAd()
+    {
+        CrazySDK.Ad.RequestAd(
+            CrazyAdType.Rewarded,
+            () =>
+            {
+                Debug.Log("Rewarded ad started");
+            },
+            (error) =>
+            {
+                Debug.Log("Rewarded ad error: " + error);
+            },
+            () =>
+            {
+                PlayerManager.instance.currency += 1;
+                AdButton.SetActive(false);
+                Debug.Log("Rewarded ad finished, reward the player here");
+            }
+        );
+    }
+
 
     public void CloseWarningPanel()
     {

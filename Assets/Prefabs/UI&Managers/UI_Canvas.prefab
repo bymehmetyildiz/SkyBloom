@@ -1481,6 +1481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Twister
   skillDecription: 'Create a hurricane around and damage multiple enemies.
 
@@ -1489,6 +1490,7 @@ MonoBehaviour:
 
 
     Press : "MOUSE MIDDLE BUTTON"'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 4491646192594539933}
@@ -2676,6 +2678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Sword Rain
   skillDecription: 'Cast spell and a sword rain will start and damage all enemies
     on screen.
@@ -2684,6 +2687,7 @@ MonoBehaviour:
 
 
     Press : "F"'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 9068083835981191493}
@@ -4863,6 +4867,7 @@ MonoBehaviour:
   bgmSlider: {fileID: 2483881811129922462}
   warningPanel: {fileID: 6233242663520407588}
   warningMessage: {fileID: 3948000936880499866}
+  AdButton: {fileID: 0}
   inventoryElements:
   - {fileID: 8178928848998097687}
   - {fileID: 456155506108443295}
@@ -5744,6 +5749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Thunder Hit
   skillDecription: 'Cast spell and Thor will send you help. A thunder will roast
     all enemies within range.
@@ -5752,6 +5758,7 @@ MonoBehaviour:
 
 
     Press : " LEFTSHIFT + F"'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 9068083835981191493}
@@ -7688,6 +7695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Bounce Sword
   skillDecription: 'Thrown sword will navigate multiple enemies and damage them all.
 
@@ -7698,6 +7706,7 @@ MonoBehaviour:
     Switch: "SCROLL MIDDLE MOUSE BUTTON"
 
     Press: "MOUSE RIGHT BUTTON"'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 7996391474011772573}
@@ -8523,6 +8532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Dash Pierce
   skillDecription: 'Make a big damage and pierce through enemy while dashing.
 
@@ -8531,6 +8541,7 @@ MonoBehaviour:
 
 
     Press : "LEFTSHIFT + C"'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 7996391474011772573}
@@ -13908,6 +13919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Aerial Slam
   skillDecription: 'Make a heavy attack and damage nearby enemies.
 
@@ -13916,6 +13928,7 @@ MonoBehaviour:
 
     Press
     : "MOUSE LEFT BUTTON" while falling.'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 4622284341346137186}
@@ -16050,6 +16063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Flurry Slash
   skillDecription: 'Make a fast serial of attacks and give enemies no time for reaction.
 
@@ -16058,6 +16072,7 @@ MonoBehaviour:
 
 
     Press : "LEFT SHIFT + MOUSE LEFT BUTTON"'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 4491646192594539933}
@@ -17039,6 +17054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Earth Slam
   skillDecription: 'Make a heavy attack and damage nearby enemies. And also create
     a fire ball.
@@ -17047,6 +17063,7 @@ MonoBehaviour:
 
 
     Press : "LEFTSHIFT + MOUSE RIGHT BUTTON"'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 9068083835981191493}
@@ -17761,6 +17778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Pierce Sword
   skillDecription: 'Pierce through enemies and damage more than one enemies.
 
@@ -17771,6 +17789,7 @@ MonoBehaviour:
     Switch: "SCROLL MIDDLE MOUSE BUTTON"
 
     Press: "MOUSE RIGHT BUTTON"'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 7996391474011772573}
@@ -19217,6 +19236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Fire Disk
   skillDecription: 'Throw a fire disk towards enemies.
 
@@ -19225,6 +19245,7 @@ MonoBehaviour:
 
     Press
     : "R"'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 4491646192594539933}
@@ -20946,6 +20967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Spin Sword
   skillDecription: 'Thrown sword will hang in a position and spin.Damage whatever
     touches it.
@@ -20957,6 +20979,7 @@ MonoBehaviour:
 
     Press:
     "MOUSE RIGHT BUTTON"'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 7996391474011772573}
@@ -26270,6 +26293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCost: 1
+  skillCostText: {fileID: 0}
   skillName: Throw Sword
   skillDecription: 'Throw a copy of your sword. Make a damage and also freeze them
     for a while.
@@ -26278,6 +26302,7 @@ MonoBehaviour:
 
 
     Press: "MOUSE RIGHT BUTTON"'
+  crystalImage: {fileID: 0}
   unlocked: 0
   shouldBeUnlocked: []
   shouldBeLocked: []

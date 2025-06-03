@@ -42,6 +42,7 @@ public class ItemObject : MonoBehaviour
         {
             ItemData_Currency item = (ItemData_Currency)itemData;
             item.Effect(null);
+            StartCoroutine(UI_Controller.instance.ShowAdIcon());
             Destroy(gameObject);
             return;
         }

@@ -11,10 +11,11 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private UI_Controller ui;
 
     [SerializeField] private int skillCost;
+    [SerializeField] private TMP_Text skillCostText;  
     [SerializeField] private string skillName;
     [TextArea]
     [SerializeField] private string skillDecription;
-    
+    [SerializeField] private Image crystalImage;
 
     public bool unlocked;
 
@@ -44,7 +45,18 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         ui = GetComponentInParent<UI_Controller>();
         CheckThrowingSwordUnlock();
 
-     
+        if(unlocked)
+        {
+            skillCostText.gameObject.SetActive(false);
+            crystalImage.gameObject.SetActive(false);
+        }
+        else
+        {
+            skillCostText.gameObject.SetActive(true);
+            crystalImage.gameObject.SetActive(true);
+            skillCostText.text = skillCost.ToString();
+        }
+
     }
 
     
@@ -65,33 +77,14 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
             }
         }
 
-        ShowRewardedAd();
+        PlayerManager.instance.SpendCurrency(skillCost);
+        unlocked = true;
+        skillCostText.gameObject.SetActive(false);
+        crystalImage.gameObject.SetActive(false);
+        AudioManager.instance.PlaySFX(61, null);
+        CheckThrowingSwordUnlock();
+        skillLock.UnlockSkill();   
     }
-    public void ShowRewardedAd()
-    {
-        CrazySDK.Ad.RequestAd(
-            CrazyAdType.Rewarded,
-            () =>
-            {
-                Debug.Log("Rewarded ad started");
-            },
-            (error) =>
-            {
-                Debug.Log("Rewarded ad error: " + error);
-            },
-            () =>
-            {
-                PlayerManager.instance.SpendCurrency(skillCost);
-
-                unlocked = true;
-                AudioManager.instance.PlaySFX(61, null);
-                CheckThrowingSwordUnlock();
-                skillLock.UnlockSkill();
-                Debug.Log("Rewarded ad finished, reward the player here");
-            }
-        );
-    }
-
 
 
     private static void CheckThrowingSwordUnlock()
