@@ -29,7 +29,6 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (collision.GetComponent<Player>() != null)
         {
-
             if (interactKey.activeSelf == false && !isSpoken)
                 interactKey.SetActive(true);
 

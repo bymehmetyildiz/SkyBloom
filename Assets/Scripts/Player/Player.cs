@@ -293,7 +293,7 @@ public class Player : Entity
                 return;
 
             SetZeroVelocity();
-            stats.TakeDamage(stats.maxHealth.GetValue());     
+            stats.TakeDamage(20);     
             
         }
     }

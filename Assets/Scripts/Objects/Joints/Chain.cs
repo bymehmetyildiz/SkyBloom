@@ -21,13 +21,19 @@ public class Chain : MonoBehaviour
     {
         if (collision.GetComponent<SwordSkillController>() != null)
         {
-            foreach (var joint in joints)
-            {
-                Destroy(joint.gameObject);
-            }
             collision.GetComponent<SwordSkillController>().ReturnSword();
-            Destroy(gameObject);
+            DestroyChain();
+            
         }
-        
+
+    }
+
+    public void DestroyChain()
+    {
+        foreach (var joint in joints)
+        {
+            Destroy(joint.gameObject);
+        }
+        Destroy(gameObject);
     }
 }

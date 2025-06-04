@@ -61,7 +61,11 @@ public class AnimationTrigger : MonoBehaviour
                 StartCoroutine(Check(enemy, enemyStats));
             }
 
+            if (colliders[i].GetComponent<Chain>() != null)
+                colliders[i].GetComponent<Chain>().DestroyChain();
         }
+
+        
     }
 
     private IEnumerator Check(Enemy enemy, EnemyStats enemyStats)
