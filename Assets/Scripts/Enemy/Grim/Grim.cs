@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Grim : Enemy
@@ -34,6 +35,13 @@ public class Grim : Enemy
     protected override void Update()
     {
         base.Update();
+        if (stateMachine.currentState == idleState || stateMachine.currentState == battleState)
+            if (stats.isDamaged)
+            {
+                if (!IsPlayerDetected())
+                    Flip();
+                stateMachine.ChangeState(battleState);
+            }
     }
 
     protected override void FixedUpdate()

@@ -23,6 +23,7 @@ public class PlayerFlurrySlashState : PlayerState
     public override void FixedUpdate()
     {
         base.FixedUpdate();
+        player.SetZeroVelocity();
     }
 
     public override void Update()

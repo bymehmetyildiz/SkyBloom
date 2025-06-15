@@ -21,12 +21,23 @@ public class WarlordWaitState : EnemyState
     {
         base.Update();
 
+
         if (stateTimer < 0.0f)
         {
-            if (enemy.IsPlayerDetected() && enemy.IsPlayerDetected().distance < enemy.agroDistance)
-                stateMachine.ChangeState(enemy.attackState);
-            else
+            if (!enemy.IsPlayerDetected())
+            {
+                enemy.Flip();
                 stateMachine.ChangeState(enemy.battleState);
+            }
+
+            else if (enemy.IsPlayerDetected())                
+            {
+                if(enemy.IsPlayerDetected().distance < enemy.agroDistance)
+                    stateMachine.ChangeState(enemy.attackState);
+                else
+                    stateMachine.ChangeState(enemy.battleState);
+            }
+            
         }
 
     }

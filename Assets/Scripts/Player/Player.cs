@@ -279,7 +279,7 @@ public class Player : Entity
     }
 
 
-    // TwisterDamage;
+    // DangerZone;
     private void OnCollisionEnter2D(Collision2D collision)
     {        
         if (collision.gameObject.GetComponent<Enemy>() != null)
@@ -293,7 +293,7 @@ public class Player : Entity
                 return;
 
             SetZeroVelocity();
-            stats.TakeDamage(20);     
+            stats.TakeDamage(stats.maxHealth.GetValue());     
             
         }
     }
@@ -302,11 +302,11 @@ public class Player : Entity
     {
         EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
         enemy.GetComponent<Entity>().SetupKnockBackDir(transform);
-        enemy.TakeDamage(50);
+        enemy.TakeDamage(100);
     }
 
     //Knockback
-    protected override void SetupDefaultKnockback()
+    public override void SetupDefaultKnockback()
     {
         knockBackPower = new Vector2(3,3);
     }

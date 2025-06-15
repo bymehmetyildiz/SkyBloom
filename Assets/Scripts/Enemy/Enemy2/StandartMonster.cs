@@ -35,7 +35,7 @@ public class StandartMonster : Enemy
         if (stateMachine.currentState == idleState || stateMachine.currentState == moveState)
             if (stats.isDamaged)
             {
-                if (!IsDangerDetected())
+                if (!IsPlayerDetected())
                     Flip();
                 stateMachine.ChangeState(battleState);
             }

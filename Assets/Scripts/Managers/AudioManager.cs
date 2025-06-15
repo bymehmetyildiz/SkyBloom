@@ -63,7 +63,11 @@ public class AudioManager : MonoBehaviour, ISaveManager
         }
     }
 
-    public void StopSFX(int index) => sfx[index].Stop();
+    public void StopSFX(int index)
+    {
+        if(sfx[index] != null && sfx[index].isPlaying)
+            sfx[index].Stop();
+    }
 
     public void PauseAllSFX()
     {

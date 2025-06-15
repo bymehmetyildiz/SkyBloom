@@ -62,6 +62,8 @@ public class DialogueTrigger : MonoBehaviour
                 dialogueManager.backgroundBox.SetActive(false);
             }
         }
+        dialogueManager.isTyping = false;
+        AudioManager.instance.StopSFX(60);
     }
    
 

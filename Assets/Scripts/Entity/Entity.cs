@@ -125,9 +125,9 @@ public class Entity : MonoBehaviour
 
     public void SetupKnockbackPower(Vector2 _knockbackPower) => knockBackPower = _knockbackPower;
 
-    protected virtual void SetupDefaultKnockback()
+    public virtual void SetupDefaultKnockback()
     {
-
+        knockBackPower = new Vector2(3, 3);
     }
 
 

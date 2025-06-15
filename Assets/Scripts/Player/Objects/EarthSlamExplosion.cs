@@ -100,7 +100,7 @@ public class EarthSlamExplosion : MonoBehaviour
             StartCoroutine(collision.GetComponent<Enemy>().ViolentKnockBack());
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
             enemy.GetComponent<Entity>().SetupKnockBackDir(transform);
-            enemy.TakeDamage(50);
+            enemy.TakeDamage(150);
         }
         
            

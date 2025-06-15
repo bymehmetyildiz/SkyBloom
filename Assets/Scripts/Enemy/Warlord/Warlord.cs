@@ -33,8 +33,13 @@ public class Warlord : Enemy
     {
         base.Update();
 
-        if (stats.isDamaged && (stateMachine.currentState == idleState || stateMachine.currentState == moveState))
-            stateMachine.ChangeState(battleState);
+        if (stateMachine.currentState == idleState || stateMachine.currentState == moveState)
+            if (stats.isDamaged)
+            {
+                if (!IsPlayerDetected())
+                    Flip();
+                stateMachine.ChangeState(battleState);
+            }
     }
 
     protected override void FixedUpdate()

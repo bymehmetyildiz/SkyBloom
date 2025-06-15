@@ -33,12 +33,14 @@ public class StandartEnemy : Enemy
         base.Update();
 
         if (stateMachine.currentState == idleState || stateMachine.currentState == moveState)
+        {
             if (stats.isDamaged)
             {
-                if (!IsDangerDetected())
+                if (!IsPlayerDetected())
                     Flip();
                 stateMachine.ChangeState(battleState);
             }
+        }
     }
 
     protected override void FixedUpdate()

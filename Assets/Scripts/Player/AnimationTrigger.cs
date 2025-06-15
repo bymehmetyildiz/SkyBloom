@@ -63,6 +63,9 @@ public class AnimationTrigger : MonoBehaviour
 
             if (colliders[i].GetComponent<Chain>() != null)
                 colliders[i].GetComponent<Chain>().DestroyChain();
+
+            if (colliders[i].GetComponent<Explosive>() != null)
+                colliders[i].GetComponent<Explosive>().Explode();
         }
 
         

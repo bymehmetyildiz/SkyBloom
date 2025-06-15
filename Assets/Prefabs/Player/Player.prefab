@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength:
-    baseValue: 30
+    baseValue: 15
     modifiers: 
   agility:
     baseValue: 0

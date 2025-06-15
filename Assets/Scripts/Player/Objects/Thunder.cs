@@ -34,6 +34,7 @@ public class Thunder : MonoBehaviour
         if(collision.GetComponent<Enemy>() != null)
         {            
             player.stats.DoMagicalDamage(collision.GetComponent<EnemyStats>());
+            collision.GetComponent<EnemyStats>().TakeDamage(100);
             rb.velocity = Vector2.zero;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }

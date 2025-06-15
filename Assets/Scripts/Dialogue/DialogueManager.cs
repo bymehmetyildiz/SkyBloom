@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     // Add a typing speed variable.
     public float typingSpeed = 30.0f;
 
-    private bool isTyping = false;
+    public bool isTyping = false;
 
     private void Start()
     {

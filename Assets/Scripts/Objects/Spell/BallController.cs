@@ -20,14 +20,11 @@ public class BallController : MonoBehaviour
         animator = GetComponent<Animator>();
         player = PlayerManager.instance.player.transform;
         playerPositionAtSpawn = player.position;
-        maxHeight = player.position.y + 5;
-        canTrap = true;
+        maxHeight = player.position.y + 5;        
         bc = GetComponent<BoxCollider2D>();
         ShootProjectile();
         
     }
-
-    
 
     public void ShootProjectile()
     {
@@ -70,13 +67,14 @@ public class BallController : MonoBehaviour
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 bc.size = new Vector2(0.25f, 0.5f);
                 transform.position += Vector3.up * 0.85f;
+                canTrap = true;
                 trapSFX.Play();
             }
         }
 
         if (collision.GetComponent<Player>() != null)
         {
-            if (canTrap)
+            if (canTrap && collision.GetComponent<Player>().IsGroundDetected())
             {
                 Player player = collision.GetComponent<Player>();
                 player.transform.position = new Vector2(transform.position.x, player.transform.position.y);
@@ -85,6 +83,14 @@ public class BallController : MonoBehaviour
                 canTrap = false;
                 trapSFX.Play();
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Player>() != null)
+        {
+            PlayerManager.instance.player.isBusy = false;   
         }
     }
 
