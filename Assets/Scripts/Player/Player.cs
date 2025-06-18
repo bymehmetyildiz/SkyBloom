@@ -11,6 +11,7 @@ public class Player : Entity
     public PlayerStats stats { get; private set; }
     public CircleCollider2D cc { get; private set; }
     public Animator effectAnim;
+    public MobileInput mobileInput;
 
     [Header("Move Info")]
     public float moveSpeed = 12.0f;
@@ -116,6 +117,7 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+        MobileInput mobileInput = MobileInput.Instance;
         stateMachine.Initialize(idleState);
         landTrigger = false;
         skillManager = SkillManager.instance;

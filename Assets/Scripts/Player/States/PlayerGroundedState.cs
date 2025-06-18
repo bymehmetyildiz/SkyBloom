@@ -40,7 +40,7 @@ public class PlayerGroundedState : PlayerState
         if (!player.IsGroundDetected())
             stateMachine.ChangeState(player.airState);
 
-        if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected() && !player.isBusy) 
+        if ((Input.GetKeyDown(KeyCode.Space) || MobileInput.Instance.isJumped) && player.IsGroundDetected() && !player.isBusy) 
             stateMachine.ChangeState(player.jumpState);
 
         if (Input.GetKeyDown(KeyCode.F) && (!Input.GetKey(KeyCode.LeftShift) && player.skillManager.swordRainSkill.CanUseSkill() && player.skillManager.swordRainSkill.IsSkillUnlocked()) && !player.isBusy)
