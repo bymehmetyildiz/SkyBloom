@@ -32,17 +32,13 @@ public class PlayerState
     }
 
     public virtual void Update()
-    {
-        if (Application.isMobilePlatform)
-        {
-            xInput = MobileInput.Instance.xInput;
-            yInput = MobileInput.Instance.yInput;
-        }
-        else
-        {
-            xInput = Input.GetAxisRaw("Horizontal");
-            yInput = Input.GetAxisRaw("Vertical");
-        }
+    {        
+        xInput = MobileInput.Instance.xInput;
+        yInput = MobileInput.Instance.yInput;
+        
+        //xInput = Input.GetAxisRaw("Horizontal");
+        //yInput = Input.GetAxisRaw("Vertical");
+        
 
         player.anim.SetFloat("yVelocity", rb.velocity.y);
         stateTimer -= Time.deltaTime;

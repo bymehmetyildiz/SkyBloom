@@ -11,6 +11,7 @@ public class MobileInput : MonoBehaviour
     public float yInput;
     public bool isPointerOver;
     public bool isJumped;
+    public bool isDashed;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class MobileInput : MonoBehaviour
     private void Start()
     {
         isJumped = false;
+        isDashed = false;
     }
 
     public void OnMoveButtonDown(float _xInput) => xInput = _xInput;
@@ -40,6 +42,13 @@ public class MobileInput : MonoBehaviour
         }
     }
 
- 
-   
+    public void MobileDashState()
+    {
+        if(!isDashed)
+        {
+            isDashed = true;            
+        }
+    }
+
+
 }

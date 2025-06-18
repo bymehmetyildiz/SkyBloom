@@ -183,14 +183,19 @@ public class Player : Entity
 
         if (!Input.GetKey(KeyCode.LeftShift))
         {
-            if (Input.GetKeyDown(KeyCode.C) && CanUseSkill())
+            if (Input.GetKeyDown(KeyCode.C) || MobileInput.Instance.isDashed)
             {
-                dashDirection = Input.GetAxisRaw("Horizontal");
+                if (CanUseSkill())
+                {
+                    dashDirection = Input.GetAxisRaw("Horizontal");
 
-                if (dashDirection == 0)
-                    dashDirection = facingDir;
+                    if (dashDirection == 0)
+                        dashDirection = facingDir;
 
-                stateMachine.ChangeState(dashState);
+                    stateMachine.ChangeState(dashState);
+                }
+                // Always reset isDashed after checking, so it can be triggered again
+                MobileInput.Instance.isDashed = false;
             }
         }
 

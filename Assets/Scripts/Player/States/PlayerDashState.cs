@@ -24,6 +24,7 @@ public class PlayerDashState : PlayerState
         player.SetVelocity(0, rb.velocity.y);
         player.stats.Invincible(false);
         AudioManager.instance.StopSFX(4);
+       
     }
 
     public override void FixedUpdate()
