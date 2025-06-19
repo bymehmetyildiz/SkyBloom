@@ -1,4 +1,4 @@
-using CrazyGames;
+﻿using CrazyGames;
 using System.Collections;
 using UnityEngine;
 
@@ -128,6 +128,7 @@ public class Player : Entity
         defaultMoveSpeed = moveSpeed;
         defaultJumpForce = jumpForce;
         defaultDashSpeed = dashSpeed;
+        cooldownTimer=-1.0f; // Initialize cooldown timer to a negative value to allow immediate skill use
 
     }
 
@@ -183,19 +184,12 @@ public class Player : Entity
 
         if (!Input.GetKey(KeyCode.LeftShift))
         {
-            if (Input.GetKeyDown(KeyCode.C) || MobileInput.Instance.isDashed)
+            bool dashInput = MobileInput.Instance.isDashed || Input.GetKey(KeyCode.C);
+
+            if (dashInput)
             {
-                if (CanUseSkill())
-                {
-                    dashDirection = Input.GetAxisRaw("Horizontal");
-
-                    if (dashDirection == 0)
-                        dashDirection = facingDir;
-
-                    stateMachine.ChangeState(dashState);
-                }
-                // Always reset isDashed after checking, so it can be triggered again
-                MobileInput.Instance.isDashed = false;
+                dashDirection = facingDir;
+                stateMachine.ChangeState(dashState);
             }
         }
 

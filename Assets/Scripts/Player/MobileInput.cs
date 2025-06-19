@@ -44,10 +44,11 @@ public class MobileInput : MonoBehaviour
 
     public void MobileDashState()
     {
-        if(!isDashed)
+        if (!isDashed)
         {
-            isDashed = true;            
+            isDashed = true; 
         }
+
     }
 
 
