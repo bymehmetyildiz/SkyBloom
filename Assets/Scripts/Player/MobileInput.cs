@@ -13,6 +13,7 @@ public class MobileInput : MonoBehaviour
     public bool isJumped;
     public bool isDashed;
 
+
     private void Awake()
     {
         if (Instance == null)
@@ -29,10 +30,16 @@ public class MobileInput : MonoBehaviour
     {
         isJumped = false;
         isDashed = false;
+       
     }
 
+    //Movement
     public void OnMoveButtonDown(float _xInput) => xInput = _xInput;
     public void OnMoveButtonUp() => xInput = 0f;
+    ///////
+
+
+    //Jump
     public void MobileJumpState()
     {
         if(!isJumped)
@@ -41,8 +48,11 @@ public class MobileInput : MonoBehaviour
             yInput = 1f;
         }
     }
+    ///////
+    
 
-    public void MobileDashState()
+    //Dash
+    public void MobileDashStateDown()
     {
         if (!isDashed)
         {
@@ -51,5 +61,21 @@ public class MobileInput : MonoBehaviour
 
     }
 
+    public void MobileDashStateUp()
+    {
+        if (isDashed)
+        {
+            isDashed = false;
+        }
+    }
+    ///////
+   
+    //Block
+    public void MobileBlockStateDown()
+    {
+        if(PlayerManager.instance.player.isBusy == false)
+            PlayerManager.instance.player.stateMachine.ChangeState(PlayerManager.instance.player.blockState);
+    }
 
+    //End Block
 }

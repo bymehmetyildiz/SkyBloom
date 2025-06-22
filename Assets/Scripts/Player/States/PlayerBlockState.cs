@@ -13,13 +13,12 @@ public class PlayerBlockState : PlayerState
         base.Enter();
 
         stateTimer = player.parryDur;
-        player.anim.SetBool("Parry", false);
+        player.anim.SetBool("Parry", false); 
     }
 
     public override void Exit()
     {
         base.Exit();
-
     }
 
     public override void FixedUpdate()

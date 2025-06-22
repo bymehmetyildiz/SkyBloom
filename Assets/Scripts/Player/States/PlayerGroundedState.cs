@@ -31,7 +31,7 @@ public class PlayerGroundedState : PlayerState
             player.skillManager.swordSkill.swordType != SwordType.None && player.stats.currentMagic >= player.skillManager.swordSkill.magicAmount && !player.isBusy)
             stateMachine.ChangeState(player.aimSwordState);
 
-        if (Input.GetKeyDown(KeyCode.Q) && !player.isBusy)
+        if ((Input.GetKey(KeyCode.Q)) && !player.isBusy)
             stateMachine.ChangeState(player.blockState);
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && !player.isBusy)
