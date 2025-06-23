@@ -88,7 +88,8 @@ public class SwordSkill : Skill, ISaveManager
     protected override void Update()
     {
         base.Update();
-
+        
+        // Existing mouse input logic...
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             if (swordType == SwordType.None)
@@ -96,10 +97,10 @@ public class SwordSkill : Skill, ISaveManager
             finalDir = new Vector2(AimDirection().normalized.x * launchForce.x, AimDirection().normalized.y * launchForce.y);
         }
 
-
-        if (Input.mouseScrollDelta.y > 0.2f || Input.mouseScrollDelta.y < -0.2f)
-            SwitchSword();
-
+        if (Input.mouseScrollDelta.y > 0.2f)
+            NextSwordType();
+        if (Input.mouseScrollDelta.y < -0.2f)
+            PreviousSwordType();
 
         if (Input.GetKey(KeyCode.Mouse1))
         {
@@ -107,11 +108,8 @@ public class SwordSkill : Skill, ISaveManager
                 return;
 
             for (int i = 0; i < dots.Length; i++)
-            {
                 dots[i].transform.position = DotsPosition(i * spaceBetweenDots);
-            }
         }
-
     }
 
     // Create Sword
@@ -182,7 +180,8 @@ public class SwordSkill : Skill, ISaveManager
                 unlockedTypes++;
 
             inGameUI.SwitchSwordIcon(typeCounter);
-            SwitchSword();
+            typeCounter = 1; // Set to Regular type if unlocked
+            UpdateSwordType();
         }
     }
 
@@ -225,15 +224,30 @@ public class SwordSkill : Skill, ISaveManager
         }
     }
 
-    private void SwitchSword()
+    public void NextSwordType()
     {
         typeCounter++;
-
         if (typeCounter > unlockedTypes && unlockedTypes > 0)
             typeCounter = 1;
-        else if(typeCounter > unlockedTypes && unlockedTypes <= 0)
+        else if (typeCounter > unlockedTypes && unlockedTypes <= 0)
             typeCounter = 0;
 
+        UpdateSwordType();
+    }
+
+    public void PreviousSwordType()
+    {
+        typeCounter--;
+        if (typeCounter < 1 && unlockedTypes > 0)
+            typeCounter = unlockedTypes;
+        else if (typeCounter < 1 && unlockedTypes <= 0)
+            typeCounter = 0;
+
+        UpdateSwordType();
+    }
+
+    private void UpdateSwordType()
+    {
         if (typeCounter == 1)
             swordType = SwordType.Regular;
         else if (typeCounter == 2)

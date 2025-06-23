@@ -39,7 +39,7 @@ public class PlayerDashState : PlayerState
             stateMachine.ChangeState(player.wallSlideState);
         
 
-        if (stateTimer < 0 || player.isBusy)
+        if (stateTimer < 0 )
         {
             stateMachine.ChangeState(player.idleState);            
         }

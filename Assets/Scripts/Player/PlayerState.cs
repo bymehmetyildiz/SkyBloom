@@ -32,13 +32,18 @@ public class PlayerState
     }
 
     public virtual void Update()
-    {        
-        xInput = MobileInput.Instance.xInput;
-        yInput = MobileInput.Instance.yInput;
-        
-        //xInput = Input.GetAxisRaw("Horizontal");
-        //yInput = Input.GetAxisRaw("Vertical");
-        
+    {
+        // Use mobile input if on mobile platform or if test mode is enabled in editor
+        if (Application.isMobilePlatform || (Application.isEditor && MobileInput.Instance.useMobileInputInEditor))
+        {
+            xInput = MobileInput.Instance.xInput;
+            yInput = MobileInput.Instance.yInput;
+        }
+        else
+        {
+            xInput = Input.GetAxisRaw("Horizontal");
+            yInput = Input.GetAxisRaw("Vertical");
+        }
 
         player.anim.SetFloat("yVelocity", rb.velocity.y);
         stateTimer -= Time.deltaTime;

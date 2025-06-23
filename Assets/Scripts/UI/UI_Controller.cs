@@ -68,18 +68,19 @@ public class UI_Controller : MonoBehaviour, ISaveManager
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && PlayerManager.instance.player.stats.isDead == false)
+        if ((Input.GetKeyDown(KeyCode.Tab) || MobileInput.Instance.isInventoryOpen) && PlayerManager.instance.player.stats.isDead == false)
         {
             SwitchWithKey(inventoryElements[0]);
             AudioManager.instance.PauseAllSFX();
-            
+            MobileInput.Instance.isInventoryOpen = false;
         }
 
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && PlayerManager.instance.player.stats.isDead == false)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) || MobileInput.Instance.isGamePaused) 
+            && PlayerManager.instance.player.stats.isDead == false)
         {
             SwitchWithKey(inventoryElements[2]);           
             AudioManager.instance.PauseAllSFX();
-            
+            MobileInput.Instance.isGamePaused = false;
         }
 
         if (Input.GetKeyDown(KeyCode.I) && PlayerManager.instance.player.stats.isDead == false)

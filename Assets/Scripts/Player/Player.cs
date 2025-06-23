@@ -128,7 +128,7 @@ public class Player : Entity
         defaultMoveSpeed = moveSpeed;
         defaultJumpForce = jumpForce;
         defaultDashSpeed = dashSpeed;
-        cooldownTimer=-1.0f; // Initialize cooldown timer to a negative value to allow immediate skill use
+        cooldownTimer = -1.0f; // Initialize cooldown timer to allow immediate dash
 
     }
 
@@ -182,29 +182,28 @@ public class Player : Entity
         if (IsWallDetected())
             return;
 
-        if (!Input.GetKey(KeyCode.LeftShift))
-        {
-            bool dashInput = MobileInput.Instance.isDashed || Input.GetKey(KeyCode.C);
+        bool dashInput = MobileInput.Instance.isDashed || (Input.GetKey(KeyCode.C) && !Input.GetKey(KeyCode.LeftShift));
 
-            if (dashInput)
-            {
-                dashDirection = facingDir;
-                stateMachine.ChangeState(dashState);
-            }
+        if (dashInput && CanUseSkill())
+        {
+            dashDirection = facingDir;
+            stateMachine.ChangeState(dashState);
+            
         }
+        
 
         //if (skillManager.dashSkill.dashPierceUnlock == false)
         //    return;
 
         else if (Input.GetKey(KeyCode.LeftShift))
         {
-            if (Input.GetKeyDown(KeyCode.C) && SkillManager.instance.dashSkill.CanUseSkill() && skillManager.dashSkill.IsSkillUnlocked())
+            if ((Input.GetKeyDown(KeyCode.C) || MobileInput.Instance.isDashPierced) && SkillManager.instance.dashSkill.CanUseSkill() && skillManager.dashSkill.IsSkillUnlocked())
             {
                 dashDirection = Input.GetAxisRaw("Horizontal");
 
                 if (dashDirection == 0)
                     dashDirection = facingDir;
-
+                MobileInput.Instance.isDashPierced = false;
                 stateMachine.ChangeState(dashAttackState);
             }
         }
