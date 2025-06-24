@@ -20,6 +20,13 @@ public class MobileInput : MonoBehaviour
     public bool isAiming;
     public Vector2 aimScreenPosition;
 
+    // Aiming
+    [HideInInspector]
+    public Vector2 initialTouchPosition;
+    public Vector2 currentTouchPosition;
+    public Vector2 dragDirection;
+    public bool isAim;
+    public AimButton aimButton;
 
     private void Awake()
     {
@@ -183,9 +190,66 @@ public class MobileInput : MonoBehaviour
             player.skillManager.swordSkill.PreviousSwordType();
     }
 
-    public void isClicked()
+    //End Skills
+
+    // Aiming
+    void Update()
     {
-        Debug.Log("Clicked");
+        if (Input.touchCount > 0 && isAim)
+        {
+            Touch touch = Input.touches[0];
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                initialTouchPosition = touch.position;
+                currentTouchPosition = touch.position;
+                dragDirection = Vector2.zero;
+            }
+            else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+            {
+                currentTouchPosition = touch.position;
+                dragDirection = (currentTouchPosition - initialTouchPosition).normalized;
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                // Convert screen positions to world positions
+                Vector2 worldInitial = Camera.main.ScreenToWorldPoint(initialTouchPosition);
+                Vector2 worldCurrent = Camera.main.ScreenToWorldPoint(currentTouchPosition);
+
+                // Direction: from player to the drag vector (slingshot style: pull back and release)
+                Vector2 dragDir = (worldInitial - worldCurrent).normalized;
+
+                // Store this direction for SwordSkill to use
+                dragDirection = dragDir;
+            }
+        }
+        else if (!isAim)
+        {
+            dragDirection = Vector2.zero;
+        }
     }
+
+    public void MobileAim(bool isAim)
+    {
+        this.isAim = isAim;
+
+        if (HasNoSword() 
+            && player.skillManager.swordSkill.swordType != SwordType.None 
+            && player.stats.currentMagic >= player.skillManager.swordSkill.magicAmount 
+            && !player.isBusy && isAim)
+                player.stateMachine.ChangeState(player.aimSwordState);
+    }
+
+    private bool HasNoSword()
+    {
+        if (!player.sword)
+            return true;
+
+        player.sword.GetComponent<SwordSkillController>().ReturnSword();
+
+
+        return false;
+    }
+
 
 }

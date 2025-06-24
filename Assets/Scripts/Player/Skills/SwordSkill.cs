@@ -90,19 +90,26 @@ public class SwordSkill : Skill, ISaveManager
         base.Update();
         
         // Existing mouse input logic...
-        if (Input.GetKeyUp(KeyCode.Mouse1))
+        if (Input.GetKeyUp(KeyCode.Mouse1) && MobileInput.Instance.isAim == false )
+        {
+            if (swordType == SwordType.None)
+                return;       
+            finalDir = new Vector2(AimDirection().normalized.x * launchForce.x, AimDirection().normalized.y * launchForce.y);
+        }
+        else if (!Input.GetKeyUp(KeyCode.Mouse1) && MobileInput.Instance.isAim)
         {
             if (swordType == SwordType.None)
                 return;
-            finalDir = new Vector2(AimDirection().normalized.x * launchForce.x, AimDirection().normalized.y * launchForce.y);
+            finalDir = new Vector2(MobileInput.Instance.dragDirection.normalized.x * launchForce.x, MobileInput.Instance.dragDirection.normalized.y * launchForce.y);
         }
 
         if (Input.mouseScrollDelta.y > 0.2f)
             NextSwordType();
+
         if (Input.mouseScrollDelta.y < -0.2f)
             PreviousSwordType();
 
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.Mouse1) || MobileInput.Instance.isAim)
         {
             if (swordType == SwordType.None)
                 return;
@@ -163,8 +170,18 @@ public class SwordSkill : Skill, ISaveManager
 
     private Vector2 DotsPosition(float t)
     {
-        Vector2 position = (Vector2)player.transform.position + new Vector2(AimDirection().normalized.x * launchForce.x,
-              AimDirection().normalized.y * launchForce.y) * t + 0.5f * (Physics2D.gravity * swordGravity) * (t * t);
+        Vector2 position;
+
+        if (MobileInput.Instance.isAim)
+        {
+            position = (Vector2)player.transform.position + new Vector2(MobileInput.Instance.dragDirection.normalized.x * launchForce.x,
+             MobileInput.Instance.dragDirection.normalized.y * launchForce.y) * t + 0.5f * (Physics2D.gravity * swordGravity) * (t * t);
+        }
+        else
+        {
+            position = (Vector2)player.transform.position + new Vector2(AimDirection().normalized.x * launchForce.x,
+                  AimDirection().normalized.y * launchForce.y) * t + 0.5f * (Physics2D.gravity * swordGravity) * (t * t);
+        }
 
         return position;
     }
