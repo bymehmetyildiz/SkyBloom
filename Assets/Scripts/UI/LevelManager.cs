@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour, ISaveManager
     [Space]    
     [Header("Controller Panel")]
     [SerializeField] private GameObject controllersPanel;
+    [SerializeField] private GameObject controllersPanelMobile;
     private bool isControlShown;
 
     private void Awake()
@@ -38,8 +39,24 @@ public class LevelManager : MonoBehaviour, ISaveManager
         // Only show the panel if on scene 2 and it hasn't been shown before
         if (SceneManager.GetActiveScene().buildIndex == 2 && !isControlShown)
         {
-            if (controllersPanel != null)
-                controllersPanel.SetActive(true);
+            if (PlatformUtils.IsWebGLMobile())
+            {
+                if (controllersPanelMobile != null)
+                {
+                    controllersPanelMobile.SetActive(true);
+                    controllersPanel.SetActive(false);
+                } 
+            }
+            else
+            {
+                if (controllersPanel != null)
+                {
+                    controllersPanel.SetActive(true);
+                    controllersPanelMobile.SetActive(false);
+                }
+                   
+            }
+            
         }
         else
         {

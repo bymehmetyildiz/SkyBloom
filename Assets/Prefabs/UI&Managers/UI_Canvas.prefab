@@ -1573,6 +1573,7 @@ MonoBehaviour:
   - {fileID: 5562206803197195160}
   shouldBeLocked: []
   skillImage: {fileID: 0}
+  skillButton: {fileID: 0}
 --- !u!1 &487397114017672584
 GameObject:
   m_ObjectHideFlags: 0
@@ -2770,6 +2771,7 @@ MonoBehaviour:
   - {fileID: 9146071327777877991}
   shouldBeLocked: []
   skillImage: {fileID: 0}
+  skillButton: {fileID: 0}
 --- !u!1 &830571701924424894
 GameObject:
   m_ObjectHideFlags: 0
@@ -6085,6 +6087,7 @@ MonoBehaviour:
   - {fileID: 4858612991882676011}
   shouldBeLocked: []
   skillImage: {fileID: 0}
+  skillButton: {fileID: 0}
 --- !u!1 &2180929094163385574
 GameObject:
   m_ObjectHideFlags: 0
@@ -8108,6 +8111,7 @@ MonoBehaviour:
   - {fileID: 8187538741658719441}
   shouldBeLocked: []
   skillImage: {fileID: 0}
+  skillButton: {fileID: 0}
 --- !u!1 &2792418125028116983
 GameObject:
   m_ObjectHideFlags: 0
@@ -9181,6 +9185,7 @@ MonoBehaviour:
   - {fileID: 7996391474011772573}
   shouldBeLocked: []
   skillImage: {fileID: 0}
+  skillButton: {fileID: 0}
 --- !u!1 &3193685438664065639
 GameObject:
   m_ObjectHideFlags: 0
@@ -14810,6 +14815,7 @@ MonoBehaviour:
   - {fileID: 7146575397567561502}
   shouldBeLocked: []
   skillImage: {fileID: 0}
+  skillButton: {fileID: 0}
 --- !u!1 &4902400226632136159
 GameObject:
   m_ObjectHideFlags: 0
@@ -17105,6 +17111,7 @@ MonoBehaviour:
   - {fileID: 5815623025291729659}
   shouldBeLocked: []
   skillImage: {fileID: 7150894722071531080}
+  skillButton: {fileID: 0}
 --- !u!1 &5551532011323577662
 GameObject:
   m_ObjectHideFlags: 0
@@ -18228,6 +18235,7 @@ MonoBehaviour:
   - {fileID: 9068083835981191493}
   shouldBeLocked: []
   skillImage: {fileID: 0}
+  skillButton: {fileID: 0}
 --- !u!1 &5805314046517483284
 GameObject:
   m_ObjectHideFlags: 0
@@ -19104,6 +19112,7 @@ MonoBehaviour:
   - {fileID: 7996391474011772573}
   shouldBeLocked: []
   skillImage: {fileID: 0}
+  skillButton: {fileID: 0}
 --- !u!1 &6073629118973112431
 GameObject:
   m_ObjectHideFlags: 0
@@ -20560,6 +20569,7 @@ MonoBehaviour:
   - {fileID: 4491646192594539933}
   shouldBeLocked: []
   skillImage: {fileID: 0}
+  skillButton: {fileID: 0}
 --- !u!1 &6599380582572645682
 GameObject:
   m_ObjectHideFlags: 0
@@ -22295,6 +22305,7 @@ MonoBehaviour:
   - {fileID: 9053419145112135881}
   shouldBeLocked: []
   skillImage: {fileID: 0}
+  skillButton: {fileID: 0}
 --- !u!1 &7058273267559959418
 GameObject:
   m_ObjectHideFlags: 0
@@ -27841,6 +27852,7 @@ MonoBehaviour:
   shouldBeUnlocked: []
   shouldBeLocked: []
   skillImage: {fileID: 7584655562204643245}
+  skillButton: {fileID: 0}
 --- !u!1 &8916161529638209750
 GameObject:
   m_ObjectHideFlags: 0

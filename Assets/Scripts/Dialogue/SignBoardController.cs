@@ -12,7 +12,9 @@ public class SignBoardController : MonoBehaviour
     [SerializeField] private TMP_Text header;
     [SerializeField] private TMP_Text description;
     [TextArea(3, 10)]
-    [SerializeField] private string descriptionText;
+    [SerializeField] private string descriptionTextPC;
+    [TextArea(3, 10)]
+    [SerializeField] private string descriptionTextMobile;
     [SerializeField] private string headerText;
     private bool canInteract;
 
@@ -29,23 +31,31 @@ public class SignBoardController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                AudioManager.instance.PlaySFX(59, null);
-                if (interactKey.activeSelf == true)
-                    interactKey.SetActive(false);
-                else if (interactKey.activeSelf == false)
-                    interactKey.SetActive(true);
-
-                if (tipPanel.activeSelf == false)
-                {
-                    tipPanel.SetActive(true);
-                    description.text = descriptionText;
-                    header.text = headerText;
-                }
-                else if (tipPanel.activeSelf == true)
-                    tipPanel.SetActive(false);
+                Interact();
             }
 
         }
+    }
+
+    public void Interact()
+    {
+        AudioManager.instance.PlaySFX(59, null);
+        if (interactKey.activeSelf == true)
+            interactKey.SetActive(false);
+        else if (interactKey.activeSelf == false)
+            interactKey.SetActive(true);
+
+        if (tipPanel.activeSelf == false)
+        {
+            tipPanel.SetActive(true);
+            header.text = headerText;
+            if (PlatformUtils.IsWebGLMobile())
+                description.text = descriptionTextMobile;
+            else
+                description.text = descriptionTextPC;
+        }
+        else if (tipPanel.activeSelf == true)
+            tipPanel.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

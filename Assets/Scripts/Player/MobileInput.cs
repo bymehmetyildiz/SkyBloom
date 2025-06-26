@@ -204,6 +204,7 @@ public class MobileInput : MonoBehaviour
                 initialTouchPosition = touch.position;
                 currentTouchPosition = touch.position;
                 dragDirection = Vector2.zero;
+                MobileAim(true);
             }
             else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
             {
@@ -221,6 +222,11 @@ public class MobileInput : MonoBehaviour
 
                 // Store this direction for SwordSkill to use
                 dragDirection = dragDir;
+                MobileAim(false);
+            }
+            else if (touch.phase == TouchPhase.Canceled)
+            {
+                MobileAim(false);
             }
         }
         else if (!isAim)

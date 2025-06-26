@@ -22,6 +22,7 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private UI_SkillTreeSlot[] shouldBeLocked;
 
     [SerializeField] private Image skillImage;
+    [SerializeField] private GameObject skillButton;
     private UI_SkillLock skillLock;
 
     private void Awake()
@@ -49,6 +50,15 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         
         else
             crystalImage.gameObject.SetActive(true);
+
+
+        if (skillButton != null && PlatformUtils.IsWebGLMobile())
+        {
+            if (!unlocked)
+                skillButton.SetActive(false);
+            else
+                skillButton.SetActive(true);
+        }
     }
 
     
@@ -74,7 +84,10 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         crystalImage.gameObject.SetActive(false);
         AudioManager.instance.PlaySFX(61, null);
         CheckThrowingSwordUnlock();
-        skillLock.UnlockSkill();   
+        skillLock.UnlockSkill();
+
+        if (skillButton != null && PlatformUtils.IsWebGLMobile())
+            skillButton.SetActive(true);
     }
 
 

@@ -33,8 +33,7 @@ public class PlayerState
 
     public virtual void Update()
     {
-        // Use mobile input if on mobile platform or if test mode is enabled in editor
-        if (Application.isMobilePlatform || (Application.isEditor && MobileInput.Instance.useMobileInputInEditor))
+        if (PlatformUtils.IsWebGLMobile())
         {
             xInput = MobileInput.Instance.xInput;
             yInput = MobileInput.Instance.yInput;
