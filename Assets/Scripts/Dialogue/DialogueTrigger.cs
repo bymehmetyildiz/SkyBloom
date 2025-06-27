@@ -73,12 +73,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && !isSpoken)
             {
-                dialogueManager.OpenDialoue(messages, characters);
-                isSpoken = true;
-                AudioManager.instance.PlaySFX(59, null);
-
-                if (interactKey.activeSelf == true)
-                    interactKey.SetActive(false);
+                Interact();
             }
         }
 
@@ -87,6 +82,22 @@ public class DialogueTrigger : MonoBehaviour
             if(cc != null)
                 cc.isTrigger = true;
         }
+
+        if (dialogueManager.isActive)        
+            PlayerManager.instance.player.isBusy = true;
+        else
+            PlayerManager.instance.player.isBusy = false;
+
+    }
+
+    public void Interact()
+    {
+        dialogueManager.OpenDialoue(messages, characters);
+        isSpoken = true;
+        AudioManager.instance.PlaySFX(59, null);
+
+        if (interactKey.activeSelf == true)
+            interactKey.SetActive(false);
     }
 }
 

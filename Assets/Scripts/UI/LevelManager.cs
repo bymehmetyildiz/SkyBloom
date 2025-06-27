@@ -81,6 +81,12 @@ public class LevelManager : MonoBehaviour, ISaveManager
             isControlShown = true;
             SaveManager.instance.SaveGame(); // Save the state so it persists
         }
+        if (controllersPanelMobile != null && controllersPanelMobile.activeSelf)
+        {
+            controllersPanelMobile.SetActive(false);
+            isControlShown = true;
+            SaveManager.instance.SaveGame(); // Save the state so it persists
+        }
     }
 
 

@@ -13994,6 +13994,8 @@ MonoBehaviour:
   isActive: 0
   typingSpeed: 30
   isTyping: 0
+  skipText: {fileID: 0}
+  skipButton: {fileID: 0}
 --- !u!1 &4646088411516661333
 GameObject:
   m_ObjectHideFlags: 0

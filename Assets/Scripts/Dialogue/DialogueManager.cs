@@ -22,9 +22,31 @@ public class DialogueManager : MonoBehaviour
 
     public bool isTyping = false;
 
+    [SerializeField] private GameObject skipText;
+    [SerializeField] private GameObject skipButton;
+
     private void Start()
     {
         backgroundBox.SetActive(false);
+
+        if (PlatformUtils.IsWebGLMobile())
+        {
+            if (skipText != null && skipButton != null)
+            {
+                skipText.SetActive(false);
+                skipButton.SetActive(true);
+            }
+        }
+        else
+        {
+            if (skipText != null && skipButton != null)
+            {
+                skipText.SetActive(true);
+                skipButton.SetActive(false);
+            }
+        }
+
+
     }
 
     public void OpenDialoue(Message[] messages, Character[] characters)
@@ -35,6 +57,24 @@ public class DialogueManager : MonoBehaviour
         isActive = true;
         backgroundBox.SetActive(true);
         DisplayMessage();
+
+        // Dplay skip text or button based on platform
+        if (PlatformUtils.IsWebGLMobile())
+        {
+            if (skipText != null && skipButton != null)
+            {
+                skipText.SetActive(false);
+                skipButton.SetActive(true);
+            }
+        }
+        else
+        {
+            if (skipText != null && skipButton != null)
+            {
+                skipText.SetActive(true);
+                skipButton.SetActive(false);
+            }
+        }
     }
 
     private void DisplayMessage()
@@ -61,15 +101,14 @@ public class DialogueManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 messageText.text = message;
-                break; // Break out of the loop, but still stop the sound properly
+                break;
             }
         }
-
-        
 
         isTyping = false;
     }
 
+  
 
     public void NextMessage()
     {
