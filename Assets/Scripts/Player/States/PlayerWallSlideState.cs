@@ -43,9 +43,10 @@ public class PlayerWallSlideState : PlayerState
         base.Update();
 
         // Only allow wall jump if still touching the wall
-        if (player.IsWallDetected() && Input.GetKeyDown(KeyCode.Space))
+        if (player.IsWallDetected() && (Input.GetKeyDown(KeyCode.Space) || MobileInput.Instance.isJumped))
         {
             stateMachine.ChangeState(player.wallJumpState);
+            MobileInput.Instance.isJumped = false; // Reset the mobile jump flag
             return;
         }
 

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerAirState : PlayerState
 {
-
-
     public PlayerAirState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
@@ -25,7 +23,7 @@ public class PlayerAirState : PlayerState
         base.FixedUpdate();
 
         if (xInput != 0)
-            player.SetVelocity(xInput * player.moveSpeed * 0.8f, rb.velocity.y);
+            player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y);
     }
 
     public override void Update()

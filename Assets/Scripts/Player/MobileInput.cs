@@ -12,8 +12,7 @@ public class MobileInput : MonoBehaviour
     public bool isPointerOver;
     public bool isJumped;
     public bool isDashed;
-    public bool isDashPierced;
-    public bool useMobileInputInEditor = false;
+    public bool isDashPierced; 
     public bool isInventoryOpen = false;
     public bool isGamePaused = false;
     private Player player;
