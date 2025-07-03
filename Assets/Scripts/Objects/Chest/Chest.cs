@@ -61,13 +61,23 @@ public class Chest : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E) && !IsOpened)
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
         {
-            Open();
-            AudioManager.instance.PlaySFX(12, this.transform);
-            key.SetActive(false);
-            itemDrop.GenerateDrop();
+            if (!IsOpened)
+            {                
+                OpenChest();
+            }
+
         }
+    }
+
+    public void OpenChest()
+    {
+        Open();
+        AudioManager.instance.PlaySFX(12, this.transform);
+        key.SetActive(false);
+        itemDrop.GenerateDrop();
+ 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

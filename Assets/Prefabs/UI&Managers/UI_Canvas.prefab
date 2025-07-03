@@ -26663,7 +26663,6 @@ MonoBehaviour:
   isJumped: 0
   isDashed: 0
   isDashPierced: 0
-  useMobileInputInEditor: 1
   isInventoryOpen: 0
   isGamePaused: 0
   isAiming: 0

@@ -88,7 +88,7 @@ public class MobileInput : MonoBehaviour
     //Block
     public void MobileBlockStateDown()
     {
-        if(PlayerManager.instance.player.isBusy == false)
+        if(PlayerManager.instance.player.isBusy == false && player.IsGroundDetected())
             PlayerManager.instance.player.stateMachine.ChangeState(PlayerManager.instance.player.blockState);
     }
 
