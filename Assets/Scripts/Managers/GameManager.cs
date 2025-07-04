@@ -108,6 +108,15 @@ public class GameManager : MonoBehaviour, ISaveManager
             return;
 
         StartCoroutine(exitGate.OpenGate(0));
+
+        if(boss.GetComponent<WereWolf>() != null)
+        {
+            if(enteranceGate != null)
+            {
+                if (!enteranceGate.isOpen)
+                    StartCoroutine(enteranceGate.OpenGate(0));
+            }
+        }
     }
 
     public void RestartScene()

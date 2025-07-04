@@ -34,7 +34,7 @@ public class PlayerGroundedState : PlayerState
         if ((Input.GetKey(KeyCode.Q)) && !player.isBusy)
             stateMachine.ChangeState(player.blockState);
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !player.isBusy)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !player.isBusy && !PlatformUtils.IsWebGLMobile())
             stateMachine.ChangeState(player.primaryAttackState);
 
         if (!player.IsGroundDetected())

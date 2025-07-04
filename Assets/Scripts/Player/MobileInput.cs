@@ -192,57 +192,65 @@ public class MobileInput : MonoBehaviour
     //End Skills
 
     // Aiming
-    void Update()
+    private void Update()
     {
-        if (Input.touchCount > 0 && isAim)
+        if (Input.touchCount == 1 && aimButton != null)
         {
-            Touch touch = Input.touches[0];
+            Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Began)
+            // Check if touch is within allowed aim zone
+            if (aimButton.IsTouchWithinArea(touch.position))
             {
-                initialTouchPosition = touch.position;
-                currentTouchPosition = touch.position;
-                dragDirection = Vector2.zero;
-                MobileAim(true);
-            }
-            else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
-            {
-                currentTouchPosition = touch.position;
-                dragDirection = (currentTouchPosition - initialTouchPosition).normalized;
-            }
-            else if (touch.phase == TouchPhase.Ended)
-            {
-                // Convert screen positions to world positions
-                Vector2 worldInitial = Camera.main.ScreenToWorldPoint(initialTouchPosition);
-                Vector2 worldCurrent = Camera.main.ScreenToWorldPoint(currentTouchPosition);
+                if (touch.phase == TouchPhase.Began)
+                {
+                    initialTouchPosition = touch.position;
+                    isAim = true;
 
-                // Direction: from player to the drag vector (slingshot style: pull back and release)
-                Vector2 dragDir = (worldInitial - worldCurrent).normalized;
+                    if (CanStartAiming())
+                        player.stateMachine.ChangeState(player.aimSwordState);
+                }
+                else if ((touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary) && isAim)
+                {
+                    currentTouchPosition = touch.position;
+                }
+                else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) && isAim)
+                {
+                    currentTouchPosition = touch.position;
+                    Vector2 worldStart = Camera.main.ScreenToWorldPoint(initialTouchPosition);
+                    Vector2 worldEnd = Camera.main.ScreenToWorldPoint(currentTouchPosition);
+                    dragDirection = (worldStart - worldEnd).normalized;
 
-                // Store this direction for SwordSkill to use
-                dragDirection = dragDir;
-                MobileAim(false);
-            }
-            else if (touch.phase == TouchPhase.Canceled)
-            {
-                MobileAim(false);
+                    if (player.skillManager.swordSkill.swordType != SwordType.None && HasNoSword())
+                        player.skillManager.swordSkill.CreateSword();
+
+                    isAim = false;
+                }
             }
         }
-        else if (!isAim)
+        else
         {
-            dragDirection = Vector2.zero;
+            isAim = false;
         }
+    }
+
+    private bool CanStartAiming()
+    {
+        return HasNoSword() &&
+               player.skillManager.swordSkill.swordType != SwordType.None &&
+               player.stats.currentMagic >= player.skillManager.swordSkill.magicAmount &&
+               !player.isBusy;
     }
 
     public void MobileAim(bool isAim)
     {
+        if (this.isAim == isAim) return; // Prevent re-entry
         this.isAim = isAim;
 
-        if (HasNoSword() 
-            && player.skillManager.swordSkill.swordType != SwordType.None 
-            && player.stats.currentMagic >= player.skillManager.swordSkill.magicAmount 
+        if (HasNoSword()
+            && player.skillManager.swordSkill.swordType != SwordType.None
+            && player.stats.currentMagic >= player.skillManager.swordSkill.magicAmount
             && !player.isBusy && isAim)
-                player.stateMachine.ChangeState(player.aimSwordState);
+            player.stateMachine.ChangeState(player.aimSwordState);
     }
 
     private bool HasNoSword()
@@ -255,6 +263,18 @@ public class MobileInput : MonoBehaviour
 
         return false;
     }
+    // End Aiming
 
+    // Use Potions
+    public void UseHealthPotion()
+    {
+        if (player.stats.currentHealth < player.stats.GetMaxHealth() && !player.isBusy)        
+            Inventory.instance.UseHealFlask();
+    }
 
+    public void UseMagicPotion()
+    {
+        if (player.stats.currentMagic < player.stats.maxMagic.GetValue() && !player.isBusy)        
+            Inventory.instance.UseMagicFlask();
+    }
 }

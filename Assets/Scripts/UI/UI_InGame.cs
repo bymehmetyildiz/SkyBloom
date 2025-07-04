@@ -21,6 +21,8 @@ public class UI_InGame : MonoBehaviour
     [Header("Currency Info")]
     [SerializeField] private TextMeshProUGUI currencyText;
 
+    [SerializeField] MobileInput mobileInput;
+
     private void Awake()
     {
         instance = this;
@@ -29,12 +31,18 @@ public class UI_InGame : MonoBehaviour
     void Start()
     {
         playerStats = FindFirstObjectByType<PlayerStats>();
-        if(playerStats != null)        
+        if (playerStats != null)
             playerStats.onHealthChanged += UpdateHealth;
+        mobileInput = MobileInput.Instance;
 
+        if (PlatformUtils.IsWebGLMobile())
+            mobileInput.gameObject.SetActive(true);
+        else
+            mobileInput.gameObject.SetActive(false);
     }
+        
 
-    
+
     void Update()
     {
        currencyText.text = PlayerManager.instance.GetCurrency().ToString();
