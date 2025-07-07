@@ -47,23 +47,26 @@ public class PlayerAimSwordState : PlayerState
         else if(player.transform.position.x < mousePos.x && player.facingDir == -1)
             player.Flip();
 
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.touches[0];
-            Vector2 touchWorldPos = Camera.main.ScreenToWorldPoint(touch.position);
+        //if (Input.touchCount > 0)
+        //{
+        //    Touch touch = Input.touches[0];
+        //    Vector2 touchWorldPos = Camera.main.ScreenToWorldPoint(touch.position);
 
-            if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
-            {
-                if (player.transform.position.x > touchWorldPos.x && player.facingDir == 1)
-                    player.Flip();
-                else if (player.transform.position.x < touchWorldPos.x && player.facingDir == -1)
-                    player.Flip();
-            }
-            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-            {
-                stateMachine.ChangeState(player.idleState);
-                AudioManager.instance.PlaySFX(16, null);
-            }
-        }
+        //    if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+        //    {
+        //        if (player.transform.position.x > touchWorldPos.x && player.facingDir == 1)
+        //            player.Flip();
+        //        else if (player.transform.position.x < touchWorldPos.x && player.facingDir == -1)
+        //            player.Flip();
+        //    }
+        //    else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+        //    {
+        //        stateMachine.ChangeState(player.idleState);
+        //        AudioManager.instance.PlaySFX(16, null);
+        //    }
+        //}
+        
     }
+
+
 }

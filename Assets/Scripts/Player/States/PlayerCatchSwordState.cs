@@ -16,6 +16,13 @@ public class PlayerCatchSwordState : PlayerState
         AudioManager.instance.PlaySFX(17, null);
         AudioManager.instance.StopSFX(18);
 
+        if (player.sword == null)
+        {
+            Debug.LogWarning("Trying to catch a sword that no longer exists.");
+            stateMachine.ChangeState(player.idleState);
+            return;
+        }
+
         sword = player.sword.transform;
 
         if (player.transform.position.x > sword.position.x && player.facingDir == 1)
@@ -23,7 +30,7 @@ public class PlayerCatchSwordState : PlayerState
         else if (player.transform.position.x < sword.position.x && player.facingDir == -1)
             player.Flip();
 
-        rb.velocity = new Vector2(player.catchImpact * - player.facingDir, rb.velocity.y);
+        rb.velocity = new Vector2(player.catchImpact * -player.facingDir, rb.velocity.y);
     }
 
     public override void Exit()

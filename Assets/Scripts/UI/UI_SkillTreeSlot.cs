@@ -36,39 +36,30 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         gameObject.name = skillName;
     }
 
+    private void OnEnable()
+    {
+        if (skillButton != null && PlatformUtils.IsWebGLMobile())
+            skillButton.gameObject.SetActive(unlocked);
+    }
+
     void Start()
     {
+        SaveManager.instance.LoadGame();
         skillLock = GetComponentInChildren<UI_SkillLock>();
         skillImage = skillLock.GetComponent<Image>();
         skillImage.gameObject.SetActive(!unlocked);
 
-        SaveManager.instance.LoadGame();
-
         ui = GetComponentInParent<UI_Controller>();
         CheckThrowingSwordUnlock();
 
-        if(unlocked) 
-            crystalImage.gameObject.SetActive(false);        
+        if (unlocked)
+            crystalImage.gameObject.SetActive(false);
         else
             crystalImage.gameObject.SetActive(true);
-
-        if (!unlocked)
-        {
-            if (skillButton != null && PlatformUtils.IsWebGLMobile())
-                skillButton.SetActive(false);
-            
-        }
-        else
-        {
-            if (skillButton != null && PlatformUtils.IsWebGLMobile())
-                skillButton.SetActive(true);
-            
-        }
-
-
     }
 
     
+
     public void UnlockSkillSlot()
     {
         if (unlocked)

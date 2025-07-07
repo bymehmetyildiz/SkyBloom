@@ -36,8 +36,8 @@ public class SwordSkill : Skill, ISaveManager
     [SerializeField] private UI_SkillTreeSlot regularSkillButton;
     public bool isRegularUnlocked;
     [SerializeField] private GameObject swordPrefab;
-    [SerializeField] private Vector2 launchForce;
-    [SerializeField] private float swordGravity;
+    public Vector2 launchForce;
+    public float swordGravity;
     [SerializeField] private float regularGravity;
     [SerializeField] private float freezeDur;
     [SerializeField] private float returnSpeed;
@@ -52,11 +52,11 @@ public class SwordSkill : Skill, ISaveManager
 
     [Header("Aim Dots")]
     [SerializeField] private int numberOfDots;
-    [SerializeField] private float spaceBetweenDots;
+    public float spaceBetweenDots;
     [SerializeField] private GameObject dotPrefab;
     [SerializeField] private Transform dotParent;
-    private GameObject[] dots;
-    private Vector2 finalDir;
+    public GameObject[] dots;
+    public Vector2 finalDir;
 
     protected override void Start()
     {
@@ -90,18 +90,13 @@ public class SwordSkill : Skill, ISaveManager
         base.Update();
         
         // Existing mouse input logic...
-        if (Input.GetKeyUp(KeyCode.Mouse1) && MobileInput.Instance.isAim == false )
+        if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             if (swordType == SwordType.None)
                 return;       
             finalDir = new Vector2(AimDirection().normalized.x * launchForce.x, AimDirection().normalized.y * launchForce.y);
         }
-        else if (!Input.GetKeyUp(KeyCode.Mouse1) && MobileInput.Instance.isAim)
-        {
-            if (swordType == SwordType.None)
-                return;
-            finalDir = new Vector2(MobileInput.Instance.dragDirection.normalized.x * launchForce.x, MobileInput.Instance.dragDirection.normalized.y * launchForce.y);
-        }
+       
 
         if (Input.mouseScrollDelta.y > 0.2f)
             NextSwordType();
@@ -109,7 +104,7 @@ public class SwordSkill : Skill, ISaveManager
         if (Input.mouseScrollDelta.y < -0.2f)
             PreviousSwordType();
 
-        if (Input.GetKey(KeyCode.Mouse1) || MobileInput.Instance.isAim)
+        if (Input.GetKey(KeyCode.Mouse1))
         {
             if (swordType == SwordType.None)
                 return;
@@ -122,6 +117,8 @@ public class SwordSkill : Skill, ISaveManager
     // Create Sword
     public void CreateSword()
     {
+        if (player.sword != null) return; // ? Player already has a sword, don't throw again
+
         GameObject newSword = Instantiate(swordPrefab, player.transform.position, transform.rotation);
         SwordSkillController newSwordController = newSword.GetComponent<SwordSkillController>();
 
@@ -132,7 +129,7 @@ public class SwordSkill : Skill, ISaveManager
         else if (swordType == SwordType.Spin)
             newSwordController.SetupSpin(true, maxTravelDistance, spinDuration, damageCooldown);
 
-        newSwordController.SetUpSword(finalDir, swordGravity,player, freezeDur, returnSpeed);
+        newSwordController.SetUpSword(finalDir, swordGravity, player, freezeDur, returnSpeed);
 
         player.AssignNewSword(newSword);
 
@@ -172,16 +169,8 @@ public class SwordSkill : Skill, ISaveManager
     {
         Vector2 position;
 
-        if (MobileInput.Instance.isAim)
-        {
-            position = (Vector2)player.transform.position + new Vector2(MobileInput.Instance.dragDirection.normalized.x * launchForce.x,
-             MobileInput.Instance.dragDirection.normalized.y * launchForce.y) * t + 0.5f * (Physics2D.gravity * swordGravity) * (t * t);
-        }
-        else
-        {
-            position = (Vector2)player.transform.position + new Vector2(AimDirection().normalized.x * launchForce.x,
-                  AimDirection().normalized.y * launchForce.y) * t + 0.5f * (Physics2D.gravity * swordGravity) * (t * t);
-        }
+        position = (Vector2)player.transform.position + new Vector2(AimDirection().normalized.x * launchForce.x,
+                AimDirection().normalized.y * launchForce.y) * t + 0.5f * (Physics2D.gravity * swordGravity) * (t * t);
 
         return position;
     }

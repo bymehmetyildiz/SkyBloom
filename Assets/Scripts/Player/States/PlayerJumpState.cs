@@ -19,7 +19,7 @@ public class PlayerJumpState : PlayerState
     {
         base.Exit();  
         AudioManager.instance.StopSFX(5);
-        MobileInput.Instance.isJumped = false; // Reset jump state for mobile input
+       
     }
 
     public override void FixedUpdate()

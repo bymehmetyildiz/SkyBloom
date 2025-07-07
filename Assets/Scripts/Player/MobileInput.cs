@@ -19,13 +19,8 @@ public class MobileInput : MonoBehaviour
     public bool isAiming;
     public Vector2 aimScreenPosition;
 
-    // Aiming
-    [HideInInspector]
-    public Vector2 initialTouchPosition;
-    public Vector2 currentTouchPosition;
-    public Vector2 dragDirection;
-    public bool isAim;
-    public AimButton aimButton;
+    
+    
 
     private void Awake()
     {
@@ -57,11 +52,11 @@ public class MobileInput : MonoBehaviour
     //Jump
     public void MobileJumpState()
     {
-        if(!isJumped)
-        {
-            isJumped = true;
-            yInput = 1f;
-        }
+        if (player.IsGroundDetected() && !player.isBusy)
+            player.stateMachine.ChangeState(player.jumpState);
+
+        if (!player.IsGroundDetected() && player.IsWallDetected())
+            player.stateMachine.ChangeState(player.wallJumpState);
     }
     ///////
     
@@ -191,79 +186,8 @@ public class MobileInput : MonoBehaviour
 
     //End Skills
 
-    // Aiming
-    private void Update()
-    {
-        if (Input.touchCount == 1 && aimButton != null)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            // Check if touch is within allowed aim zone
-            if (aimButton.IsTouchWithinArea(touch.position))
-            {
-                if (touch.phase == TouchPhase.Began)
-                {
-                    initialTouchPosition = touch.position;
-                    isAim = true;
-
-                    if (CanStartAiming())
-                        player.stateMachine.ChangeState(player.aimSwordState);
-                }
-                else if ((touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary) && isAim)
-                {
-                    currentTouchPosition = touch.position;
-                }
-                else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) && isAim)
-                {
-                    currentTouchPosition = touch.position;
-                    Vector2 worldStart = Camera.main.ScreenToWorldPoint(initialTouchPosition);
-                    Vector2 worldEnd = Camera.main.ScreenToWorldPoint(currentTouchPosition);
-                    dragDirection = (worldStart - worldEnd).normalized;
-
-                    if (player.skillManager.swordSkill.swordType != SwordType.None && HasNoSword())
-                        player.skillManager.swordSkill.CreateSword();
-
-                    isAim = false;
-                }
-            }
-        }
-        else
-        {
-            isAim = false;
-        }
-    }
-
-    private bool CanStartAiming()
-    {
-        return HasNoSword() &&
-               player.skillManager.swordSkill.swordType != SwordType.None &&
-               player.stats.currentMagic >= player.skillManager.swordSkill.magicAmount &&
-               !player.isBusy;
-    }
-
-    public void MobileAim(bool isAim)
-    {
-        if (this.isAim == isAim) return; // Prevent re-entry
-        this.isAim = isAim;
-
-        if (HasNoSword()
-            && player.skillManager.swordSkill.swordType != SwordType.None
-            && player.stats.currentMagic >= player.skillManager.swordSkill.magicAmount
-            && !player.isBusy && isAim)
-            player.stateMachine.ChangeState(player.aimSwordState);
-    }
-
-    private bool HasNoSword()
-    {
-        if (!player.sword)
-            return true;
-
-        player.sword.GetComponent<SwordSkillController>().ReturnSword();
-
-
-        return false;
-    }
-    // End Aiming
+   
+   
 
     // Use Potions
     public void UseHealthPotion()
