@@ -15,6 +15,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private bool canSpeak;
     [SerializeField] private GameObject interactKey;
+    [SerializeField] private GameObject interactButton;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class DialogueTrigger : MonoBehaviour
         cc = GetComponent<CapsuleCollider2D>();
         canSpeak = false;
         interactKey.SetActive(false);
+        interactButton.SetActive(false);
         isPlayed = false;
     }
 
@@ -29,8 +31,16 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (collision.GetComponent<Player>() != null)
         {
-            if (interactKey.activeSelf == false && !isSpoken)
-                interactKey.SetActive(true);
+            if (PlatformUtils.IsWebGLMobile())
+            {
+                if (interactButton.activeSelf == false && !isSpoken)
+                    interactButton.SetActive(true);
+            }
+            else
+            {
+                if (interactKey.activeSelf == false && !isSpoken)
+                    interactKey.SetActive(true);
+            }
 
             canSpeak = true;
 
@@ -42,8 +52,6 @@ public class DialogueTrigger : MonoBehaviour
                     isPlayed = true;
                 }
             }
-
-           
         }
     }
 
@@ -51,8 +59,11 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (collision.GetComponent<Player>() != null)
         {
+
             if (interactKey.activeSelf == true)
                 interactKey.SetActive(false);
+            if(interactButton.activeSelf == true)
+                interactButton.SetActive(false);
 
             canSpeak = false;
 
@@ -98,6 +109,9 @@ public class DialogueTrigger : MonoBehaviour
 
         if (interactKey.activeSelf == true)
             interactKey.SetActive(false);
+
+        if(interactButton.activeSelf == true)
+            interactButton.SetActive(false);
     }
 }
 

@@ -5607,6 +5607,7 @@ MonoBehaviour:
   warningMessage: {fileID: 3948000936880499866}
   AdButton: {fileID: 3023812336361247450}
   adEffect: {fileID: 1149098042013759572, guid: 99e3e817c58d81142966b9564c58042f, type: 3}
+  currencyManager: {fileID: 0}
   inventoryElements:
   - {fileID: 8178928848998097687}
   - {fileID: 456155506108443295}
@@ -30124,6 +30125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa4f1e55e2542340b419a2b47061286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimHoldDelay: 0.3
 --- !u!1 &8709643815435079788
 GameObject:
   m_ObjectHideFlags: 0

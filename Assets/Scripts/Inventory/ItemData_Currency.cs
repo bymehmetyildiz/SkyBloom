@@ -10,6 +10,7 @@ public class ItemData_Currency : ItemData
     public void ExecuteEffect()
     {
         PlayerManager.instance.currency += amount;
+        SaveManager.instance.SaveGame();
     }
 
     

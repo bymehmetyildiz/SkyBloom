@@ -9,6 +9,7 @@ public class Chest : MonoBehaviour
     [FoldoutGroup("Reference")]
     public Animator animator;
     public GameObject key;
+    public GameObject button;
     private bool isPlayerNearby;
     private ItemDrop itemDrop;
     public string id;
@@ -17,6 +18,7 @@ public class Chest : MonoBehaviour
     private void Start()
     {
         key.SetActive(false);
+        button.SetActive(false);
         itemDrop = GetComponent<ItemDrop>();
 
         Invoke("CheckOpenedChest", 0.1f);
@@ -76,8 +78,9 @@ public class Chest : MonoBehaviour
         Open();
         AudioManager.instance.PlaySFX(12, this.transform);
         key.SetActive(false);
+        button.SetActive(false);
         itemDrop.GenerateDrop();
- 
+        SaveManager.instance.SaveGame();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -86,8 +89,16 @@ public class Chest : MonoBehaviour
         {
             isPlayerNearby = true;
 
-            if(!isOpened)
-                key.SetActive(true);
+            if (PlatformUtils.IsWebGLMobile())
+            {
+                if (!isOpened)
+                    button.SetActive(true);
+            }
+            else
+            {
+                if (!isOpened)
+                    key.SetActive(true);
+            }
         }
     }
 
@@ -97,6 +108,7 @@ public class Chest : MonoBehaviour
         {
             isPlayerNearby = false;
             key.SetActive(false);
+            button.SetActive(false);
         }
     }
 }

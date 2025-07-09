@@ -9,6 +9,7 @@ public class SignBoardController : MonoBehaviour
 {
     [SerializeField] private GameObject tipPanel;
     [SerializeField] private GameObject interactKey;
+    [SerializeField] private GameObject interactButton;
     [SerializeField] private TMP_Text header;
     [SerializeField] private TMP_Text description;
     [TextArea(3, 10)]
@@ -22,6 +23,7 @@ public class SignBoardController : MonoBehaviour
     {
         tipPanel.SetActive(false);
         interactKey.SetActive(false);
+        interactButton.SetActive(false);
         canInteract = false;
     }
 
@@ -40,10 +42,14 @@ public class SignBoardController : MonoBehaviour
     public void Interact()
     {
         AudioManager.instance.PlaySFX(59, null);
+
         if (interactKey.activeSelf == true)
             interactKey.SetActive(false);
-        else if (interactKey.activeSelf == false)
-            interactKey.SetActive(true);
+
+        if(PlatformUtils.IsWebGLMobile())
+            if (interactButton.activeSelf == true)
+                interactButton.SetActive(false);
+
 
         if (tipPanel.activeSelf == false)
         {
@@ -62,8 +68,16 @@ public class SignBoardController : MonoBehaviour
     {
         if(collision.GetComponent<Player>() != null)
         {
-            if (interactKey.activeSelf == false)
-                interactKey.SetActive(true);
+            if(PlatformUtils.IsWebGLMobile())
+            {
+                if (interactButton.activeSelf == false)
+                    interactButton.SetActive(true);
+            }
+            else
+            {
+                if (interactKey.activeSelf == false)
+                    interactKey.SetActive(true);
+            }
 
             canInteract = true;
         }
@@ -80,6 +94,8 @@ public class SignBoardController : MonoBehaviour
             else if (tipPanel.activeSelf == true)
                 tipPanel.SetActive(false);
 
+            if (interactButton.activeSelf == true)
+                interactButton.SetActive(false);
             canInteract = false;
         }
     }

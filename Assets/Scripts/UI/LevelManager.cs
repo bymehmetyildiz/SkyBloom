@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour, ISaveManager
     [SerializeField] private GameObject controllersPanel;
     [SerializeField] private GameObject controllersPanelMobile;
     private bool isControlShown;
+    private bool levelTransitioning = false;
 
     private void Awake()
     {
@@ -93,8 +94,13 @@ public class LevelManager : MonoBehaviour, ISaveManager
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (levelTransitioning)
+            return;
+
         if (collision.GetComponent<Player>() == null)
             return;
+
+        levelTransitioning = true;
 
         int currentIndex = SceneManager.GetActiveScene().buildIndex;
         int nextIndex = currentIndex + 1;

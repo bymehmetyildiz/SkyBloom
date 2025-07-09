@@ -8,12 +8,19 @@ public class UI_CurrencyManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text crystalAmountText;
 
+    private void Start()
+    {
+        UpdateCurrency();
+    }
 
-    
-    void Update()
+    private void Update()
+    {
+        UpdateCurrency();
+    }
+
+    public void UpdateCurrency()
     {
         crystalAmountText.text = PlayerManager.instance.currency.ToString();
     }
 
-    
 }

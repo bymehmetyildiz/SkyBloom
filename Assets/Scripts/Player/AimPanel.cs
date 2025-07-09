@@ -7,7 +7,11 @@ public class AimPanel : MonoBehaviour
     private RectTransform rectTransform;
     private Vector2 finalDir;
 
-
+    // Long press variables
+    [SerializeField] private float aimHoldDelay = 0.3f; // seconds to trigger aim
+    private float holdTimer = 0f;
+    private bool isHolding = false;
+    private bool aimStarted = false;
 
     void Start()
     {
@@ -17,7 +21,7 @@ public class AimPanel : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount == 1)
         {
             Touch touch = Input.touches[0];
             Vector2 touchPos = touch.position;
@@ -33,56 +37,75 @@ public class AimPanel : MonoBehaviour
 
             if (touch.phase == TouchPhase.Began)
             {
-                if (HasNoSword() && player.stats.currentMagic >= swordSkill.magicAmount)
-                {
-                    player.stateMachine.ChangeState(player.aimSwordState);
-                    swordSkill.ActivateDots(true);
-                    player.SetZeroVelocity();
-                }
+                isHolding = true;
+                holdTimer = 0f;
+                aimStarted = false;
             }
 
-            if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+            if (isHolding && (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary))
             {
-                if (HasNoSword() )
+                holdTimer += Time.deltaTime;
+                if (!aimStarted && holdTimer >= aimHoldDelay)
+                {
+                    // Only start aiming after the delay
+                    if (HasNoSword() && player.stats.currentMagic >= swordSkill.magicAmount)
+                    {
+                        player.stateMachine.ChangeState(player.aimSwordState);
+                        swordSkill.ActivateDots(true);
+                        player.SetZeroVelocity();
+                        aimStarted = true;
+                    }
+                }
+
+                if (aimStarted && HasNoSword())
                 {
                     swordSkill.ActivateDots(true);
                     player.SetZeroVelocity();
+
+                    Vector2 aimDir = AimDirection().normalized;
+                    finalDir = aimDir * swordSkill.launchForce.magnitude;
+
+                    for (int i = 0; i < swordSkill.dots.Length; i++)
+                        swordSkill.dots[i].transform.position = DotsPosition(i * swordSkill.spaceBetweenDots);
+
+                    // Flip based on finger
+                    if (player.transform.position.x >= touchWorldPos.x && player.facingDir == 1)
+                        player.Flip();
+                    else if (player.transform.position.x < touchWorldPos.x && player.facingDir == -1)
+                        player.Flip();
                 }
-
-
-                Vector2 aimDir = AimDirection().normalized;
-                finalDir = aimDir * swordSkill.launchForce.magnitude; // Use consistent force in all directions
-
-                for (int i = 0; i < swordSkill.dots.Length; i++)
-                {
-                    swordSkill.dots[i].transform.position = DotsPosition(i * swordSkill.spaceBetweenDots);
-                }
-
-                // Flip based on finger
-                if (player.transform.position.x >= touchWorldPos.x && player.facingDir == 1)
-                    player.Flip();
-                else if (player.transform.position.x < touchWorldPos.x && player.facingDir == -1)
-                    player.Flip();
             }
 
             if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
             {
-                swordSkill.ActivateDots(false);
-                swordSkill.finalDir = finalDir;
-                swordSkill.CreateSword();
-                AudioManager.instance.PlaySFX(16, null);
-                player.stateMachine.ChangeState(player.idleState);
+                isHolding = false;
+                holdTimer = 0f;
+
+                if (aimStarted)
+                {
+                    swordSkill.ActivateDots(false);
+                    swordSkill.finalDir = finalDir;
+                    swordSkill.CreateSword();
+                    AudioManager.instance.PlaySFX(16, null);
+                    player.stateMachine.ChangeState(player.idleState);
+                }
             }
+        }
+        else
+        {
+            // Reset if no touch
+            isHolding = false;
+            holdTimer = 0f;
+            aimStarted = false;
         }
     }
 
     private Vector2 AimDirection()
-    {        
+    {
         Vector3 playerPosition = player.transform.position;
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
         Vector2 dir = worldPos - playerPosition;
         return dir;
-         
     }
 
     private Vector2 DotsPosition(float t)
@@ -93,7 +116,6 @@ public class AimPanel : MonoBehaviour
         return position;
     }
 
-   
     private bool HasNoSword()
     {
         if (!player.sword)

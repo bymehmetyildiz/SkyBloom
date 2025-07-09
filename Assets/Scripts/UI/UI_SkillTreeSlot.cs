@@ -44,7 +44,7 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     void Start()
     {
-        SaveManager.instance.LoadGame();
+        //SaveManager.instance.LoadGame();
         skillLock = GetComponentInChildren<UI_SkillLock>();
         skillImage = skillLock.GetComponent<Image>();
         skillImage.gameObject.SetActive(!unlocked);

@@ -29,6 +29,7 @@ public class UI_Controller : MonoBehaviour, ISaveManager
     [Header("Currency Ad Params")]    
     [SerializeField] private GameObject AdButton;
     [SerializeField] private GameObject adEffect;
+    public UI_CurrencyManager currencyManager;
 
     [SerializeField] private GameObject[] inventoryElements;
     public GameObject inGameUI;
@@ -63,7 +64,9 @@ public class UI_Controller : MonoBehaviour, ISaveManager
         bgmSlider.onValueChanged.AddListener(delegate { SetMusicVolume(); });
         warningPanel.localScale = Vector3.zero;
         AdButton.SetActive(false);
-        
+
+        currencyManager = GetComponentInChildren<UI_CurrencyManager>(true);
+
     }
 
     void Update()
@@ -126,6 +129,7 @@ public class UI_Controller : MonoBehaviour, ISaveManager
 
     public void ShowRewardedAd()
     {
+        AdButton.SetActive(false);
         CrazySDK.Ad.RequestAd(
             CrazyAdType.Rewarded,
             () =>
@@ -138,9 +142,9 @@ public class UI_Controller : MonoBehaviour, ISaveManager
             },
             () =>
             {
-                PlayerManager.instance.currency += 1;
-                AdButton.SetActive(false);
-                Instantiate(adEffect, AdButton.transform.position, Quaternion.identity);
+                PlayerManager.instance.currency += 1;                
+                //Instantiate(adEffect, AdButton.transform.position, Quaternion.identity);
+                currencyManager.UpdateCurrency();
                 PlayerManager.instance.player.isBusy = false;
                 Debug.Log("Rewarded ad finished, reward the player here");
             }
