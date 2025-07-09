@@ -110,10 +110,13 @@ public class AimPanel : MonoBehaviour
 
     private Vector2 DotsPosition(float t)
     {
-        Vector2 position;
-        position = (Vector2)player.transform.position + new Vector2(AimDirection().normalized.x * player.skillManager.swordSkill.launchForce.x,
-                AimDirection().normalized.y * player.skillManager.swordSkill.launchForce.y) * t + 0.5f * (Physics2D.gravity * player.skillManager.swordSkill.swordGravity) * (t * t);
-        return position;
+        var swordSkill = player.skillManager.swordSkill;
+        Vector2 aimDir = AimDirection().normalized;
+        Vector2 force = aimDir * swordSkill.launchForce.magnitude; // Use the same as finalDir
+
+        return (Vector2)player.transform.position
+            + force * t
+            + 0.5f * (Physics2D.gravity * swordSkill.swordGravity) * (t * t);
     }
 
     private bool HasNoSword()
